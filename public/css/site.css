@@ -127,8 +127,18 @@ i.personal {
 }
 
 .good-img {
-  width: 100%;
+  width: 98%;
+  padding-top:1%;
+  transition: width 0.5s, padding-top 0.5s;
+  border-radius: 2px;
+  -moz-transition: width 0.5s, -moz-transform 0.5s;
+  -webkit-transition: width 0.5s, padding-top 0.5s, -webkit-transform 0.5s;
+  -o-transition: width 0.5s, -moz-transform 0.5s;
+}
 
+.good-img:hover {
+  padding-top: 0px;
+  width: 100%;
 }
 
 

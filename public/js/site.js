@@ -1130,7 +1130,7 @@ var addressBind;
 /*
  * deliver info.
  */
-(funciton () {
+(function () {
 
 
 })();
