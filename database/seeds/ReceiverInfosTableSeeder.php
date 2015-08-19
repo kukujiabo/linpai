@@ -9,6 +9,7 @@ class ReceiverInfosTableSeeder extends Seeder {
   public function run ()
   {
   
+    /*
     DB::table('receiver_infos')->delete();
 
     $users = User::all();
@@ -46,6 +47,7 @@ class ReceiverInfosTableSeeder extends Seeder {
       ]);
 
     }
+     */
   
   }
 

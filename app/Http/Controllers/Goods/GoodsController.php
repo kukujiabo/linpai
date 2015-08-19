@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Good;
+use App\Models\GoodAttribsInfo;
 use Illuminate\Http\Request;
+use Auth;
 
 class GoodsController extends Controller {
 
@@ -14,20 +16,39 @@ class GoodsController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-
     $goods = Good::all();
 
     $gid = $request->input('gid');
 
-    return view('goods/detail', [
+    $goodInfos = array();
+
+    foreach ($goods as $key => $good) {
+
+      $goodInfo = GoodAttribsInfo::where('gid', '=', $good->id)
+
+        ->where('acode', '=', 'price')
+      
+        ->first();
+
+      $goodInfos[$key] = $goodInfo;
+
+    }
+
+    $data = array (
     
       'goods' => $goods,
 
       'gid' => $gid,
 
-      'active' => 'active'
+      'active' => 'active',
+
+      'goodInfos' => $goodInfos,
+
+      'is_select' => true
     
-    ]);
+    );
+
+    return view('goods/detail', $data);
     
 	}
 

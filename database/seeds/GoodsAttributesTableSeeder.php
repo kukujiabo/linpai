@@ -16,22 +16,39 @@ class GoodsAttributesTableSeeder extends Seeder {
 
     $attribs = Attribute::all();
 
-
     foreach ($goods as $good) {
     
       foreach ($attribs as $attrib) {
 
-        GoodAttribute::create([
+        if ($attrib->code == 'price') {
+
+          GoodAttribute::create([
+          
+            'gid' => $good->id,
+
+            'aid' => $attrib->id,
+
+            'value' => 398,
+
+            'active' => 1
+          
+          ]);
+
+        } else {
         
-          'gid' => $good->id,
+          GoodAttribute::create([
+          
+            'gid' => $good->id,
 
-          'aid' => $attrib->id,
+            'aid' => $attrib->id,
 
-          'value' => '',
+            'value' => '',
 
-          'active' => 1
+            'active' => 1
+          
+          ]);
         
-        ]);
+        }
 
       }
     

@@ -19,7 +19,7 @@ class GoodsTableSeeder extends Seeder {
 
       'intro' => '三个月以内的是上海的临时牌照。',
 
-      'pic' => 'imgs/goods/good1.png',
+      'pic' => 'imgs/goods/fraly.jpg',
 
       'active' => 1
     
@@ -34,7 +34,7 @@ class GoodsTableSeeder extends Seeder {
 
       'intro' => '三个月上内的是非上海地区的临时牌照。',
 
-      'pic' => 'imgs/goods/good2.png',
+      'pic' => 'imgs/goods/bujiadi.jpg',
 
       'active' => 1
     

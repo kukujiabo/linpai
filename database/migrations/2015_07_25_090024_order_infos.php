@@ -18,8 +18,8 @@ class OrderInfos extends Migration {
       $table->increments('id');
       $table->integer('oid');
       $table->integer('rid');
-      $table->integer('pid');
-      $table->integer('bouns');
+      $table->integer('cid');
+      $table->integer('discount');
       $table->integer('active');
       $table->string('ext_0')->nullable();
       $table->string('ext_1')->nullable();

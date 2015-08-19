@@ -2,14 +2,18 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use Auth;
 
 class UploadsController extends Controller {
 
   public function __construct () 
   {
-    $this->middleware('upload'); 
+
+    $this->middleware('auth');
+  
+    $this->middleware('upload');
+
   }
 
   /*
@@ -108,9 +112,60 @@ class UploadsController extends Controller {
 
   protected function handleUpload ($request)
   {
+    $code = $request->input('code');
 
+    $spec = $request->input('spec');
 
+    $path = storage_path() . '/app/uploads/tmps/';
 
+    $user = Auth::user();
+
+    $userDir = md5($user->id . $user->mobile); 
+
+    $storage_path = $path . $userDir;
+
+    if ($request->hasFile($code)) {
+
+      $file = $request->file($code);
+
+      if (!is_dir($storage_path)) {
+      
+        try {
+
+          mkdir($storage_path, 0777);
+
+        } catch (Exception $e) {
+        
+          return $this->failResponse('upload storage failed.');
+        
+        }
+      
+      } 
+
+      $filename = $file->getClientOriginalName();
+
+      $file->move($storage_path, $filename); 
+
+      $preview = '/imgs/tmps/' . $userDir . '/' . $filename;
+
+      $tmpFile = $userDir . '/' . $filename;
+
+      $res = array (
+      
+        'preview' => $preview,
+
+        'tmpfile' => $tmpFile
+      
+      );
+
+      return $this->successResponse('res', $res);
+
+    } else {
+
+      return $this->failResponse('Empty file.');
+
+    }
+    
   }
 
 }

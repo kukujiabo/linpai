@@ -16,4 +16,8 @@ good_attribs c
 where
 g.id = c.gid
 and
-a.id = c.aid;
+a.id = c.aid
+and
+g.active = 1
+and 
+a.active = 1;

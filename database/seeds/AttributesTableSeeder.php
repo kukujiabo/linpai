@@ -151,7 +151,7 @@ class AttributesTableSeeder extends Seeder {
 
     Attribute::create([
 
-      'name' => '合格证扫描件(国产车)关单扫描件（进口车）',
+      'name' => '合格证扫描件',
 
       'spec' => 'file_upload',
 

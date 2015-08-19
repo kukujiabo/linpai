@@ -2,6 +2,23 @@ li {
   list-style: none;
 }
 
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.table > thead > tr > th {
+  border: 0px;
+}
+
+.h-cursor {
+  cursor: pointer;
+}
+
 .good-tab-info {
   width: 100%;
   min-height: 100px;
@@ -61,6 +78,11 @@ li {
   text-align: center;
 }
 
+#buy {
+  background-color: #eee;
+  padding: 50px 0px 0px 0px;
+}
+
 i.professional {
   width: 95px;
   height: 95px;
@@ -106,7 +128,9 @@ i.personal {
 
 .good-img {
   width: 100%;
+
 }
+
 
 .footer-link a {
   color: #333333;
@@ -187,6 +211,8 @@ i.personal {
   right: 0;
   width: 100%;
   z-index: 10000;
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 .top-100 {
@@ -208,7 +234,6 @@ i.personal {
 .profile-wrapper {
   border: 1px solid #dddddd;
   border-radius: 4px;
-  min-height: 400px;
   margin: 0px;
   padding: 5px;
 }
@@ -220,7 +245,7 @@ li.media {
 }
 
 .media-body {
-  width: 80%;
+  width: 70%;
   text-align: left;
 }
 
@@ -371,7 +396,7 @@ ul.dropdown-menu {
 }
 
 .v-middle {
-  padding: 20px 5px;
+  padding: 4px 5px 0px 5px;
 }
 
 .line-info {
@@ -391,6 +416,14 @@ ul.dropdown-menu {
   .container {
     width: 1000px; 
   }
+
+  .margin-wide {
+    padding: 0px 100px;
+  }
+
+  .p-i-img {
+    height: 45px; 
+  }
   
 }
 
@@ -398,8 +431,12 @@ ul.dropdown-menu {
   .container {
     width: 1280px;  
   }
-}
 
+  .margin-wide {
+    padding: 0px 100px;
+  }
+
+}
 
 .banner-img {
   width: 100%;
@@ -414,10 +451,10 @@ ul.process {
 }
 
 .process-line {
-  background: #31b0d5;
-  height: 5px;
-  width: 36%;
-  margin: 30px 0px;
+  background: #ddd;
+  height: 3px;
+  width: 21%;
+  margin: 20px 0px;
 }
 
 #process-bar {
@@ -429,11 +466,6 @@ ul.process {
   float: left;
 }
 
-#process-bar i {
-  display: block;
-  background-color: #ccc;
-  border-radius: 50%;
-}
 
 @media (max-width: 1200px) {
   .p-i-img {
@@ -491,6 +523,7 @@ ul.process {
   font-size: 16px;
   font-color: #999;
   font-weight: bold;
+  height: 40px;
 }
 
 .width-100 {
@@ -502,9 +535,8 @@ ul.process {
 }
 
 div.quan-itm {
-  width: 120px;
-  border-radius: 4px;
-  background: #facc00;
+  color: #fff;
+  background: url('/imgs/quan-avai.png');
   cursor: pointer;
   padding: 10px;
 }
@@ -512,10 +544,6 @@ div.quan-itm {
 .quan-list {
   text-align: center;
   padding: 10px;
-}
-
-.quan-list > li {
-  padding: 0px 30px;
 }
 
 .good-info-desc {
@@ -593,23 +621,21 @@ div.quan-itm {
 }
 
 .r-trans {
-transition: width 1s, height 1s;
--moz-transition: width 1s, height 1s, -moz-transform 1s;
--webkit-transition: width 1s, height 1s, -webkit-transform 1s;
--o-transition: width1s, height 1s, -moz-transform 1s;
+transition: width 0.5s, height 0.5s;
+-moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+-webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+-o-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
 }
 
 .r-trans:hover {
-transform:rotate(330deg);
--moz-transform:rotate(330deg); /* Firefox 4 */
--webkit-transform:rotate(330deg); /* Safari and Chrome */
--o-transform:rotate(330deg); /* Opera */
+transform:rotate(5deg);
+-moz-transform:rotate(5deg); /* Firefox 4 */
+-webkit-transform:rotate(5deg); /* Safari and Chrome */
+-o-transform:rotate(5deg); /* Opera */
 }
 
-#g-num {
-
+.g-num {
   width: 50px;
-
 }
 
 .login-panel {
@@ -644,6 +670,399 @@ transform:rotate(330deg);
 
 .progress-sm {
   height: 10px;
+  margin: 0 0 10px 0;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.margin-5 {
+  margin: 5px;
+}
+
+.alert-info-border {
+  border: 1px solid #a94442;
+}
+
+.fade {
+
+}
+
+.modal-dialog {
+
+  top: 100px;
+
+}
+
+#price-pad {
+  position: fixed;
+  border-radius: 0 0 5px 5px;
+  width: 120px;
+  height: 200px;
+  top: 240px;
+  right: 15px;
+  padding-top: 0px;
+  border: 0px;
+}
+
+.total-price {
+  color: red;
+  font-size: 18px;
+}
+
+li.bouns {
+  margin: 0px 0px 30px 0px;
+}
+
+.q-price {
+  font-size: 28px;
+}
+
+div.selected-boun {
+
+  background: #ddd;
+
+}
+
+.home-block {
+  padding: 100px 0px;
+}
+
+.icon-bar {
+  background-color: #eee;
+}
+
+.font-black {
+  color: #111;
+}
+
+.menu-gray {
+  background-color: #eee;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.menu-gray > img {
+  width: 20px;
+
+}
+
+.h-70 {
+  height: 70px;
+}
+
+.home-section {
+  font-size: 46px;
+  font-family: "Microsoft YaHei";
+}
+
+.a-login-block {
+  width: 400px;
+  height: 240px;
+  padding: 0px;
+  margin: 10% 35%;
+}
+
+.a-login-block h2 {
+  background-color: #f95252;
+  border-radius: 20px 20px 0 0; 
+  font-size: 24px;
+  color: #fff;
+  padding: 20px 26px;
   margin: 0px;
 }
 
+.a-login-block fieldset {
+  margin: 0px;
+  border-radius: 0 0 20px 20px;
+  padding: 20px 26px;
+  background: #fff;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.a-login-block p {
+  text-align: center;
+}
+
+.a-login-block  button {
+  background-color: #33cc77;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px 20px;
+  font-size: 18px;
+}
+
+#admin-login { 
+  width: 100%;
+  height: 100%;
+}
+
+.nav-vertical {
+  text-align: center;
+  font-size: 28px;
+  padding: 50px 0px;
+  border-right: 1px solid #eee;
+}
+
+.container-fluid {
+  height: 100%;
+  display: block;
+}
+
+.nav-vertical a {
+  color: #f95252; 
+}
+
+.nav-vertical a:hover {
+  font-size: 30px;
+}
+
+.admin-content {
+  width: 100%;
+  height: 100%;
+  padding: 20px 10px;
+}
+
+.l-m-itm {
+  border-radius: 2px;
+}
+
+.list-page {
+  margin: 20px 10px;
+  padding: 10px 10px;
+}
+
+.tab_title {
+  color: #999;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+#price-pad hr {
+  border-top: #ccc 1px solid !important;
+}
+
+#price-pad span {
+  float: right;
+}
+
+#price-pad p {
+  text-align: left !important;
+  margin: 0px;
+  padding: 1px 3px;
+}
+
+.price-divider {
+  margin: 3px;
+}
+
+.intro-bar {
+  width:60%;
+  left:20%;
+  height:3px;
+  background:#ddd;
+  position:absolute;
+  margin-top:35px;
+}
+
+.good-img {
+
+
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+
+.s-d-caption{
+  
+}
+
+.pagination > li {
+ margin: 0px 3px; 
+}
+
+
+.line-header {
+ background: #eee; 
+
+}
+
+.good-block:hover {
+  color:#FF8800;
+}
+
+.process-bar-img {
+  
+  height: 70px;
+
+}
+
+@media (max-width: 1200px) {
+
+  .process-bar-img {
+  
+    height: 60px;
+  
+  }
+
+  .intro-bar {
+
+    margin-top: 30px;
+  
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .process-bar-img {
+  
+    height: 50px;
+  
+  }
+
+  .intro-bar {
+
+    margin-top: 25px;
+  
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  .process-bar-img {
+  
+    height: 40px;
+  
+  }
+
+  .intro-bar {
+
+    margin-top: 20px;
+  
+  }
+
+}
+
+.nav-tabs > li.active > a {
+
+  background-color: #009fcc  !important;
+  border-radius: 0px;
+  color: white;
+  text-align: center;
+  margin: 0px;
+
+}
+
+.nav-tabs > li > a {
+
+  background-color: #EEEEEE;
+  border-radius: 0px;
+  color: #aaaaaa;
+  text-align: center;
+  margin: 0px;
+
+}
+
+.no-border {
+  border: 0px;
+}
+
+.price-pad-bk {
+  width: 100%;
+  height: 100%;
+}
+
+.price-content {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+}
+
+div.seq-num {
+  padding: 0 5px;
+  float: left;
+}
+
+div.seq-content {
+  padding: 0 5px;
+  float:left;
+}
+
+div#youhui-alert {
+  display: none; 
+  padding: 6px;
+}
+
+.solve-title {
+  color: white;
+  background: #00BBFF;
+  padding:3px;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.qr-code {
+  position: fixed;
+  width: 8%;
+  top: 55%;
+  left: 1%;
+}
+
+.focus-brand {
+  padding: 2px;
+  font-weight: bold;
+  color: #999;
+  font-size: 12px;
+  position: absolute;
+  bottom: 16%;
+  left: 10%;
+}
+
+.order-head {
+  padding: 10px 0px;
+  background: #eee;
+  color: #999;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+}
+
+.order-title {
+  width: 100%;
+  padding: 5px 10px;
+  background: #eee;
+}
+
+.order-body {
+  border: 1px solid #eee;
+  padding: 5px;
+  margin-bottom: 5px;
+  height: 80px;
+}
+
+.order-content {
+  padding: 0 0 10px 0;
+
+}
+
+.order-col {
+  text-align: center;
+  padding:0;
+  margin-top: 20px;
+}

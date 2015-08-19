@@ -2,14 +2,25 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\VOrderInfos;
+use App\Models\Car;
+use App\Models\City;
+use App\Models\Boun;
+use App\Models\OrderPrices;
+use App\User;
+use App\Models\District;
+use App\Models\ReceiverInfo;
+use App\Models\GoodAttribsInfo;
+use App\Models\Attribute;
+use Auth;
 
 class ProfilesController extends Controller {
 
   public function __construct () {
   
-    //$this->middleware('auth');
+    $this->middleware('auth');
   
   }
 
@@ -21,24 +32,135 @@ class ProfilesController extends Controller {
   }
 
 
-  public function getMyorder()
-  {
 
-    return view('profile/myorder');
+  public function getMyorder(Request $request)
+  {
+    $page = !empty($request->input('page')) ? $request->input('page') : 1;
+
+    $page = intval($page);
+
+    $offset = 5;
+
+    $user = Auth::user();
+
+    $count = Order::where('uid', '=', $user->id)
+
+      ->count();
+
+    $pages = ceil($count/$offset);
+
+    $page = $page > $pages ? $pages : $page;
+
+    $orderSet = VOrderInfos::where('uid', '=', $user->id)
+
+      ->orderBy('status', 'asc')
+
+      ->orderBy('created_at', 'desc')
+
+      ->skip(($page - 1) * $offset)
+
+      ->take($offset)
+
+      ->get();
+
+    $orders = array();
+
+    foreach ($orderSet as $order) {
+
+      /*
+      if ($order->status == 0) {
+      
+        $order->status = '未支付';
+      
+      } else if ($order->status == 1) {
+      
+        $order->status = '已支付';
+      
+      } else if ($order->status == 2) {
+      
+        $order->status = '已发货';
+      
+      } else if ($order->status == 3) {
+
+        $order->status = '已关闭';
+
+      }
+       */
+    
+      array_push($orders, $order);
+    
+    }
+
+    $data = [
+    
+      'orders' => $orders,
+
+      'page' => $page,
+
+      'pages' => $pages
+    
+    ];
+
+    if ($request->ajax()) {
+     
+      $data['html'] = $this->orderListTemplate($orders);
+
+      return $this->successResponse('res', $data);
+    
+    }
+
+    return view('profile/myorder', $data);
   
   }
 
   public function getCarinfo()
   {
-  
-    return view('profile/carInfo');
+    $user = Auth::user();
+
+    $attributes = Attribute::where('spec', '=', 'file_upload')
+
+      ->where('active', '=', 1)
+
+      ->get();
+
+    $carSet = Car::where('uid', '=', $user->id)
+
+      ->where('active', '=', 1)
+
+      ->get();
+
+    $cars = array();
+
+    foreach ($carSet as $car) {
+    
+      array_push($cars, $car);
+    
+    }
+
+    $data = [
+    
+      'good_attribs' => $attributes,
+
+      'cars' => $cars
+    
+    ];
+
+    return view('profile/carInfo', $data);
 
   }
 
   public function getAccount()
   {
+
+    $user = Auth::user();
   
-    return view('profile/account');
+    $data = [
+    
+      'user' => $user
+    
+    ];
+
+    return view('profile/account', $data);
   
   }
 
@@ -115,5 +237,226 @@ class ProfilesController extends Controller {
 	{
 		//
 	}
+
+  public function getReceiverinfo (Request $request)
+  {
+    $user = Auth::user();
+
+    $receiverInfoSet = ReceiverInfo::where('uid', '=', $user->id)
+
+      ->where('active', '=', '1')
+
+      ->get();
+
+    $cities = City::all();
+
+    $districts = array();
+
+    foreach ($cities as $city) {
+    
+      $district = District::where('city_id', '=', $city->id) 
+
+        ->where('active', '=', '1')
+
+        ->first();
+
+      if ($district) {
+
+        array_push($districts, $district);
+    
+      }
+
+    }
+
+    $receiverInfos = array();
+
+    foreach ($receiverInfoSet as $receiverInfo) {
+    
+      array_push($receiverInfos, $receiverInfo);
+    
+    }
+
+    $data = [
+    
+      'receiverInfos' => $receiverInfos,
+
+      'cities' => $cities,
+
+      'districts' => $districts
+    
+    ];
+
+    return view('profile/receiver_info', $data);
+  
+  }
+
+  public function postUpdate (Request $request) 
+  {
+    $dataSet = $request->input();   
+
+    $user = Auth::user();
+
+    $insert = array ();
+
+    !empty($dataSet['name']) ? $insert['name'] = $dataSet['name'] : null;
+
+    !empty($dataSet['email']) ? $insert['email'] = $dataSet['email'] : null;
+
+    $result = User::where('id', $user->id)
+
+        ->update($insert);
+
+    if ($result) {
+
+      return $this->successResponse('result', $insert);
+
+    } else {
+    
+      return $this->failResponse();
+    
+    }
+
+  }
+
+  public function getMybouns (Request $request) 
+  {
+
+    $user = Auth::user();
+
+    $bouns = Boun::where('uid', '=', $user->id)
+
+      ->where('active', '=', 1)
+
+      ->where('type', '=', 1)
+
+      ->get();
+
+    $recomend = Boun::where('uid', '=', $user->id)
+
+      ->where('active', '=', 1)
+
+      ->where('type', '=', 0)
+
+      ->first();
+
+    $data = [
+    
+      'bouns' => $bouns,
+    
+      'recomend' => $recomend
+    
+    ];
+  
+    return view('profile/mybouns', $data);
+  
+  }
+
+  private function orderListTemplate ($dataSet) 
+  {
+    $html = '';
+
+    foreach ($dataSet as $data) {
+
+      $status;
+     
+      if ($data->status == 0) {
+
+        $status = "<a href=\"order/pay?order={{$order->code}}\" class=\"require go_to_pay\" data-id=\"{{$data->id}}\">未付款</a>";
+
+      } else if ($data->status == 1) {
+
+        $status =  "已付款<div><a href=\"#\" class=\"require\" data-id=\"{$data->id}\">查看物流</a></div>";
+
+      } else if ($data->status == 2) {
+
+        $status = "已完成";
+
+      } else {
+
+        $status = "已关闭";
+
+      }
+
+      $html .= "<div class=\"order-title\">"
+    
+        . "<div class=\"col-xs-4\">"
+
+        . "<b>编号：{$data->code} </b>"
+
+        . "</div>"
+
+        . "<div class=\"col-xs-4\">"
+
+        . "<b>{$data->created_at}</b>"
+
+        . "</div>"
+
+        . "<div style=\"clear:both;\"></div>"
+
+        . "</div>"
+
+        . "<div class=\"order-body\">"
+
+        . "<div class=\"col-xs-3 no-padding\">"
+
+        . "<div class=\"col-xs-4 no-padding\" style=\"background:#eee;\">"
+
+        . "<img src=\"/imgs/blip-64.png\">"
+
+        . "</div>"
+
+        . "<div class=\"col-xs-8 order-col\">"
+
+        . $data->gname
+
+        . "</div>"
+
+        . "</div>"
+
+        . "<div class=\"col-xs-2 order-col\">"
+
+        . ($data->sum/$data->num)
+
+        . "</div>"
+
+        . "<div class=\"col-xs-1 order-col\">"
+
+        . $data->num
+
+        . "</div>"
+
+        . "<div class=\"col-xs-1 order-col\">"
+
+        . $data->cut_fee
+
+        . "</div>"
+
+        . "<div class=\"col-xs-2 order-col\">"
+
+        . $data->final_price
+
+        . "</div>"
+
+        . "<div class=\"col-xs-1 order-col\">"
+
+        . $status
+
+        . "</div>"
+
+        . "<div class=\"col-xs-2 order-col\">"
+        
+        . "上海"
+
+        . "</div>"
+
+        . "<div style=\"clear:both\"></div>"
+
+        . "</div>";
+    
+    }
+
+    return $html;
+  
+  }
 
 }

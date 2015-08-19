@@ -24,6 +24,20 @@ class DistrictsTableSeeder extends Seeder {
     
     ]);
   
+    District::create([
+    
+      'cname' => '浦东新区',
+
+      'ename' => 'HuangPu District',
+  
+      'code' => 2,
+
+      'city_id' => 1,
+
+      'active' => 1
+    
+    ]);
+  
   
   }
 

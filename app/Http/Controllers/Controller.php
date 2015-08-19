@@ -44,7 +44,7 @@ abstract class Controller extends BaseController {
    * @params string $resKey, object $result
    * @return response
     */
-  protected function failResponse($msg) {
+  protected function failResponse($msg = 'fail') {
   
     $response = array ('code' => 0, 'msg' => $msg);
 
@@ -52,5 +52,12 @@ abstract class Controller extends BaseController {
   
   }
 
+  protected function table_generator ($tcode) {
+  
+    $table = Table::generate($tcode);
+
+    return $table->html(); 
+  
+  }
 
 }

@@ -1,6 +1,5 @@
 @section('banner')
-<div class="padding-5"></div>
-<div id="my-carousel" class="carousel slide" data-interval="5000" style="height: auto; border-radius: 3px;">
+<div id="my-carousel" class="carousel slide" data-interval="5000" style="height: auto; border-radius: 3px; margin-top:112px">
   <ol class="carousel-indicators">
     <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
     <li data-target="#my-carousel" data-slide-to="1"></li>
@@ -10,7 +9,7 @@
     <div class="item active rounded" style="width: auto">
       <img class="banner-img" src="../imgs/carousel/race1.png">
       <div class="container">
-        <div class="carousel-caption">
+        <div class="carousel-caption s-d-caption">
           <p>
             <a class="btn btn-primary btn-lg  btn-right" href="#buy" role="button">立即购买</a>
           </p>

@@ -19,6 +19,7 @@ class Orders extends Migration {
       $table->string('code', 100)->unique();
       $table->integer('uid');
       $table->integer('gid');
+      $table->integer('sum');
       $table->integer('num');
       $table->string('comment', 200)->nullable();
       $table->integer('status');

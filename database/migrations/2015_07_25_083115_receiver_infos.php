@@ -17,18 +17,19 @@ class ReceiverInfos extends Migration {
     
       $table->increments('id');
       $table->integer('uid');
-      $table->string('name', 100);
-      $table->string('contact', 100);
-      $table->integer('country')->nullable();
-      $table->integer('province');
-      $table->integer('city');
-      $table->integer('district');
-      $table->integer('road');
-      $table->string('addr_num', 200);
-      $table->string('address', 500);
-      $table->string('comment', 200);
-      $table->string('ext_0', 200);
-      $table->integer('active');
+      $table->string('receiver', 100);
+      $table->string('mobile', 100);
+      $table->string('phone', 100);
+      $table->string('country')->nullable();
+      $table->string('province')->nullable();
+      $table->string('city')->nullable();
+      $table->string('district')->nullable();
+      $table->string('road')->nullable();
+      $table->string('post_code', 200)->nullable();
+      $table->string('address', 500)->nullable();
+      $table->string('comment', 200)->nullable();
+      $table->string('ext_0', 200)->nullable();
+      $table->integer('active')->default(1);
       $table->timestamps();
     
     });

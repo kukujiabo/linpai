@@ -31,6 +31,14 @@ Route::controllers([
 
   'order' => 'Order\OrdersController',
 
-  'uploads' => 'Uploads\UploadsController'
+  'uploads' => 'Uploads\UploadsController',
+
+  'car' => 'Cars\CarsController',
+
+  'receiver' => 'ReceiverInfos\ReceiverInfosController',
+
+  'bouns' => 'Bouns\BounsController',
+
+  'admin' => 'Admin\AdminController'
 
 ]);

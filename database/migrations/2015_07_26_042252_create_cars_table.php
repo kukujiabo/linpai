@@ -17,7 +17,16 @@ class CreateCarsTable extends Migration {
 			$table->increments('id');
       $table->integer('uid');
       $table->string('owner');
-      $table->integer('brand');
+      $table->string('brand');
+      $table->string('factory_code');
+      $table->string('reco_code');
+      $table->string('dir_identity_face');
+      $table->string('dir_identity_back');
+      $table->string('dir_trans_ensurance');
+      $table->string('dir_car_check');
+      $table->string('dir_validate_paper');
+      $table->string('ext_0')->nullable();
+      $table->integer('active')->default(1);
 			$table->timestamps();
 		});
 	}

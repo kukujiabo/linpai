@@ -5,5 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 class OrderBoun extends Model {
 
 	//
+  protected $fillable = [
+  
+    'oid', 'uid', 'bcode', 'success'
+  
+  ];
 
 }

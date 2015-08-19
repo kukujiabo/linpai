@@ -46,7 +46,7 @@ class UploadValidateMiddleware {
 
       ->where('spec', '=', $spec)
       
-      ->findOne();
+      ->first();
 
     if (empty($gaInfos)) {
     

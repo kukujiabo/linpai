@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\Good;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 
@@ -30,9 +31,8 @@ class HomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-    
     $goods = Good::all();
 
     $homeGoodsDisplay = array();
@@ -51,7 +51,9 @@ class HomeController extends Controller {
 
     return view('home', array(
     
-      'goods' => $homeGoodsDisplay
+      'goods' => $homeGoodsDisplay,
+
+      'home' => 1
     
     ));
 
