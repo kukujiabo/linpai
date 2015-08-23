@@ -1,42 +1,53 @@
 @extends('app')
 
 @section('content')
-<div id="login-box">
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading t-center">用户登陆</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<ul>
+	<div class="row box" id="login-box">
+    <div class="col-xs-6 padding-20">
+    </div>
+		<div class="col-xs-6"  style="border-left: 1px solid #eee;">
+      <div class="text-center login-logo">
+        <img src="{{asset('/imgs/51.png')}}">
+      </div>
+      <div class="row padding-5">
+        <div class="col-xs-3 col-xs-offset-1">
+          <hr>
+        </div>
+        <div class="col-xs-4">
+          <p class="help-block text-center" style="padding: 5px 0px;">使用手机登录</p>
+        </div>
+        <div class="col-xs-3">
+          <hr>
+        </div>
+      </div>
+      <div>
+						<div class="alert alert-danger hide">
+							<ul id="err-list">
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
 								@endforeach
 							</ul>
 						</div>
-					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+					<form class="form-horizontal" id="login-form" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+            <fieldset>
+						  <div class="form-group">
+						  	<label class="control-label sr-only">手机：</label>
+                <div class="col-xs-10 col-xs-offset-1">
+						  	<input type="text" class="form-control mobile-input" name="mobile" value="{{ old('mobile') }}" placeholder="mobile">
+                </div>
+						  </div>
+            </fieldset>
+            <fieldset>
 						<div class="form-group">
-							<label class="col-md-4 control-label">手机：</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" placeholder="mobile">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">密码：</label>
-							<div class="col-md-6">
+							<label class="control-label sr-only">密码：</label>
+							<div class="col-xs-10 col-xs-offset-1">
 								<input type="password" class="form-control" name="password" placeholder="password">
 							</div>
 						</div>
-
+            </fieldset>
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
+							<div class="col-xs-6 col-xs-offset-1">
 								<div class="checkbox">
 									<label>
 										<input type="checkbox" name="remember"> 记住我
@@ -44,18 +55,67 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">登陆</button>
-								<a class="btn btn-link" href="{{ url('/password/email') }}">忘记密码？</a>
+							<div class="col-xs-10 col-xs-offset-1">
+								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified">登陆</button>
 							</div>
 						</div>
+            <div class="form-group">
+              <div class="col-xs-2 col-xs-offset-1">
+						    <a class="btn btn-link require" href="{{ url('/password/email') }}">忘记密码？</a>
+              </div>
+              <div class="col-xs-6 col-xs-offset-1">
+                <a class="btn btn-link" href="{{asset('auth/register')}}">
+                还没有51临牌账号？ 点击注册</a>
+              </div>
+            </div>
 					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</div>
+    <script type="text/javascript">
+      window.onload = function () { 
+
+        $('body').css({background: "#eee"}); 
+      
+        $('#login-submit').click(function (e) {
+
+          $('#err-list').parent().addClass('hide');
+
+          e.preventDefault();
+
+          var mobile = $('input[name=mobile]').val();
+
+          var password = $('input[name=password]').val();
+
+          if (isMobile(mobile) && password != '' && password != undefined) {
+          
+            $('#login-form').submit();
+          
+          } else {
+
+            var err = '';
+
+            if (!isMobile(mobile)) {
+            
+              err += '<li>手机号填写错误！</li>';
+            
+            }
+
+            if (password == '' || password == undefined) {
+            
+              err += '<li>请填写密码！</li>';
+            
+            }
+
+            $('#err-list').parent().removeClass('hide');
+
+            $('#err-list').html(err);
+          
+          }
+        
+        });
+      
+      };
+    </script>
 @endsection

@@ -17,11 +17,11 @@ class Cities extends Migration {
 
       $table->increments('id');
       $table->string('cname');
-      $table->string('ename');
-      $table->string('code');
+      $table->string('ename')->nullable();
+      $table->string('code')->nullable();
       $table->string('ext_0')->nullable();
-      $table->integer('country_id');
-      $table->integer('province_id');
+      $table->integer('country_code')->nullable();
+      $table->integer('province_code')->nullable();
       $table->integer('post_code')->nullable();
       $table->integer('active');
       $table->timestamps();

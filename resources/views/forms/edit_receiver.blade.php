@@ -1,3 +1,5 @@
+@include('area_select')
+
 @section('edit_receiver')
   <div class="gray-light edit-info" id="new-address-info">
     <form class="form-inline" method="post" action="{{ asset('receiver/add') }}" id="new-receiver-form">
@@ -19,32 +21,10 @@
             <span class="require">*</span>
             收货地址&nbsp;
           </label>
-          <div class="btn-group" role="group" id="v-city">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span id="selected-city">选择城市</span>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" id="city-menu" role="menu">
-            @foreach ($cities as $city)
-              <li >
-                <a href="#" class="cities-item" id="{{$city->code}}">{{$city->cname}}</a>
-              </li>
-            @endforeach
-            </ul>
-          </div>
-          <div class="btn-group" role="group" id="v-district">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span id="selected-district">选择区域</span>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" id="district-menu" role="menu">
-            @foreach ($districts as $district)
-              <li>
-                <a href="#" class="districts-item" id="{{$district->code}}">{{$district->cname}}</a>
-              </li>
-            @endforeach
-            </ul>
-          </div>
+
+          @yield('area')
+
+          <input class="form-control" type="hidden" name="province" id="post-province">
           <input class="form-control" type="hidden" name="city" id="post-city">
           <input class="form-control" type="hidden" name="district" id="post-district">
         </div>
@@ -64,7 +44,7 @@
             <span class="require">*</span>
             手机号码&nbsp;
           </label>
-          <input class="form-control" type="text" name="mobile" id="v-mobile">
+          <input class="form-control mobile-input" type="text" name="mobile" id="v-mobile">
         </div>
         <div class="form-group">
           <label class="control-label">

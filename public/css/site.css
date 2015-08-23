@@ -15,6 +15,10 @@ a {
   border: 0px;
 }
 
+.p-5 {
+  padding: 5px;
+}
+
 .h-cursor {
   cursor: pointer;
 }
@@ -119,7 +123,24 @@ i.personal {
 }
 
 #login-box {
-  margin-top: 50px;
+  margin: 60px 10% 0 10%;
+  width: 80%;
+  min-height: 320px;
+  background: #fff;
+}
+
+#register-box {
+  margin: 60px 10% 0 10%;
+  width: 80%;
+  min-height: 320px;
+  background: #fff;
+}
+
+#retrieve-box {
+  margin: 60px 10% 0 10%;
+  width: 80%;
+  min-height: 320px;
+  background: #fff;
 }
 
 .good-item {
@@ -148,8 +169,6 @@ i.personal {
 }
 
 .footer-link a:hover {
-  color: #666666;
-  font-size: 16px;
   text-decoration: none;
 }
 
@@ -270,7 +289,7 @@ li.media {
 
 .foot-bar {
   width: 100%;
-  background: #eee;
+  background: #ddd;
   margin-top: 50px;
   bottom: 0px;
 }
@@ -692,7 +711,7 @@ transform:rotate(5deg);
 }
 
 .alert-info-border {
-  border: 1px solid #a94442;
+  border: 1px solid #f2dede;
 }
 
 .fade {
@@ -899,7 +918,9 @@ td {
 
 
 .s-d-caption{
-  
+  margin-bottom: 10%;
+  text-align: center;
+  color: #000;
 }
 
 .pagination > li {
@@ -971,10 +992,9 @@ td {
 }
 
 .nav-tabs > li.active > a {
-
   background-color: #009fcc  !important;
   border-radius: 0px;
-  color: white;
+  color: #fff !important;
   text-align: center;
   margin: 0px;
 
@@ -1075,4 +1095,52 @@ div#youhui-alert {
   text-align: center;
   padding:0;
   margin-top: 20px;
+}
+
+.login-logo {
+  width: 100%;
+  padding: 10px;
+}
+
+.register-issue {
+  font-size: 12px;
+}
+
+#payed-done {
+  background: url('/imgs/mass.png') no-repeat 15px -498px;
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.btn-banner {
+  background-color: #FF8800;
+  color: white;
+  padding: 5 20px;
+}
+
+#order-num {
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: red;
+}
+
+.pagination  a.active {
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.cooperation-content {
+  padding: 3% 5%;
+  font-size: 16px;
+}
+
+.flow-img {
+  position: fixed;
+  width: 100px;
+  top: 200px;
+  min-height: 400px;
+  min-width: 300px;
 }

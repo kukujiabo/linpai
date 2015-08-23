@@ -326,6 +326,12 @@ class OrdersController extends Controller {
   {
     $ocode = $request->input('order');
 
+    if (empty($ocode)) {
+    
+      return redirect()->back();
+    
+    }
+
     $order = Order::where('code', '=', $ocode)
 
       ->where('status', '=', 0)
@@ -388,16 +394,76 @@ class OrdersController extends Controller {
 
     $pay = $request->input('pay');
 
+    $orderCode = $request->input('order_code');
+
     if (empty($pay)) {
     
       return redirect()->back();
     
     }
+
+    /*
+     * 订单
+     */
+    $order = Order::where ('code', '=', $orderCode)
+
+      ->where('uid', '=', $user->id)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    /*
+     * 订单优惠券
+     */
+    $orderBouns = OrderBoun::where('oid', '=', $order->id) 
+
+      ->where('uid', '=', $user->id)
+
+      ->where('success', 'is', 'null')
+
+      ->get();
+    
+    /*
+     * 订单信息
+     */
+    $orderInfo = OrderInfo::where('oid', '=', $order->id)
+
+      ->where('active', '=', 1)
+
+      ->first();
+    
+    /*
+     * 订单价钱
+     */
+    $orderPrice = OrderPrice::where('oid', '=', $order->id)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    /*
+     * 收货人信息
+     */
+    $receiver = ReceiverInfo::where('id', '=', $orderInfo->rid)
+
+      ->where('active', '=', 1)
+
+      ->first();
+    
     
     $data = [
     
-      'is_deliver' => true
-    
+      'is_deliver' => true,
+
+      'receiverInfos' => $receiver,
+
+      'orderPrice' => $orderPrice,
+
+      'user' => $user,
+
+      'order' => $order
+
     ];
   
     return view('orders/pay_success', $data); 
@@ -405,8 +471,6 @@ class OrdersController extends Controller {
   }
 
   /*
-   *
-   *
    *
    */
   public function getPaysuccess()

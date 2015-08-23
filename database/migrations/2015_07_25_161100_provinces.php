@@ -17,9 +17,9 @@ class Provinces extends Migration {
 
       $table->increments('id');
       $table->string('cname');
-      $table->string('ename');
-      $table->string('code');
-      $table->integer('country_id');
+      $table->string('ename')->nullable();
+      $table->string('code')->nullable();
+      $table->integer('country_code')->nullable();
       $table->string('ext_0')->nullable();
       $table->integer('active');  
       $table->timestamps();

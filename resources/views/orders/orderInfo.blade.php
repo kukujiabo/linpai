@@ -142,7 +142,7 @@
       <label  for="contract" class="checkbox">
         <input type="checkbox" id="contract" name="sign">
         我已阅读且同意
-        <a href="#">《51临牌商品购买协议》</a>
+        <a href="#" class="text-agreement" data-url="buyagreement">《51临牌商品购买协议》</a>
       </label>
     </div>
     <fieldset id="good-info-field">

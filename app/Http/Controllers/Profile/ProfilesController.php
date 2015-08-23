@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\VOrderInfos;
 use App\Models\Car;
+use App\Models\Province;
 use App\Models\City;
 use App\Models\Boun;
 use App\Models\OrderPrices;
@@ -66,26 +67,6 @@ class ProfilesController extends Controller {
     $orders = array();
 
     foreach ($orderSet as $order) {
-
-      /*
-      if ($order->status == 0) {
-      
-        $order->status = '未支付';
-      
-      } else if ($order->status == 1) {
-      
-        $order->status = '已支付';
-      
-      } else if ($order->status == 2) {
-      
-        $order->status = '已发货';
-      
-      } else if ($order->status == 3) {
-
-        $order->status = '已关闭';
-
-      }
-       */
     
       array_push($orders, $order);
     
@@ -248,13 +229,23 @@ class ProfilesController extends Controller {
 
       ->get();
 
+    $provinceSet = Province::all();      
+
+    $provinces = array();
+
+    foreach ($provinceSet as $province) {
+    
+      array_push($provinces, $province);
+    
+    }
+
     $cities = City::all();
 
     $districts = array();
 
     foreach ($cities as $city) {
     
-      $district = District::where('city_id', '=', $city->id) 
+      $district = District::where('city_code', '=', $city->code) 
 
         ->where('active', '=', '1')
 
@@ -279,6 +270,8 @@ class ProfilesController extends Controller {
     $data = [
     
       'receiverInfos' => $receiverInfos,
+
+      'provinces' => $provinces,
 
       'cities' => $cities,
 
@@ -361,11 +354,10 @@ class ProfilesController extends Controller {
      
       if ($data->status == 0) {
 
-        $status = "<a href=\"order/pay?order={{$order->code}}\" class=\"require go_to_pay\" data-id=\"{{$data->id}}\">未付款</a>";
-
+        $status = "<a href=\"/order/pay?order={$data->code}\" class=\"require go_to_pay\" data-id=\"{$data->id}\">未付款</a>";
       } else if ($data->status == 1) {
 
-        $status =  "已付款<div><a href=\"#\" class=\"require\" data-id=\"{$data->id}\">查看物流</a></div>";
+        $status = "已付款<div><a href=\"#\" class=\"require\" data-id=\"{$data->id}\">查看物流</a></div>";
 
       } else if ($data->status == 2) {
 

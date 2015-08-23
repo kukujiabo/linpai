@@ -5,6 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 class ReceiverInfo extends Model {
 
 	//
-  protected $fillable = ['receiver' ,'city' ,'district' ,'address' ,'post_code' ,'mobile', 'phone', 'uid'];
+  protected $fillable = ['receiver', 'province' ,'city' ,'district' ,'address' ,'post_code' ,'mobile', 'phone', 'uid'];
 
 }
