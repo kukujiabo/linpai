@@ -18,7 +18,7 @@ class ProvincesTableSeeder extends Seeder {
 
       'code' => 1,
 
-      'country_id' => 1,
+      'country_code' => 1,
 
       'active' => 1
 
