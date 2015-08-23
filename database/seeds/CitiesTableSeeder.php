@@ -18,9 +18,9 @@ class CitiesTableSeeder extends Seeder {
 
       'code' => 1,
 
-      'country_id' => 1,
+      'country_code' => 1,
 
-      'province_id' => 1,
+      'province_code' => 1,
 
       'post_code' => 200001,
 
