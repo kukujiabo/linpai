@@ -39,6 +39,12 @@ Route::controllers([
 
   'bouns' => 'Bouns\BounsController',
 
-  'admin' => 'Admin\AdminController'
+  'admin' => 'Admin\AdminController',
+
+  'text' => 'TextInfo\TextInfoController',
+
+  'communitcate' => 'Communication\CommunicateController',
+
+  'location' => 'Location\LocationController'
 
 ]);

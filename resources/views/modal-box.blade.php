@@ -13,7 +13,7 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-dismiss">取消</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-dismiss">关闭</button>
         <button type="button" class="btn btn-primary" id="modal-confirm" data-token="{{csrf_token()}}">确认</button>
       </div>
     </div>

@@ -17,10 +17,10 @@ class Districts extends Migration {
     
       $table->increments('id');
       $table->string('cname');
-      $table->string('ename');
-      $table->string('code'); 
+      $table->string('ename')->nullable();
+      $table->string('code')->nullable(); 
       $table->string('ext_0')->nullable();
-      $table->integer('city_id'); 
+      $table->integer('city_code')->nullable(); 
       $table->integer('active');
       $table->timestamps();
     

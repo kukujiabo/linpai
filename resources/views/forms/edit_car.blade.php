@@ -28,9 +28,12 @@
         <div class="form-group col-md-6">
             <label for="v-brand" class="col-md-5 control-label ">
               <span class="require">*</span>
-              车辆厂牌型号
+              车辆厂牌型号 
             </label>
             <input type="text" class="form-control col-md-5" name="factory_code" placeholder="vehical factory type" id="v-factory">
+            <div class="col-md-1 padding-5">
+              <span class="glyphicon glyphicon-info-sign i-img" id="fac-t-img"></span>
+            </div>
         </div>
         <div class="form-group col-md-6">
           <label for="v-brand" class="control-label col-md-5" >
@@ -38,6 +41,9 @@
             识别号码（车架号）
           </label>
           <input type="text" name="reco_code" class="form-control col-md-5" placeholder="vehical factory type" id="v-factory">
+          <div class="col-md-1 padding-5">
+            <span class="glyphicon glyphicon-info-sign i-img" id="reco-t-img"></span>
+          </div>
         </div>
       </fieldset>
       <br>
@@ -53,7 +59,7 @@
             </div>
             <div class="col-md-3">
               <label class="radio" for="imported">进口车</label>&nbsp;&nbsp;
-              <input type="radio" name="car_type" id="imported" value="imported">
+              <input type="radio" class="car_type" name="car_type" id="imported" value="imported">
             </div>
         </div>
       </fieldset>
@@ -92,7 +98,7 @@
                   </div>
                 </div>
               </div>
-              <p class="text-center">{{ $good_attrib['name']}}</p>
+              <p class="text-center" filename="{{$good_attrib['code']}}">{{ $good_attrib['name']}}</p>
             </div>
 
             @endif

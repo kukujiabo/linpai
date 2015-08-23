@@ -9,7 +9,11 @@
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
 </head>
+@if (empty($auth)) 
 <body>
+@else
+<body style="background: #eee">
+@endif
 @yield('model-box')
 <header id="header" class="header header--fixed hide-from-print animated flipInX" role="banner">
   <nav class="navbar" style="background:#fff;">
@@ -51,7 +55,9 @@
           <li>
             <div class="menu-gray">
               <img src="/imgs/select-good.png">
-              <a href="{{ url('/profile/myorder') }}" class="font-black">我的订单</a>
+              <a href="{{ url('/profile/myorder') }}" class="font-black">
+                <b>我的订单</b>
+              </a>
             </div>
           </li>
   			</ul>
@@ -73,7 +79,6 @@
 
 <div class="top-100 content-body">
 	  @yield('content')
-
 </div>
 @endif
 <div id="b-top" class="hide">
@@ -98,7 +103,7 @@
         <a class="c" href="#">联系我们</a>
       </div>
       <div class="col-md-2">
-        <a href="#">成为服务商</a>
+        <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
       </div>
       <div class="col-md-2">
         <a href="#">常见问题与解答</a>
@@ -129,9 +134,11 @@
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  -->
   <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  -->
+  <script src="{{ asset('js/jquery.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery.form.js') }}"></script>
   <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
   <script src="{{ asset('js/jquery.fileupload.js') }}"></script>

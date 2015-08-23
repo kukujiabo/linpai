@@ -6,25 +6,45 @@
 
 <div class="box alert alert-success">
   <div class="block-wrapper-10">
-    <h4 class="page-header">订单支付成功！</h4>
-    <p class="help">
-      订单编号：JSNKW2923819283
-    </p>
-    <p class="help">
-      您所购买的商品将送至：
-      <span class="city">
-        上海市
-      </span>
-      <span class="district">
-        静安区
-      </span>
-      <span class="road">
-        陕西南路34号2楼206
-      </span>
-      <span class="name">
-        刘德华
-      </span>
-    </p>
+    <h4 class="page-header">
+      <div class="col-xs-1"><i id="payed-done"></i></div>
+      <div class="col-xs-3" style="padding-top:25px;">"订单支付成功！</div>
+      <div style="clear:both"></div>
+    </h4>
+    <div class="padding-5"></div>
+    <div class="row">
+      <p class="col-xs-5">
+        订单编号：{{$order->code}}
+      </p>
+    </div>
+    <div class="padding-5"></div>
+    <div class="row">
+      <p class="help col-xs-5">
+        您所购买的商品将送至：
+        <span class="province">
+          {{$receiverInfos->province}}
+        </span>
+        <span class="city">
+          {{$receiverInfos->city}}
+        </span>
+        <span class="district">
+          {{$receiverInfos->district}}
+        </span>
+        <span class="road">
+          {{$receiverInfos->address}}
+        </span>
+      </p>
+      <p class="col-xs-2">
+        <span class="name">
+          收件人：<b>{{$receiverInfos->receiver}}</b>
+        </span>
+      </p>
+      <p class="col-xs-4">
+        <span class="name">
+          手机号：<b>{{$receiverInfos->mobile}}</b>
+        </span>
+      </p>
+    </div>
   </div>
 </div>
 

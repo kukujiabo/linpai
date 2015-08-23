@@ -90,6 +90,8 @@ class ReceiverInfosController extends Controller {
     
       'receiver' => 'required',
 
+      'province' => 'required',
+
       'city' => 'required',
 
       'district' => 'required',
@@ -141,6 +143,8 @@ class ReceiverInfosController extends Controller {
     
       'receiver' => '* 请填写收货人！',
 
+      'province' => '* 请选择省份！',
+
       'city' => '* 请选择城市！',
 
       'district' => '* 请选择区域！',
@@ -177,10 +181,10 @@ class ReceiverInfosController extends Controller {
 
     $html = "<tr id=\"receiver-item-{$obj->id}\" data-id=\"{$obj->id}\">";
 
-    $html .= "<td class=\"col-md-1 t-center\">";
+    $html .= "<td class=\"col-md-1 t-center\" style=\"padding-left:35px;\">";
 
     $html .= "<label class=\"radio no-margin\">";
-  
+
     $html .= "<input type=\"radio\" name=\"selected-receiver\">";
   
     $html .= "</label>";
@@ -189,7 +193,7 @@ class ReceiverInfosController extends Controller {
 
     $html .= "<td class=\"col-md-1  t-center\">{$obj->receiver}</td>";
 
-    $html .= "<td class=\"col-md-6  t-center\">{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</td>";
+    $html .= "<td class=\"col-md-6  t-center\">{$obj->province}&nbsp;{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</td>";
 
     $html .= "<td class=\"col-md-3  t-center\">{$obj->mobile}</td>";
 

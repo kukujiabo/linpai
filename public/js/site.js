@@ -416,6 +416,8 @@ var resetInfoRemove;
 
         resetInfoRemove();
 
+        $('#selected-province').html('选择省份');
+
         $('#selected-city').html('选择城市');
 
         $('#selected-district').html('选择区域');
@@ -429,6 +431,7 @@ var resetInfoRemove;
     error: function (err) {
     
       console.log(err);
+
     
     }
   
@@ -447,6 +450,112 @@ var resetInfoRemove;
     receiverForm.ajaxSubmit(receiverOptions);
   
   });
+
+  /*
+   * 提交合作商户信息
+   */
+  var cooperForm = $('#coop-form');
+
+  if (cooperForm != undefined && cooperForm != null &&  cooperForm.size() > 0) {
+
+    var cooperOptions = {
+    
+        dataType: 'json',
+
+        resetForm: 'true',
+
+        success: function (data) { 
+
+          if (data.code) {
+
+            var modal = $('#linpai-modal');
+
+            modal.on('show.bs.modal', function () {
+
+              modal.find('.modal-title').html('提交成功!');
+          
+              modal.find('.modal-body').html('您的信息已经收到，我们将尽快与您取得联系。');
+              modal.find('#modal-confirm').hide();
+              
+            });
+
+            modal.modal('show');
+
+            cooperForm.find('p.p-5').addClass('hide');
+
+            cooperForm.find('p.p-5').html('');
+
+            $('#selected-province').html('选择省份');
+
+            $('#selected-city').html('选择城市');
+
+            $('#selected-district').html('选择区域');
+          
+          } else {
+          
+            var msg = data.msg;
+
+            console.log(msg);
+
+            for(var i = 0; i < msg.length; i++) {
+
+              var code = msg[i];
+
+              if (code =='province' || code == 'city' || code == 'district') {
+              
+                var lnotice = $('p[notice=location]');
+
+                var location = lnotice.html();
+
+                if (location.trim() != '') {
+
+                  location += ', ';
+                
+                }
+
+                location += code == 'province' ? '省份必须选择' : code == 'city' ? '城市必须选择' : code == 'district' ? '区域必须选择' : '';
+
+                lnotice.html(location);
+
+                lnotice.removeClass('hide');
+              
+              } else {
+
+                var cname = $('label[for=' + code + ']').html();
+
+                var notice = $('p[notice=' + code +']');
+            
+                notice.html(cname + ' 必须填写.');
+
+                notice.removeClass('hide');
+
+              }
+            
+            }
+          
+          }
+        
+        },
+
+        error: function (err) {
+        
+        }
+    
+    };
+
+    cooperForm.ajaxForm(cooperOptions);
+
+    cooperSubmit = $('#coop-submit');
+
+    cooperSubmit.click(function (e) {
+
+      e.preventDefault();
+    
+      cooperForm.ajaxSubmit(cooperOptions);
+    
+    });
+
+  }
 
 })();
 
@@ -529,41 +638,141 @@ var addressBind;
 
 (addressBind = function () {
 
-  $('.cities-item').each(function (i, t) {
+  /*
+   * 绑定省份选择事件
+   */
+  addressBind.provinceBind = function () {
+
+    /*
+     * 获取省份数据.
+     */
+    $.get('/location/province', {}, function (data) { 
+
+      if (data.code) {
+
+        $('#province-menu').html(data.res);
+
+        $('.province-item').click(function (e) {
+        
+          e.preventDefault();
+        
+          var that = $(this);
+
+          var code = that.data('code');
+
+          if (code != undefined && code != '') {
+
+            $('#selected-province').html(that.html());
+
+            $('#post-province').val(that.html());
+
+            $('#v-province').removeClass('alert-info-border');
+          
+            $.get('/location/city', { province: code }, function (data) {
+
+              if (data.code) {
+
+                $('#city-menu').html(data.res);
+
+                if ($('#city-menu').find('.city-item').size() > 8) {
+
+                  $('#city-menu').css({'width': '480px'});
+
+                  $('#city-menu').find('li').addClass('col-xs-4');
+                
+                } else {
+                
+                  $('#city-menu').css({'width': 'auto'});
+                
+                }
+
+                addressBind.cityBind();
+              
+              }
+            
+            }, 'json');
+          
+          }
+        
+        });
+
+      }
+
+    }, 'json');
+
+  };
+
+  addressBind.cityBind = function () {
+
+    $('.city-item').each(function (i, t) {
   
-    $(t).click(function (e) {
+      $(t).click(function (e) {
 
-      e.preventDefault();
+        e.preventDefault();
     
-      var name = $(this).html();
+        var name = $(this).html();
 
-      $('#selected-city').html(name);
+        $('#selected-city').html(name);
 
-      $('#post-city').val(name);
+        $('#post-city').val(name);
     
-      $('#v-city').removeClass('alert-info-border');
+        $('#v-city').removeClass('alert-info-border');
 
-    })
+        $.get('/location/district', { city: $(t).data('code') }, function (data) {
+
+          if (data.code) {
+          
+            var dmenu = $('#district-menu');
+            
+            dmenu.html(data.res);
+
+            if (dmenu.find('.district-item').size() > 8) {
+            
+              dmenu.css({'width': '480px'});
+
+              dmenu.find('li').addClass('col-xs-4');
+            
+            } else {
+            
+              dmenu.css({ 'width': 'auto' });
+            
+            }
+
+            addressBind.districtBind();
+          
+          }
+        
+        }, 'json')
+
+      })
   
-  })
+    });
 
-  $('.districts-item').each(function (i, t) {
-  
-    $(t).click(function (e) {
+  };
+
+  addressBind.districtBind = function () {
+
+    $('.district-item').each(function (i, t) {
     
-      e.preventDefault();
+      $(t).click(function (e) {
+      
+        e.preventDefault();
 
-      var name = $(this).html();
+        var name = $(this).html();
 
-      $('#selected-district').html(name);
+        $('#selected-district').html(name);
 
-      $('#post-district').val(name);
+        $('#post-district').val(name);
 
-      $('#v-district').removeClass('alert-info-border');
+        $('#v-district').removeClass('alert-info-border');
+      
+      })
     
-    })
-  
-  });
+    });
+
+  };
+
+  addressBind.provinceBind();
 
 })();
 
@@ -1009,14 +1218,14 @@ var addressBind;
   
   }
 
-
-
 })();
 
 /*
  * 订单分页
  */
 (function () {
+
+  var toPage;
 
   $('#o-pre-page').click(function (e) {
   
@@ -1025,7 +1234,9 @@ var addressBind;
     var that = $(this);
 
     var page = parseInt(that.data('cpage')) - 1;
-  
+
+    toPage = page;
+
     getOrders(that, page);
   
   });
@@ -1037,6 +1248,8 @@ var addressBind;
     var that = $(this);
 
     var page = parseInt(that.data('cpage')) + 1;
+
+    toPage = page;
 
     getOrders(that, page);
   
@@ -1052,6 +1265,8 @@ var addressBind;
 
     that.attr('disabled', 'disabled');
 
+    toPage = page;
+
     getOrders(that, page);
   
   });
@@ -1065,8 +1280,6 @@ var addressBind;
         _token: that.data('token')
 
       }, function (data) {
-
-        console.log(data.res);
 
         var res = data.res;
 
@@ -1099,6 +1312,20 @@ var addressBind;
           }
 
         }
+
+        $('.o-page').each(function (i, t) {
+
+          if ($(t).data('page') == toPage) {
+
+            $(t).addClass('active');
+          
+          } else {
+
+            $(t).removeClass('active');
+
+          }
+        
+        });
       
       }, 'json');
   
@@ -1106,34 +1333,141 @@ var addressBind;
 
 })();
 
+(function () {
+
+  var uagree = $('.text-agreement');
+
+  if (uagree != undefined &&  uagree != null && uagree.size() > 0) {
+
+    uagree.click(function (e) {
+
+      e.preventDefault();
+
+      var url = $(this).data('url');
+
+      $.get('/text/' + url, {}, function (data) {
+
+        var text = data.text;
+
+        $('#linpai-modal').on('show.bs.modal', function () {
+
+          var modal = $(this);
+
+          modal.find('.modal-body').html(text);
+
+          modal.find('#modal-confirm').hide();
+        
+        });
+
+        $('#linpai-modal').modal('show');
+      
+      }, 'json');
+
+    });
+
+  }
+
+})();
+
 /*
- * Go to pay.
+ * 检测手机号js
  */
 (function () {
+
+  var mInput = $('.mobile-input');
+
+  if (mInput != undefined && mInput != null && mInput.size() > 0) {
   
-  var toPay = $('.go_to_pay');
+    mInput.change(function () {
 
-  if (!toPay) return;
+      var that = $(this);
+    
+      that.css({'background': '#fff'});
 
-  toPay.click(function (e) {
+      if (!isMobile(that.val())) {
+      
+        that.css({'background': '#f2dede'});
 
-    e.preventDefault();
+        that.val('');
 
-     
+        that.attr('placeholder', '请输入有效手机号码！');
+      
+      }
+    
+    });
   
-  
+  }
+
+})();
+
+/*
+ * 选择进口车，国产车
+ */
+(function () {
+
+  $('.car_type').click(function (e) {
+
+    if ($(this).attr('id') == 'domestic') {
+
+      $('p[filename=validate_paper]').html('合格证扫描件');
+
+    } else {
+    
+      $('p[filename=validate_paper]').html('报关单扫描件');
+    
+    }
   
   });
 
 })();
 
 /*
- * deliver info.
+ * 文件样例
  */
 (function () {
 
+  var clientWidth = $(window).width(),
+    
+      clientHeight = $(window).height();
+
+  $('.i-img').mouseover(function (e) {
+
+    var that = $(this);
+  
+    var newNode = "<div class=\"box flow-img\" trigger=\"" + that.attr('id') + "\"></div>";
+
+    var introImg = $(newNode);
+
+    introImg.css({background: '#999'});
+
+    var elementLeft = that.offset().left;
+
+    $('body').append(introImg);
+
+    if (clientWidth/elementLeft > 2) {
+
+      introImg.css({left: elementLeft + that.width() * 2});
+    
+    } else {
+
+      introImg.css({left: elementLeft - introImg.width() - that.width()});
+    
+    }
+
+
+  });
+
+  $('.i-img').mouseout(function (e) {
+  
+    var that = $(this);
+
+    $("div[trigger=\"" + that.attr('id') + "\"]").remove();
+  
+  })
+
 
 })();
+
 
 function modal (e, th) {
 

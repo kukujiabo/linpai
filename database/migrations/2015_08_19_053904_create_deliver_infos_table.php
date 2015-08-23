@@ -16,7 +16,7 @@ class CreateDeliverInfosTable extends Migration {
 		{
 			$table->increments('id');
       $table->string('company');
-      $table->string('code')
+      $table->string('code');
       $table->string('operator_id')->nullable();
       $table->integer('order_id');
       $table->integer('active');
