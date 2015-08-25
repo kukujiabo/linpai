@@ -13,7 +13,7 @@
           <img class="process-bar-img" src="/imgs/i-select.png">
           <div class="padding-5"></div>
           <h4>选择临牌</h4>
-          <p>
+          <p class="process-bar-step">
             第一步：挑选您喜欢的临牌，放入购物车中
           </p>
         </div>
@@ -21,7 +21,7 @@
           <img class="process-bar-img"  src="/imgs/i-upload.png">
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
-          <p>
+          <p class="process-bar-step">
             第二步：上传你爱车的信息
           </p>
         </div>
@@ -29,7 +29,7 @@
           <img class="process-bar-img"  src="/imgs/i-pay.jpg" style="padding: 0px 3px; background:#fff;">
           <div class="padding-5"></div>
           <h4>在线支付</h4>
-          <p>
+          <p class="process-bar-step">
             第三步：支付宝，微信，网银均可支付，方便快捷
           </p>
         </div>
@@ -37,7 +37,7 @@
           <img class="process-bar-img"  src="/imgs/i-deliver.jpg">
           <div class="padding-5"></div>
           <h4>等待收货</h4>
-          <p>
+          <p class="process-bar-step">
             第四步：坐等收快递，省心！
           </p>
         </div>
@@ -56,12 +56,12 @@
 
       @foreach ($goods as $goodLine)
       
-        <div class="col-xs-2">
+        <div class="col-md-2">
         </div> 
 
         @foreach ($goodLine as $key => $good)
 
-        <div class="col-xs-4">
+        <div class="col-xs-6 col-md-4">
           <div class="thumbnail">
             <a href="{{ asset('goods?gid='. $good->id) }}">
               <img class="good-img" src="{{ asset($good->pic) }}">
@@ -76,7 +76,7 @@
         </div> 
 
         @endforeach
-        <div class="col-xs-2">
+        <div class="col-md-2">
         </div> 
 
       @endforeach
