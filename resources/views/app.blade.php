@@ -99,21 +99,21 @@
     <div class="t-center footer-link row">
       <div class="col-md-3">
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-2 col-md-1">
         <a class="c" href="#">联系我们</a>
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-3 col-md-2">
         <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
       </div>
-      <div class="col-md-2">
+      <div class="col-xs-3 col-md-2">
         <a href="#">常见问题与解答</a>
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-2 col-md-1">
         <a href="#">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a>
       </div>
-      <div class="col-md-1">
+      <div class="col-xs-2 col-md-1">
         <a href="#">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
@@ -121,7 +121,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="col-xs-offset-4">
+    <div class="col-xs-offset-2 col-md-offset-4">
       @2015 51LINP AI ALL rights reserved 沪ICP备 14020180
     </div>
   </div>
