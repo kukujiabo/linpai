@@ -398,7 +398,7 @@ class OrdersController extends Controller {
 
     if (empty($pay)) {
     
-      return redirect()->back();
+      //return redirect('/order/pay');
     
     }
 
