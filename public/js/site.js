@@ -230,8 +230,12 @@ var resetInfoRemove;
    * 
    */
   var carInfoClick = function () {
-  
+
+    console.log($('input[name=selected-car]'));
+    
     $('input[name=selected-car]').click(function () {
+
+      console.log(this);
     
       $('#car-info-field').find('input[name=car]').val($(this).data('id'));
     

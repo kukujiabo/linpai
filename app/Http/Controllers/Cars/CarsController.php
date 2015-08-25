@@ -194,7 +194,7 @@ class CarsController extends Controller {
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<input type=\"radio\" name=\"selected-car\">";
+    $html .= "<input type=\"radio\" name=\"selected-car\" data-id=\"$obj->id\">";
 
     $html .= "<td class=\"col-md-2 text-center\">";
 
