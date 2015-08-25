@@ -185,7 +185,7 @@ class ReceiverInfosController extends Controller {
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<input type=\"radio\" name=\"selected-receiver\">";
+    $html .= "<input type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
   
     $html .= "</label>";
 
