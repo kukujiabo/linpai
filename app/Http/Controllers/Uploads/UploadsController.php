@@ -132,7 +132,7 @@ class UploadsController extends Controller {
       
         try {
 
-          mkdir($storage_path, 0777);
+          mkdir($storage_path, 0777, true);
 
         } catch (Exception $e) {
         
