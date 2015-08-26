@@ -59,6 +59,10 @@ a {
   padding: 20px;
 }
 
+.padding-15 {
+  padding: 15px;
+}
+
 #site-logo {
 
 }
@@ -447,7 +451,7 @@ ul.dropdown-menu {
   }
 
   .margin-wide {
-    padding: 0px 100px;
+    padding: 15px 100px;
   }
 
   .p-i-img {
@@ -771,6 +775,8 @@ div.selected-boun {
   margin: 10px 5px;
   padding: 5px 10px;
   border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
 }
 
 .menu-gray > img {
@@ -918,8 +924,6 @@ td {
 
 
 .s-d-caption{
-  margin-bottom: 10%;
-  text-align: center;
   color: #000;
 }
 
@@ -1011,7 +1015,7 @@ td {
 }
 
 .no-border {
-  border: 0px;
+  border: 0px !important;
 }
 
 .price-pad-bk {
@@ -1059,7 +1063,7 @@ div#youhui-alert {
   padding: 2px;
   font-weight: bold;
   color: #999;
-  font-size: 12px;
+  font-size: 11px;
   position: absolute;
   bottom: 16%;
   left: 10%;
@@ -1113,8 +1117,24 @@ div#youhui-alert {
   display: block;
 }
 
+.phone-400 {
+  background: url('/imgs/mass.png') no-repeat 9px -398px;
+  display: block;
+}
+
+#top-phone-400 {
+  width: 30px;
+  height: 30px;
+}
+
 .btn-banner {
   background-color: #FF8800;
+  color: white;
+  padding: 5 20px;
+}
+
+.btn-banner:hover {
+  background-color: #FF8800 !important;
   color: white;
   padding: 5 20px;
 }
@@ -1153,4 +1173,17 @@ div#youhui-alert {
   
   }
 
+}
+
+.carousel-caption {
+  text-align: right;
+}
+
+.tiny-flow-img {
+  position: fixed;
+  width: 160px;
+  height: 160px;
+  bottom: 50px;
+  z-index: 10000;
+  background: url('/imgs/wechat-code.png') no-repeat;
 }

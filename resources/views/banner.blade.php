@@ -15,7 +15,7 @@
           </div>
           <div class="padding-5"></div>
           <div>
-            <a class="btn btn-default btn-lg btn-center btn-banner" href="#buy" role="button">即刻购买临牌</a>
+            <a class="btn btn-default btn-lg btn-center btn-banner no-border" href="#buy" role="button">即刻购买临牌</a>
           </div>
         </div>
       </div>

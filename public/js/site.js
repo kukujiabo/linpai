@@ -1337,6 +1337,9 @@ var addressBind;
 
 })();
 
+/*
+ *  展示协议
+ */
 (function () {
 
   var uagree = $('.text-agreement');
@@ -1438,11 +1441,9 @@ var addressBind;
 
     var that = $(this);
   
-    var newNode = "<div class=\"box flow-img\" trigger=\"" + that.attr('id') + "\"></div>";
+    var newNode = "<div class=\"box " + that.data('disclass') + "\" trigger=\"" + that.attr('id') + "\"></div>";
 
     var introImg = $(newNode);
-
-    introImg.css({background: '#999'});
 
     var elementLeft = that.offset().left;
 
