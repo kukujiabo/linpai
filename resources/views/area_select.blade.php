@@ -1,7 +1,7 @@
 @section('area')
 <div class="btn-group" role="group" id="v-province">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span id="selected-province">选择省份</span>
+    <span class="selected-province">选择省份</span>
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" id="province-menu" role="menu" style="width:600px;">

@@ -420,7 +420,7 @@ var resetInfoRemove;
 
         resetInfoRemove();
 
-        $('#selected-province').html('选择省份');
+        $('.selected-province').html('选择省份');
 
         $('#selected-city').html('选择城市');
 
@@ -489,7 +489,7 @@ var resetInfoRemove;
 
             cooperForm.find('p.p-5').html('');
 
-            $('#selected-province').html('选择省份');
+            $('.selected-province').html('选择省份');
 
             $('#selected-city').html('选择城市');
 
@@ -668,7 +668,9 @@ var addressBind;
 
           if (code != undefined && code != '') {
 
-            $('#selected-province').html(that.html());
+            console.log(code);
+
+            $('.selected-province').html(that.html());
 
             $('#post-province').val(that.html());
 
