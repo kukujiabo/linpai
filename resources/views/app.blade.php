@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>51临牌</title>
+  <meta name="keywords" content="临牌,牌照,号牌,临时牌照,车辆牌照,汽车,车牌号">
+	<title>51临牌 临时牌照 号牌 服务商</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
@@ -32,9 +33,18 @@
   				<span class="icon-bar"></span>
   				<span class="icon-bar"></span>
   			</button>
-        <a class="" href="/home">
+        <a class="padding-5" href="/home">
           <img alt="Brand" src="{{ asset('/imgs/51.png') }}" style="width: 150px;">
         </a>
+        <div class="dropdown" style="display:inline;">
+          <button class="btn btn-default dropdown-toggle no-border" type="button" id="nav-province" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          上海&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" id="nav-province-list" aria-labelledby="nav-province" style="width:600px;">
+            <li><a href="#">上海</a></li>
+          </ul>
+          <img src="/imgs/slogan.png">
+        </div>
         <div style="clear:both;"></div>
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -104,7 +114,7 @@
       <div class="col-xs-2 col-md-1">
         <a class="c" href="#">联系我们</a>
       </div>
-      <div class="col-xs-3 col-md-2">
+      <div class="col-xs-3 col-md-1">
         <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
       </div>
       <div class="col-xs-3 col-md-2">
@@ -116,7 +126,7 @@
            微信</a>
       </div>
       <div class="col-xs-2 col-md-1 no-border">
-        <a href="#">
+        <a href="http://weibo.com/hi/">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
       </div>

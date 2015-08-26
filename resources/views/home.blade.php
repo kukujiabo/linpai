@@ -2,6 +2,8 @@
 
 @extends('banner')
 
+@extends('area_select')
+
 @section('content')
   <div id="why-us">
     <b class="home-section">如何购买？</b> 
