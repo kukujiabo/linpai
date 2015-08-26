@@ -656,6 +656,8 @@ var addressBind;
 
         $('#province-menu').html(data.res);
 
+        $('#nav-province-list').html(data.res);
+
         $('.province-item').click(function (e) {
         
           e.preventDefault();

@@ -1187,3 +1187,13 @@ div#youhui-alert {
   z-index: 10000;
   background: url('/imgs/wechat-code.png') no-repeat;
 }
+
+#nav-province {
+  font-size: 18px;
+  margin: 0px 20px;
+}
+
+#nav-province-list {
+  top: 30px;
+  left: 20px;
+}
