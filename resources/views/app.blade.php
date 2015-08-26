@@ -38,7 +38,7 @@
         </a>
         <div class="dropdown" style="display:inline;">
           <button class="btn btn-default dropdown-toggle no-border" type="button" id="nav-province" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          上海&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+          <span class="selected-province">上海</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
           </button>
           <ul class="dropdown-menu" id="nav-province-list" aria-labelledby="nav-province" style="width:600px;">
             <li><a href="#">上海</a></li>
