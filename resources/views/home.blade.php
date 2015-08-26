@@ -14,7 +14,7 @@
           <div class="padding-5"></div>
           <h4>选择临牌</h4>
           <p class="process-bar-step">
-            第一步：挑选您喜欢的临牌，放入购物车中
+            选择您所需要购买的临时号牌
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -22,7 +22,7 @@
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
           <p class="process-bar-step">
-            第二步：上传你爱车的信息
+            上传相关的车辆档案，请参考办理材料指南
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -30,7 +30,7 @@
           <div class="padding-5"></div>
           <h4>在线支付</h4>
           <p class="process-bar-step">
-            第三步：支付宝，微信，网银均可支付，方便快捷
+            支付宝、微信、网银均可支付，方便快捷 
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -38,7 +38,7 @@
           <div class="padding-5"></div>
           <h4>等待收货</h4>
           <p class="process-bar-step">
-            第四步：坐等收快递，省心！
+            顺丰直达，安全省心
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2"></div>
@@ -48,7 +48,7 @@
   <div class="padding-5"></div>
   <div class="padding-5"></div>
   <div id="buy">
-    <b class="home-section">购买产品</b>
+    <b class="home-section">购买临时号牌 </b>
     <div class="padding-5"></div>
     <div class="row home-block">
   
@@ -95,7 +95,7 @@
           <div class="padding-5"></div>
           <h3>专业</h3>
           <p>
-            专业团队，让您全程无忧
+            专业临牌办理团队，<br>让您全程无忧
           </p>
         </div>
         <div class="col-md-2">
@@ -103,7 +103,7 @@
           <div class="padding-5"></div>
           <h3>超值</h3>
           <p>
-            全网最低的临牌购买价
+            业内最具竞争力的价格，<br>秒杀所有4S店
           </p>
         </div>
         <div class="col-md-2">
@@ -111,7 +111,7 @@
           <div class="padding-5"></div>
           <h3>简单</h3>
           <p>
-            购买4步骤，一分钟搞定
+            轻松4步购买，瞬间搞定
           </p>
         </div>
         <div class="col-md-2">
@@ -119,7 +119,7 @@
           <div class="padding-5"></div>
           <h3>高效</h3>
           <p>
-            免费快递直送，速度
+            顺丰速递直送，省时省力
           </p>
         </div>
         <div class="col-md-2"></div>
@@ -129,7 +129,7 @@
 <div class="qr-code">
   <img src="/imgs/qr-code.png">
   <div class="focus-brand">
-    扫一扫，关注51临牌公众号，立即购买！
+    扫一扫关注51临牌公众微信号，更多优惠即刻享受
   </div>
 </div>
 @endsection

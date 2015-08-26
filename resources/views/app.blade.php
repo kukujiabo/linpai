@@ -16,15 +16,15 @@
 @endif
 @yield('model-box')
 <header id="header" class="header header--fixed hide-from-print animated flipInX" role="banner">
-  <nav class="navbar" style="background:#fff;">
+  <nav class="navbar no-margin" style="background:#fff;">
     <div class="padding-5">
       <div class="col-md-offset-9" style="color: #999">
         周一至周日 10:00 － 18:00 
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800">4006937465</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4006937465</b>
       </div> 
     </div>
     <hr style="margin:0px;">
-  	<div class="container-fluid margin-wide">
+  	<div class="container-fluid margin-wide padding-15">
   		<div class="navbar-header">
   			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
   				<span class="sr-only">Toggle Navigation</span>
@@ -32,16 +32,16 @@
   				<span class="icon-bar"></span>
   				<span class="icon-bar"></span>
   			</button>
-        <a class="navbar-brand" href="/home">
-          <img alt="Brand" src="{{ asset('/imgs/51.png') }}" style="width: 120px;">
-          <div style="clear:both;"></div>
+        <a class="" href="/home">
+          <img alt="Brand" src="{{ asset('/imgs/51.png') }}" style="width: 150px;">
         </a>
+        <div style="clear:both;"></div>
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   		  <ul class="nav navbar-nav navbar-right" style="font-family:微软雅黑;">
           <li><a href="{{ url('/') }}" class="font-black">办理材料指南</a></a>  
   				@if (Auth::guest())
-  					<li><a href="{{ url('/auth/login') }}" class="font-black">登陆</a></li>
+  					<li><a href="{{ url('/auth/login') }}" class="font-black">登录</a></li>
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>
   				@else
   					<li class="dropdown">
@@ -91,7 +91,9 @@
   <div class="footer-top">
     <p>
       <b>
-        <i style="color: #FF8800;font-size: 24px;">4006937465</i>
+        <i style="color: #FF8800;font-size: 24px;">
+          <span class="glyphicon glyphicon-earphone"></span>
+          4006937465</i>
         &nbsp;&nbsp;&nbsp;&nbsp;周一到周日 10:00 － 18:00
       </b>
     </p>
@@ -109,11 +111,11 @@
         <a href="#">常见问题与解答</a>
       </div>
       <div class="col-xs-2 col-md-1">
-        <a href="#">
+        <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a>
       </div>
-      <div class="col-xs-2 col-md-1">
+      <div class="col-xs-2 col-md-1 no-border">
         <a href="#">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
@@ -122,7 +124,7 @@
   </div>
   <div class="footer-bottom">
     <div class="col-xs-offset-2 col-md-offset-4">
-      @2015 51LINP AI ALL rights reserved 沪ICP备 14020180
+      @2015 51LinPai all rights reserved 沪ICP备 15037577
     </div>
   </div>
 </footer>

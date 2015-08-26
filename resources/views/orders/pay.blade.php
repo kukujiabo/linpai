@@ -26,7 +26,8 @@
       </div>
       <div class="media-body">
         <p class="v-middle"> 
-          <span class="line-info" ><b>寄送地址：</b></span>
+          <span class="line-info"><b>寄送地址：</b></span>
+          <span class="line-info">{{$receiver->province}}</span>
           <span class="line-info" role="city">{{$receiver->city}}</span>
           <span class="line-info" role="district">{{$receiver->district}}</span>
           <span class="line-info" role="route">{{$receiver->address}}</span>
