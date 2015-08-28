@@ -63,8 +63,8 @@ a {
   padding: 15px;
 }
 
-#site-logo {
-
+.logo {
+  width: 160px;
 }
 
 #header-info {
@@ -315,7 +315,6 @@ li.media {
   -webkit-margin-end: 0px;
   /*-webkit-padding-start: 0px;*/
   box-shadow: 0 6px 12px rgba(0,0,0,.175);
-
 }
 
 ul.dropdown-menu {
@@ -457,6 +456,7 @@ ul.dropdown-menu {
   .p-i-img {
     height: 45px; 
   }
+
   
 }
 
@@ -500,13 +500,17 @@ ul.process {
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1366px) {
   .p-i-img {
     width: 48px;
   }
 
   .process-line {
     margin: 25px 0;
+  }
+
+  .logo {
+    width: 145px; 
   }
 
 }
@@ -520,6 +524,16 @@ ul.process {
     margin: 15px 0;
   }
 
+  .logo {
+    width: 130px; 
+    margin: 0 10px;
+  }
+
+  .container {
+    width: 600px; 
+     
+  }
+
 }
 
 @media (max-width: 580px) {
@@ -529,6 +543,11 @@ ul.process {
 
   .process-line {
     margin: 12px 0;
+  }
+
+  .logo {
+    width: 100px; 
+    margin: 0 10px;
   }
 
 }
@@ -708,6 +727,10 @@ transform:rotate(5deg);
 
 .no-padding {
   padding: 0px;
+}
+
+.no-padding-left {
+  padding-left: 0;
 }
 
 .margin-5 {
@@ -1183,7 +1206,6 @@ div#youhui-alert {
   position: fixed;
   width: 160px;
   height: 160px;
-  bottom: 50px;
   z-index: 10000;
   background: url('/imgs/wechat-code.png') no-repeat;
 }
@@ -1196,4 +1218,43 @@ div#youhui-alert {
 #nav-province-list {
   top: 30px;
   left: 20px;
+}
+
+#linpai-modal {
+  z-index: 10000;
+
+}
+
+.over-all {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  text-align: center;
+  padding: 40% 0;
+  filter:alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -o-opacity: 0.5;
+  opacity: 0.5;
+  -webkit-opacity: 0.5;
+  z-index: 10001;
+}
+
+.login-notice {
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  width: 20%;
+  font-size: 20px; 
+  font-color: #666;
+  font-weight: bold;
+  z-index: 20000;
+  text-align: center;
+  background: #fff;
+}
+
+.links {
+  color: #31b0d5 !important;
 }

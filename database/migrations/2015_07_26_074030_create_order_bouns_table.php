@@ -18,7 +18,10 @@ class CreateOrderBounsTable extends Migration {
       $table->integer('oid');
       $table->integer('uid');
       $table->string('bcode');
+      $table->integer('btype');
+      $table->string('rewarded');
       $table->integer('success');
+      $table->integer('owner_id');
 			$table->timestamps();
 		});
 	}

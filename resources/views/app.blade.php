@@ -8,6 +8,7 @@
 	<title>51临牌 临时牌照 号牌 服务商</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
+  <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
 </head>
 @if (empty($auth)) 
@@ -21,7 +22,7 @@
     <div class="padding-5">
       <div class="col-md-offset-9" style="color: #999">
         周一至周日 10:00 － 18:00 
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4006937465</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4006937465</i></b>
       </div> 
     </div>
     <hr style="margin:0px;">
@@ -34,14 +35,15 @@
   				<span class="icon-bar"></span>
   			</button>
         <a class="padding-5" href="/home">
-          <img alt="Brand" src="{{ asset('/imgs/51.png') }}" style="width: 150px;">
+          <img alt="Brand" src="{{ asset('/imgs/logo-linpai.png') }}" class="logo">
         </a>
         <div class="dropdown" style="display:inline;">
           <button class="btn btn-default dropdown-toggle no-border" type="button" id="nav-province" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <span class="selected-province">上海市</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
           </button>
-          <ul class="dropdown-menu" id="nav-province-list" aria-labelledby="nav-province" style="width:600px;">
-            <li><a href="#">上海</a></li>
+          <!-- id="nav-province-list" -->
+          <ul class="dropdown-menu"  aria-labelledby="nav-province" style="width:400px;margin:20px;">
+            <li style=""><a href="#">目前仅对上海地区开放</a></li>
           </ul>
           <img src="/imgs/slogan.png">
         </div>
@@ -49,7 +51,7 @@
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   		  <ul class="nav navbar-nav navbar-right" style="font-family:微软雅黑;">
-          <li><a href="{{ url('/') }}" class="font-black">办理材料指南</a></a>  
+        <li><a href="{{ url('/') }}" class="font-black"><span class="glyphicon glyphicon-file" style="color:#31b0d5;"></span>&nbsp;办理材料指南</a></a>  
   				@if (Auth::guest())
   					<li><a href="{{ url('/auth/login') }}" class="font-black">登录</a></li>
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>
@@ -121,7 +123,7 @@
         <a href="#">常见问题与解答</a>
       </div>
       <div class="col-xs-2 col-md-1">
-        <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img">
+        <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a>
       </div>
@@ -132,11 +134,13 @@
       </div>
     </div>
   </div>
+  <br>
   <div class="footer-bottom">
     <div class="col-xs-offset-2 col-md-offset-4">
       @2015 51LinPai all rights reserved 沪ICP备 15037577
     </div>
   </div>
+  <br>
 </footer>
 	<!-- Scripts -->
   <!--
