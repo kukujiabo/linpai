@@ -109,4 +109,15 @@
     </p>
   </div>
 </div>
+<script>
+  window.onload = function () {
+  
+    $(window).bind('beforeunload', function (e) {
+    
+      e.preventDefault();
+    
+    });
+  
+  };
+</script>
 @endsection

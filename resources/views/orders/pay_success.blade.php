@@ -19,7 +19,7 @@
     </div>
     <div class="padding-5"></div>
     <div class="row">
-      <p class="help col-xs-5">
+      <p class="help col-md-7">
         您所购买的商品将送至：
         <span class="province">
           {{$receiverInfos->province}}
@@ -34,12 +34,12 @@
           {{$receiverInfos->address}}
         </span>
       </p>
-      <p class="col-xs-2">
+      <p class="col-md-2">
         <span class="name">
           收件人：<b>{{$receiverInfos->receiver}}</b>
         </span>
       </p>
-      <p class="col-xs-4">
+      <p class="col-md-3">
         <span class="name">
           手机号：<b>{{$receiverInfos->mobile}}</b>
         </span>

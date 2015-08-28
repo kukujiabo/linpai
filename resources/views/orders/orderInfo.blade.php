@@ -122,6 +122,7 @@
 </div>
 <p>备注</p>
 <form class="form" id="next-form" method="post" action="order/pay">
+  <input type="hidden" name="form_code" value="{{$formCode}}" >
   <div class="well">
     <div class="row">
       <div class="col-md-7">
@@ -144,6 +145,9 @@
         我已阅读且同意
         <a href="#" class="text-agreement" data-url="buyagreement">《51临牌商品购买协议》</a>
       </label>
+    </div>
+    <div class="">
+
     </div>
     <fieldset id="good-info-field">
       <input type="hidden" required="yes" data-name="商品" name="good" value="{{$good->id}}">

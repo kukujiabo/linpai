@@ -25,6 +25,8 @@ Route::controllers([
 
   'auth' => 'Auth\AuthController',
 
+  'user' => 'User\UserController',
+
 	'password' => 'Auth\PasswordController',
 
   'profile' => 'Profile\ProfilesController',

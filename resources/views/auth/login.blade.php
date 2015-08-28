@@ -2,18 +2,18 @@
 
 @section('content')
 	<div class="row box" id="login-box">
-    <div class="col-xs-6 padding-20">
+    <div class="col-md-6 padding-20">
     </div>
-		<div class="col-xs-6"  style="border-left: 1px solid #eee;">
+		<div class="col-md-6"  style="border-left: 1px solid #eee;">
       <div class="text-center login-logo">
-        <img src="{{asset('/imgs/51.png')}}">
+        <img src="{{asset('/imgs/logo-linpai.png')}}" class="logo">
       </div>
       <div class="row padding-5">
         <div class="col-xs-3 col-xs-offset-1">
           <hr>
         </div>
         <div class="col-xs-4">
-          <p class="help-block text-center" style="padding: 5px 0px;">使用手机登录</p>
+          <p class="help-block text-center" style="padding: 5px 0px;">会员登录</p>
         </div>
         <div class="col-xs-3">
           <hr>
@@ -34,7 +34,7 @@
 						  <div class="form-group">
 						  	<label class="control-label sr-only">手机：</label>
                 <div class="col-xs-10 col-xs-offset-1">
-						  	<input type="text" class="form-control mobile-input" name="mobile" value="{{ old('mobile') }}" placeholder="mobile">
+						  	<input type="text" class="form-control mobile-input" name="mobile" value="{{ old('mobile') }}" placeholder="手机号">
                 </div>
 						  </div>
             </fieldset>
@@ -42,7 +42,7 @@
 						<div class="form-group">
 							<label class="control-label sr-only">密码：</label>
 							<div class="col-xs-10 col-xs-offset-1">
-								<input type="password" class="form-control" name="password" placeholder="password">
+								<input type="password" class="form-control" name="password" placeholder="密码">
 							</div>
 						</div>
             </fieldset>
@@ -57,16 +57,16 @@
 						</div>
 						<div class="form-group">
 							<div class="col-xs-10 col-xs-offset-1">
-								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified">登陆</button>
+								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified">登录</button>
 							</div>
 						</div>
             <div class="form-group">
               <div class="col-xs-2 col-xs-offset-1">
-						    <a class="btn btn-link require" href="{{ url('/password/email') }}">忘记密码？</a>
+						    <a class="btn btn-link require links no-padding-left" href="{{ url('/password/email') }}">忘记密码？</a>
               </div>
               <div class="col-xs-6 col-xs-offset-1">
-                <a class="btn btn-link" href="{{asset('auth/register')}}">
-                还没有51临牌账号？ 点击注册</a>
+                <a class="btn btn-link links" href="{{asset('auth/register')}}">
+                还没有51临牌账号？点击注册</a>
               </div>
             </div>
 					</form>

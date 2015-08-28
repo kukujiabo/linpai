@@ -7,7 +7,7 @@ class OrderBoun extends Model {
 	//
   protected $fillable = [
   
-    'oid', 'uid', 'bcode', 'success'
+    'oid', 'uid', 'rewarded', 'bcode', 'btype', 'success', 'owner_id'
   
   ];
 

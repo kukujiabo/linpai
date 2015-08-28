@@ -1364,6 +1364,8 @@ var addressBind;
 
           var modal = $(this);
 
+          modal.find('.modal-title').html('《51临牌使用协议》');
+
           modal.find('.modal-body').html(text);
 
           modal.find('#modal-confirm').hide();
@@ -1387,6 +1389,8 @@ var addressBind;
 
   var mInput = $('.mobile-input');
 
+  var legal = false;
+
   if (mInput != undefined && mInput != null && mInput.size() > 0) {
   
     mInput.change(function () {
@@ -1401,13 +1405,45 @@ var addressBind;
 
         that.val('');
 
-        that.attr('placeholder', '请输入有效手机号码！');
+        that.attr('placeholder', '请输入有效手机号码！(长度为11位)');
+
+        legal = false;
+      
+      } else {
+      
+        legal = true;
       
       }
     
     });
   
   }
+
+  var cInput = $('.mobile-unique');
+
+  cInput.blur(function () {
+
+    if (!legal) return;
+
+    $.get('/user/exists', { 'type': 'mobile',  'value': cInput.val() }, function (data) {
+
+      if (data.code) {
+
+        cInput.css({'background-color': '#f2dede'});
+
+        cInput.val('');
+
+        cInput.attr('placeholder', '该手机号已经被注册，请更换。');
+
+      } else {
+
+        cInput.css({'background': '#d6e9c6'});
+      
+      }
+    
+    }, 'json');
+  
+  });
 
 })();
 
@@ -1451,7 +1487,22 @@ var addressBind;
 
     var elementLeft = that.offset().left;
 
+    var elementTop = that.offset().top;
+
     $('body').append(introImg);
+
+    /*
+     * 定义弹出元素的位置
+     */
+    if (that.data('flow-pos') == 'above') {
+
+      introImg.css({left: elementLeft - (introImg.width()/3), 'bottom': '105px' });
+
+      introImg.show();
+
+      return;
+
+    }
 
     if (clientWidth/elementLeft > 2) {
 
@@ -1463,7 +1514,6 @@ var addressBind;
     
     }
 
-
   });
 
   $('.i-img').mouseout(function (e) {
@@ -1474,6 +1524,126 @@ var addressBind;
   
   })
 
+})();
+
+/*
+ * 用户注册
+ */
+(function () {
+
+  var registrar = $('#register-box');
+
+  registrar.find('input').focus(function () {
+
+    var that = $(this);
+  
+    that.css({background: '#fff'});
+
+    that.attr('placeholder', that.attr('tips'));
+  
+  });
+
+  if (!registrar.size()) return;
+
+  var regForm = $('#reg-form');
+  
+  regForm.ajaxForm();
+
+  var regSubmit = $('#register-submit');
+
+  var regOptions = {
+  
+    dataType: 'json',
+
+    success: function (data) {
+
+      if (data.code) {
+      
+        $('body').append("<div class=\"over-all\"></div>");
+
+        $('body').append("<div class=\"box login-notice animated infinite bounce\">注册成功,返回首页！</div>");
+
+        window.setTimeout('window.location.href="/home"', 1500);
+      
+      } else {
+      
+        $.each(data.failed, function (n, val) {
+        
+          regForm.find('input[name=' + val + ']').css({background: '#ebccd1'});
+        
+        });
+      
+        regSubmit.removeAttr('disabled');
+
+        regSubmit.html('提交');
+
+      }
+    
+    },
+
+    error: function (err) {
+    
+      console.log(err);
+
+      regSubmit.removeAttr('disabled');
+
+      regSubmit.html('提交');
+    
+    }
+
+  };
+
+
+  regSubmit.click(function (e) {
+  
+    e.preventDefault();
+      
+    regForm.find('input').each(function (i, t) {
+
+      var iele = $(t);
+    
+      if (iele.val() == undefined || iele.val().length == 0) {
+      
+        iele.css({background: '#ebccd1'});
+      
+        iele.attr('placeholder', '请填写' + iele.attr('tips'));
+      
+      }
+    
+    });
+
+    $(this).html('正在提交...');
+
+    $(this).attr('disabled', 'disabled');
+  
+    regForm.ajaxSubmit(regOptions);
+  
+  });
+
+})();
+
+/*
+ * 密码检测
+ */
+(function () {
+
+  var pInput = $('input[type=password]');
+
+  pInput.change(function () {
+
+    var pwd = pInput.val();
+
+    if (pwd.length > 0 && pwd.length < 6) {
+
+      pInput.val('');
+
+      pInput.css({'background': '#ebccd1'});
+
+      pInput.attr('placeholder', '请输入长度 6 －18 位的密码');
+    
+    }
+  
+  });
 
 })();
 

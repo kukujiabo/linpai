@@ -7,7 +7,7 @@ class Order extends Model {
 	//
   protected $fillable = [
   
-    'code', 'uid', 'gid', 'sum', 'num', 'comment', 'status', 'active'
+    'code', 'rid', 'uid', 'cid', 'gid', 'sum', 'num', 'comment', 'status', 'active'
   
   ];
 

@@ -17,6 +17,7 @@ use App\Models\Attribute;
 use \Pingpp\Pingpp as Pingpp;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 use Validator;
 
 
@@ -35,6 +36,7 @@ class OrdersController extends Controller {
    */
   public function getIndex(Request $request) 
   {
+
     $validate = Validator::make($request->input(), [
     
       'gid' => 'required',
@@ -145,6 +147,8 @@ class OrdersController extends Controller {
     
     }
 
+    $formCode = md5(time());
+
     $data = [
 
       'good' => $good,
@@ -167,6 +171,8 @@ class OrdersController extends Controller {
 
       'bouns' => $bouns,
 
+      'formCode' => $formCode,
+
       'is_upload' => true
 
     ];
@@ -177,6 +183,17 @@ class OrdersController extends Controller {
 
   public function postPay(Request $request) 
   {
+    
+    if (Session::get('order_submit') == $request->input('form_code')) {
+    
+      redirect('/order/pay?order=' + Session::get('order_code'));
+    
+    } else {
+
+      Session::put('order_submit', $request->input('form_code'));
+    
+    }
+    
     $user = Auth::user();
 
     $validate = Validator::make($request->input(), [
@@ -216,6 +233,10 @@ class OrdersController extends Controller {
 
       'uid' => $user->id,
 
+      'rid' => $params['receiver'],
+
+      'cid' => $params['car'],
+
       'gid' => $params['good'],
 
       'num' => $params['num'], 
@@ -233,28 +254,12 @@ class OrdersController extends Controller {
     //新建订单:
     $order = Order::create($newOrder);
 
+    Session::put('order_code', $order->code);
+
     //检测优惠券是否可用
     $note = $this->measureDiscount($params); 
 
     $reduction = $note['reduction'];
-
-    //订单详细信息
-    $newOrderInfo = [
-    
-      'oid' => $order->id,
-
-      'rid' => $params['receiver'],
-
-      'cid' => $params['car'],
-
-      'discount' => $reduction,
-
-      'active' => 1
-    
-    ];
-
-    //写入订单详细信息
-    $oi = OrderInfo::create($newOrderInfo);
 
     //订单最终价格
     $extraFee = 0;
@@ -279,32 +284,46 @@ class OrdersController extends Controller {
 
     //记录优惠券使用信息
     foreach ($note['availableBouns'] as $boun) {
+
+      $bobj = Boun::where('code', '=', $boun)
+
+        ->where('active', '=', 1)
+
+        ->first();
+
+      if (!empty($bobj)) {
     
-      OrderBoun::create([
-      
-        'oid' => $order->id,
+        OrderBoun::create([
+        
+          'oid' => $order->id,
 
-        'uid' => $user->id,
-      
-        'bcode' => $boun,
+          'uid' => $user->id,
+        
+          'bcode' => $boun,
 
-        'success' => 1
-      
-      ]);
+          'btype' => $bobj->type,
+
+          'rewarded' => 0,
+
+          'success' => 0,
+
+          'owner_id' => $bobj->uid
+        
+        ]);
+
+      }
     
     }
 
     $good = Good::where('id', '=', $order->gid)->first();
 
-    $receiver = ReceiverInfo::where('id', '=', $oi->rid)->first();
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)->first();
 
     $data = [
     
       'reduction' => $reduction,
 
       'order' => $order,
-
-      'orderInfo' => $oi,
 
       'orderPrice' => $op,
 
@@ -358,7 +377,7 @@ class OrdersController extends Controller {
 
           ->first();
 
-    $receiver = ReceiverInfo::where('id', '=', $orderInfo->rid)
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)
 
           ->where('active', '=', 1)
 
@@ -368,13 +387,9 @@ class OrdersController extends Controller {
 
     $data = [
     
-      'reduction' => $reduction,
-
       'good' => $good,
 
       'orderPrice' => $orderPrice,
-
-      'orderInfo' => $orderInfo,
 
       'receiver' => $receiver,
       
@@ -424,14 +439,6 @@ class OrdersController extends Controller {
 
       ->get();
     
-    /*
-     * 订单信息
-     */
-    $orderInfo = OrderInfo::where('oid', '=', $order->id)
-
-      ->where('active', '=', 1)
-
-      ->first();
     
     /*
      * 订单价钱
@@ -445,13 +452,85 @@ class OrdersController extends Controller {
     /*
      * 收货人信息
      */
-    $receiver = ReceiverInfo::where('id', '=', $orderInfo->rid)
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)
 
       ->where('active', '=', 1)
 
       ->first();
+
+      
+    /*
+     * todo pay.
+     */
+  
+
+    /*
+     * pay success.
+     *
+     * 1.判断是否使用推荐码
+     *
+     */ 
+    foreach ($orderBouns as $orderBoun) {
+
+      $orderBoun->success = 1;
+
+      $orderBoun->save();
     
+      if ($orderBoun->btype == 0) {
+      
+        /*
+         * 如果是推荐码.
+         */
+        $bCount = OrderBoun::where('bcode', '=', $orderBoun->bcode)
+
+          ->where('rewarded', '=', 0)
+
+          ->where('success', '=', 1)
+
+          ->count();
+
+        if ($bCount >= 1) {
+
+          /*
+           * 成功使用次数达到10张，赠送一张优惠券
+           */
+          Boun::create([
+          
+            'note' => 30,
+
+            'type' => 1,
+
+            'uid' => $orderBoun->owner_id,
+            
+            'code' => Boun::generateOrderCode(),
+
+            'active' => 1
+          
+          ]);
+        
+          OrderBoun::where('bcode', '=', $orderBoun->bcode)
+
+            ->where('rewarded', '=', 0)
+
+            ->update(['rewarded' => 1]);
+        
+        }
+      
+      } else {
+        
+        /*
+         * 如果是优惠码.
+         */
+        Boun::where('code', '=', $orderBoun) 
+
+          ->where('uid', '=', $user->id)
+
+          ->update(['active' => 0]);
+      
+      }
     
+    }
+
     $data = [
     
       'is_deliver' => true,
@@ -636,7 +715,6 @@ class OrdersController extends Controller {
     
     }
 
-
     foreach ($discount as $code) {
     
       $boun = Boun::where('code', '=', $code)->first();
@@ -659,9 +737,9 @@ class OrdersController extends Controller {
 
         } else {
         
-          $note += $boun->note;
+          $note['reduction'] += $boun->note;
 
-   //       array_push($note['availableBouns'], $code]);
+          array_push($note['availableBouns'], $code);
         
         }
       
@@ -676,6 +754,5 @@ class OrdersController extends Controller {
     return $note;
 
   }
-
 
 }
