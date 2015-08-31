@@ -47,6 +47,7 @@ Route::controllers([
 
   'communitcate' => 'Communication\CommunicateController',
 
-  'location' => 'Location\LocationController'
+  'location' => 'Location\LocationController',
 
+  'test' => 'Test\TestController'
 ]);

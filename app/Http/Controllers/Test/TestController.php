@@ -1,11 +1,12 @@
-<?php namespace App\Http\Controllers\TextInfo;
+<?php namespace App\Http\Controllers\Test;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Storage;
+use App\Events\TriggerSms;
 use Illuminate\Http\Request;
 
-class TextInfoController extends Controller {
+
+class TestController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -81,51 +82,11 @@ class TextInfoController extends Controller {
 		//
 	}
 
-  public function getUseagreement (Request $request) 
+  public function getSms() 
   {
-
-    $tDisk = Storage::disk('text');
-
-    $content = $tDisk->get('use_agreement.txt'); 
-
-    $content = str_replace("\n", "<br>", $content);
-     
-    return $this->successResponse('text', $content); 
+    $result = event(new TriggerSms(null));  
   
-  }
-
-  public function getBuyagreement (Request $request) 
-  {
-
-    $tDisk = Storage::disk('text');
-  
-    $content = $tDisk->get('use_agreement.txt');
-
-    $content = str_replace("\n", "<br>", $content);
-
-    return $this->successResponse("text", $content);
-  
-  }
-
-  public function getMetaguide (Request $request)
-  {
-  
-    return view('intro/guide');
-  
-  }
-
-  public function getProblems (Request $request)
-  {
-
-    return view('intro/problems');
-  
-  }
-
-  public function getContact (Request $request)
-  {
-  
-    return view('intro/contact');
-  
+    var_dump(new message());
   }
 
 }

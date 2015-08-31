@@ -14,6 +14,11 @@ class EventServiceProvider extends ServiceProvider {
 		'event.name' => [
 			'EventListener',
 		],
+    'App\Events\TriggerSms' => [
+    
+      'App\Handlers\Events\TriggerSmsSend'
+
+    ]
 	];
 
 	/**
