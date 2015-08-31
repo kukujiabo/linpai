@@ -114,4 +114,11 @@ class TextInfoController extends Controller {
   
   }
 
+  public function getProblems (Request $request)
+  {
+
+    return view('intro/problems');
+  
+  }
+
 }

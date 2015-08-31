@@ -41,25 +41,25 @@
       <h5>三种简单的方法来上传以上文档图片</h5>
     </div>
     <div class="padding-5 row text-align">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-3 text-center padding-20 meta-info meta-font">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 text-center padding-20 meta-info meta-font">
         <img src="/imgs/meta-phone.png"> 
         <h5>用您的手机拍照</h5>
-        <p class="text-left">
+        <p class="meta-content">
           手机通过电子邮件发送给自己，使用计算机登录并下载。
         </p>
       </div>
-      <div class="col-xs-3 text-center padding-20 meta-info meta-font">
+      <div class="col-md-3 text-center padding-20 meta-info meta-font">
         <img src="/imgs/meta-camera.png">
         <h5>使用您的相机</h5>
-        <p class="text-left">
+        <p class="meta-content">
           使用您的照相机拍照，然后传输计算机。
         </p>
       </div>
-      <div class="col-xs-3 text-center padding-20 meta-info meta-font">
+      <div class="col-md-3 text-center padding-20 meta-info meta-font">
         <img src="/imgs/meta-print.png">
         <h5>扫描文件</h5>
-        <p class="text-left">
+        <p class="meta-content">
           到影印店或使用您的扫描仪复制文件，以电子邮件将文件寄给自己并下载。
         </p>
       </div>
