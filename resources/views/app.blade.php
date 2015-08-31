@@ -120,7 +120,7 @@
         <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
       </div>
       <div class="col-xs-3 col-md-2">
-        <a href="#">常见问题与解答</a>
+        <a href="/text/problems">常见问题与解答</a>
       </div>
       <div class="col-xs-2 col-md-1">
         <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
