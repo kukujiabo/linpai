@@ -107,4 +107,11 @@ class TextInfoController extends Controller {
   
   }
 
+  public function getMetaguide (Request $request)
+  {
+  
+    return view('intro/guide');
+  
+  }
+
 }
