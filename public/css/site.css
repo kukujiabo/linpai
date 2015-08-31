@@ -1258,3 +1258,18 @@ div#youhui-alert {
 .links {
   color: #31b0d5 !important;
 }
+
+.theme-orig {
+ color: #FF8800;
+}
+
+.meta-font {
+  color: #498dbc;
+}
+
+.meta-info {
+  background: #ddd;
+  border: 1px solid #498dbc;
+  height: 210px;
+  margin: 10px;
+}

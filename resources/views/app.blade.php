@@ -51,7 +51,7 @@
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   		  <ul class="nav navbar-nav navbar-right" style="font-family:微软雅黑;">
-        <li><a href="{{ url('/') }}" class="font-black"><span class="glyphicon glyphicon-file" style="color:#31b0d5;"></span>&nbsp;办理材料指南</a></a>  
+        <li><a href="{{ url('/text/metaguide') }}" class="font-black"><span class="glyphicon glyphicon-file" style="color:#31b0d5;"></span>&nbsp;办理材料指南</a></a>  
   				@if (Auth::guest())
   					<li><a href="{{ url('/auth/login') }}" class="font-black">登录</a></li>
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>

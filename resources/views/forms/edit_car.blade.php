@@ -68,7 +68,7 @@
         <div class="form-group col-md-12">
           <p class="col-md-12" style="margin: 20px 0px;">
             <span class="require">*</span>
-            车辆相关文件
+            车辆相关文件（请上传大小小于 <span class="require">2M</span> 的附件）
           </p>
         </div>
       </fieldset>
