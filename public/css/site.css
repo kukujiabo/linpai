@@ -534,6 +534,10 @@ ul.process {
      
   }
 
+  .meta-content {
+    text-align: center; 
+  }
+
 }
 
 @media (max-width: 580px) {
@@ -1270,6 +1274,19 @@ div#youhui-alert {
 .meta-info {
   background: #ddd;
   border: 1px solid #498dbc;
-  height: 210px;
+  min-height: 220px;
   margin: 10px;
+  font-size: 12px;
+}
+
+.meta-content {
+  text-align: left;
+}
+
+.problems-notion {
+  margin: 0 10px;
+}
+
+.pro-head {
+  font-size: 16px;
 }
