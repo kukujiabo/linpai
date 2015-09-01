@@ -14,21 +14,28 @@ class TriggerSms extends Event {
 	 *
 	 * @return void
 	 */
-	public function __construct($user)
+	public function __construct($mobile, $type)
 	{
-		//
-require_once app_path() . '/libraries/submailsms/app_config.php';
-require_once app_path() . '/libraries/submailsms/SUBMAILAutoload.php';
-var_dump($message_configs);
-    $submail = new MESSAGEXsend($message_configs);
+    switch ($mobile) {
 
-    $submail->AddTo("15201932985");
+      case 'register': 
 
-    $submail->SetProject("kasd");
+        $this->registerSms($mobile);
 
-    $submail->xsend();
+        break;
+    
+    
+    
+    }
      
 	}
+
+  private function registerSms ($mobile) 
+  {
+  
+  
+  
+  }
 
 
 }

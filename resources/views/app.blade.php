@@ -114,13 +114,13 @@
       <div class="col-md-3">
       </div>
       <div class="col-xs-2 col-md-1">
-        <a class="c" href="#">联系我们</a>
+        <a class="c" href="{{asset('text/contact')}}">联系我们</a>
       </div>
       <div class="col-xs-3 col-md-1">
         <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
       </div>
       <div class="col-xs-3 col-md-2">
-        <a href="/text/problems">常见问题与解答</a>
+        <a href="{{asset('text/problems')}}">常见问题与解答</a>
       </div>
       <div class="col-xs-2 col-md-1">
         <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
@@ -159,6 +159,5 @@
   <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
   <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
   <script src="{{ asset('js/site.js') }}"></script>
-
 </body>
 </html>
