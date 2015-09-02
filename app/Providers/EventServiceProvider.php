@@ -18,6 +18,11 @@ class EventServiceProvider extends ServiceProvider {
     
       'App\Handlers\Events\TriggerSmsSend'
 
+    ],
+    'App\Events\VerifyTrigger' => [
+    
+      'App\Handlers\Events\VerifyTriggerHandler'
+    
     ]
 	];
 

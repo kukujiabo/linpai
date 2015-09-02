@@ -1,4 +1,4 @@
-var resetInfoRemove;
+var resetInfoRemove; 
 
 /*
  * 首页横幅
@@ -659,8 +659,16 @@ var addressBind;
         $('#nav-province-list').html(data.res);
 
         $('.province-item').click(function (e) {
-        
+
           e.preventDefault();
+
+          $('input[name=province]').val('');
+          $('input[name=city]').val('');
+          $('input[name=district]').val('');
+          $('#city-menu').html('');
+          $('#district-menu').html('');
+          $('#selected-city').html('选择城市');
+          $('#selected-district').html('选择区域');
         
           var that = $(this);
 
@@ -717,6 +725,9 @@ var addressBind;
       $(t).click(function (e) {
 
         e.preventDefault();
+
+        $('#selected-district').html('选择区域');
+        $('input[name=district]').val('');
     
         var name = $(this).html();
 
@@ -1557,6 +1568,8 @@ var addressBind;
 
     success: function (data) {
 
+      console.log(data);
+
       if (data.code) {
       
         $('body').append("<div class=\"over-all\"></div>");
@@ -1566,10 +1579,16 @@ var addressBind;
         window.setTimeout('window.location.href="/home"', 1500);
       
       } else {
-      
+
         $.each(data.failed, function (n, val) {
         
-          regForm.find('input[name=' + val + ']').css({background: '#ebccd1'});
+          var field = regForm.find('input[name=' + val + ']');
+          
+          field.css({background: '#ebccd1'});
+          
+          field.attr('placeholder', '填写错误！');
+            
+          field.val('');
         
         });
       
@@ -1592,7 +1611,6 @@ var addressBind;
     }
 
   };
-
 
   regSubmit.click(function (e) {
   

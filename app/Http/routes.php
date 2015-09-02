@@ -49,5 +49,8 @@ Route::controllers([
 
   'location' => 'Location\LocationController',
 
-  'test' => 'Test\TestController'
+  'test' => 'Test\TestController',
+
+  'verify' => 'Verify\VerifyController'
+
 ]);

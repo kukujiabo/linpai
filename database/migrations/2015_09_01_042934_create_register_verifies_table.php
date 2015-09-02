@@ -15,6 +15,11 @@ class CreateRegisterVerifiesTable extends Migration {
 		Schema::create('register_verifies', function(Blueprint $table)
 		{
 			$table->increments('id');
+      $table->string('mobile');
+      $table->string('verify_code');
+      $table->integer('success');
+      $table->integer('active');
+      $table->datetime('deliver_at');
 			$table->timestamps();
 		});
 	}
