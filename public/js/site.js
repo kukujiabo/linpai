@@ -76,10 +76,11 @@ window.linpai = $linpai;
 
   var bindEdit;
   
-  (bindEdit = function () {
+  ($linpai.bindEdit = bindEdit = function () {
   
     var editBtns = $('.itm-edit');
 
+    editBtns.unbind('click');
     /*
      * 编辑按钮绑定事件
      */
@@ -101,7 +102,7 @@ window.linpai = $linpai;
 
           if (obj != undefined && obj != null) {
           
-             editBtnListener[ 'fill' + key ](obj);
+             editBtnListener[ 'fill' + key ](obj, oid);
           
           }
         
@@ -121,15 +122,15 @@ window.linpai = $linpai;
    * order confirm add car info.
    */
   var addCar = $('#car-info-add')
-    
-  addCar.click(function () {
 
-    var that = $(this);
+  $linpai.editCar = function () {
   
     $('#car-info-edit').slideToggle(function () {
 
+      var that = $('#car-info-add');
+
       var content = that.find('#c-i-a-content');
-    
+
       if (that.data('status') == 'show') {
 
         that.find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
@@ -145,10 +146,28 @@ window.linpai = $linpai;
         content.html(content.data('close'));
 
         that.data('status', 'show');
+
+        $('#new-car-form')[0].reset();
+
+        $linpai.certFilesReset();
       
       }
     
     });
+  
+  };
+    
+  addCar.click(function () {
+
+    var that = $(this);
+
+    var carform = $('#new-car-form');
+
+    carform.attr('action', carform.data('addurl'));
+
+    carform.attr('status', 'add');
+  
+    $linpai.editCar();
 
   });
 
@@ -156,12 +175,12 @@ window.linpai = $linpai;
    * order confirm add new address info.
    */
   var addAddress = $('#new-address-add');
+
+  $linpai.editReceiver = function () {
   
-  addAddress.click(function () {
-
-    var that = $(this);
-
     $('#new-address-info').slideToggle(function () {
+
+      var that = $('#new-address-add');
 
       var content = that.find('#n-a-content');
     
@@ -172,7 +191,7 @@ window.linpai = $linpai;
         content.html('取消地址编辑');
 
         that.data('status', 'hide');
-      
+
       } else {
 
         that.find('.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-plus');
@@ -188,6 +207,20 @@ window.linpai = $linpai;
       }
 
     });
+  
+  };
+  
+  addAddress.click(function () {
+
+    var that = $(this);
+
+    var receiverForm = $('#new-receiver-form');
+
+    receiverForm.attr('action', receiverForm.data('addurl'));
+
+    receiverForm.attr('status', 'add');
+
+    $linpai.editReceiver();
   
   });
 
@@ -340,9 +373,11 @@ window.linpai = $linpai;
   
     dataType: 'json',
 
-    resetForm: true,
+    resetForm: false,
 
     success: function (data) {
+
+      console.log(data);
 
       if (!data.code) {
 
@@ -390,8 +425,32 @@ window.linpai = $linpai;
         
         }
 
-        $('#car-body').append(html);
+        if (carform.attr('status') == 'edit') {
 
+          var oldItm = $('#' + $(html).attr('id'));
+
+          var preItm = oldItm.prev();
+
+          if (preItm.size() > 0) {
+
+            preItm.after(html);
+
+          } else { 
+          
+            $('#car-body').prepend(html); 
+          }
+
+          oldItm.remove();
+
+        } else {
+
+          $('#car-body').append(html);
+
+        }
+
+        /*
+         * 绑定删除事件
+         */
         resetInfoRemove();
 
         carform.find('img').each(function (i, t) {
@@ -412,9 +471,20 @@ window.linpai = $linpai;
         carInfoClick();
 
         /*
-         * 绑定车辆编辑按钮点击事件
+         * 绑定编辑事件
          */
-        bindEdit();
+        $linpai.bindEdit();
+
+        /*
+         * 清空车辆信息编辑
+         */
+        $('#new-car-form')[0].reset();
+
+        $linpai.certFilesReset();
+
+        $linpai.editCar();
+
+        $linpai.toast('保存成功', '', 1000);
       
       }
     
@@ -443,6 +513,16 @@ window.linpai = $linpai;
   });
 
   /*
+   * 重置车辆编辑的图片
+   */
+  $linpai.certFilesReset = function () {
+  
+    carform.find('img').attr('src', '');
+  
+  };
+
+  /*
+   *
    * 提交收货人信息
    */
   var receiverForm = $('#new-receiver-form');
@@ -457,7 +537,7 @@ window.linpai = $linpai;
 
     dataType: 'json',
 
-    resetForm: true,
+    resetForm: false,
 
     success: function (data) {
 
@@ -477,6 +557,7 @@ window.linpai = $linpai;
 
         $('#address-alert').html(s);
 
+
       } else {
 
         var item = data.result;
@@ -490,10 +571,45 @@ window.linpai = $linpai;
           });
         
         }
-      
-        $('#receiver-body').append(item);
 
+        if (receiverForm.attr('status') == 'edit') {
+        
+          var oldItm = $('#' + $(item).attr('id'));
+
+          var preItm = oldItm.prev();
+
+          if (preItm.size() > 0) {
+          
+            preItm.after(item);
+          
+          } else {
+          
+            $('#receiver-body').prepend(item);
+          
+          }
+
+          oldItm.remove();
+
+        } else { 
+
+          $('#receiver-body').append(item);
+
+        }
+
+        /*
+         * 绑定删除事件
+         */
         resetInfoRemove();
+
+        /*
+         * 绑定编辑事件
+         */
+        $linpai.bindEdit();
+        
+        /*
+         * 关闭编辑区域
+         */
+        $linpai.editReceiver();
 
         $('.selected-province').html('选择省份');
 
@@ -502,15 +618,16 @@ window.linpai = $linpai;
         $('#selected-district').html('选择区域');
 
         receiverInfoClick();
-      
-      } 
+
+        $linpai.toast('保存成功！', '', 1000);
+
+       }
     
     },
 
     error: function (err) {
     
       console.log(err);
-
     
     }
   
@@ -639,9 +756,11 @@ window.linpai = $linpai;
   /*
    * 填充车辆编辑表单
    */
-  editBtnListener.fillcar = function (obj) {
+  editBtnListener.fillcar = function (obj, oid) {
 
     var carform = $('#new-car-form');
+
+    carform.find('input[name=cid]').val(oid);
 
     for (var ky in obj) {
 
@@ -694,17 +813,25 @@ window.linpai = $linpai;
      */
     carform.attr('action', carform.data('editurl'));
 
+    carform.attr('status', 'edit');
+
     carform.find('#c-i-tit').html('编辑车辆信息');
 
     var addCar = $('#car-info-add');
 
-    addCar.click();
+    if (addCar.data('status') == 'show') {
+    
+      $linpai.editCar();
+    
+    }
   
   };
 
-  editBtnListener.fillreceiver = function (obj) {
+  editBtnListener.fillreceiver = function (obj ,rid) {
 
     var receiverForm = $('#new-receiver-form');
+
+    receiverForm.attr('status', 'edit');
 
     for (var k in obj) {
 
@@ -728,13 +855,15 @@ window.linpai = $linpai;
      */
     receiverForm.attr('action', receiverForm.data('editurl'));
 
+    receiverForm.find('input[name=rid]').val(rid);
+
     receiverForm.find('#r-i-tit').html('编辑收货地址');
 
     var addReceiver = $('#new-address-add');
 
     if (addReceiver.data('status') == 'show') {
     
-      addReceiver.click();
+      $linpai.editReceiver();
     
     }
   
@@ -991,7 +1120,7 @@ var addressBind;
 /*
  * 绑定信息删除事件
  */
-(resetInfoRemove = function () {
+($linpai.resetInfoRemove = resetInfoRemove = function () {
 
   $('a.remove-receiver').click(function (e) {
   
@@ -1735,8 +1864,7 @@ var addressBind;
  */
 (function () {
 
-  var registrar = $('#register-box');
-
+  var registrar = $('#register-box'); 
   registrar.find('input').focus(function () {
 
     var that = $(this);
@@ -1765,11 +1893,7 @@ var addressBind;
 
       if (data.code) {
       
-        $('body').append("<div class=\"over-all\"></div>");
-
-        $('body').append("<div class=\"box login-notice animated infinite bounce\">注册成功,返回首页！</div>");
-
-        window.setTimeout('window.location.href="/home"', 1500);
+        $linpai.toast('注册成功', 'window.location.href="/home"', 1500)
       
       } else {
 
@@ -1951,3 +2075,16 @@ function isMobile(mobile) {
   return reg.test(mobile);
 
 }
+
+$linpai.toast = function (shortStr, scripts, timeout) {
+
+   $('body').append("<div class=\"over-all\"></div>");
+
+   $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
+
+   window.setTimeout(scripts, timeout);
+
+   window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', timeout);
+
+
+};

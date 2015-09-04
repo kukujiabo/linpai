@@ -19,43 +19,11 @@ class CarsController extends Controller {
   {
     $form = $request->input();
       
-    $validate = Validator::make($request->input(), [
-    
-      'owner' => 'required|min:2',
-
-      'brand' => 'required',
-
-      'factory_code' => 'required',
-
-      'reco_code' =>'required',
-
-      'dir_identity_face' => 'required',
-
-      'dir_identity_back' => 'required',
-
-      'dir_trans_ensurance' => 'required',
-
-      'dir_car_check' => 'required',
-
-      'dir_validate_paper' => 'required'
-    
-    ]);
+    $validate = $this->carInfoValidate($request->input());
 
     if ($validate->fails()) {
     
-      $failed = $validate->failed();
-
-      $message = array();
-
-      foreach ($failed as $key => $fail) {
-      
-        $message[$key] = $this->carinfoRequiredField($key);
-      
-      }
-
-      $imgBase = storage_path() . '/app';
-
-      return $this->failResponse($message);
+      return $this->validateFail($validate);
     
     }
 
@@ -126,6 +94,57 @@ class CarsController extends Controller {
 	{
 		//
 	}
+
+  public function postEdit (Request $request)
+  {
+    $validate = $this->carInfoValidate($request->input());
+  
+    if ($validate->fails()) {
+
+      return $this->validateFail($validate);
+
+    }
+
+    $cid = $request->input('cid');
+
+    if (empty($cid)) {
+    
+      return $this->failResponse('no_cid');
+    
+    }
+
+    $input = $request->input();
+
+    $car = Car::find($cid);
+
+    $attributes = $car->getAttributes();
+
+    foreach ($input as $key => $value) {
+
+      if (array_key_exists($key, $attributes)) {
+      
+        $car->$key = $value;
+      
+      }
+
+    }
+
+    $res = $car->save();
+
+    if ($res) {
+    
+      $html = $this->htmlTemplate($car);
+
+      return $this->successResponse('result', $html);
+    
+    } else {
+    
+      return $this->failResponse();
+    
+    }
+
+
+  }
 
 	/**
 	 * Update the specified resource in storage.
@@ -219,7 +238,7 @@ class CarsController extends Controller {
 
     $html = "<tr id=\"car-item-{$obj->id}\" data-id=\"{$obj->id}\">"; 
 
-    $html .= "<td class=\"col-md-2 text-center\" style=\"padding-left:40px;\">";
+    $html .= "<td class=\"col-md-2 text-center\" style=\"padding-left:10px;\">";
 
     $html .= "<label class=\"radio no-margin\">";
 
@@ -271,6 +290,49 @@ class CarsController extends Controller {
 
     return $html;
 
+  }
+
+  private function carInfoValidate($values)
+  {
+  
+    return Validator::make($values, [
+
+      'owner' => 'required|min:2',
+
+      'brand' => 'required',
+
+      'factory_code' => 'required',
+
+      'reco_code' =>'required',
+
+      'dir_identity_face' => 'required',
+
+      'dir_identity_back' => 'required',
+
+      'dir_trans_ensurance' => 'required',
+
+      'dir_car_check' => 'required',
+
+      'dir_validate_paper' => 'required'
+    
+    ]);
+  
+  }
+
+  private function validateFail ($validate)
+  {
+    $failed = $validate->failed();
+
+    $message = array();
+
+    foreach ($failed as $key => $fail) {
+    
+      $message[$key] = $this->carinfoRequiredField($key);
+    
+    }
+
+    return $this->failResponse($message);
+  
   }
 
 }

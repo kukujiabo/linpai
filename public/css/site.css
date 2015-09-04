@@ -2,6 +2,10 @@ li {
   list-style: none;
 }
 
+.receive-address {
+  width: 300px;
+}
+
 a:hover {
   cursor: pointer;
   text-decoration: none;
@@ -457,6 +461,11 @@ ul.dropdown-menu {
     height: 45px; 
   }
 
+  .receive-address {
+   
+    width: 250px;
+  
+  }
   
 }
 
@@ -532,6 +541,12 @@ ul.process {
   .container {
     width: 600px; 
      
+  }
+
+  .receive-address {
+  
+    width: 120px;
+  
   }
 
   .meta-content {
@@ -1345,3 +1360,11 @@ div#youhui-alert {
   border-top: 0px;
   border-bottom: 1px solid #eee !important;
 }
+
+.over-elis {
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+  -o-text-overflow: ellipsis;
+  overflow:hidden;
+}
+

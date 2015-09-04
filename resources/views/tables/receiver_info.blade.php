@@ -52,8 +52,8 @@
           <div class="t-padding">{{$receiverInfo->receiver}}</div>
         </td>
         <td class="col-md-4 t-center">
-          <div class="t-padding">
-            {{$receiverInfo->city}}&nbsp;{{$receiverInfo->district}}&nbsp;{{$receiverInfo->address}}
+          <div class="t-padding over-elis receive-address">
+            {{$receiverInfo->province}}&nbsp;{{$receiverInfo->city}}&nbsp;{{$receiverInfo->district}}&nbsp;{{$receiverInfo->address}}
           </div>
         </td>
         <td class="col-md-2 t-center">

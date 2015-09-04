@@ -7,6 +7,7 @@
     </div>
     <form class="form-inline" method="post" id="new-car-form" action="{{asset('car/add')}}" data-addurl="{{asset('car/add')}}" data-editurl="{{asset('car/edit')}}" enctype="multipart/form-data">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="cid" value="">
       <fieldset>
         <div class="form-group col-md-6">
             <label for="owner-info" class="control-label col-md-5">
