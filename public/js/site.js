@@ -1,5 +1,8 @@
 var resetInfoRemove; 
 
+var $linpai = {};
+
+window.linpai = $linpai;
 /*
  * 首页横幅
  */
@@ -67,9 +70,53 @@ var resetInfoRemove;
 /*
  * 按钮监听事件
  */
-
 (function () {
+
+  var editBtnListener = this;
+
+  var bindEdit;
   
+  (bindEdit = function () {
+  
+    var editBtns = $('.itm-edit');
+
+    /*
+     * 编辑按钮绑定事件
+     */
+    editBtns.click(function (e) {
+
+      e.preventDefault();
+
+      var that = $(this);
+
+      var oid = that.data('id');
+
+      var key = that.data('key');
+
+      $.get(that.data('iurl'), { "key": key, "oid": oid }, function (data) {
+      
+        if (data.code) {
+        
+          var obj = data[key];
+
+          if (obj != undefined && obj != null) {
+          
+             editBtnListener[ 'fill' + key ](obj);
+          
+          }
+        
+        } else {
+        
+        
+        }
+      
+      }, 'json');
+    
+    });
+
+  })();
+  
+
   /*
    * order confirm add car info.
    */
@@ -80,18 +127,22 @@ var resetInfoRemove;
     var that = $(this);
   
     $('#car-info-edit').slideToggle(function () {
+
+      var content = that.find('#c-i-a-content');
     
       if (that.data('status') == 'show') {
+
+        that.find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
       
-        that.html('取消编辑');
+        content.html(content.data('open'));
 
         that.data('status', 'hide');
       
       } else {
 
-        var s = "<span class=\"glyphicon glyphicon-plus\"></span>";
+        that.find('.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-plus');
       
-        that.html( s + '新增车辆');
+        content.html(content.data('close'));
 
         that.data('status', 'show');
       
@@ -111,23 +162,31 @@ var resetInfoRemove;
     var that = $(this);
 
     $('#new-address-info').slideToggle(function () {
+
+      var content = that.find('#n-a-content');
     
       if (that.data('status') == 'show') {
+
+        that.find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
       
-        that.html('取消编辑');
+        content.html('取消地址编辑');
 
         that.data('status', 'hide');
       
       } else {
 
-        var s = '<span class="glyphicon glyphicon-plus"></span>';
+        that.find('.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-plus');
       
-        that.html( s + '&nbsp;新增地址');
+        content.html('新增地址信息');
 
         that.data('status', 'show');
+
+        $linpai.areaReset();
+
+        $('#new-receiver-form')[0].reset();
       
       }
-    
+
     });
   
   });
@@ -231,14 +290,16 @@ var resetInfoRemove;
    */
   var carInfoClick = function () {
 
-    console.log($('input[name=selected-car]'));
-    
     $('input[name=selected-car]').click(function () {
 
-      console.log(this);
-    
-      $('#car-info-field').find('input[name=car]').val($(this).data('id'));
-    
+      var that = $(this);
+
+      $('#car-info-field').find('input[name=car]').val(that.data('id'));
+
+      $('#car-body').find('.use-card').removeClass('use-active');
+
+      $('#use-car-' + that.data('id')).addClass('use-active');
+
     });
   
   };
@@ -249,7 +310,13 @@ var resetInfoRemove;
 
     $('input[name=selected-receiver]').click(function () {
 
-      $('#receiver-info-field').find('input[name=receiver]').val($(this).data('id'));
+      var that = $(this);
+
+      $('#receiver-info-field').find('input[name=receiver]').val(that.data('id'));
+
+      $('#receiver-body').find('.use-card').removeClass('use-active');
+
+      $('#use-receiver-' + that.data('id')).addClass('use-active');
 
     });
   
@@ -339,7 +406,15 @@ var resetInfoRemove;
         
         });
 
+        /*
+         * 绑定选中车辆事件
+         */
         carInfoClick();
+
+        /*
+         * 绑定车辆编辑按钮点击事件
+         */
+        bindEdit();
       
       }
     
@@ -561,7 +636,115 @@ var resetInfoRemove;
 
   }
 
+  /*
+   * 填充车辆编辑表单
+   */
+  editBtnListener.fillcar = function (obj) {
+
+    var carform = $('#new-car-form');
+
+    for (var ky in obj) {
+
+      var itm = carform.find('input[name=' + ky + ']');
+        
+      if (itm.attr('type') == 'text') {
+      
+        itm.val(obj[ky]);
+      
+      } else if (itm.attr('type') == 'hidden') {
+        
+        itm.val(obj[ky]);
+        
+        var imgItm = carform.find('img[target=' + ky + ']');
+
+        if (imgItm.size() > 0) {
+        
+          imgItm.attr('src', '/imgs/tmps/' + itm.val());
+        
+        }
+
+      } else if (itm.attr('type') == 'radio') {
+
+        itm.each(function (i, t) {
+
+          var th = $(t);
+
+          if (th.attr('id') == obj[ky]) {
+
+            console.log(th.attr('id'));
+
+            th.attr('checked', true);
+
+            th.val() == 'domestic' ? carform.find('p[filename=validate_paper]').html('合格证扫描件') : carform.find('p[filename=validate_paper]').html('报关单扫描件'); 
+          
+          } else {
+
+            th.removeAttr('checked');
+          
+          }
+
+        });
+      
+      }
+
+    }
+
+    /*
+     * 设置编辑表单
+     */
+    carform.attr('action', carform.data('editurl'));
+
+    carform.find('#c-i-tit').html('编辑车辆信息');
+
+    var addCar = $('#car-info-add');
+
+    addCar.click();
+  
+  };
+
+  editBtnListener.fillreceiver = function (obj) {
+
+    var receiverForm = $('#new-receiver-form');
+
+    for (var k in obj) {
+
+      var value = obj[k];
+    
+      var itm = receiverForm.find('input[name=' + k + ']');
+    
+      itm.val(value);
+
+      /*
+       * 填充地区
+       */
+      if (k == 'province') $('.selected-province').html(value);
+      else if (k == 'city') $('#selected-city').html(value);
+      else if (k == 'district') $('#selected-district').html(value);
+    
+    }
+
+    /*
+     * 设置编辑表单
+     */
+    receiverForm.attr('action', receiverForm.data('editurl'));
+
+    receiverForm.find('#r-i-tit').html('编辑收货地址');
+
+    var addReceiver = $('#new-address-add');
+
+    if (addReceiver.data('status') == 'show') {
+    
+      addReceiver.click();
+    
+    }
+  
+  };
+
 })();
+
+/*
+ * 显示列表更多信息
+ */
 
 
 (function () {
@@ -792,6 +975,16 @@ var addressBind;
   };
 
   addressBind.provinceBind();
+
+  $linpai.areaReset = function () {
+  
+    $('.selected-province').html('选择省份');
+    $('#selected-city').html('选择城市');
+    $('#selected-district').html('选择区域');
+
+    addressBind.provinceBind();
+  
+  };
 
 })();
 
@@ -1662,14 +1855,6 @@ var addressBind;
     }
   
   });
-
-})();
-
-/*
- * 编辑表格填充
- */
-(function () {
-
 
 })();
 

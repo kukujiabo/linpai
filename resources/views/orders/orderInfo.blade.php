@@ -40,9 +40,14 @@
     @yield('car_info')
   </div>
   <div class="sub-wrapper" id="car-info-toggle">
+    <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+      <span class="glyphicon glyphicon-chevron-down"></span>
+      <span class="m-i-value">更多车辆信息</span> 
+    </button>
+    &nbsp;&nbsp;
     <button role="button" class="btn btn-default" id="car-info-add" data-status="show">
       <span class="glyphicon glyphicon-plus"></span> 
-      <span id="c-i-a-content">新增车辆</span>
+      <span id="c-i-a-content" data-close="新增车辆信息" data-open="取消编辑信息">新增车辆信息</span>
     </button>
   </div>
   <div class="padding-5">
@@ -60,9 +65,14 @@
     @yield('receiver_info')
 
     <div class="wrapper" id="new-address-toggle">
+      <button role="button" class="btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+        <span class="m-i-value">更多收货地址</span>
+      </button>
+      &nbsp;&nbsp;
       <button class="btn btn-default" id="new-address-add" data-status="show">
       <span class="glyphicon glyphicon-plus"></span> 
-        新增地址
+      <span id="n-a-content">新增收货地址</span>
       </button>
     </div>
   </div>
@@ -154,7 +164,17 @@
       <input type="hidden" required="yes" data-name="商品数量"  name="num" value="{{$num}}">
     </fieldset>
     <fieldset id="car-info-field">
-      <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+
+      @if (!empty($defaultCar))
+
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
+
+      @else 
+
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+
+      @endif
+
     </fieldset>
     <fieldset id="receiver-info-field">
       <input type="hidden" required="yes"data-name="收货人信息" name="receiver" value="">
@@ -194,4 +214,84 @@
     </p>
   </div>
 </div>
+<script type="text/javascript">
+  window.onload = function () {
+  
+    /*
+     * 下拉显示更多信息.
+     */
+    var handleToggleDown = function (that, upContent, downContent, prefix, mainBody) {
+
+      var mode = that.data('mode');
+
+      var target = $('#' + that.data('target'));
+
+      if (mode == 'hide') {
+
+        target.find('tr[seq=hide]').removeClass('hide');
+
+        that.find('span.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+
+        that.find('.m-i-value').html(upContent);
+
+        that.data('mode', 'show');
+
+      } else {
+
+        that.find('span.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+
+        that.find('.m-i-value').html(downContent);
+
+        that.data('mode', 'hide');
+
+        var at = $('#' + mainBody).find('.use-active');
+
+        if (at.size() > 0) {
+
+          var atLine = $('#' + prefix + at.data('id'));
+
+          atLine.prependTo('#' + mainBody);
+
+          atLine.removeAttr('seq');
+
+          var lines = $('#' + mainBody).find('tr');
+
+          $(lines[2]).attr('seq', 'hide');
+
+        }
+
+        target.find('tr[seq=hide]').addClass('hide');
+      
+      }
+    
+    };
+
+    /*
+     * 收货人
+     */
+    $('#new-address-toggle').find('.more-info').click(function (e) {
+    
+      e.preventDefault();
+
+      var that = $(this);
+
+      handleToggleDown(that, '收起收货地址', '更多收货地址', 'receiver-item-', 'receiver-body')
+    
+    });
+
+    /*
+     * 车辆
+     */
+    $('#car-info-toggle').find('.more-info').click(function (e) {
+    
+      e.preventDefault();
+
+      var that = $(this);
+
+      handleToggleDown(that, '收起车辆信息', '更多车辆信息', 'car-item-', 'car-body');
+    
+    });
+
+  };
+</script>
 @endsection

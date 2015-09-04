@@ -23,6 +23,11 @@ class EventServiceProvider extends ServiceProvider {
     
       'App\Handlers\Events\VerifyTriggerHandler'
     
+    ],
+    'App\Events\TriggerBounGenerator' => [
+    
+      'App\Handlers\Events\BounTriggerHandler'
+
     ]
 	];
 

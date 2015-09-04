@@ -177,42 +177,88 @@ class ReceiverInfosController extends Controller {
   
   }
 
+  public function getReceiverinfo (Request $request) {
+  
+    $rid = $request->input('oid');
+
+    $receiver = ReceiverInfo::where('id', '=', $rid)
+
+      ->where('active', '=', 1)
+
+      ->first();
+  
+    if (empty($receiver->id)) {
+
+      return $this->failResponse();
+
+    } else {
+    
+      return $this->successResponse('receiver', $receiver);
+    
+    }
+  
+  }
+
   private function htmlTemplate ($obj) {
+
+    $iurl = url('receiver/receiverinfo');
 
     $html = "<tr id=\"receiver-item-{$obj->id}\" data-id=\"{$obj->id}\">";
 
-    $html .= "<td class=\"col-md-1 t-center\" style=\"padding-left:35px;\">";
+    $html .= "<td class=\"col-md-2 t-center\" style=\"padding-left:10px;\">";
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<input type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
+    $html .= "<div class=\"use-card t-padding\" id=\"use-receiver-{$obj->id}\" data-id=\"{$obj->id}\">";
+
+    $html .= "{$obj->receiver}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->city}";
+
+    $html .= "<input class=\"hide\" type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
+
+    $html .= "</div>";
   
     $html .= "</label>";
 
     $html .= "</td>";
 
-    $html .= "<td class=\"col-md-1  t-center\">{$obj->receiver}</td>";
+    $html .= "<td class=\"col-md-2  t-center\">";
+    
+    $html .= "<div class=\"t-padding\">{$obj->receiver}</div>";
+    
+    $html .= "</td>";
 
-    $html .= "<td class=\"col-md-6  t-center\">{$obj->province}&nbsp;{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</td>";
+    $html .= "<td class=\"col-md-4  t-center\">";
+    
+    $html .= "<div class=\"t-padding\">{$obj->province}&nbsp;{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</div>";
+          
+    $html .= "</td>";
 
-    $html .= "<td class=\"col-md-3  t-center\">{$obj->mobile}</td>";
+    $html .= "<td class=\"col-md-2  t-center\">";
+    
+    $html .= "<div class=\"t-padding\">{$obj->mobile}</div>";
+    
+    $html .= "</td>";
 
-    $html .= "<td class=\"col-md-1  t-center\">";
+    $html .= "<td class=\"col-md-2  t-center\">";
 
-    $html .= "<a href=\"#\" class=\"edit-car\" data-target=\"\">";
+    $html .= "<div class=\"t-padding edit-col\">";
 
-    $html .= "<span class=\"glyphicon glyphicon-edit\"></span>";
+    $html .= "<a href=\"#\" class=\"edit-receiver\" data-id=\"$obj->id\" data-iurl=\"{$iurl}\" data-key=\"car\">";
+
+    $html .= "<span class=\"glyphicon glyphicon-edit edit-col\"></span>";
 
     $html .= "</a>";
 
-    $html .= " | ";
+    $html .= "&nbsp;&nbsp; | &nbsp;&nbsp;";
 
     $html .= "<a href=\"#\" class=\"remove-receiver\" data-id=\"{$obj->id}\" data-type=\"receiver\" data-target=\"receiver-item-{$obj->id}\">";
 
 
-    $html .= "<span class=\"glyphicon glyphicon-trash\" data-id=\"{$obj->id}\"></span>";
+    $html .= "<span class=\"glyphicon glyphicon-trash edit-col\" data-id=\"{$obj->id}\"></span>";
 
     $html .= "</a>";
+
+    $html .= "</div>";
 
     $html .= "</td>";
 

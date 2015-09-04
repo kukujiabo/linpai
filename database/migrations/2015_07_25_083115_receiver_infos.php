@@ -29,6 +29,7 @@ class ReceiverInfos extends Migration {
       $table->string('address', 500)->nullable();
       $table->string('comment', 200)->nullable();
       $table->string('ext_0', 200)->nullable();
+      $table->integer('last_used')->nullable();
       $table->integer('active')->default(1);
       $table->timestamps();
     

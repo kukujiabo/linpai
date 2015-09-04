@@ -1,11 +1,11 @@
 @section('edit_car')
   <div class="gray-light edit-info" id="car-info-edit">
-    <h4>使用新车</h4>
+    <h4 id="c-i-tit">使用新车</h4>
     <div class="padding-5">
       <div class="alert alert-danger hide" id="carinfo-error">
       </div>
     </div>
-    <form class="form-inline" method="post" id="new-car-form" action="{{asset('car/add')}}" enctype="multipart/form-data">
+    <form class="form-inline" method="post" id="new-car-form" action="{{asset('car/add')}}" data-addurl="{{asset('car/add')}}" data-editurl="{{asset('car/edit')}}" enctype="multipart/form-data">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <fieldset>
         <div class="form-group col-md-6">
@@ -55,7 +55,7 @@
             </label>
             <div class="col-md-3">
               <label class="radio" for="domestic">国产车</label>&nbsp;&nbsp;
-              <input type="radio" class="car_type" name="car_type" id="domestic" value="domestic">
+              <input type="radio" class="car_type" name="car_type" id="domestic" value="domestic" checked>
             </div>
             <div class="col-md-3">
               <label class="radio" for="imported">进口车</label>&nbsp;&nbsp;
@@ -84,7 +84,7 @@
             <div class="col-md-2">
               <div style="padding-5">
                 <div class="thumbnail">
-                  <img class="upload-img" id="upload-img-{{$good_attrib['code']}}" src="" alt="" style="width:100%;height:110px;">
+                  <img class="upload-img" target="dir_{{$good_attrib['code']}}" id="upload-img-{{$good_attrib['code']}}" src="" alt="" style="width:100%;height:110px;">
                   <input type="hidden" name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
                   <div class="caption" align="center">
                     <div class="progress progress-striped progress-sm" role="progressbar">

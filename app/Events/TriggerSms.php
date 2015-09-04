@@ -17,6 +17,8 @@ class TriggerSms extends Event {
 
   protected $pro_register = "N3ZKu1";
 
+  protected $info;
+
   protected $mobile = "";
 
   protected $type = "";
@@ -26,21 +28,41 @@ class TriggerSms extends Event {
 	 *
 	 * @return void
 	 */
-	public function __construct($mobile, $type)
+	public function __construct($mobile, $type, $info = null)
 	{
     $this->type = $type;
 
     $this->mobile = $mobile;
+
+    $this->info = $info;
+
 	}
 
   private function registerSms ($mobile) 
   {
-    $ch = curl_init();
+    /*
+     * 获取之前的验证条目
+     */
+    $verify = RegisterVerify::where('mobile', '=', $mobile)
 
-    curl_setopt($ch, CURLOPT_URL, $this->url);
+      ->where('active', '=', 1)
 
-    curl_setopt($ch, CURLOPT_POST, 1);
+      ->first();
 
+    /*
+     * 如果之前存在验证条目，则将其置为无效
+     */
+    if (!empty($verify->active)) {
+
+      $verify->active = 0;
+    
+      $verify->save();
+    
+    }
+
+    /*
+     * 生成验证码
+     */
     $vcode = rand(100000, 999999);
 
     $post_data = array(
@@ -58,26 +80,9 @@ class TriggerSms extends Event {
     );
 
     /*
-     *
-     */
-    $verify = RegisterVerify::where('mobile', '=', $mobile)
-
-      ->where('active', '=', 1)
-
-      ->first();
-
-    if (!empty($verify->active)) {
-
-      $verify->active = 0;
-    
-      $verify->save();
-    
-    }
-
-    /*
      * 纪录验证码
      */
-    RegisterVerify::create([
+    $rv = RegisterVerify::create([
     
       'mobile' => $mobile,
 
@@ -91,19 +96,18 @@ class TriggerSms extends Event {
     
     ]);
 
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    /*
+     * todo: 如果纪录失败
+     */
+    if (empty($rv)) {
     
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+    
+    }
 
-    curl_setopt($ch, CURLOPT_HEADER, false);
-
-    $file_contents = curl_exec($ch);
-
-    curl_close($ch);
-
-    $result = json_decode($file_contents);
+    /*
+     * 短信发送
+     */
+    $result = $this->send('post', $mobile, $post_data);
 
     $opts = [ 'mobile' => $mobile, 'deliver_at' => date('Y-m-d H:i:s') ];
 
@@ -113,10 +117,33 @@ class TriggerSms extends Event {
 
     }
 
+    /*
+     * 纪录发送结果
+     */
     Message::create($opts);
 
-    return $file_contents;
+    return $result;
   
+  }
+
+  private function payedSms () 
+  {
+    $vars = "{ \"order\": \"{$this->info['order']}\", \"recommend\": \"\{$this->info['recommend']}\", \"fee\": \"$this->info['fee']\"}";
+
+    $post_data = [
+
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_payed,
+
+      'vars' => $vars,
+
+      'to' => $this->mobile
+    
+    ];
+
   }
 
   public function execSend() 
@@ -128,6 +155,12 @@ class TriggerSms extends Event {
         return $this->registerSms($this->mobile);
 
         break;
+
+      case 'payed':
+
+        return $this->payedSms();
+
+        break;
       
       default:
 
@@ -135,6 +168,42 @@ class TriggerSms extends Event {
     
     }
   
+  }
+
+  private function send($method = 'post', $mobile, $data = null)
+  {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $this->url);
+
+    curl_setopt($ch, CURLOPT_POST, 1);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+
+    curl_setopt($ch, CURLOPT_HEADER, false);
+
+    $file_contents = curl_exec($ch);
+
+    curl_close($ch);
+
+    $res =  json_decode($file_contents);
+
+    $opts = ['mobile' => $this->mobile, 'type' => $this->type, 'deliver_at' => date('Y-m-d H:i:s') ];
+
+    foreach ($res as $key => $val) {
+    
+      $opts[$key] => $val;
+    
+    }
+
+    Message::create($opts);
+
+    return $res;
+
   }
 
 }

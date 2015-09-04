@@ -1294,3 +1294,54 @@ div#youhui-alert {
 .fade-in {
   display: none;
 }
+
+.use-card {
+  width: 100%;
+  height: auto;
+  border: 1px solid #eee;
+  font-weight: bold;
+  margin: 0px !important;
+}
+
+.t-padding {
+  padding: 5px 10px;
+}
+
+.use-card:hover {
+  cursor: pointer;
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.edit-col {
+  color: #ccc !important;
+}
+
+.use-active {
+  border: 2px solid red;
+}
+
+.use-active > b {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  background: url(http://static.360buyimg.com/item/main/1.0.4/css/i/newicon20140910.png) no-repeat -202px -224px;
+}
+
+.super-light {
+  background: #fffff0;
+}
+
+.table > thead > tr >th {
+  border-bottom: 0px !important;
+  color: #999 !important;
+}
+
+.table > tbody > tr > td {
+  border-top: 0px;
+  border-bottom: 1px solid #eee !important;
+}

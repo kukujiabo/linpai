@@ -15,7 +15,9 @@ class Car extends Model {
     'dir_identity_back',
     'dir_trans_ensurance',
     'dir_car_check',
-    'dir_validate_paper'
+    'dir_validate_paper',
+    'car_type',
+    'last_used'
   ];
 
 }

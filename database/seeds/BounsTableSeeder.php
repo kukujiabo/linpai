@@ -39,7 +39,8 @@ class BounsTableSeeder extends Seeder {
   
   }
 
-  private function seed($length) {
+  private function seed($length)
+  {
 
     $pattern = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
