@@ -18,6 +18,7 @@ use App\Models\Attribute;
 use Auth;
 use Validator;
 use Hash;
+use Crypt;
 
 class ProfilesController extends Controller {
 
@@ -80,7 +81,9 @@ class ProfilesController extends Controller {
 
       'page' => $page,
 
-      'pages' => $pages
+      'pages' => $pages,
+
+      'orderActive' => true
     
     ];
 
@@ -124,7 +127,9 @@ class ProfilesController extends Controller {
     
       'good_attribs' => $attributes,
 
-      'cars' => $cars
+      'cars' => $cars,
+
+      'carActive' => true
     
     ];
 
@@ -139,7 +144,9 @@ class ProfilesController extends Controller {
   
     $data = [
     
-      'user' => $user
+      'user' => $user,
+
+      'accountActive' => true
     
     ];
 
@@ -277,7 +284,9 @@ class ProfilesController extends Controller {
 
       'cities' => $cities,
 
-      'districts' => $districts
+      'districts' => $districts,
+
+      'receiverActive' => true
     
     ];
 
@@ -338,7 +347,9 @@ class ProfilesController extends Controller {
     
       'bouns' => $bouns,
     
-      'recomend' => $recomend
+      'recomend' => $recomend,
+
+      'bounsActive' => true
     
     ];
   
@@ -455,7 +466,9 @@ class ProfilesController extends Controller {
 
   public function postPasswd (Request $request)
   {
-    $user = Auth::user();
+    $authUser = Auth::user();
+
+    $user = User::find($authUser->id);
 
     $validate = Validator::make($request->input(), [
     
@@ -494,18 +507,23 @@ class ProfilesController extends Controller {
     }
 
     /*
-    if (Auth()) {
+     * 查询原密码
+     */
+    if (!Auth::validate(['mobile' => $user->mobile, 'password' => $oldpassword])) {
 
-      return $this->failResponse([$user->password, Hash::make($oldpassword)]);
+      return $this->failResponse('miss_match');
 
     }
-     */
 
-    $res = User::find($user->id)->update(['password' => Hash::make($oldpassword)]);
+    $user->password = bcrypt($newpassword);
+
+    $res = $user->save();
 
     if ($res) {
 
-      return $this->successResponse('res', [$res, bcrypt($oldpassword)]);
+      Auth::logout();
+
+      return $this->successResponse('res', [$res, $user->password, bcrypt($oldpassword)]);
 
     } else {
 

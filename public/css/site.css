@@ -1376,7 +1376,7 @@ div#youhui-alert {
   width: 60%;
 }
 
-#passwd-modify {
+#passwd-box { 
   z-index:10002;
   padding: 20px;
   position: fixed;
@@ -1393,3 +1393,31 @@ div#youhui-alert {
 #pass-submit {
   width: 100px;
 }
+
+#pass-dismiss {
+  width: 100px;
+}
+
+.profile-active {
+  background: #337ab7;
+}
+
+.profile-active a:hover {
+  background: #31b0d5 !important;
+} 
+
+.profile-active a {
+  color: #fff !important;
+}
+
+.triggle-up {
+  position: absolute;
+  width:0; 
+  height:0; 
+  left: 48%;
+  bottom: 0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:10px solid #fff;
+}
+

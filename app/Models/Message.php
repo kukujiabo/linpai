@@ -12,7 +12,7 @@ class Message extends Model {
     'success', 
     'status', 
     'send_id', 
-    'type',
+    'sms_type',
     'sms_credit',
     'error_code', 
     'deliver_at'

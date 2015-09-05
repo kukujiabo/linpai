@@ -16,7 +16,6 @@ class CreateMessagesTable extends Migration {
 		{
 			$table->increments('id');
       $table->string('mobile');
-      $table->string('type');
       $table->integer('uid')->nullable();
       $table->text('content')->nullable();
       $table->integer('success')->nullable();
@@ -26,6 +25,7 @@ class CreateMessagesTable extends Migration {
       $table->string('code')->nullable();
       $table->string('msg')->nullable();
       $table->string('comment')->nullable();
+      $table->string('sms_type')->nullable();
       $table->datetime('deliver_at')->nullable();
 			$table->timestamps();
 		});

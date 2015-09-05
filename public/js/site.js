@@ -1997,7 +1997,27 @@ var addressBind;
  */
 (function () {
 
+  var passModifyBtn = $('#password-modify');
+
+  var passBlock = $('#passwd-modify');
+        
   var passform = $('#passwd-form');
+
+  passModifyBtn.click(function (e) {
+
+    e.preventDefault();
+
+    passBlock.removeClass('hide').fadeIn();
+
+    $('.over-all').click(function () {
+
+      passBlock.fadeOut();
+    
+      passform[0].reset(); 
+    
+    });
+
+  });
 
   if (passform.size() > 0) {
 
@@ -2011,21 +2031,19 @@ var addressBind;
     
       success: function (data) {
 
-        console.log(data);
-
-        var passBlock = $('#passwd-modify');
-
         passBlock.find('.alert').addClass('hide');
 
         if (data.code) {
 
           passBlock.find('.alert-success').removeClass('hide').html('修改成功，请重新登录');
 
-          passBlock.addClass('animated infinite bounce');
+          passBlock.find('#passwd-box').addClass('animated infinite bounce');
+
+          passform[0].reset();
 
           passform.find('input[type=password]').enable(false).css({'background': '#f5f5f5'});
 
-         // setTimeout('$(\'.over-all\').fadeOut();$(\'#passwd-modify\').fadeOut();window.location.href=\'/auth/logout\'', 1000);
+          setTimeout('$(\'.over-all\').fadeOut();$(\'#passwd-modify\').fadeOut();window.location.href=\'/auth/login\'', 1500);
 
         } else {
 

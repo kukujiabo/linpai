@@ -21,16 +21,16 @@ class TriggerSms extends Event {
 
   protected $mobile = "";
 
-  protected $type = "";
+  protected $sms_type = "register";
 
 	/**
 	 * Create a new event instance.
 	 *
 	 * @return void
 	 */
-	public function __construct($mobile, $type, $info = null)
+	public function __construct($mobile, $sms_type, $info = null)
 	{
-    $this->type = $type;
+    $this->sms_type = $sms_type;
 
     $this->mobile = $mobile;
 
@@ -148,7 +148,7 @@ class TriggerSms extends Event {
 
   public function execSend() 
   {
-    switch ($this->type) {
+    switch ($this->sms_type) {
     
       case 'register':
 
@@ -192,11 +192,11 @@ class TriggerSms extends Event {
 
     $res =  json_decode($file_contents);
 
-    $opts = ['mobile' => $this->mobile, 'type' => $this->type, 'deliver_at' => date('Y-m-d H:i:s') ];
+    $opts = ['mobile' => $this->mobile, 'sms_type' => $this->sms_type, 'deliver_at' => date('Y-m-d H:i:s') ];
 
     foreach ($res as $key => $val) {
     
-      $opts[$key] => $val;
+      $opts[$key] = $val;
     
     }
 

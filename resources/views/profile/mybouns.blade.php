@@ -3,10 +3,13 @@
 @section('subcontent')
 <ul class="nav nav-tabs good-nav" role="tablist">
   <li class="col-md-6 no-padding active" role="presentation" style="border:0px;">
-    <a href="#boun-code" class="" role="tab" data-toggle="tab" style="border:0px">我的推荐码</a>
+    <a href="#boun-code" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">
+      我的推荐码
+      <b class="triggle-up"></b>
+    </a>
   </li>
   <li class="col-md-6 no-padding" role="presentation" style="border:0px;">
-    <a href="#boun-quan" class="" role="tab" data-toggle="tab" style="border:0px">我的优惠券</a>
+    <a href="#boun-quan" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">我的优惠券</a>
   </li>
 </ul>
 <div class="tab-content">
@@ -99,4 +102,23 @@
     @endif
   </div>
 </div>
+<script type="text/javascript">
+
+  window.onload = function () {
+
+    var goodTabs = $('.bouns-tab');
+  
+    goodTabs.click(function (e) {
+    
+      var itm = $(this);
+
+      goodTabs.find('.triggle-up').remove();
+
+      itm.append('<b class="triggle-up"></b>');
+    
+    });
+  
+  };
+
+</script>
 @endsection
