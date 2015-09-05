@@ -586,6 +586,10 @@ ul.process {
   padding-top: 3px;
 }
 
+.padding-top-5 {
+  padding-top: 5px;
+}
+
 .none-border {
   border: 0px;
 }
@@ -1348,7 +1352,7 @@ div#youhui-alert {
 }
 
 .super-light {
-  background: #fffff0;
+  background: #F5F5F5;
 }
 
 .table > thead > tr >th {
@@ -1368,3 +1372,24 @@ div#youhui-alert {
   overflow:hidden;
 }
 
+#to-pay {
+  width: 60%;
+}
+
+#passwd-modify {
+  z-index:10002;
+  padding: 20px;
+  position: fixed;
+  top: 15%;
+  left: 30%;
+  width: 40%;
+  background: #fff;
+}
+
+#passwd-form {
+  width: 100%;
+}
+
+#pass-submit {
+  width: 100px;
+}

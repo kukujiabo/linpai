@@ -11,10 +11,10 @@
 @endif
   <thead class="super-light">
     <tr>
-      <th class="col-md-2 t-center"></th>
+      <th class="col-md-3 t-center"></th>
       <th class="col-md-2 t-center">收货人</th>
       <th class="col-md-4 t-center">地址</th>
-      <th class="col-md-2 t-center">手机号</th>
+      <th class="col-md-1 t-center">手机号</th>
       <th class="col-md-2 t-center">操作</th>
     </tr>
   </thead> 
@@ -30,7 +30,7 @@
         <tr id="receiver-item-{{$receiverInfo->id}}" data-id="{{$receiverInfo->id}}">
 
       @endif
-        <td class="col-md-2 t-center" style="padding-left:10px;">
+        <td class="col-md-3 t-center" style="padding-left:10px;">
           <label class="radio no-margin t-center">
 
             @if ($receiverInfo->last_used)
@@ -56,10 +56,10 @@
             {{$receiverInfo->province}}&nbsp;{{$receiverInfo->city}}&nbsp;{{$receiverInfo->district}}&nbsp;{{$receiverInfo->address}}
           </div>
         </td>
-        <td class="col-md-2 t-center">
+        <td class="col-md-1 t-center">
           <div class="t-padding">{{$receiverInfo->mobile}}</div>
         </td>
-        <td class="col-md-2 t-center edit-col">
+        <td class="col-md-3 t-center edit-col">
           <div class="t-padding">
             <a href="#" class="itm-edit" data-id="{{$receiverInfo->id}}" data-iurl="{{asset('receiver/receiverinfo')}}" data-key="receiver">
               <span class="glyphicon glyphicon-edit edit-col"></span>

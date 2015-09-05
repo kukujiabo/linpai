@@ -1889,8 +1889,6 @@ var addressBind;
 
     success: function (data) {
 
-      console.log(data);
-
       if (data.code) {
       
         $linpai.toast('注册成功', 'window.location.href="/home"', 1500)
@@ -1967,21 +1965,127 @@ var addressBind;
   pInput.change(function () {
 
     var pwd = pInput.val();
+    
+    var that = $(this);
 
     if (pwd.length > 0 && pwd.length < 6) {
 
-      pInput.val('');
+      that.val('');
 
-      pInput.css({'background': '#ebccd1'});
+      that.css({'background': '#ebccd1'});
 
-      pInput.attr('placeholder', '请输入长度 6 －18 位的密码');
+      that.attr('placeholder', '请输入长度 6 －18 位的密码');
     
     }
+
+  });
+
+  pInput.focus(function () {
+  
+    var that = $(this);
+
+    that.css({'background': '#fff'});
+
+    that.attr('placeholder', '');
   
   });
 
 })();
 
+/*
+ * 修改密码
+ */
+(function () {
+
+  var passform = $('#passwd-form');
+
+  if (passform.size() > 0) {
+
+    passform.ajaxForm();
+
+    var passOptions = {
+
+      dataType: 'json',
+    
+      resetForm: true,
+    
+      success: function (data) {
+
+        console.log(data);
+
+        var passBlock = $('#passwd-modify');
+
+        passBlock.find('.alert').addClass('hide');
+
+        if (data.code) {
+
+          passBlock.find('.alert-success').removeClass('hide').html('修改成功，请重新登录');
+
+          passBlock.addClass('animated infinite bounce');
+
+          passform.find('input[type=password]').enable(false).css({'background': '#f5f5f5'});
+
+         // setTimeout('$(\'.over-all\').fadeOut();$(\'#passwd-modify\').fadeOut();window.location.href=\'/auth/logout\'', 1000);
+
+        } else {
+
+          if (data.msg == 'miss_match') {
+          
+            passBlock.find('.alert-danger').removeClass('hide').html('原密码输入错误！');
+          
+          } else if (data.msg == 'not_match') {
+
+            passBlock.find('.alert-danger').removeClass('hide').html('两次输入的密码不一致！');
+
+          }
+
+        }
+
+      }, 
+
+      error: function (err) {
+
+        console.log(err);
+
+      }
+    
+    };
+
+    var passSubmit = $('#pass-submit');
+
+    passSubmit.click(function (e) {
+
+      e.preventDefault();
+
+      var inputs = passform.find('input[type=password]');
+
+      var legal = true;
+
+      for (var i = 0; i < inputs.size(); i++) {
+
+        var input = $(inputs[i]);
+
+        if (input.val() == '') {
+
+          legal = false;
+
+          input.css({ 'background': '#ebccd1' }).attr('placeholder', '请填写' + input.attr('title'));
+
+        }
+
+      }
+
+      if (legal) {
+
+        passform.ajaxSubmit(passOptions);
+
+      } 
+
+    });
+
+  }
+  
+})();
 
 
 function modal (e, th) {

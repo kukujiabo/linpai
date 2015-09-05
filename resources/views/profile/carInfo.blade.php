@@ -4,6 +4,8 @@
 
 @include('tables.car_info')
 
+@include('scripts.moreinfo')
+
 @section('subcontent')
 <div class="sub-wrapper">
   <h3>车辆信息</h3> 
@@ -14,13 +16,22 @@
   @yield('car_info')
 
 </div>
-
-<hr class="no-margin">
-
+<div class="sub-wrapper" id="car-info-toggle">
+  <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+    <span class="glyphicon glyphicon-chevron-down"></span>
+    <span class="m-i-value">更多车辆信息</span>
+  </button>
+  &nbsp;&nbsp;
+  <button role="button" class="btn btn-default" id="car-info-add" data-status="show">
+    <span class="glyphicon glyphicon-plus"></span>
+    <span id="c-i-a-content" data-close="新增车辆信息" data-open="取消编辑信息">新增车辆信息</span>
+  </button>
+</div>
 <div class="padding-5">
   @yield('edit_car')
 </div>
 
+<!--
 <script type="text/javascript">
   (function () {
   
@@ -32,4 +43,6 @@
   
   })();
 </script>
+-->
+@yield('more-info')
 @endsection

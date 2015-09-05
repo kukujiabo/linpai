@@ -16,6 +16,8 @@ use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
 use Auth;
+use Validator;
+use Hash;
 
 class ProfilesController extends Controller {
 
@@ -448,6 +450,68 @@ class ProfilesController extends Controller {
     }
 
     return $html;
+  
+  }
+
+  public function postPasswd (Request $request)
+  {
+    $user = Auth::user();
+
+    $validate = Validator::make($request->input(), [
+    
+      'oldpassword' => 'required',
+
+      'newpassword' => 'required',
+
+      'confirmpassword' => 'required'
+    
+    ]);
+
+    if ($validate->fails()) {
+
+      $failed = [];
+
+      foreach ($validate->failed() as $key => $fail) {
+
+        array_push($failed, $key);
+
+      }
+
+      return $this->failResponse($failed);
+    
+    }
+
+    $oldpassword = $request->input('oldpassword');
+  
+    $newpassword = $request->input('newpassword'); 
+
+    $confirmpassword = $request->input('confirmpassword');
+
+    if ($confirmpassword != $newpassword) {
+
+      return $this->failResponse('not_match');
+
+    }
+
+    /*
+    if (Auth()) {
+
+      return $this->failResponse([$user->password, Hash::make($oldpassword)]);
+
+    }
+     */
+
+    $res = User::find($user->id)->update(['password' => Hash::make($oldpassword)]);
+
+    if ($res) {
+
+      return $this->successResponse('res', [$res, bcrypt($oldpassword)]);
+
+    } else {
+
+      return $this->failResponse('sys_err');
+    
+    }
   
   }
 
