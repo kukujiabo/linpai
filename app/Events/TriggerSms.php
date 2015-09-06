@@ -17,6 +17,10 @@ class TriggerSms extends Event {
 
   protected $pro_register = "N3ZKu1";
 
+  protected $pro_friend_use = "f4dI42";
+
+  protected $pro_payed = "bBX4r1";
+
   protected $info;
 
   protected $mobile = "";
@@ -107,28 +111,34 @@ class TriggerSms extends Event {
     /*
      * 短信发送
      */
-    $result = $this->send('post', $mobile, $post_data);
+    return $this->send('post', $mobile, $post_data);
 
-    $opts = [ 'mobile' => $mobile, 'deliver_at' => date('Y-m-d H:i:s') ];
-
-    foreach ($result as $key => $val) {
-
-      $opts[$key] = $val;
-
-    }
-
-    /*
-     * 纪录发送结果
-     */
-    Message::create($opts);
-
-    return $result;
-  
   }
+
+  private function friendUse() 
+  {
+    $post_data = array(
+    
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_friend_use,
+
+      'vars' => "{ \"fee\": \"30\"}",
+
+      'to' => $this->mobile
+    
+    );
+
+    return $this->send('post', $this->mobile, $post_data);
+
+  }
+
 
   private function payedSms () 
   {
-    $vars = "{ \"order\": \"{$this->info['order']}\", \"recommend\": \"\{$this->info['recommend']}\", \"fee\": \"$this->info['fee']\"}";
+    $vars = "{ \"order\": \"{$this->info['order']}\", \"recommend\": \"{$this->info['boun']}\", \"fee\": \"{$this->info['fee']}\"}";
 
     $post_data = [
 
@@ -143,6 +153,8 @@ class TriggerSms extends Event {
       'to' => $this->mobile
     
     ];
+
+    return  $this->send('post', $this->mobile, $post_data);
 
   }
 
@@ -159,6 +171,12 @@ class TriggerSms extends Event {
       case 'payed':
 
         return $this->payedSms();
+
+        break;
+
+      case 'friend_use':
+
+        return $this->friendUse();
 
         break;
       
@@ -190,7 +208,7 @@ class TriggerSms extends Event {
 
     curl_close($ch);
 
-    $res =  json_decode($file_contents);
+    $res = json_decode($file_contents);
 
     $opts = ['mobile' => $this->mobile, 'sms_type' => $this->sms_type, 'deliver_at' => date('Y-m-d H:i:s') ];
 

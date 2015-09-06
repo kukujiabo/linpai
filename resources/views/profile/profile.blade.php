@@ -1,11 +1,8 @@
 @extends('app')
 
-@include('navs.pathnav')
 
 @section('content')
-<div class="top-50">
-
-</div>
+<div class="top-50"></div>
 <div class="row padding-5">
   @yield('path-nav')
 </div>

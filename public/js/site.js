@@ -420,6 +420,8 @@ window.linpai = $linpai;
             $('#car-list-table').removeClass('hide');
 
             $('#car-list-table').show();
+
+            $('#more-car-info').removeClass('hide');
           
           });
         
@@ -566,7 +568,10 @@ window.linpai = $linpai;
         
           $('#receiver-empty-info').fadeOut('fast', function () {
           
-            $('#receiver-list-table').removeClass('hide');
+            $('#receiver-list-table').removeClass('hide').show();
+
+            $('#more-receiver-info').removeClass('hide');
+
           
           });
         
@@ -2131,6 +2136,8 @@ function modal (e, th) {
           if (0 == deletedItem.siblings().size()) {
 
             $('#' + that.data('type') + '-list-table').fadeOut('fast', function () {
+
+              $('#more-' + that.data('type') + '-info').addClass('hide');
 
               $('#'+ that.data('type') + '-empty-info').removeClass('hide').fadeIn('fast');
 

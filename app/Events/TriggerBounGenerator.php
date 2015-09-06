@@ -31,8 +31,18 @@ class TriggerBounGenerator extends Event {
    */
   private function generateRecommend()
   {
-    $boun = Boun::where('uid', '=', $this->user->id);
 
+    $boun = Boun::where('uid', '=', $this->user->id)
+
+      ->where('type', '=', 0)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    /*
+     * 没有则生成新的推荐码
+     */
     if (empty($boun->id)) {
 
       return Boun::create([

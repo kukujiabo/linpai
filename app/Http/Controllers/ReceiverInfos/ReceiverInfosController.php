@@ -261,7 +261,7 @@ class ReceiverInfosController extends Controller {
           
     $html .= "</td>";
 
-    $html .= "<td class=\"col-md-2  t-center\">";
+    $html .= "<td class=\"col-md-1  t-center\">";
     
     $html .= "<div class=\"t-padding\">{$obj->mobile}</div>";
     

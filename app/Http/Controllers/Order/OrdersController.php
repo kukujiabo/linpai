@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Validator;
+use App\Events\TriggerSms;
+use App\User;
 
 
 class OrdersController extends Controller {
@@ -394,6 +396,8 @@ class OrdersController extends Controller {
 
     $receiver = ReceiverInfo::where('id', '=', $order->rid)->first();
 
+    $pay_token = md5($order->id . time());
+
     $data = [
     
       'reduction' => $reduction,
@@ -407,6 +411,8 @@ class OrdersController extends Controller {
       'good' => $good,
 
       'receiver' => $receiver,
+
+      'pay_token' => $pay_token,
 
       'is_pay' => true
     
@@ -434,6 +440,13 @@ class OrdersController extends Controller {
 
       ->first();
 
+    if (empty($order->id)) {
+
+      return redirect('/home');
+
+    }
+
+
     $good = Good::where('id', '=', $order->gid)
 
           ->where('active', '=', 1)
@@ -460,6 +473,8 @@ class OrdersController extends Controller {
 
     $reduction = $orderPrice->cut_fee;
 
+    $pay_token = md5($order->id . time());
+
     $data = [
     
       'good' => $good,
@@ -469,6 +484,8 @@ class OrdersController extends Controller {
       'receiver' => $receiver,
       
       'order' => $order,
+
+      'pay_token' => $pay_token,
 
       'is_pay' => true
     
@@ -480,6 +497,20 @@ class OrdersController extends Controller {
 
   public function postPayed (Request $request)
   {
+    if (Session::get('pay_token') == $request->input('pay_token')) {
+
+      return redirect('/home');
+
+    } else {
+
+      Session::put('pay_token', $request->input('pay_token'));
+
+    }
+
+
+    /*
+     * 防止表单被重复提交
+     */
     $user = Auth::user();
 
     $pay = $request->input('pay');
@@ -550,9 +581,14 @@ class OrdersController extends Controller {
     /*
      * pay success.
      *
-     * 1.判断是否使用推荐码
+     * 1.将订单状态置为已付款
+     * 2.判断是否使用推荐码
      *
      */ 
+    $order->status = 1;
+
+    $order->save();
+
     foreach ($orderBouns as $orderBoun) {
 
       $orderBoun->success = 1;
@@ -564,6 +600,16 @@ class OrdersController extends Controller {
         /*
          * 如果是推荐码.
          */
+        $friend = User::find($orderBoun->owner_id);
+
+        if (!empty($friend->id)) {
+          /*
+           * 触发短信
+           */
+          event(new TriggerSms($friend->mobile, 'friend_use'));
+
+        }
+
         $bCount = OrderBoun::where('bcode', '=', $orderBoun->bcode)
 
           ->where('rewarded', '=', 0)
@@ -837,5 +883,9 @@ class OrdersController extends Controller {
     return $note;
 
   }
+
+  /*
+   * todo token
+   */
 
 }

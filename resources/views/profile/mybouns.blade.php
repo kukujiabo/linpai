@@ -70,11 +70,7 @@
   <div class="tab-pane" role="tab-pannel" id="boun-quan">
     @if (count($bouns))
       <div class="sub-wrapper">
-        <h3>我的优惠券</h3>
-      </div>
-      <hr>
-      <div class="sub-wrapper">
-      
+        <div class="padding-5"></div>
         <ul class="row quan-list">
         @foreach ($bouns as $boun)
           <li class="col-sm-4 col-md-4 bouns">
@@ -84,8 +80,21 @@
               <b>CODE:{{$boun->code}}</b>
             </div>
           </li>
-      
+        
         @endforeach
+        </ul>
+        <div class="padding-5"></div>
+        <div class="t-left width-100 padding-20" style="position:absolute;bottom:0px;">
+          <p>
+            1. 每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
+          </p>
+          <p>
+            2. 您的优惠码仅限您本人使用。
+          </p>
+          <p>
+            3. 同一优惠码不可重复使用。
+          </p>
+          <div class="padding-5"></div>
         </div>
       </div>
     @else

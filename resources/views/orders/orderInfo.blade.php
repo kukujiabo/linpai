@@ -42,7 +42,12 @@
     @yield('car_info')
   </div>
   <div class="sub-wrapper" id="car-info-toggle">
+    @if (empty($cars))
+    <button role="button" class="hide btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+    @else
     <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+
+    @endif
       <span class="glyphicon glyphicon-chevron-down"></span>
       <span class="m-i-value">更多车辆信息</span> 
     </button>
@@ -67,7 +72,13 @@
     @yield('receiver_info')
 
     <div class="wrapper" id="new-address-toggle">
+      @if (empty($receiverInfos))
+      <button role="button" class="hide btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+
+      @else
+
       <button role="button" class="btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+      @endif
         <span class="glyphicon glyphicon-chevron-down"></span>
         <span class="m-i-value">更多收货地址</span>
       </button>
