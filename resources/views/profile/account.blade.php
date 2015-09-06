@@ -68,10 +68,51 @@
   </form>
   <hr>
   <div class="padding-5">
-    <button class="btn btn-warning">
+    <button class="btn btn-warning" id="password-modify">
       <span class="glyphicon glyphicon-lock"></span>
       修改密码
     </button>  
+  </div>
+  <div class="hide" id="passwd-modify">
+    <div class="over-all"></div>
+    <div class="box padding-20" id="passwd-box">
+      <div class="alert alert-success margin-5 hide"></div>
+      <div class="alert alert-danger margin-5 hide"></div>
+      <div class="padding-20"></div>
+      <form class="form-horizontal" method="post" id="passwd-form"  action="/profile/passwd">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <fieldset>
+          <div class="form-group">
+            <label class="control-label col-xs-3 text-right padding-5">旧密码：</label>
+            <div class="col-xs-8">
+              <input class="form-control" name="oldpassword" type="password" title="旧密码">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group">
+            <label class="control-label col-xs-3 text-right padding-5">新密码：</label>
+            <div class="col-xs-8">
+              <input class="form-control col-xs-8" name="newpassword" type="password" title="新密码">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group">
+            <label class="control-label col-xs-3 text-right padding-5">确认密码：</label>
+            <div class="col-xs-8">
+              <input class="form-control col-xs-8" name="confirmpassword" type="password" title="确认密码">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="padding-5 width-100">
+            <label class="control-label sr-only">提交表单</label>
+            <button class="btn btn-info col-xs-offset-3" id="pass-submit" role="button" type="submit">确认</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </div>
 @endsection

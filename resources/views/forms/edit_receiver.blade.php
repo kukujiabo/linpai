@@ -2,10 +2,11 @@
 
 @section('edit_receiver')
   <div class="gray-light edit-info" id="new-address-info">
-    <form class="form-inline" method="post" action="{{ asset('receiver/add') }}" id="new-receiver-form">
+    <form class="form-inline" method="post" action="{{ asset('receiver/add') }}" data-addurl="{{asset('receiver/add')}}" data-editurl="{{asset('receiver/edit')}}" id="new-receiver-form" status="add">
       <div class="alert alert-danger hide" id="address-alert"></div>
-      <h4>使用新地址</h4>
+      <h4 id="r-i-tit">使用新地址</h4>
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="rid" value="">
       <fieldset class="padding-5"> 
         <div class="form-group">
           <label class="control-label">

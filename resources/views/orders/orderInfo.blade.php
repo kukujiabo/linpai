@@ -12,6 +12,8 @@
 
 @include('forms.edit_receiver')
 
+@include('scripts.moreinfo')
+
 @section('content')
 
 <div class="process">
@@ -40,9 +42,19 @@
     @yield('car_info')
   </div>
   <div class="sub-wrapper" id="car-info-toggle">
+    @if (empty($cars))
+    <button role="button" class="hide btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+    @else
+    <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+
+    @endif
+      <span class="glyphicon glyphicon-chevron-down"></span>
+      <span class="m-i-value">更多车辆信息</span> 
+    </button>
+    &nbsp;&nbsp;
     <button role="button" class="btn btn-default" id="car-info-add" data-status="show">
       <span class="glyphicon glyphicon-plus"></span> 
-      <span id="c-i-a-content">新增车辆</span>
+      <span id="c-i-a-content" data-close="新增车辆信息" data-open="取消编辑信息">新增车辆信息</span>
     </button>
   </div>
   <div class="padding-5">
@@ -60,9 +72,20 @@
     @yield('receiver_info')
 
     <div class="wrapper" id="new-address-toggle">
+      @if (empty($receiverInfos))
+      <button role="button" class="hide btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+
+      @else
+
+      <button role="button" class="btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+      @endif
+        <span class="glyphicon glyphicon-chevron-down"></span>
+        <span class="m-i-value">更多收货地址</span>
+      </button>
+      &nbsp;&nbsp;
       <button class="btn btn-default" id="new-address-add" data-status="show">
       <span class="glyphicon glyphicon-plus"></span> 
-        新增地址
+      <span id="n-a-content">新增收货地址</span>
       </button>
     </div>
   </div>
@@ -154,7 +177,17 @@
       <input type="hidden" required="yes" data-name="商品数量"  name="num" value="{{$num}}">
     </fieldset>
     <fieldset id="car-info-field">
-      <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+
+      @if (!empty($defaultCar))
+
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
+
+      @else 
+
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+
+      @endif
+
     </fieldset>
     <fieldset id="receiver-info-field">
       <input type="hidden" required="yes"data-name="收货人信息" name="receiver" value="">
@@ -164,7 +197,7 @@
       <input type="hidden" name="youhui_2" value="">
       <input type="hidden" name="youhui_3" value="">
     </fieldset>
-    <button role="button" type="submit" class="btn btn-info btn-lg btn-group-justified" role="button" id="to-pay" disabled>下一步</button>
+    <button role="button" type="submit" class="btn btn-info btn-lg" role="button" id="to-pay" disabled>下一步</button>
   </div>
   </p>
 </form>
@@ -194,4 +227,6 @@
     </p>
   </div>
 </div>
+@yield('more-info');
+
 @endsection

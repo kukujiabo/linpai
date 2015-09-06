@@ -1,11 +1,11 @@
 <?php namespace App\Handlers\Events;
 
-use App\Events\TriggerSms;
+use App\Events\VerifyTrigger;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class TriggerSmsSend {
+class VerifyTriggerHandler {
 
 	/**
 	 * Create the event handler.
@@ -20,14 +20,13 @@ class TriggerSmsSend {
 	/**
 	 * Handle the event.
 	 *
-	 * @param  TriggerSms  $event
+	 * @param  VerifyTrigger  $event
 	 * @return void
 	 */
-	public function handle(TriggerSms $event)
+	public function handle(VerifyTrigger $event)
 	{
-
-    return $event->execSend();
-
+		//
+    return $event->verify();
 	}
 
 }

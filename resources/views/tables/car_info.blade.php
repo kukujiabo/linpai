@@ -15,35 +15,65 @@
     <table class="table" id="car-list-table">
 
   @endif
-      <thead class="gray-light">
+      <thead class="super-light">
         <tr>
-          <th class="col-md-1 t-center">使用</th>
+          <th class="col-md-3 t-center"></th>
           <th class="col-md-2 t-center">所有人</th>
           <th class="col-md-3 t-center">车辆型号</th>
-          <th class="col-md-3 t-center">识别代码</th>
-          <th class="col-md-3 t-center">操作</th>
+          <th class="col-md-2 t-center">识别代码</th>
+          <th class="col-md-2 t-center">操作</th>
         </tr>
       </thead> 
       <tbody id="car-body">
           
-        @foreach ($cars as $car)
+        @foreach ($cars as $key => $car)
+
+          @if ($key > 1)
+
+          <tr seq="hide" class="hide" id="car-item-{{$car->id}}">
+
+          @else
 
           <tr id="car-item-{{$car->id}}">
-            <td class="col-md-1 text-center" style="padding-left:40px;">
+
+          @endif
+
+            <td class="col-md-3 text-center" style="padding-left:10px;">
               <label class="radio no-margin">
-                <input name="selected-car" type="radio" data-id="{{$car->id}}">
+
+              @if ($car->last_used) 
+
+                <div class="use-card t-padding use-active" id="use-car-{{$car->id}}" data-id="{{$car->id}}">
+
+              @else
+
+                <div class="use-card t-padding" id="use-car-{{$car->id}}" data-id="{{$car->id}}">
+
+              @endif
+                  {{$car->owner}}&nbsp;&nbsp;&nbsp;&nbsp;{{$car->brand}}
+                  <b></b>
+                </div>
+                <input class="hide" name="selected-car" type="radio" data-id="{{$car->id}}">
               </label>
             </td>
-            <td class="col-md-2 text-center">{{$car->owner}}</td>
-            <td class="col-md-4 text-center">{{$car->brand}}</td>
-            <td class="col-md-4 text-center">{{$car->reco_code}}</td>
-            <td class="col-md-1 text-center">
-              <a href="#">
-                <span class="glyphicon glyphicon-edit"></span>
-              </a> | 
-              <a href="#" data-type="car" data-target="car-item-{{$car->id}}" class="remove-car" data-id="{{$car->id}}">
-                <span class="glyphicon glyphicon-trash" data-id="{{$car->id}}"></span>
-              </a>
+            <td class="col-md-2 text-center">
+              <div class="t-padding">{{$car->owner}}</div>
+            </td>
+            <td class="col-md-3 text-center">
+              <div class="t-padding">{{$car->brand}}</div>
+            </td>
+            <td class="col-md-2 text-center">
+              <div class="t-padding">{{$car->reco_code}}</div>
+            </td>
+            <td class="col-md-2 text-center edit-col">
+              <div class="t-padding">
+                <a href="#" class="itm-edit" data-id="{{$car->id}}" data-iurl="{{ asset('car/carinfo') }}" data-key="car">
+                  <span class="glyphicon glyphicon-edit edit-col"></span>
+                </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" data-type="car" data-target="car-item-{{$car->id}}" class="remove-car" data-id="{{$car->id}}">
+                  <span class="glyphicon glyphicon-trash edit-col" data-id="{{$car->id}}"></span>
+                </a>
+              </div>
             </td>
           </tr>
 

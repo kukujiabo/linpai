@@ -1,12 +1,12 @@
-<?php namespace App\Http\Controllers\Test;
+<?php namespace App\Http\Controllers\Verify;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Events\TriggerSms;
+use App\User;
 use Illuminate\Http\Request;
+use App\Events\TriggerSms;
 
-
-class TestController extends Controller {
+class VerifyController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -82,11 +82,26 @@ class TestController extends Controller {
 		//
 	}
 
-  public function getSms() 
+  public function postRegsms(Request $request) 
   {
-    $result = event(new TriggerSms(15201932985, 'register'));  
+    $mobile = $request->input('mobile'); 
+
+    $user = User::where('mobile', '=', $mobile)
+
+      ->first();
+
+    if (!empty($user->id)) {
+    
+      return $this->failResponse('该手机号已被注册，请更换手机号！');
+    
+    } else {
+    
+      $result = event(new TriggerSms($mobile, 'register')); 
+
+      return $this->successResponse('res', $result);
+    
+    }
   
-    var_dump($result);
   }
 
 }

@@ -1,11 +1,11 @@
 <?php namespace App\Handlers\Events;
 
-use App\Events\TriggerSms;
+use App\Events\TriggerBounGenerator;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class TriggerSmsSend {
+class BounTriggerHandler {
 
 	/**
 	 * Create the event handler.
@@ -20,14 +20,13 @@ class TriggerSmsSend {
 	/**
 	 * Handle the event.
 	 *
-	 * @param  TriggerSms  $event
+	 * @param  TriggerBounGenerator  $event
 	 * @return void
 	 */
-	public function handle(TriggerSms $event)
+	public function handle(TriggerBounGenerator $event)
 	{
-
-    return $event->execSend();
-
+		//
+    return $event->generate();
 	}
 
 }

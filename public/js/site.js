@@ -1,5 +1,8 @@
-var resetInfoRemove;
+var resetInfoRemove; 
 
+var $linpai = {};
+
+window.linpai = $linpai;
 /*
  * 首页横幅
  */
@@ -67,37 +70,104 @@ var resetInfoRemove;
 /*
  * 按钮监听事件
  */
-
 (function () {
+
+  var editBtnListener = this;
+
+  var bindEdit;
   
+  ($linpai.bindEdit = bindEdit = function () {
+  
+    var editBtns = $('.itm-edit');
+
+    editBtns.unbind('click');
+    /*
+     * 编辑按钮绑定事件
+     */
+    editBtns.click(function (e) {
+
+      e.preventDefault();
+
+      var that = $(this);
+
+      var oid = that.data('id');
+
+      var key = that.data('key');
+
+      $.get(that.data('iurl'), { "key": key, "oid": oid }, function (data) {
+      
+        if (data.code) {
+        
+          var obj = data[key];
+
+          if (obj != undefined && obj != null) {
+          
+             editBtnListener[ 'fill' + key ](obj, oid);
+          
+          }
+        
+        } else {
+        
+        
+        }
+      
+      }, 'json');
+    
+    });
+
+  })();
+  
+
   /*
    * order confirm add car info.
    */
   var addCar = $('#car-info-add')
-    
-  addCar.click(function () {
 
-    var that = $(this);
+  $linpai.editCar = function () {
   
     $('#car-info-edit').slideToggle(function () {
-    
+
+      var that = $('#car-info-add');
+
+      var content = that.find('#c-i-a-content');
+
       if (that.data('status') == 'show') {
+
+        that.find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
       
-        that.html('取消编辑');
+        content.html(content.data('open'));
 
         that.data('status', 'hide');
       
       } else {
 
-        var s = "<span class=\"glyphicon glyphicon-plus\"></span>";
+        that.find('.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-plus');
       
-        that.html( s + '新增车辆');
+        content.html(content.data('close'));
 
         that.data('status', 'show');
+
+        $('#new-car-form')[0].reset();
+
+        $linpai.certFilesReset();
       
       }
     
     });
+  
+  };
+    
+  addCar.click(function () {
+
+    var that = $(this);
+
+    var carform = $('#new-car-form');
+
+    carform.attr('action', carform.data('addurl'));
+
+    carform.attr('status', 'add');
+  
+    $linpai.editCar();
 
   });
 
@@ -105,30 +175,52 @@ var resetInfoRemove;
    * order confirm add new address info.
    */
   var addAddress = $('#new-address-add');
+
+  $linpai.editReceiver = function () {
+  
+    $('#new-address-info').slideToggle(function () {
+
+      var that = $('#new-address-add');
+
+      var content = that.find('#n-a-content');
+    
+      if (that.data('status') == 'show') {
+
+        that.find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+      
+        content.html('取消地址编辑');
+
+        that.data('status', 'hide');
+
+      } else {
+
+        that.find('.glyphicon').removeClass('glyphicon-minus').addClass('glyphicon-plus');
+      
+        content.html('新增地址信息');
+
+        that.data('status', 'show');
+
+        $linpai.areaReset();
+
+        $('#new-receiver-form')[0].reset();
+      
+      }
+
+    });
+  
+  };
   
   addAddress.click(function () {
 
     var that = $(this);
 
-    $('#new-address-info').slideToggle(function () {
-    
-      if (that.data('status') == 'show') {
-      
-        that.html('取消编辑');
+    var receiverForm = $('#new-receiver-form');
 
-        that.data('status', 'hide');
-      
-      } else {
+    receiverForm.attr('action', receiverForm.data('addurl'));
 
-        var s = '<span class="glyphicon glyphicon-plus"></span>';
-      
-        that.html( s + '&nbsp;新增地址');
+    receiverForm.attr('status', 'add');
 
-        that.data('status', 'show');
-      
-      }
-    
-    });
+    $linpai.editReceiver();
   
   });
 
@@ -231,14 +323,16 @@ var resetInfoRemove;
    */
   var carInfoClick = function () {
 
-    console.log($('input[name=selected-car]'));
-    
     $('input[name=selected-car]').click(function () {
 
-      console.log(this);
-    
-      $('#car-info-field').find('input[name=car]').val($(this).data('id'));
-    
+      var that = $(this);
+
+      $('#car-info-field').find('input[name=car]').val(that.data('id'));
+
+      $('#car-body').find('.use-card').removeClass('use-active');
+
+      $('#use-car-' + that.data('id')).addClass('use-active');
+
     });
   
   };
@@ -249,7 +343,13 @@ var resetInfoRemove;
 
     $('input[name=selected-receiver]').click(function () {
 
-      $('#receiver-info-field').find('input[name=receiver]').val($(this).data('id'));
+      var that = $(this);
+
+      $('#receiver-info-field').find('input[name=receiver]').val(that.data('id'));
+
+      $('#receiver-body').find('.use-card').removeClass('use-active');
+
+      $('#use-receiver-' + that.data('id')).addClass('use-active');
 
     });
   
@@ -273,9 +373,11 @@ var resetInfoRemove;
   
     dataType: 'json',
 
-    resetForm: true,
+    resetForm: false,
 
     success: function (data) {
+
+      console.log(data);
 
       if (!data.code) {
 
@@ -318,13 +420,39 @@ var resetInfoRemove;
             $('#car-list-table').removeClass('hide');
 
             $('#car-list-table').show();
+
+            $('#more-car-info').removeClass('hide');
           
           });
         
         }
 
-        $('#car-body').append(html);
+        if (carform.attr('status') == 'edit') {
 
+          var oldItm = $('#' + $(html).attr('id'));
+
+          var preItm = oldItm.prev();
+
+          if (preItm.size() > 0) {
+
+            preItm.after(html);
+
+          } else { 
+          
+            $('#car-body').prepend(html); 
+          }
+
+          oldItm.remove();
+
+        } else {
+
+          $('#car-body').append(html);
+
+        }
+
+        /*
+         * 绑定删除事件
+         */
         resetInfoRemove();
 
         carform.find('img').each(function (i, t) {
@@ -339,7 +467,26 @@ var resetInfoRemove;
         
         });
 
+        /*
+         * 绑定选中车辆事件
+         */
         carInfoClick();
+
+        /*
+         * 绑定编辑事件
+         */
+        $linpai.bindEdit();
+
+        /*
+         * 清空车辆信息编辑
+         */
+        $('#new-car-form')[0].reset();
+
+        $linpai.certFilesReset();
+
+        $linpai.editCar();
+
+        $linpai.toast('保存成功', '', 1000);
       
       }
     
@@ -368,6 +515,16 @@ var resetInfoRemove;
   });
 
   /*
+   * 重置车辆编辑的图片
+   */
+  $linpai.certFilesReset = function () {
+  
+    carform.find('img').attr('src', '');
+  
+  };
+
+  /*
+   *
    * 提交收货人信息
    */
   var receiverForm = $('#new-receiver-form');
@@ -382,7 +539,7 @@ var resetInfoRemove;
 
     dataType: 'json',
 
-    resetForm: true,
+    resetForm: false,
 
     success: function (data) {
 
@@ -402,6 +559,7 @@ var resetInfoRemove;
 
         $('#address-alert').html(s);
 
+
       } else {
 
         var item = data.result;
@@ -410,15 +568,53 @@ var resetInfoRemove;
         
           $('#receiver-empty-info').fadeOut('fast', function () {
           
-            $('#receiver-list-table').removeClass('hide');
+            $('#receiver-list-table').removeClass('hide').show();
+
+            $('#more-receiver-info').removeClass('hide');
+
           
           });
         
         }
-      
-        $('#receiver-body').append(item);
 
+        if (receiverForm.attr('status') == 'edit') {
+        
+          var oldItm = $('#' + $(item).attr('id'));
+
+          var preItm = oldItm.prev();
+
+          if (preItm.size() > 0) {
+          
+            preItm.after(item);
+          
+          } else {
+          
+            $('#receiver-body').prepend(item);
+          
+          }
+
+          oldItm.remove();
+
+        } else { 
+
+          $('#receiver-body').append(item);
+
+        }
+
+        /*
+         * 绑定删除事件
+         */
         resetInfoRemove();
+
+        /*
+         * 绑定编辑事件
+         */
+        $linpai.bindEdit();
+        
+        /*
+         * 关闭编辑区域
+         */
+        $linpai.editReceiver();
 
         $('.selected-province').html('选择省份');
 
@@ -427,15 +623,16 @@ var resetInfoRemove;
         $('#selected-district').html('选择区域');
 
         receiverInfoClick();
-      
-      } 
+
+        $linpai.toast('保存成功！', '', 1000);
+
+       }
     
     },
 
     error: function (err) {
     
       console.log(err);
-
     
     }
   
@@ -561,7 +758,127 @@ var resetInfoRemove;
 
   }
 
+  /*
+   * 填充车辆编辑表单
+   */
+  editBtnListener.fillcar = function (obj, oid) {
+
+    var carform = $('#new-car-form');
+
+    carform.find('input[name=cid]').val(oid);
+
+    for (var ky in obj) {
+
+      var itm = carform.find('input[name=' + ky + ']');
+        
+      if (itm.attr('type') == 'text') {
+      
+        itm.val(obj[ky]);
+      
+      } else if (itm.attr('type') == 'hidden') {
+        
+        itm.val(obj[ky]);
+        
+        var imgItm = carform.find('img[target=' + ky + ']');
+
+        if (imgItm.size() > 0) {
+        
+          imgItm.attr('src', '/imgs/tmps/' + itm.val());
+        
+        }
+
+      } else if (itm.attr('type') == 'radio') {
+
+        itm.each(function (i, t) {
+
+          var th = $(t);
+
+          if (th.attr('id') == obj[ky]) {
+
+            console.log(th.attr('id'));
+
+            th.attr('checked', true);
+
+            th.val() == 'domestic' ? carform.find('p[filename=validate_paper]').html('合格证扫描件') : carform.find('p[filename=validate_paper]').html('报关单扫描件'); 
+          
+          } else {
+
+            th.removeAttr('checked');
+          
+          }
+
+        });
+      
+      }
+
+    }
+
+    /*
+     * 设置编辑表单
+     */
+    carform.attr('action', carform.data('editurl'));
+
+    carform.attr('status', 'edit');
+
+    carform.find('#c-i-tit').html('编辑车辆信息');
+
+    var addCar = $('#car-info-add');
+
+    if (addCar.data('status') == 'show') {
+    
+      $linpai.editCar();
+    
+    }
+  
+  };
+
+  editBtnListener.fillreceiver = function (obj ,rid) {
+
+    var receiverForm = $('#new-receiver-form');
+
+    receiverForm.attr('status', 'edit');
+
+    for (var k in obj) {
+
+      var value = obj[k];
+    
+      var itm = receiverForm.find('input[name=' + k + ']');
+    
+      itm.val(value);
+
+      /*
+       * 填充地区
+       */
+      if (k == 'province') $('.selected-province').html(value);
+      else if (k == 'city') $('#selected-city').html(value);
+      else if (k == 'district') $('#selected-district').html(value);
+    
+    }
+
+    /*
+     * 设置编辑表单
+     */
+    receiverForm.attr('action', receiverForm.data('editurl'));
+
+    receiverForm.find('input[name=rid]').val(rid);
+
+    receiverForm.find('#r-i-tit').html('编辑收货地址');
+
+    var addReceiver = $('#new-address-add');
+
+    if (addReceiver.data('status') == 'show') {
+    
+      $linpai.editReceiver();
+    
+    }
+  
+  };
+
 })();
+
+/*
+ * 显示列表更多信息
+ */
 
 
 (function () {
@@ -659,8 +976,16 @@ var addressBind;
         $('#nav-province-list').html(data.res);
 
         $('.province-item').click(function (e) {
-        
+
           e.preventDefault();
+
+          $('input[name=province]').val('');
+          $('input[name=city]').val('');
+          $('input[name=district]').val('');
+          $('#city-menu').html('');
+          $('#district-menu').html('');
+          $('#selected-city').html('选择城市');
+          $('#selected-district').html('选择区域');
         
           var that = $(this);
 
@@ -717,6 +1042,9 @@ var addressBind;
       $(t).click(function (e) {
 
         e.preventDefault();
+
+        $('#selected-district').html('选择区域');
+        $('input[name=district]').val('');
     
         var name = $(this).html();
 
@@ -782,12 +1110,22 @@ var addressBind;
 
   addressBind.provinceBind();
 
+  $linpai.areaReset = function () {
+  
+    $('.selected-province').html('选择省份');
+    $('#selected-city').html('选择城市');
+    $('#selected-district').html('选择区域');
+
+    addressBind.provinceBind();
+  
+  };
+
 })();
 
 /*
  * 绑定信息删除事件
  */
-(resetInfoRemove = function () {
+($linpai.resetInfoRemove = resetInfoRemove = function () {
 
   $('a.remove-receiver').click(function (e) {
   
@@ -1531,8 +1869,7 @@ var addressBind;
  */
 (function () {
 
-  var registrar = $('#register-box');
-
+  var registrar = $('#register-box'); 
   registrar.find('input').focus(function () {
 
     var that = $(this);
@@ -1559,17 +1896,19 @@ var addressBind;
 
       if (data.code) {
       
-        $('body').append("<div class=\"over-all\"></div>");
-
-        $('body').append("<div class=\"box login-notice animated infinite bounce\">注册成功,返回首页！</div>");
-
-        window.setTimeout('window.location.href="/home"', 1500);
+        $linpai.toast('注册成功', 'window.location.href="/home"', 1500)
       
       } else {
-      
+
         $.each(data.failed, function (n, val) {
         
-          regForm.find('input[name=' + val + ']').css({background: '#ebccd1'});
+          var field = regForm.find('input[name=' + val + ']');
+          
+          field.css({background: '#ebccd1'});
+          
+          field.attr('placeholder', '填写错误！');
+            
+          field.val('');
         
         });
       
@@ -1592,7 +1931,6 @@ var addressBind;
     }
 
   };
-
 
   regSubmit.click(function (e) {
   
@@ -1632,29 +1970,145 @@ var addressBind;
   pInput.change(function () {
 
     var pwd = pInput.val();
+    
+    var that = $(this);
 
     if (pwd.length > 0 && pwd.length < 6) {
 
-      pInput.val('');
+      that.val('');
 
-      pInput.css({'background': '#ebccd1'});
+      that.css({'background': '#ebccd1'});
 
-      pInput.attr('placeholder', '请输入长度 6 －18 位的密码');
+      that.attr('placeholder', '请输入长度 6 －18 位的密码');
     
     }
+
+  });
+
+  pInput.focus(function () {
+  
+    var that = $(this);
+
+    that.css({'background': '#fff'});
+
+    that.attr('placeholder', '');
   
   });
 
 })();
 
 /*
- * 编辑表格填充
+ * 修改密码
  */
 (function () {
 
+  var passModifyBtn = $('#password-modify');
 
+  var passBlock = $('#passwd-modify');
+        
+  var passform = $('#passwd-form');
+
+  passModifyBtn.click(function (e) {
+
+    e.preventDefault();
+
+    passBlock.removeClass('hide').fadeIn();
+
+    $('.over-all').click(function () {
+
+      passBlock.fadeOut();
+    
+      passform[0].reset(); 
+    
+    });
+
+  });
+
+  if (passform.size() > 0) {
+
+    passform.ajaxForm();
+
+    var passOptions = {
+
+      dataType: 'json',
+    
+      resetForm: true,
+    
+      success: function (data) {
+
+        passBlock.find('.alert').addClass('hide');
+
+        if (data.code) {
+
+          passBlock.find('.alert-success').removeClass('hide').html('修改成功，请重新登录');
+
+          passBlock.find('#passwd-box').addClass('animated infinite bounce');
+
+          passform[0].reset();
+
+          passform.find('input[type=password]').enable(false).css({'background': '#f5f5f5'});
+
+          setTimeout('$(\'.over-all\').fadeOut();$(\'#passwd-modify\').fadeOut();window.location.href=\'/auth/login\'', 1500);
+
+        } else {
+
+          if (data.msg == 'miss_match') {
+          
+            passBlock.find('.alert-danger').removeClass('hide').html('原密码输入错误！');
+          
+          } else if (data.msg == 'not_match') {
+
+            passBlock.find('.alert-danger').removeClass('hide').html('两次输入的密码不一致！');
+
+          }
+
+        }
+
+      }, 
+
+      error: function (err) {
+
+        console.log(err);
+
+      }
+    
+    };
+
+    var passSubmit = $('#pass-submit');
+
+    passSubmit.click(function (e) {
+
+      e.preventDefault();
+
+      var inputs = passform.find('input[type=password]');
+
+      var legal = true;
+
+      for (var i = 0; i < inputs.size(); i++) {
+
+        var input = $(inputs[i]);
+
+        if (input.val() == '') {
+
+          legal = false;
+
+          input.css({ 'background': '#ebccd1' }).attr('placeholder', '请填写' + input.attr('title'));
+
+        }
+
+      }
+
+      if (legal) {
+
+        passform.ajaxSubmit(passOptions);
+
+      } 
+
+    });
+
+  }
+  
 })();
-
 
 
 function modal (e, th) {
@@ -1682,6 +2136,8 @@ function modal (e, th) {
           if (0 == deletedItem.siblings().size()) {
 
             $('#' + that.data('type') + '-list-table').fadeOut('fast', function () {
+
+              $('#more-' + that.data('type') + '-info').addClass('hide');
 
               $('#'+ that.data('type') + '-empty-info').removeClass('hide').fadeIn('fast');
 
@@ -1748,3 +2204,16 @@ function isMobile(mobile) {
   return reg.test(mobile);
 
 }
+
+$linpai.toast = function (shortStr, scripts, timeout) {
+
+   $('body').append("<div class=\"over-all\"></div>");
+
+   $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
+
+   window.setTimeout(scripts, timeout);
+
+   window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', timeout);
+
+
+};

@@ -14,11 +14,14 @@ use App\Models\District;
 use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
+use App\Events\TriggerBounGenerator;
 use \Pingpp\Pingpp as Pingpp;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Validator;
+use App\Events\TriggerSms;
+use App\User;
 
 
 class OrdersController extends Controller {
@@ -89,11 +92,21 @@ class OrdersController extends Controller {
 
       ->where('active', '=', 1)
 
+      ->orderBy('last_used', 'desc')
+
       ->get();
 
     $cars = array();
 
+    $defaultCar = null;
+
     foreach ($carsData as $car) {
+
+      if ($car->last_used) {
+      
+        $defaultCar = $car;
+      
+      }
     
       array_push($cars, $car);
     
@@ -108,6 +121,8 @@ class OrdersController extends Controller {
     $receiverInfosData = ReceiverInfo::where('uid', '=', $user->id)
         
       ->where('active', '=', 1)
+
+      ->orderBy('last_used', 'desc')
 
       ->get();
 
@@ -141,9 +156,17 @@ class OrdersController extends Controller {
     
     }
 
+    $defaultReceiver = null;
+
     foreach ($receiverInfosData as $receiverInfo) {
     
       array_push($receiverInfos, $receiverInfo);
+
+      if ($receiverInfo->last_used) {
+      
+        $defaultReceiver = $receiverInfo;
+      
+      }
     
     }
 
@@ -173,7 +196,11 @@ class OrdersController extends Controller {
 
       'formCode' => $formCode,
 
-      'is_upload' => true
+      'is_upload' => true,
+
+      'defaultCar' => $defaultCar,
+
+      'defaultReceiver' => $defaultReceiver
 
     ];
 
@@ -183,10 +210,14 @@ class OrdersController extends Controller {
 
   public function postPay(Request $request) 
   {
-    
+    /*
+     * 防止表单重复提交
+     * 
+     * Session 存入表单令牌
+     */
     if (Session::get('order_submit') == $request->input('form_code')) {
     
-      redirect('/order/pay?order=' + Session::get('order_code'));
+      return redirect('/order/pay?order=' . Session::get('order_code'));
     
     } else {
 
@@ -254,6 +285,52 @@ class OrdersController extends Controller {
     //新建订单:
     $order = Order::create($newOrder);
 
+    //记录用户选择的车型
+    $car = Car::where('uid', '=', $user->id)
+
+      ->where('last_used', '=', 1)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    if (!empty($car->id) && ($car->id != $params['car'])) {
+    
+      $car->last_used = 0;
+
+      $car->save();
+      
+    }
+
+    Car::where('id', '=', $params['car'])
+
+      ->where('active', '=', 1)
+
+      ->update(['last_used' => 1]);
+
+    //记录用户选择的收货地址
+    $receiver = ReceiverInfo::where('uid', '=', $user->id)
+
+      ->where('last_used', '=', 1)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    if (!empty($receiver->id) && ($receiver->id != $params['receiver'])) {
+
+      $receiver->last_used = 0;
+
+      $receiver->save();
+
+    }
+
+    ReceiverInfo::where('id', '=', $params['receiver'])
+
+      ->where('active', '=', 1)
+
+      ->update(['last_used' => 1]);
+
     Session::put('order_code', $order->code);
 
     //检测优惠券是否可用
@@ -319,6 +396,8 @@ class OrdersController extends Controller {
 
     $receiver = ReceiverInfo::where('id', '=', $order->rid)->first();
 
+    $pay_token = md5($order->id . time());
+
     $data = [
     
       'reduction' => $reduction,
@@ -332,6 +411,8 @@ class OrdersController extends Controller {
       'good' => $good,
 
       'receiver' => $receiver,
+
+      'pay_token' => $pay_token,
 
       'is_pay' => true
     
@@ -359,6 +440,13 @@ class OrdersController extends Controller {
 
       ->first();
 
+    if (empty($order->id)) {
+
+      return redirect('/home');
+
+    }
+
+
     $good = Good::where('id', '=', $order->gid)
 
           ->where('active', '=', 1)
@@ -385,6 +473,8 @@ class OrdersController extends Controller {
 
     $reduction = $orderPrice->cut_fee;
 
+    $pay_token = md5($order->id . time());
+
     $data = [
     
       'good' => $good,
@@ -394,6 +484,8 @@ class OrdersController extends Controller {
       'receiver' => $receiver,
       
       'order' => $order,
+
+      'pay_token' => $pay_token,
 
       'is_pay' => true
     
@@ -405,6 +497,20 @@ class OrdersController extends Controller {
 
   public function postPayed (Request $request)
   {
+    if (Session::get('pay_token') == $request->input('pay_token')) {
+
+      return redirect('/home');
+
+    } else {
+
+      Session::put('pay_token', $request->input('pay_token'));
+
+    }
+
+
+    /*
+     * 防止表单被重复提交
+     */
     $user = Auth::user();
 
     $pay = $request->input('pay');
@@ -458,18 +564,31 @@ class OrdersController extends Controller {
 
       ->first();
 
-      
     /*
      * todo pay.
      */
+    
   
+    /*
+     * 发送订单确认短信
+     * 1.查询用户是否有推荐码，如果没有，则生成
+     * 2.发送短信 订单号，推荐码，抵扣费用
+     */
+    $boun = event(new TriggerBounGenerator(Auth::user(), 'recommend'))[0];
+
+    $sms = event(new TriggerSms($user->mobile, 'payed', ['order' => $order->code, 'boun' => $boun->code, 'fee' => $boun->note]));
 
     /*
      * pay success.
      *
-     * 1.判断是否使用推荐码
+     * 1.将订单状态置为已付款
+     * 2.判断是否使用推荐码
      *
      */ 
+    $order->status = 1;
+
+    $order->save();
+
     foreach ($orderBouns as $orderBoun) {
 
       $orderBoun->success = 1;
@@ -481,6 +600,16 @@ class OrdersController extends Controller {
         /*
          * 如果是推荐码.
          */
+        $friend = User::find($orderBoun->owner_id);
+
+        if (!empty($friend->id)) {
+          /*
+           * 触发短信
+           */
+          event(new TriggerSms($friend->mobile, 'friend_use'));
+
+        }
+
         $bCount = OrderBoun::where('bcode', '=', $orderBoun->bcode)
 
           ->where('rewarded', '=', 0)
@@ -754,5 +883,9 @@ class OrdersController extends Controller {
     return $note;
 
   }
+
+  /*
+   * todo token
+   */
 
 }

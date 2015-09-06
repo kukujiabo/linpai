@@ -129,9 +129,6 @@
     </div>
   </div>
 <div class="qr-code">
-  <img src="/imgs/qr-code.png">
-  <div class="focus-brand">
-    扫一扫关注51临牌公众微信号，更多优惠即刻享受
-  </div>
+  <img src="/imgs/m-code.png">
 </div>
 @endsection

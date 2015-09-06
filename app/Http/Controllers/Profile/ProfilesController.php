@@ -16,6 +16,9 @@ use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
 use Auth;
+use Validator;
+use Hash;
+use Crypt;
 
 class ProfilesController extends Controller {
 
@@ -78,7 +81,9 @@ class ProfilesController extends Controller {
 
       'page' => $page,
 
-      'pages' => $pages
+      'pages' => $pages,
+
+      'orderActive' => true
     
     ];
 
@@ -122,7 +127,9 @@ class ProfilesController extends Controller {
     
       'good_attribs' => $attributes,
 
-      'cars' => $cars
+      'cars' => $cars,
+
+      'carActive' => true
     
     ];
 
@@ -137,7 +144,9 @@ class ProfilesController extends Controller {
   
     $data = [
     
-      'user' => $user
+      'user' => $user,
+
+      'accountActive' => true
     
     ];
 
@@ -275,7 +284,9 @@ class ProfilesController extends Controller {
 
       'cities' => $cities,
 
-      'districts' => $districts
+      'districts' => $districts,
+
+      'receiverActive' => true
     
     ];
 
@@ -336,7 +347,9 @@ class ProfilesController extends Controller {
     
       'bouns' => $bouns,
     
-      'recomend' => $recomend
+      'recomend' => $recomend,
+
+      'bounsActive' => true
     
     ];
   
@@ -448,6 +461,75 @@ class ProfilesController extends Controller {
     }
 
     return $html;
+  
+  }
+
+  public function postPasswd (Request $request)
+  {
+    $authUser = Auth::user();
+
+    $user = User::find($authUser->id);
+
+    $validate = Validator::make($request->input(), [
+    
+      'oldpassword' => 'required',
+
+      'newpassword' => 'required',
+
+      'confirmpassword' => 'required'
+    
+    ]);
+
+    if ($validate->fails()) {
+
+      $failed = [];
+
+      foreach ($validate->failed() as $key => $fail) {
+
+        array_push($failed, $key);
+
+      }
+
+      return $this->failResponse($failed);
+    
+    }
+
+    $oldpassword = $request->input('oldpassword');
+  
+    $newpassword = $request->input('newpassword'); 
+
+    $confirmpassword = $request->input('confirmpassword');
+
+    if ($confirmpassword != $newpassword) {
+
+      return $this->failResponse('not_match');
+
+    }
+
+    /*
+     * 查询原密码
+     */
+    if (!Auth::validate(['mobile' => $user->mobile, 'password' => $oldpassword])) {
+
+      return $this->failResponse('miss_match');
+
+    }
+
+    $user->password = bcrypt($newpassword);
+
+    $res = $user->save();
+
+    if ($res) {
+
+      Auth::logout();
+
+      return $this->successResponse('res', [$res, $user->password, bcrypt($oldpassword)]);
+
+    } else {
+
+      return $this->failResponse('sys_err');
+    
+    }
   
   }
 

@@ -11,15 +11,18 @@
 
     @if ($good->id == $gid)
 
-    <li class="col-md-6 active no-padding" role="presentation" style="border: 0px">
+    <li class="col-xs-6 active no-padding" role="presentation" style="border: 0px">
 
     @else
 
-    <li class="col-md-6 no-padding" role="presentation" style="border: 0px">
+    <li class="col-xs-6 no-padding" role="presentation" style="border: 0px">
 
     @endif
-      <a href="#{{ $good->code }} " aria-controls="{{ $good->code }}" role="tab" data-toggle="tab"  style="border: 0px">
+      <a href="#{{ $good->code }}" class="good-tab" aria-controls="{{ $good->code }}" role="tab" data-toggle="tab"  style="border: 0px">
         {{ $good->name }} 
+        @if ($good->id == $gid)
+        <b class="triggle-up"></b>
+        @endif
       </a>
     </li>
   
@@ -100,5 +103,23 @@
     </p>
   </div>
   </div>
+  <script type="text/javascript">
 
+    window.onload = function () {
+
+      var goodTabs = $('.good-tab');
+    
+      goodTabs.click(function (e) {
+      
+        var itm = $(this);
+
+        goodTabs.find('.triggle-up').remove();
+
+        itm.append('<b class="triggle-up"></b>');
+      
+      });
+    
+    };
+
+  </script>
 @endsection

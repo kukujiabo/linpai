@@ -3,15 +3,16 @@
 @section('subcontent')
 <ul class="nav nav-tabs good-nav" role="tablist">
   <li class="col-md-6 no-padding active" role="presentation" style="border:0px;">
-    <a href="#boun-code" class="" role="tab" data-toggle="tab" style="border:0px">我的推荐码</a>
+    <a href="#boun-code" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">
+      我的推荐码
+      <b class="triggle-up"></b>
+    </a>
   </li>
   <li class="col-md-6 no-padding" role="presentation" style="border:0px;">
-    <a href="#boun-quan" class="" role="tab" data-toggle="tab" style="border:0px">我的优惠券</a>
+    <a href="#boun-quan" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">我的优惠券</a>
   </li>
 </ul>
 <div class="tab-content">
-  
-  
   <div class="tab-pane active" role="tab-pannel" id="boun-code">
   @if (!empty($recomend))
     <div class="row padding-5">
@@ -38,51 +39,95 @@
       </form>
     </div>
     <div style="clear:both;"></div>
-  @else
-
-
-  @endif
-  <div class="padding-5">
-    <div class="col-md-8 text-left">
-      <div class="row">
-        <div class="col-xs-1"> 1.</div>
-        <div class="col-xs-11 no-padding">在您完成一次购买后您将获得一个推荐码，并可以推荐给朋友。</div>
+    <div class="padding-5">
+      <div class="col-md-8 text-left">
+        <div class="row">
+          <div class="col-xs-1"> 1.</div>
+          <div class="col-xs-11 no-padding">在您完成一次购买后您将获得一个推荐码，并可以推荐给朋友。</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1">2.</div>
+          <div class="col-xs-11 no-padding">每一位使用您推荐码购买的朋友都将获得30元的减免！作为奖励，您也将获得一张30元的优惠券，优惠券自动放入“我的优惠券”中！</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1">3.</div><div class="col-xs-11 no-padding">您推荐的朋友数量将不受限制。</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-1">4.</div><div class="col-xs-11 no-padding">您的每位朋友之能使用一次该推荐码。</div>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-xs-1">2.</div>
-        <div class="col-xs-11 no-padding">每一位使用您推荐码购买的朋友都将获得30元的减免！作为奖励，您也将获得一张30元的优惠券，优惠券自动放入“我的优惠券”中！</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-1">3.</div><div class="col-xs-11 no-padding">您推荐的朋友数量将不受限制。</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-1">4.</div><div class="col-xs-11 no-padding">您的每位朋友之能使用一次该推荐码。</div>
-      </div>
+      <div style="clear:both;"></div>
+      <div class="padding-5"></div>
     </div>
-    <div style="clear:both;"></div>
-    <div class="padding-5"></div>
-  </div>
+  @else
+    <div class="padding-20 text-left">
+      <h3>您还没有推荐码</h3>
+      <p class="padding-5">在完成第一次购买后，您将会得到一个推荐码，并可以分享给朋友。</p>
+      <a role="button" class="btn btn-info" href="/home#buy">立刻购买临牌</a>
+    </div>
+  @endif
   </div>
   <div class="tab-pane" role="tab-pannel" id="boun-quan">
-    <div class="sub-wrapper">
-      <h3>我的优惠券</h3>
-    </div>
-    <hr>
-    <div class="sub-wrapper">
-    
-      <ul class="row quan-list">
-      @foreach ($bouns as $boun)
-        <li class="col-sm-4 col-md-4 bouns">
-          <div class="quan-itm">
-            <b class="q-price">{{$boun->note}}RMB</b>
-            <br>
-            <b>CODE:{{$boun->code}}</b>
-          </div>
-        </li>
-    
-      @endforeach
+    @if (count($bouns))
+      <div class="sub-wrapper">
+        <div class="padding-5"></div>
+        <ul class="row quan-list">
+        @foreach ($bouns as $boun)
+          <li class="col-sm-4 col-md-4 bouns">
+            <div class="quan-itm">
+              <b class="q-price">{{$boun->note}}RMB</b>
+              <br>
+              <b>CODE:{{$boun->code}}</b>
+            </div>
+          </li>
+        
+        @endforeach
+        </ul>
+        <div class="padding-5"></div>
+        <div class="t-left width-100 padding-20" style="position:absolute;bottom:0px;">
+          <p>
+            1. 每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
+          </p>
+          <p>
+            2. 您的优惠码仅限您本人使用。
+          </p>
+          <p>
+            3. 同一优惠码不可重复使用。
+          </p>
+          <div class="padding-5"></div>
+        </div>
       </div>
-    </div>
+    @else
+      <div class="padding-20 text-left">
+       <h3>您当前没有优惠券</h3> 
+       <div class="padding-5"></div>
+       <p>
+          将您的优惠码分享给好友，好友使用您提供的推荐码成功购买临牌后，您将获得一张价值30元的现金抵扣券。
+       </p>
+       <p>
+          一张优惠券只能使用一次，一次购买最多可使用三张优惠券或推荐码。
+        </p>
+      </div>
+    @endif
   </div>
 </div>
+<script type="text/javascript">
+
+  window.onload = function () {
+
+    var goodTabs = $('.bouns-tab');
+  
+    goodTabs.click(function (e) {
+    
+      var itm = $(this);
+
+      goodTabs.find('.triggle-up').remove();
+
+      itm.append('<b class="triggle-up"></b>');
+    
+    });
+  
+  };
+
+</script>
 @endsection

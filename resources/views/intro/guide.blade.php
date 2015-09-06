@@ -4,7 +4,7 @@
 
 <div class="top-50">
 </div>
-<div class="box fade-in" style="padding-top:0px;background:#fff;">
+<div class="box" style="padding-top:0px;background:#fff;">
   <img src="/imgs/zhinan.png" style="width:100%">
   <div class="padding-20">
     <h3 class="text-center meta-font">车辆临时牌照办理指南</h3>

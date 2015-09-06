@@ -86,37 +86,11 @@ class ReceiverInfosController extends Controller {
 
   public function postAdd (Request $request) 
   {
-    $validate = Validator::make($request->input(), [
-    
-      'receiver' => 'required',
-
-      'province' => 'required',
-
-      'city' => 'required',
-
-      'district' => 'required',
-
-      'address' => 'required',
-    
-      'mobile' => 'required',
-
-      'post_code' => 'required'
-
-    ]);
+    $validate = $this->receiverValidate($request->input());
 
     if ($validate->fails()) {
     
-      $failed = $validate->failed();
-
-      $message = array();
-
-      foreach ($failed as $key => $val) {
-
-        $message[$key] = $this->receiverinfoRequiredFields($key); 
-      
-      } 
-
-      return $this->failResponse($message);
+      return $this->validateFail($validate);
     
     }
 
@@ -133,6 +107,60 @@ class ReceiverInfosController extends Controller {
     $html = $this->htmlTemplate($result);
   
     return $this->successResponse('result', $html);
+
+  }
+
+  public function postEdit (Request $request)
+  {
+    $validate = $this->receiverValidate($request->input());
+
+    if ($validate->fails()) {
+    
+      return $this->validateFail($validate);
+    
+    }
+
+    $rid = $request->input('rid');
+
+    if (empty($rid)) {
+    
+      return $this->failResponse('no_rid');
+    
+    }
+
+    $input = $request->input();
+
+    $receiver = ReceiverInfo::find($rid);
+
+    $attributes = $receiver->getAttributes();
+
+    foreach ($input as $key => $value) {
+    
+      if (array_key_exists($key, $attributes)) {
+
+        $receiver->$key = $value;
+      
+      }
+    
+    }
+
+    $res = $receiver->save();
+
+    if ($res) {
+
+      $html = $this->htmlTemplate($receiver);
+    
+      return $this->successResponse('result', $html);
+    
+    } else {
+
+      /*
+       * todo
+       */
+    
+      return $this->failResponse();
+    
+    }
 
   }
 
@@ -177,42 +205,88 @@ class ReceiverInfosController extends Controller {
   
   }
 
+  public function getReceiverinfo (Request $request) {
+  
+    $rid = $request->input('oid');
+
+    $receiver = ReceiverInfo::where('id', '=', $rid)
+
+      ->where('active', '=', 1)
+
+      ->first();
+  
+    if (empty($receiver->id)) {
+
+      return $this->failResponse();
+
+    } else {
+    
+      return $this->successResponse('receiver', $receiver);
+    
+    }
+  
+  }
+
   private function htmlTemplate ($obj) {
+
+    $iurl = url('receiver/receiverinfo');
 
     $html = "<tr id=\"receiver-item-{$obj->id}\" data-id=\"{$obj->id}\">";
 
-    $html .= "<td class=\"col-md-1 t-center\" style=\"padding-left:35px;\">";
+    $html .= "<td class=\"col-md-2 t-center\" style=\"padding-left:10px;\">";
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<input type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
+    $html .= "<div class=\"use-card t-padding\" id=\"use-receiver-{$obj->id}\" data-id=\"{$obj->id}\">";
+
+    $html .= "{$obj->receiver}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->city}";
+
+    $html .= "<input class=\"hide\" type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
+
+    $html .= "</div>";
   
     $html .= "</label>";
 
     $html .= "</td>";
 
-    $html .= "<td class=\"col-md-1  t-center\">{$obj->receiver}</td>";
+    $html .= "<td class=\"col-md-2  t-center\">";
+    
+    $html .= "<div class=\"t-padding\">{$obj->receiver}</div>";
+    
+    $html .= "</td>";
 
-    $html .= "<td class=\"col-md-6  t-center\">{$obj->province}&nbsp;{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</td>";
-
-    $html .= "<td class=\"col-md-3  t-center\">{$obj->mobile}</td>";
+    $html .= "<td class=\"col-md-4  t-center\">";
+    
+    $html .= "<div class=\"t-padding over-elis receive-address \">{$obj->province}&nbsp;{$obj->city}&nbsp;{$obj->district}&nbsp;{$obj->address}</div>";
+          
+    $html .= "</td>";
 
     $html .= "<td class=\"col-md-1  t-center\">";
+    
+    $html .= "<div class=\"t-padding\">{$obj->mobile}</div>";
+    
+    $html .= "</td>";
 
-    $html .= "<a href=\"#\" class=\"edit-car\" data-target=\"\">";
+    $html .= "<td class=\"col-md-2  t-center\">";
 
-    $html .= "<span class=\"glyphicon glyphicon-edit\"></span>";
+    $html .= "<div class=\"t-padding edit-col\">";
+
+    $html .= "<a href=\"#\" class=\"itm-edit\" data-id=\"$obj->id\" data-iurl=\"{$iurl}\" data-key=\"receiver\">";
+
+    $html .= "<span class=\"glyphicon glyphicon-edit edit-col\"></span>";
 
     $html .= "</a>";
 
-    $html .= " | ";
+    $html .= "&nbsp;&nbsp; | &nbsp;&nbsp;";
 
     $html .= "<a href=\"#\" class=\"remove-receiver\" data-id=\"{$obj->id}\" data-type=\"receiver\" data-target=\"receiver-item-{$obj->id}\">";
 
 
-    $html .= "<span class=\"glyphicon glyphicon-trash\" data-id=\"{$obj->id}\"></span>";
+    $html .= "<span class=\"glyphicon glyphicon-trash edit-col\" data-id=\"{$obj->id}\"></span>";
 
     $html .= "</a>";
+
+    $html .= "</div>";
 
     $html .= "</td>";
 
@@ -220,6 +294,44 @@ class ReceiverInfosController extends Controller {
 
     return $html;
 
+  }
+
+  private function receiverValidate($input)
+  {
+    return Validator::make($input, [
+    
+      'receiver' => 'required',
+
+      'province' => 'required',
+
+      'city' => 'required',
+
+      'district' => 'required',
+
+      'address' => 'required',
+    
+      'mobile' => 'required',
+
+      'post_code' => 'required'
+    
+    ]);      
+  
+  }
+
+  private function validateFail($validate)
+  {
+    $failed = $validate->failed();
+
+    $message = array();
+
+    foreach ($failed as $key => $val) {
+
+      $message[$key] = $this->receiverinfoRequiredFields($key); 
+    
+    } 
+
+    return $message;
+  
   }
 
 }

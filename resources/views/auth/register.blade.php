@@ -113,13 +113,49 @@
 
       ckBtn.click(function (e) {
 
-        countTime = 60;
-      
         e.preventDefault();
 
-        ckBtn.attr('disabled', 'disabled');
+        var mInput = $('input[name=mobile]');
 
-        timer = window.setInterval(setTime, 1000);
+        var mobile = mInput.val();
+
+        if (mobile == '' || mobile == undefined || mobile == '') {
+        
+          mInput.css({'background': '#f2dede'});
+
+          mInput.attr('placeholder', '请先填写手机号码！');
+
+          return;
+        
+        }
+
+        $(this).html('发送中...');
+
+        $.post('/verify/regsms', {
+
+          'mobile': mobile,
+
+          '_token': $('input[name=_token]').val()
+        
+        }, function (data) {
+
+          if (data.code) {
+        
+            countTime = 60;
+      
+            e.preventDefault();
+
+            ckBtn.attr('disabled', 'disabled');
+
+            timer = window.setInterval(setTime, 1000);
+
+          } else {
+          
+
+          }
+        
+        }, 'json');
+
       
       });
 

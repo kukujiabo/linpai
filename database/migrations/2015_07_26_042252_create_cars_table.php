@@ -26,6 +26,8 @@ class CreateCarsTable extends Migration {
       $table->string('dir_car_check');
       $table->string('dir_validate_paper');
       $table->string('ext_0')->nullable();
+      $table->string('car_type')->nullable();
+      $table->integer('last_used')->nullable();
       $table->integer('active')->default(1);
 			$table->timestamps();
 		});

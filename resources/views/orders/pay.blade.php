@@ -1,5 +1,6 @@
 @extends('app')
 
+
 @extends('processbar')
 
 @section('content')
@@ -59,6 +60,7 @@
   <div class="padding-20">
     <form class="form" role="form" action="{{asset('order/payed')}}" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+      <input type="hidden" name="pay_token" value="{{$pay_token}}" />
       <input type="hidden" name="order_code" value="{{$order->code}}"/>
       <div class="radio padding-5">
         <label class="control-label" for="zhifubao">
