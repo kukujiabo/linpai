@@ -9,7 +9,7 @@ class TriggerSms extends Event {
 
 	use SerializesModels;
 
-  protected $url = "https://api.submail.cn/message/xsend.json";
+  protected $url = "http://api.submail.cn/message/xsend.json";
 
   protected $appid = "10444";
 
