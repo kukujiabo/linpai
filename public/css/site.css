@@ -603,7 +603,7 @@ ul.process {
 }
 
 .width-100 {
-  width: 100%;
+  width: 100% !important;
 }
 
 .t-left {
@@ -1422,3 +1422,23 @@ div#youhui-alert {
   border-bottom:10px solid #fff;
 }
 
+.btn {
+  border-radius: 0px !important;
+}
+
+.alert {
+  border-radius: 0px !important;
+}
+
+.form-control {
+  border-radius: 0px !important;
+}
+
+.well {
+  border-radius: 0px !important;
+}
+
+.no-padding-both-side {
+  padding-left: 0;
+  padding-right: 0;
+}

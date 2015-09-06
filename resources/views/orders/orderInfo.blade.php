@@ -121,6 +121,9 @@
       <div class="form-group padding-5">
         <a class="" id="quan-view"  role="button" data-status="show">查看可用优惠码</a>
       </div>
+      <div class="padding-5">
+        <a class="links" href="/profile/mybouns?type=discount" target="_blank">什么是优惠券?</a>
+      </div>
     </form>
     <p>
     </p>
@@ -179,7 +182,6 @@
       </label>
     </div>
     <div class="">
-
     </div>
     <fieldset id="good-info-field">
       <input type="hidden" required="yes" data-name="商品" name="good" value="{{$good->id}}">
@@ -206,7 +208,7 @@
       <input type="hidden" name="youhui_2" value="">
       <input type="hidden" name="youhui_3" value="">
     </fieldset>
-    <button role="button" type="submit" class="btn btn-info btn-lg" role="button" id="to-pay" disabled>下一步</button>
+    <button role="button" type="submit" class="btn btn-info btn-lg" role="button" id="to-pay">下一步</button>
   </div>
   </p>
 </form>

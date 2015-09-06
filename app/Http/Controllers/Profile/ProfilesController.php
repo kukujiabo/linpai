@@ -324,7 +324,8 @@ class ProfilesController extends Controller {
 
   public function getMybouns (Request $request) 
   {
-
+    $selectedtab = empty($request->input('type')) ? 'rec' : $request->input('type');
+    
     $user = Auth::user();
 
     $bouns = Boun::where('uid', '=', $user->id)
@@ -348,6 +349,8 @@ class ProfilesController extends Controller {
       'bouns' => $bouns,
     
       'recomend' => $recomend,
+
+      'type' => $selectedtab,
 
       'bounsActive' => true
     

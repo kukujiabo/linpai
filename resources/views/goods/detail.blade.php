@@ -62,21 +62,25 @@
                   {{$error}}
                 </div>
               @endif
-              <div class="btn-group">
+              <div class="btn-group width-100">
                 <button class="btn btn-default" id="g-minu" role="button" data-id="{{$good->id}}" data-target="g-num-{{$good->id}}">
                   <span class="glyphicon glyphicon-minus"></span>
                 </button>
                 <input class="btn btn-default g-num" type="text" id="g-num-{{$good->id}}" name="gnum" value="1">
-                <button class="btn btn-default" id="g-plus" role="button" data-id="{{$good->id}}" data-target="g-num-{{$good->id}}">
+                <button class="btn btn-default" id="g-plus" role="button" data-id="{{$good->id}}" data-target="g-num-{{$good->id}}" data-container="body" data-toggle="popover" data-placement="right" data-content="每位用户每次仅可购买一张车辆临时牌照">
+
                   <span class="glyphicon glyphicon-plus"></span>
                 </button>
+                <div class="col-xs-6 require" style="padding-top:5px;">
+                  <span class="require" >&nbsp;&nbsp;每位用户每次限购1份</span>
+                </div>
               </div>
               <div class="padding-5"></div>
-              <div class="alert alert-info">
-                价格： ￥<span class="g-price" id="price-{{$good->id}}">{{$goodInfos[$key]->value}}</span> 元
-                <span class="tips price-tips">(可使用优惠券或推荐码抵扣部分金额。)</span>
+              <div class="">
+                价格：￥<span class="g-price" id="price-{{$good->id}}">{{$goodInfos[$key]->value}}</span> 元
                 <input type="hidden" id="single-price-{{$good->id}}" value="{{$goodInfos[$key]->value}}">
               </div>
+              <div class="padding-5"></div>
               <div class="form-group">
                 <button class="btn btn-danger" role="button" type="submit">立即购买</button>
               </div>
@@ -118,6 +122,17 @@
         itm.append('<b class="triggle-up"></b>');
       
       });
+
+      $('button#g-plus').hover(function () {
+
+        $(this).popover('show');
+
+      }, function () {
+
+        $(this).popover('hide');
+      
+      });
+
     
     };
 

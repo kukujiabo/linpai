@@ -2,18 +2,45 @@
 
 @section('subcontent')
 <ul class="nav nav-tabs good-nav" role="tablist">
+
+  @if ($type == 'rec')
+
   <li class="col-md-6 no-padding active" role="presentation" style="border:0px;">
+
+  @else
+
+  <li class="col-md-6 no-padding" role="presentation" style="border:0px;">
+
+  @endif
+
     <a href="#boun-code" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">
       我的推荐码
       <b class="triggle-up"></b>
     </a>
   </li>
-  <li class="col-md-6 no-padding" role="presentation" style="border:0px;">
+  
+  @if ($type == 'discount')
+
+    <li class="col-md-6 no-padding active" role="presentation" style="border:0px;">
+
+  @else
+
+    <li class="col-md-6 no-padding" role="presentation" style="border:0px;">
+
+  @endif
     <a href="#boun-quan" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">我的优惠券</a>
   </li>
 </ul>
 <div class="tab-content">
+  @if ($type == 'rec')
+  
   <div class="tab-pane active" role="tab-pannel" id="boun-code">
+
+  @else
+
+  <div class="tab-pane" role="tab-pannel" id="boun-code">
+
+  @endif
   @if (!empty($recomend))
     <div class="row padding-5">
       <div class="col-md-3 padding-5">
@@ -67,7 +94,17 @@
     </div>
   @endif
   </div>
+  
+  @if ($type == 'discount')
+
+  <div class="tab-pane active" role="tab-pannel" id="boun-quan">
+
+  @else
+
   <div class="tab-pane" role="tab-pannel" id="boun-quan">
+
+  @endif
+
     @if (count($bouns))
       <div class="sub-wrapper">
         <div class="padding-5"></div>
@@ -83,8 +120,7 @@
         
         @endforeach
         </ul>
-        <div class="padding-5"></div>
-        <div class="t-left width-100 padding-20" style="position:absolute;bottom:0px;">
+        <div class="t-left width-100 padding-20">
           <p>
             1. 每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
           </p>
