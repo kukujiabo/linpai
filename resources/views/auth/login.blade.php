@@ -64,9 +64,10 @@
               <div class="col-xs-2 col-xs-offset-1">
 						    <a class="btn btn-link require links no-padding-left" href="{{ url('/password/email') }}">忘记密码？</a>
               </div>
-              <div class="col-xs-6 col-xs-offset-1">
-                <a class="btn btn-link links" href="{{asset('auth/register')}}">
-                还没有51临牌账号？点击注册</a>
+              <div class="col-xs-8 col-xs-offset-1">
+                还没有51临牌账号？
+                <a class="btn btn-link links" style="padding-left:0px;padding-right:0px;" href="{{asset('auth/register')}}">
+                点击注册</a>
               </div>
             </div>
 					</form>

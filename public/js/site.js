@@ -304,6 +304,7 @@ window.linpai = $linpai;
 
     e.preventDefault();
 
+    /*
     var gnum = $('#' + $(this).data('target'));
 
     var id = $(this).data('id');
@@ -315,6 +316,7 @@ window.linpai = $linpai;
     var price = parseInt(sprice) * parseInt(gnum.val());
 
     $('#price-' + id).html(price);
+    */
   
   });
 
@@ -879,12 +881,17 @@ window.linpai = $linpai;
 /*
  * 显示列表更多信息
  */
-
-
 (function () {
 
   //validate goods num;
-  var num = $('#g-num');
+  var num = $('input.g-num');
+
+  num.change(function (e) {
+  
+    num.val(1);
+  
+  });
+
 
 })();
 
@@ -1389,6 +1396,7 @@ var addressBind;
 
   $('#contract').click(function () {
   
+    /*
     var that = $(this);
 
     if (that.is(':checked')) {
@@ -1400,6 +1408,7 @@ var addressBind;
       bt.enable(false);
     
     }
+    */
     
   });
 
@@ -1775,7 +1784,7 @@ var addressBind;
 
       } else {
 
-        cInput.css({'background': '#d6e9c6'});
+        //cInput.css({'background': '#d6e9c6'});
       
       }
     
@@ -2199,9 +2208,12 @@ function htmlReplace (str) {
 
 function isMobile(mobile) {
 
+  /*
   var reg = /^0?1[3|4|5|7|8|][0-9]\d{8}$/;
 
   return reg.test(mobile);
+  */
+  return mobile.length == 11;
 
 }
 

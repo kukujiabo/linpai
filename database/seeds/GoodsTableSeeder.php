@@ -13,11 +13,11 @@ class GoodsTableSeeder extends Seeder {
 
     Good::create([
     
-      'name' => '三个月以内的临牌',
+      'name' => '上海临时行驶车号牌',
 
       'code' => 'below-three',
 
-      'intro' => '三个月以内的是上海的临时牌照。',
+      'intro' => '（每台车累计仅可办理3次上海临时牌照）388元／张',
 
       'pic' => 'imgs/goods/fraly.jpg',
 
@@ -28,11 +28,11 @@ class GoodsTableSeeder extends Seeder {
 
     Good::create([
     
-      'name' => '三个月以上的临牌',
+      'name' => '外省临时行驶车号牌',
 
       'code' => 'beyond-three',
 
-      'intro' => '三个月上内的是非上海地区的临时牌照。',
+      'intro' => '（省市随机；上海临牌累计已满3次者购买外省临牌）488元／张',
 
       'pic' => 'imgs/goods/bujiadi.jpg',
 
