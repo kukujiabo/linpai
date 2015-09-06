@@ -1,8 +1,6 @@
 @extends('app')
 
-
 @section('content')
-<div class="top-50"></div>
 <div class="row padding-5">
   @yield('path-nav')
 </div>
