@@ -20,7 +20,9 @@
         @endif
 
           <a href="{{ asset('profile/myorder') }}">
+          <!--
           <span class="glyphicon glyphicon-shopping-cart"></span>
+          -->
           我的订单</a>
         </li>
         <hr class="no-margin"></hr>
@@ -36,7 +38,9 @@
         @endif
 
           <a href="account">
+          <!--
           <span class="glyphicon glyphicon-wrench"></span>
+          -->
           帐号设置</a>
         </li>
         <hr class="no-margin"></hr> 
@@ -52,7 +56,9 @@
         @endif
 
           <a href="{{ asset('profile/carinfo') }}">
+          <!--
           <span class="glyphicon glyphicon-file"></span>
+          -->
           车辆信息</a>
         </li>
         <hr class="no-margin"></hr>
@@ -68,7 +74,9 @@
         @endif
         
           <a href="{{ asset('profile/receiverinfo')}}">
+          <!--
           <span class="glyphicon glyphicon-pencil"></span>
+          -->
           收货信息</a>
         </li>
         <hr class="no-margin"></hr>
@@ -83,7 +91,9 @@
 
         @endif
           <a href="{{ asset('profile/mybouns') }}">
+          <!--
           <span class="glyphicon glyphicon-tag"></span>
+          -->
           优&nbsp;&nbsp;惠&nbsp;&nbsp;券</a>
         </li>
       </ul>

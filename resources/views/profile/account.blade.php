@@ -3,7 +3,7 @@
 @section('subcontent')
 <div class="sub-wrapper">
   <div class="padding-5">
-    <h3>账号信息</h3>
+    <h3>账号设置</h3>
     <hr>
   </div>
   <form class="form-inline" id="person-form" action="{{ asset('profile/update') }}" method="post">

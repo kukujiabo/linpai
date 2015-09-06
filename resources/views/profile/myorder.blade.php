@@ -12,7 +12,7 @@
   <div class="padding-5"></div>
   <div class="sub-wrapper">
     <div class="alert alert-warning padding-5">
-      您还没有下过单哦～
+      您还没有下过订单，您可以即刻&nbsp;<a href="/goods">购买临牌</a>
     </div>
   </div>
 

@@ -18,7 +18,7 @@ class GoodsController extends Controller {
 	{
     $goods = Good::all();
 
-    $gid = $request->input('gid');
+    $gid = empty($request->input('gid')) ? $goods[0]->id : $request->input('gid');
 
     $goodInfos = array();
 
