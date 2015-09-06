@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="box no-padding no-border" id="good-info">
+<div class="box no-padding" id="good-info">
   <ul class="nav nav-tabs good-nav" role="tablist">
     
     @foreach ($goods as $key => $good)

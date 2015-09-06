@@ -118,31 +118,40 @@
       <div class="form-group padding-5">
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
       </div>
+      <div class="form-group padding-5">
+        <a class="" id="quan-view"  role="button" data-status="show">查看可用优惠码</a>
+      </div>
     </form>
-    <div class="alert alert-warning" role="alert">
-        *每人每次最多限用3个优惠码，每个优惠码仅可使用一次！
-    </div>
     <p>
-      <button class="btn btn-info" id="quan-view"  role="button" data-status="show">查看可用优惠码</button>
     </p>
   </div>
   <div class="edit-info gray-light" id="quan-box">    
     <ul class="row quan-list">
-      @foreach ($bouns as $boun) 
+      @if (!count($bouns))
 
-        <li class="col-md-3 bouns" >
-          <a class="bouns" href="#" data-code="{{$boun->code}}" id="b-{{$boun->code}}" data-value="{{$boun->note}}">
-            <div class="quan-itm r-trans">
-              <b class="q-price">{{$boun->note}}RMB</b>
-              <b>CODE:{{$boun->code}}</b>
-            </div>
-          </a>
-        </li>
+        <h4>您当前还没有优惠码哦～</h4>
 
-      @endforeach
+      @else
+        @foreach ($bouns as $boun) 
+
+          <li class="col-md-3 bouns" >
+            <a class="bouns" href="#" data-code="{{$boun->code}}" id="b-{{$boun->code}}" data-value="{{$boun->note}}">
+              <div class="quan-itm r-trans">
+                <b class="q-price">{{$boun->note}}RMB</b>
+                <b>CODE:{{$boun->code}}</b>
+              </div>
+            </a>
+          </li>
+
+        @endforeach
+      @endif
     </ul>
   </div>
 </div>
+<div class="require">
+    *每人每次最多限用3个优惠码，每个优惠码仅可使用一次！
+</div>
+<div class="padding-5"></div>
 <p>备注</p>
 <form class="form" id="next-form" method="post" action="order/pay">
   <input type="hidden" name="form_code" value="{{$formCode}}" >

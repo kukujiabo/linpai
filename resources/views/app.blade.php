@@ -17,7 +17,8 @@
 <body style="background: #eee">
 @endif
 @yield('model-box')
-<header id="header" class="header header--fixed hide-from-print animated flipInX" role="banner">
+<!--<header id="header" class="header header--fixed hide-from-print animated flipInX" role="banner"> -->
+<header id="" class="header" role="banner" style="border-bottom:1px solid #eee;">
   <nav class="navbar no-margin" style="background:#fff;">
     <div class="padding-5">
       <div class="col-md-offset-9" style="color: #999">
@@ -80,7 +81,7 @@
 @yield('banner')
 
 @if (empty($home))
-<div class="container top-100 content-body">
+<div class="container content-body">
   <div class="wrapper">
     <div class="process">
       @yield('process')

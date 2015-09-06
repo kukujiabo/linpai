@@ -1,5 +1,5 @@
 @section('banner')
-<div id="my-carousel" class="carousel slide" data-interval="5000" style="height: auto; border-radius: 3px; margin-top:130px;">
+<div id="my-carousel" class="carousel slide" data-interval="5000" style="height: auto; border-radius: 3px;">
   <ol class="carousel-indicators">
     <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
     <li data-target="#my-carousel" data-slide-to="1"></li>
