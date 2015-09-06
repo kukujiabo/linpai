@@ -132,7 +132,7 @@
     <ul class="row quan-list">
       @if (!count($bouns))
 
-        <h4>您当前还没有优惠码哦～</h4>
+        <h4>您的帐户中暂时还没有优惠券，<a href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
 
       @else
         @foreach ($bouns as $boun) 
