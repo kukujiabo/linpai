@@ -128,6 +128,13 @@ class UploadsController extends Controller {
 
       $file = $request->file($code);
 
+      if ($file->getSize() > /*3145728*/1024) {
+
+        return $this->failResponse('size_exceed');
+
+      }
+
+
       if (!is_dir($storage_path)) {
       
         try {
@@ -162,7 +169,7 @@ class UploadsController extends Controller {
 
     } else {
 
-      return $this->failResponse('Empty file.');
+      return $this->failResponse('empty_file');
 
     }
     

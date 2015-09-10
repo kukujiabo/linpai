@@ -90,7 +90,7 @@
     <div class="padding-20 text-left">
       <h3>您还没有推荐码</h3>
       <p class="padding-5">在完成第一次购买后，您将会得到一个推荐码，并可以分享给朋友。</p>
-      <a role="button" class="btn btn-info" href="/home#buy">立刻购买临牌</a>
+      <a role="button" class="btn btn-info theme-back-blue" href="/home#buy">立刻购买临牌</a>
     </div>
   @endif
   </div>

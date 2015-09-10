@@ -22,11 +22,28 @@ use Session;
 use Validator;
 use App\Events\TriggerSms;
 use App\User;
-use App\Models\Bank;
+
 
 class OrdersController extends Controller {
 
 
+  private $alipay_config = array(
+  
+    'partner' => '2088021237428966',
+
+    'seller_email' => 'linpai51@foxmail.com',
+
+    'key' => 'g0cezbipn4glrjbakg89n898j5a6qhbt',
+
+    'sign_type' => strtolower('MD5'),
+
+    'input_charset' => 'utf-8',
+
+    'cacert' => getcwd() . '\\cacert.pem',
+
+    'transport' => 'http'
+  
+  );
 
   /*
    *
@@ -116,9 +133,9 @@ class OrdersController extends Controller {
 
     $goodAttribsInfo = $this->getGoodAttributesInfo($gid);
 
-    //$citiesData = City::all();
+    $citiesData = City::all();
 
-    //$districtsData = District::all();
+    $districtsData = District::all();
 
     $receiverInfosData = ReceiverInfo::where('uid', '=', $user->id)
         
@@ -140,13 +157,12 @@ class OrdersController extends Controller {
     
     }
 
-    //$cities = array();
+    $cities = array();
 
-    //$districts = array();
+    $districts = array();
 
     $receiverInfos = array();
 
-    /*
     foreach ($citiesData as $city) {
       
       array_push($cities, $city);
@@ -158,7 +174,6 @@ class OrdersController extends Controller {
       array_push($districts, $district);
     
     }
-     */
 
     $defaultReceiver = null;
 
@@ -184,9 +199,9 @@ class OrdersController extends Controller {
 
       'good_attribs' => $attribs,
 
-      //'cities' => $cities,
+      'cities' => $cities,
 
-      //'districts' => $districts,
+      'districts' => $districts,
 
       'receiverInfos' => $receiverInfos,
 
@@ -402,8 +417,6 @@ class OrdersController extends Controller {
 
     $pay_token = md5($order->id . time());
 
-    $banks = Bank::all();
-
     $data = [
     
       'reduction' => $reduction,
@@ -419,8 +432,6 @@ class OrdersController extends Controller {
       'receiver' => $receiver,
 
       'pay_token' => $pay_token,
-
-      'banks' => $banks,
 
       'is_pay' => true
     
@@ -448,14 +459,12 @@ class OrdersController extends Controller {
 
       ->first();
 
-    /*
-     * 订单不存在或已经支付过了。
-     */
     if (empty($order->id)) {
 
       return redirect('/home');
 
     }
+
 
     $good = Good::where('id', '=', $order->gid)
 
@@ -485,8 +494,6 @@ class OrdersController extends Controller {
 
     $pay_token = md5($order->id . time());
 
-    $banks = Bank::all();
-
     $data = [
     
       'good' => $good,
@@ -499,27 +506,9 @@ class OrdersController extends Controller {
 
       'pay_token' => $pay_token,
 
-      'banks' => $banks,
-
       'is_pay' => true
     
     ];
-
-    if (!empty(Session::get('pay_omit'))) {
-
-      $data['pay_omit'] = true;
-
-      Session::forget('pay_omit');
-
-    }
-
-    if (!empty(Session::get('bank_omit'))) {
-
-      $data['bank_omit'] = true;
-
-      Session::forget('bank_omit');
-
-    }
 
     return view('orders/pay', $data);
   
@@ -539,70 +528,16 @@ class OrdersController extends Controller {
 
     $order = Order::where('code', '=', $request->input('order_code'))->first();
 
-    if (empty($order)) {
-
-      return redirect('/home');
-
-    }
-
     if ($order->status > 0) {
 
       //todo payed
-      return redirect('/home');
 
     } else if ($order->active == 0) {
 
       //todo order closed.
-      return redirect('/home');
 
     }
 
-    if (empty($request->input('pay'))) {
-
-      Session::put('pay_omit', true);
-
-      return redirect('/order/pay?ordedr=' . $order->code);
-
-    }
-
-    $good = Good::find($order->gid);
-
-    $orderPrice = OrderPrice::where('oid', '=', $order->id)->first();
-
-    require_once('lib/alipay_submit.class.php');
-
-    switch ($request->input('pay')) {
-
-      case 'zhifubao':
-
-        return $this->alipay($order, $good, $orderPrice);
-
-      case 'union':
-
-        $bank = $request->input('bank');
-
-        if (empty($bank)) {
-
-          Session::put('bank_omit', true);
-
-          return redirect('/order/pay?order=' . $order->code);
-
-        }
-
-        return $this->creditpay($order, $good, $orderPrice, $bank);
-
-      default :
-
-        break;
-
-    }
-
-  }
-
-  private function alipay ($order, $good, $orderPrice)
-  {
-    $alipay_config = $this->payConfig();
-  
     //支付类型
     $payment_type = "1";
 
@@ -616,16 +551,19 @@ class OrdersController extends Controller {
     $out_trade_no = $order->code;
 
     //订单名称
-    $subject = $good->name . ' * ' . $order->num;
+    $subject = 
 
     //订单金额
-    $total_fee = 0.1;
+    $total_fee = $_POST['WIDtotal_fee'];
 
     //订单描述
-    $body = '测试订单描述';
+    $body = $_POST['WIDbody'];
 
     //商品展示地址
-    $show_url = "http://www.51linpai.com:8000/goods?gid={$good->id}";
+    $show_url = $_POST['WIDshow_url'];
+
+    //防钓鱼时间戳
+    $anti_phishing_key = "";
 
     //客户端ip地址
     $exter_invoke_ip = $_SERVER['REMOTE_ADDR'];
@@ -642,82 +580,17 @@ class OrdersController extends Controller {
        "total_fee" => $total_fee,
        "body"  => $body,
        "show_url"  => $show_url,
+       "anti_phishing_key" => $anti_phishing_key,
        "exter_invoke_ip" => $exter_invoke_ip,
-       "_input_charset"  => trim(strtolower($alipay_config['input_charset']))
+       "_input_charset"  => trim(strtolower($alipay_config['input_charset'])
      );
 
+    $alipaySubmit = new AlipaySubmit($alipay_config);
 
-    $alipaySubmit = new \AlipaySubmit($alipay_config);
+    $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
 
-    $parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
+    return $html_text;
 
-    $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "正在跳转到支付宝...");
-
-    return $html_text; 
-  
-  }
-
-  private function creditpay ($order, $good, $orderPrice, $bank) 
-  {
-    $alipay_config = $this->payConfig();
-  
-    $payment_type = 1;
-
-    $notify_url = "http://www.51linpai.com:8000/order/paynotify";
-
-    //页面跳转同步通知页面路径
-    $return_url = "http://www.51linpai.com:8000/payredirect";
-
-    //商户网站订单系统中唯一订单号
-    $out_trade_no = $order->code;
-
-    //订单名称
-    $subject = $good->name . ' * ' . $order->num;
-
-    //订单金额
-    $total_fee = 0.1;
-
-    //订单描述
-    $body = '测试订单描述';
-
-    //商品展示地址
-    $show_url = "http://www.51linpai.com:8000/goods?gid={$good->id}";
-
-    //支付方式
-    $paymethod = "bankPay";
-
-    //默认网银
-    $defaultbank = $bank;
-
-    //客户端ip地址
-    $exter_invoke_ip = $_SERVER['REMOTE_ADDR'];
-
-    $parameter = array(
-       "service" => "create_direct_pay_by_user",
-       "partner" => trim($alipay_config['partner']),
-       "seller_email" => trim($alipay_config['seller_email']),
-       "payment_type"  => $payment_type,
-       "notify_url"  => $notify_url,
-       "return_url"  => $return_url,
-       "out_trade_no"  => $out_trade_no,
-       "subject" => $subject,
-       "total_fee" => $total_fee,
-       "body"  => $body,
-       "show_url"  => $show_url,
-       "paymethod" => $paymethod,
-       "defaultbank" => $defaultbank,
-       "exter_invoke_ip" => $exter_invoke_ip,
-       "_input_charset"  => trim(strtolower($alipay_config['input_charset']))
-     );
-
-    $alipaySubmit = new \AlipaySubmit($alipay_config);
-
-    $parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
-
-    $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "<h2>正在跳转到支付页面...</h2>");
-
-    return $html_text; 
-  
   }
 
   public function postPayed (Request $request)
@@ -1109,62 +982,8 @@ class OrdersController extends Controller {
 
   }
 
-
-  private function payConfig () 
-  {
-
-    $alipay_config = array();
-  
-    $alipay_config['partner'] = '2088021237428966';
-
-    $alipay_config['seller_email'] = 'linpai51@foxmail.com';
-
-    $alipay_config['key'] = 'g0cezbipn4glrjbakg89n898j5a6qhbt';
-
-    $alipay_config['sign_type'] = strtoupper('MD5');
-
-    $alipay_config['input_charset'] = 'utf-8';
-
-    $alipay_config['cacert'] = getcwd() . '\\cacert.pem';
-
-    $alipay_config['transport'] = 'http';
-  
-    return $alipay_config; 
-  
-  }
-
   /*
    * todo token
    */
-
-  public function getCheckpayed (Request $request) 
-  {
-    $order = $request->input('order');
-
-    if (empty($order)) {
-
-      return $this->failResponse('empty_code');
-
-    }
-
-    $result = Order::where('code', '=', $order)->first();
-
-    if (empty($result->id)) {
-
-      return $this->failResponse('not_found');
-
-    }
-      
-    if ($result->status > 0) {
-
-      return $this->successResponse();
-
-    } else {
-
-      return $this->failResponse('not_pay');
-
-    }
-
-  }
 
 }

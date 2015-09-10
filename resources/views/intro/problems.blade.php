@@ -12,7 +12,7 @@
           <b>办理上海临时车牌号（即上海临时牌照）需要满足什么条件？</b>
         </div>
         <div class="panel-body">
-每台车辆均可以累计办理每个地区的临时号牌总共3次，因此您的爱车总共可以办理3次上海即沪字开头的临时汽车牌照。<a href="/home#buy" class="theme-orig">即刻购买上海临时号牌</a>
+每台车辆均可以累计办理每个地区的临时号牌总共3次，因此您的爱车总共可以办理3次上海即沪字开头的临时汽车牌照。<a href="/home#buy" class="theme-orig" target="_blank">即刻购买上海临时号牌</a>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
           <b>如果办理完三次临时牌照后，还要继续办理临时牌照怎么办？</b>
         </div>
         <div class="panel-body">
-您可以办理外省临时号牌。注意：外省的车辆临时号牌在高峰期（7:00 – 9:30，16:00 – 18:30）是不能在上海上高架行驶的。<a href="/home#buy" class="theme-orig">即刻购买外省临时号牌</a>
+您可以办理外省临时号牌。注意：外省的车辆临时号牌在高峰期（7:00 – 9:30，16:00 – 18:30）是不能在上海上高架行驶的。<a href="/home#buy" class="theme-orig" target="_blank">即刻购买外省临时号牌</a>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
           <b>办理车辆临时号牌，我需要什么材料？</b>
         </div>
         <div class="panel-body">
-          您需要准备的材料如下，详细资料请查看 <a href="/text/metaguide" class="theme-orig">办理材料指南：</a><br><br>
+          您需要准备的材料如下，详细资料请查看<a href="/text/metaguide" class="theme-orig" target="_blank">办理材料指南：</a><br><br>
           (1)车辆所属人身份证正面扫描件<br>
           (2)车辆所属人身份证反面扫描件<br>
           (3)机动车交通事故责任强制保险单扫描件（交强险副本扫描件）<br>
@@ -68,7 +68,7 @@
           <b>如果购买外省临时号牌，我可以指定外省临时号牌的开设地区吗？</b>
         </div>
         <div class="panel-body">
-        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig">请联系我们</a> 的工作人员，我们的客服我尽量满足您的要求。
+        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig" target="_blank">请联系我们</a>的工作人员，我们的客服我尽量满足您的要求。
         </div>
       </div>
 
@@ -78,7 +78,7 @@
           <b>如果购买外省临时号牌，我可以指定外省临时号牌的开设地区吗？</b>
         </div>
         <div class="panel-body">
-        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig">请联系我们</a> 的工作人员，我们的客服我尽量满足您的要求。
+        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig" target="_blank">请联系我们</a>的工作人员，我们的客服我尽量满足您的要求。
         </div>
       </div>
 

@@ -2,6 +2,7 @@
 
 use App\Models\Good;
 use Illuminate\Http\Request;
+use App\Models\GoodAttribsInfo;
 
 class HomeController extends Controller {
 
@@ -33,7 +34,23 @@ class HomeController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-    $goods = Good::all();
+    $goodDatas = Good::all();
+
+    $goods = array();
+
+    foreach ($goodDatas as $good) {
+
+      $gInfo = GoodAttribsInfo::where('gid', '=', $good->id)
+
+        ->where('acode', '=', 'price')
+
+        ->first();
+
+      $good->price = $gInfo->value;
+
+      array_push($goods, $good);
+
+    }
 
     $homeGoodsDisplay = array();
 

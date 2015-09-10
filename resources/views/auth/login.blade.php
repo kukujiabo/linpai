@@ -20,11 +20,15 @@
         </div>
       </div>
       <div>
+            @if (count($errors))
+						<div class="alert alert-danger">
+            @else
 						<div class="alert alert-danger hide">
+            @endif
 							<ul id="err-list">
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
+                @if ($errors)
+                  <li>手机号和密码不匹配，请重新输入！</li>
+                @endif
 							</ul>
 						</div>
 
@@ -46,6 +50,7 @@
 							</div>
 						</div>
             </fieldset>
+            <!--
 						<div class="form-group">
 							<div class="col-xs-6 col-xs-offset-1">
 								<div class="checkbox">
@@ -55,6 +60,7 @@
 								</div>
 							</div>
 						</div>
+            -->
 						<div class="form-group">
 							<div class="col-xs-10 col-xs-offset-1">
 								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified">登录</button>
@@ -62,7 +68,7 @@
 						</div>
             <div class="form-group">
               <div class="col-xs-2 col-xs-offset-1">
-						    <a class="btn btn-link require links no-padding-left" href="{{ url('/password/email') }}">忘记密码？</a>
+						    <a class="btn btn-link require links no-padding-left" href="{{ url('/user/password') }}">忘记密码？</a>
               </div>
               <div class="col-xs-8 col-xs-offset-1">
                 还没有51临牌账号？
@@ -89,7 +95,7 @@
 
           var password = $('input[name=password]').val();
 
-          if (isMobile(mobile) && password != '' && password != undefined) {
+          if (isMobile(mobile) && password != undefined && password.length > 5) {
           
             $('#login-form').submit();
           

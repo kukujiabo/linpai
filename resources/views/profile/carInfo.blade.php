@@ -18,13 +18,19 @@
 
 </div>
 <div class="sub-wrapper" id="car-info-toggle">
-  @if (!empty($cars))
+  @if (count($cars) < 2)
+
+  <button role="button" class="hide btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+
+  @else 
+
   <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
+
+  @endif
     <span class="glyphicon glyphicon-chevron-down"></span>
     <span class="m-i-value">更多车辆信息</span>
   </button>
   &nbsp;&nbsp;
-  @endif
   <button role="button" class="btn btn-default" id="car-info-add" data-status="show">
     <span class="glyphicon glyphicon-plus"></span>
     <span id="c-i-a-content" data-close="新增车辆信息" data-open="取消编辑信息">新增车辆信息</span>

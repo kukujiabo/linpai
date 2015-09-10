@@ -24,7 +24,7 @@
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
           <p class="process-bar-step">
-            上传相关的车辆档案，请参考办理材料指南
+            上传相关的车辆档案，请参考 <a href="/text/metaguide">办理材料指南</a>
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -71,6 +71,9 @@
                 <h3>{{ $good->name }}</h3>
                 <p>
                   {{ $good->intro }}
+                </p>
+                <p>
+                  {{ $good->price }}元/张
                 </p>
               </div>
             </a>
