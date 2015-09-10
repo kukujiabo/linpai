@@ -17,7 +17,7 @@ class GoodsTableSeeder extends Seeder {
 
       'code' => 'below-three',
 
-      'intro' => '（每台车累计仅可办理3次上海临时牌照）388元／张',
+      'intro' => '每台车累计仅可办理3次上海临时牌照',
 
       'pic' => 'imgs/goods/fraly.jpg',
 
@@ -32,7 +32,7 @@ class GoodsTableSeeder extends Seeder {
 
       'code' => 'beyond-three',
 
-      'intro' => '（省市随机；上海临牌累计已满3次者购买外省临牌）488元／张',
+      'intro' => '省市随机；上海临牌累计已满3次者购买外省临牌',
 
       'pic' => 'imgs/goods/bujiadi.jpg',
 

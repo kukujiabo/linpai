@@ -49,7 +49,7 @@
 				<div class="form-group">
 					<label class="control-label sr-only">邮箱</label>
 					<div class="col-xs-10 col-xs-offset-1">
-						<input type="email" class="form-control" name="email" placeholder="邮箱" tips="邮箱">
+						<input type="email" class="form-control" name="email" placeholder="邮箱 eg: yourmail@domain.com" tips="邮箱">
 					</div>
 				</div>
 

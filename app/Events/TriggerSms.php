@@ -4,6 +4,7 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use App\Models\RegisterVerify;
 use App\Models\Message;
+use App\Models\ResetPassword;
 
 class TriggerSms extends Event {
 
@@ -20,6 +21,8 @@ class TriggerSms extends Event {
   protected $pro_friend_use = "f4dI42";
 
   protected $pro_payed = "bBX4r1";
+
+  protected $pro_reset = "vcVfe4";
 
   protected $info;
 
@@ -41,6 +44,54 @@ class TriggerSms extends Event {
     $this->info = $info;
 
 	}
+
+  private function resetSms () 
+  {
+    $token = ResetPassword::where('mobile', '=', $this->mobile)->where('active', '=', 1)->first();
+
+    if (!empty($token->id)) {
+
+      $token->active = 0;
+
+      $token->save();
+
+    }
+
+    $newToken = rand(100000, 999999);
+
+    $resetPasswd = new ResetPassword();
+
+    $resetPasswd->mobile = $this->mobile;
+
+    $resetPasswd->token = $newToken;
+
+    $resetPasswd->deliver_at = date('Y-m-d H:i:s');
+
+    $res = $resetPasswd->save();
+
+    if ($res) {
+
+      $post_data = array(
+      
+        'appid' => $this->appid,
+
+        'signature' => $this->signature,
+
+        'project' => $this->pro_reset,
+
+        'vars' => "{ \"token\": \"{$resetPasswd->token}\"}",
+
+        'to' => $this->mobile
+      
+      );
+
+      return $this->send('post', $this->mobile, $post_data);
+
+    }
+
+    return null;
+
+  }
 
   private function registerSms ($mobile) 
   {
@@ -172,13 +223,13 @@ class TriggerSms extends Event {
 
         return $this->payedSms();
 
-        break;
-
       case 'friend_use':
 
         return $this->friendUse();
 
-        break;
+      case 'reset_passwd':
+
+        return $this->resetSms();
       
       default:
 

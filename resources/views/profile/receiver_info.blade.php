@@ -20,13 +20,19 @@
 </div>
 <div class="sub-wrapper" id="new-address-toggle">
 
-@if (!empty($receiverInfos))
+@if (count($receiverInfos) < 2)
+
+  <button role="button" class="hide btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+
+@else
+
   <button role="button" class="btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
+
+@endif
     <span class="glyphicon glyphicon-chevron-down"></span>
     <span class="m-i-value">更多收货地址</span>
   </button>
   &nbsp;&nbsp;
-@endif
 
   <button role="button" class="btn btn-default more-info" id="new-address-add" data-status="show">
     <span class="glyphicon glyphicon-plus"></span>

@@ -42,7 +42,7 @@
     @yield('car_info')
   </div>
   <div class="sub-wrapper" id="car-info-toggle">
-    @if (empty($cars))
+    @if (count($cars) < 2)
     <button role="button" class="hide btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
     @else
     <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
@@ -72,7 +72,7 @@
     @yield('receiver_info')
 
     <div class="wrapper" id="new-address-toggle">
-      @if (empty($receiverInfos))
+      @if (count($receiverInfos) < 2)
       <button role="button" class="hide btn btn-default more-info" id="more-receiver-info" data-target="receiver-list-table" data-mode="hide">
 
       @else
@@ -174,10 +174,9 @@
   <p>
   <div class="col-md-6" id="next-step">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
-    <div class="padding-20">
+    <div class="padding-5">
       <label  for="contract" class="checkbox">
-        <input type="checkbox" id="contract" name="sign">
-        我已阅读且同意
+        <b>请阅读</b>
         <a href="#" class="text-agreement" data-url="buyagreement">《51临牌商品购买协议》</a>
       </label>
     </div>
@@ -201,7 +200,15 @@
 
     </fieldset>
     <fieldset id="receiver-info-field">
+      @if (!empty($defaultReceiver))
+
+      <input type="hidden" required="yes"data-name="收货人信息" name="receiver" value="{{$defaultReceiver->id}}">
+
+      @else 
+
       <input type="hidden" required="yes"data-name="收货人信息" name="receiver" value="">
+
+      @endif
     </fieldset>
     <fieldset id="youhui-field">
       <input type="hidden" name="youhui_1" value="">

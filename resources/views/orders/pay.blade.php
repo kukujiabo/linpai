@@ -15,6 +15,7 @@
   </div>
 </div>
 <div id="order-info" class="box">
+  <input type="hidden" id="o_code" value="{{$order->code}}">
   <div class="block-head">
     <h4>订单信息</h4>
   </div>
@@ -54,36 +55,81 @@
 <div class="padding-5">
 </div>
 <div id="deliver" class="box">
+  @if (!empty($pay_omit))
+
+    <div class="alert alert-danger">
+      请选择支付方式！
+  @else
+    <div class="alert alert-danger hide">
+
+  @endif
+
+  </div>
   <div class="block-head">
     <h4>支付方式</h4>
   </div>
   <div class="padding-20">
-    <form class="form" role="form" action="{{asset('order/payed')}}" method="post">
+    <form class="form" role="form" id="pay_form" action="{{asset('order/paying')}}" method="post" target="_blank">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
       <input type="hidden" name="pay_token" value="{{$pay_token}}" />
       <input type="hidden" name="order_code" value="{{$order->code}}"/>
       <div class="radio padding-5">
         <label class="control-label" for="zhifubao">
-          <input type="radio" id="zhifubao" name="pay" value="zhifubao"> 支付宝
+          @if (!empty($bank_omit)) 
+            <input type="radio" id="zhifubao" name="pay" value="zhifubao"> 支付宝
+          @else
+            <input type="radio" id="zhifubao" name="pay" value="zhifubao" checked> 支付宝
+          @endif
         </label>
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="credit">
-          <input type="radio" id="credit" name="pay" value="union">网银或信用卡
+          @if (!empty($bank_omit))
+            <input type="radio" id="credit" name="pay" value="union" checked>网银或信用卡
+          @else
+            <input type="radio" id="credit" name="pay" value="union">网银或信用卡
+          @endif
         </label>
+          @if (!empty($bank_omit)) 
+
+            <div class="box padding-5" id="bank-list">
+              <div class="alert alert-danger" id="bank-alert">
+              请选择支付银行!
+          @else
+
+            <div class="box hide" id="bank-list">
+              <div class="alert alert-danger hide" id="bank-alert">
+
+          @endif
+  
+          </div>
+          <ul class="row">
+            @foreach ($banks as $bank) 
+              <li class="col-sm-3"> 
+                <div class="padding-5">
+                  <label class="control-label" for="bank_{{$bank->code}}">
+                      <input type="radio" name="bank" id="bank_{{$bank->code}}" value="{{$bank->code}}">{{$bank->name}}
+                  </label>
+                </div>
+              </li>
+            @endforeach
+          </ul>
+        </div>
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="wechat">
           <input type="radio" id="wechat" name="pay" value="wechat"> 微信支付
         </label>
       </div>
+      <!--
       <div class="radio padding-5">
         <label class="control-label" for="zhifubao-code">
           <input type="radio" id="zhifubao-code" name="pay" value="qrcode">支付宝二维码
         </label>
       </div>
+      -->
       <div class="form-group padding-5">
-        <button role="button" class="btn btn-danger " type="submit">立即支付</button>
+        <button role="button" class="btn btn-danger" id="to_pay" type="submit">立即支付</button>
       </div>
     </form>
   </div>
@@ -111,12 +157,108 @@
     </p>
   </div>
 </div>
+<div class="hide" id="waiting-pay">
+<div class="over-all no-padding">
+</div>
+<div class="text-center panel panel-default" id="confirm-pay">
+  <div class="panel-heading" style="background:#333;color:white;">
+    <h4>等待支付</h4>
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-danger hide" id="pay_check_alert">
+    </div>
+    <div class="alert alert-info">
+      请在新窗口中完成支付
+    </div>
+    <button class="btn btn-success" role="button" id="pay-succeed">已支付</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-default" role="button" id="pay-dismiss">未完成</button>
+  </div>
+</div>
+</div>
 <script>
   window.onload = function () {
   
     $(window).bind('beforeunload', function (e) {
     
       e.preventDefault();
+    
+    });
+
+    $('input[name=pay]').change(function () {
+    
+      var that = $(this);
+
+      if (that.val() == 'union') {
+
+        $('#bank-list').removeClass('hide');
+
+      } else {
+
+        $('#bank-list').addClass('hide');
+
+      }
+    
+    });
+
+    $('#pay-succeed').click(function (e) {
+    
+      var order_code = $('#o_code').val();
+
+      if (order_code == undefined || order_code == '') {
+
+        window.location.href = '/home';
+
+      } else {
+
+        $.get('/order/checkpayed', { 'order': order_code }, function (data) {
+
+          if (!data.code) {
+
+            switch (data.msg) {
+
+              case 'not_pay':
+
+                var s = '我们还未收到您的订单支付成功的消息，如果支付失败，请您重新支付。';
+
+                $('#pay_check_alert').removeClass('hide').html(s);
+
+                setTimeout('$("#waiting-pay").addClass("hide")', 3000); 
+
+                break;
+
+              case 'not_found':
+
+                window.location.href="/home";
+
+                break;
+
+              case 'empty_code':
+
+                window.location.href="/home";
+
+                break;
+
+            }
+
+          } else {
+
+            window.location.href = '/profile/myorder';
+
+          }
+
+        }, 'json');
+
+      }
+    
+    });
+
+    $('#pay-dismiss').click(function (e) {
+    
+      e.preventDefault();
+
+      $('#waiting-pay').addClass('hide');
+    
     
     });
   

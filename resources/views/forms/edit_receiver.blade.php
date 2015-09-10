@@ -1,7 +1,7 @@
 @include('area_select')
 
 @section('edit_receiver')
-  <div class="gray-light edit-info" id="new-address-info">
+  <div class="edit-info" id="new-address-info">
     <form class="form-horizontal" method="post" action="{{ asset('receiver/add') }}" data-addurl="{{asset('receiver/add')}}" data-editurl="{{asset('receiver/edit')}}" id="new-receiver-form" status="add">
       <div class="alert alert-danger hide" id="address-alert"></div>
       <h4 id="r-i-tit">使用新地址</h4>

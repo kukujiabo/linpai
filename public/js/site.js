@@ -42,27 +42,27 @@ window.linpai = $linpai;
  */
 (function() {
 
-    var header = $('#header');
+  var header = $('#header');
 
-    var initTop = 0;
+  var initTop = 0;
 
-    $(window).scroll(function () {
+  $(window).scroll(function () {
+  
+    var scrollTop = $(document).scrollTop();
+
+    if (scrollTop > initTop) {
     
-      var scrollTop = $(document).scrollTop();
-
-      if (scrollTop > initTop) {
-      
-        header.fadeOut('normal');
-      
-      } else {
-      
-        header.fadeIn('fast');
-      
-      }
-
-      initTop = scrollTop;
+      header.fadeOut('normal');
     
-    });
+    } else {
+    
+      header.fadeIn('fast');
+    
+    }
+
+    initTop = scrollTop;
+  
+  });
 
 }());
 
@@ -488,7 +488,7 @@ window.linpai = $linpai;
 
         $linpai.editCar();
 
-        $linpai.toast('保存成功', '', 1000);
+        //$linpai.toast('保存成功', '', 1000);
       
       }
     
@@ -545,6 +545,8 @@ window.linpai = $linpai;
 
     success: function (data) {
 
+      console.log(data);
+
       if (data.code == 0) {
 
         $('#address-alert').removeClass('hide');
@@ -560,7 +562,6 @@ window.linpai = $linpai;
         }
 
         $('#address-alert').html(s);
-
 
       } else {
 
@@ -626,7 +627,7 @@ window.linpai = $linpai;
 
         receiverInfoClick();
 
-        $linpai.toast('保存成功！', '', 1000);
+        //$linpai.toast('保存成功！', '', 1000);
 
        }
     
@@ -916,8 +917,7 @@ window.linpai = $linpai;
 
       sequentialUploads: true,
 
-      dataType: 'json',
-
+      dataType: 'json', 
       formData: {
       
         code: that.attr('name'),
@@ -944,13 +944,31 @@ window.linpai = $linpai;
     
     }).bind('fileuploaddone', function (e, data) {
 
-      var res = data.result.res;
+      if (data.result.code) {
 
-      $('#hint-' + that.attr('name')).parent().removeClass('alert-info-border');
+        var res = data.result.res;
 
-      $('#upload-img-' + that.attr('name')).attr("src", res.preview);
+        $('#hint-' + that.attr('name')).parent().removeClass('alert-info-border');
 
-      $('#hint-' + that.attr('name')).val(res.tmpfile);
+        $('#upload-img-' + that.attr('name')).attr("src", res.preview);
+
+        $('#hint-' + that.attr('name')).val(res.tmpfile);
+
+      } else if (typeof(data.result.msg) == 'string') {
+        
+        if (data.result.msg == 'size_exceed') {
+
+          progressBar.css({width: 0});
+
+          alert('上传图片大小不能超过3M！');
+
+        } else if (data.result.msg == 'empty_file') {
+
+          alert('上传图片无效，请重新上传');
+
+        }
+
+      }
       
     });
   
@@ -1730,6 +1748,49 @@ var addressBind;
 })();
 
 /*
+ * 检测邮箱格式js
+ */
+(function () {
+
+  var eInput = $('input[type=email]');
+
+  var myreg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+  eInput.change(function (e) {
+  
+    e.preventDefault();
+
+    var that = $(this);
+
+    var mail = that.val();
+
+    if (!myreg.test(mail)) {
+
+      that.val('');       
+
+      that.addClass('alert-red-back');
+
+      that.attr('placeholder', '格式错误！eg: yourmail@domain.com');
+
+    }
+  
+  });
+
+  eInput.focus(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    that.removeClass('alert-red-back');
+
+    that.attr('placeholder', '邮箱 eg: yourmail@domain.com');
+
+  });
+
+})();
+
+/*
  * 检测手机号js
  */
 (function () {
@@ -1744,11 +1805,11 @@ var addressBind;
 
       var that = $(this);
     
-      that.css({'background': '#fff'});
+      that.removeClass('alert-red-back');
 
       if (!isMobile(that.val())) {
       
-        that.css({'background': '#f2dede'});
+        that.addClass('alert-red-back');
 
         that.val('');
 
@@ -1766,6 +1827,16 @@ var addressBind;
   
   }
 
+  mInput.focus(function (e) {
+  
+    var that = $(this);
+
+    that.removeClass('alert-red-back');
+
+    that.attr('placeholder', '请输入11位手机号');
+  
+  });
+
   var cInput = $('.mobile-unique');
 
   cInput.blur(function () {
@@ -1774,9 +1845,11 @@ var addressBind;
 
     $.get('/user/exists', { 'type': 'mobile',  'value': cInput.val() }, function (data) {
 
+      console.log(data);
+
       if (data.code) {
 
-        cInput.css({'background-color': '#f2dede'});
+        cInput.addClass('alert-red-back');
 
         cInput.val('');
 
@@ -1834,7 +1907,7 @@ var addressBind;
 
     var elementLeft = that.offset().left;
 
-    var elementTop = that.offset().top;
+    var elementTop = that.offset().top - document.body.scrollTop;
 
     $('body').append(introImg);
 
@@ -1843,7 +1916,9 @@ var addressBind;
      */
     if (that.data('flow-pos') == 'above') {
 
-      introImg.css({left: elementLeft - (introImg.width()/3), 'bottom': '105px' });
+      console.log(elementTop);
+
+      introImg.css({'left': elementLeft - (introImg.width()/3), 'top': elementTop - (introImg.height() + that.height() * 4), 'position': 'fixed' });
 
       introImg.show();
 
@@ -1905,7 +1980,8 @@ var addressBind;
 
       if (data.code) {
       
-        $linpai.toast('注册成功', 'window.location.href="/home"', 1500)
+        //$linpai.toast('注册成功', 'window.location.href="/home"', 1500)
+        window.location.href = "/home";
       
       } else {
 
@@ -1978,15 +2054,15 @@ var addressBind;
 
   pInput.change(function () {
 
-    var pwd = pInput.val();
-    
     var that = $(this);
 
-    if (pwd.length > 0 && pwd.length < 6) {
+    var pwd = that.val();
+
+    if (pwd.length < 6 || pwd.length > 18) {
 
       that.val('');
 
-      that.css({'background': '#ebccd1'});
+      that.addClass('alert-red-back');
 
       that.attr('placeholder', '请输入长度 6 －18 位的密码');
     
@@ -1998,9 +2074,9 @@ var addressBind;
   
     var that = $(this);
 
-    that.css({'background': '#fff'});
+    console.log(1);
 
-    that.attr('placeholder', '');
+    that.removeClass('alert-red-back');
   
   });
 
@@ -2119,6 +2195,230 @@ var addressBind;
   
 })();
 
+/*
+ * 重置密码
+ */
+(function () {
+
+  var resetForm = $('#passwd_reset_form');
+
+  resetForm.find('input[name=reset_code]').focus(function () {
+  
+    $(this).css({'background': '#fff'}).attr('placeholder', '请填写6位验证码'); 
+  
+  });
+
+  if (!resetForm.size()) {
+
+    return;
+
+  }
+
+  resetForm.ajaxForm();
+
+  var resetOptions = {
+  
+    dataType: 'JSON',
+
+    resetForm: false,
+
+    success: function (data) {
+
+      $('#reset-notice').addClass('hide');
+
+      if (data.code) {
+
+        $linpai.toast('密码重置成功 ！', 'window.location.href="/auth/login"', 1500);  
+
+      } else {
+
+        var result = data.msg;
+
+        if (typeof(result) == 'string') {
+
+          if (result == 'not_match') {
+
+            $('#reset-notice').html('两次输入的密码不一致，请重新输入！').removeClass('hide');
+
+            $('input[type=password]').css({'background': 'rgb(235, 204, 209)'});
+
+          } else if ('user_err') {
+
+            $('#reset-notice').html('该手机号没有注册，您可以 <a href="/auth/register">马上注册</a>').removeClass('hide');
+
+          }
+
+        } else if (typeof(result) == 'object') {
+
+          var s = '';
+
+          for (var k in result) {
+
+            var target = $('input[name=' + k + ']');
+              
+            target.val('').css({'background': 'rgb(235, 204, 209)'});
+
+            s += '<p>' + target.attr('title') + ':填写错误！</p>';
+
+          }
+
+          $('#reset-notice').html(s).removeClass('hide');
+        
+        }
+
+      }
+    
+    },
+
+    error: function (err) {
+
+      console.log(err);
+
+    }
+  
+  };
+
+  var resetSubmit = $('#passwd_reset_submit');
+
+  resetSubmit.click(function (e) {
+
+    e.preventDefault();
+
+    console.log(1);
+
+    var filled = true;
+
+    var inputs = resetForm.find('input[type!=hidden]').each(function (i, t) {
+
+      if ($(t).val().length == 0) {
+
+        filled = false;
+
+        if ($(t).attr('type') == 'password') {
+
+          $(t).css({ 'background': 'rgb(235, 204, 209)' }).attr('placeholder', $(t).attr('title') + '请输入 6 － 18 位密码');
+
+        } else {
+
+          $(t).css({ 'background': 'rgb(235, 204, 209)' }).attr('placeholder', $(t).attr('title') + '不能为空');
+
+        }
+
+      }
+
+    });
+  
+    if (filled) {
+
+      resetForm.ajaxSubmit(resetOptions);
+
+    }
+  
+  });
+
+})();
+
+/*
+ * 发送验证码检验
+ */
+(function () {
+
+  var verifyForm = $('#verify_form');
+
+  if (verifyForm.size() > 0) {
+
+    var verifySubmit = verifyForm.find('#verify_submit');
+
+    var mobileInput = verifyForm.find('#verify_mobile');
+
+    verifySubmit.click(function (e) {
+    
+      e.preventDefault();
+
+      if (mobileInput.val().length == 11) {
+
+        verifyForm.submit();
+
+      }
+    
+    });
+
+  }
+
+
+})();
+
+/*
+ *
+ *
+ */
+(function () {
+
+  var payForm = $('#pay_form');
+
+  var cover = $('#waiting-pay');
+
+  payForm.find('#to_pay').click(function (e) {
+  
+    e.preventDefault();
+
+    cover.find('.alert-danger').addClass('hide').html('');
+
+    cover.removeClass('hide');
+
+    payForm.submit();
+
+  });
+
+})();
+
+/*
+ * 点击出现图片
+ */
+(function () {
+
+  var egImgs = $('.i-c-img').click(function (e) {
+  
+    e.preventDefault(); 
+
+    var that = $(this);
+    
+    var cover = $('<div class="over-all"></div>');
+
+    var src = that.data('img') == undefined ? '/imgs/logo-linpai.png' : '/imgs/' + that.data('img') + '.jpg';
+
+    var img = '<img class="flow-eg-img" src="' + src + '" style="position:fixed;z-index:10005;top:8%;width:60%;left:20%;height:80%">';
+
+    var remove = '<span class="glyphicon glyphicon-remove" style="position:fixed;top:5%;z-index:10006;font-size:24px;"></span>';
+
+    var imgElement = $(img);
+
+    var removeElement = $(remove);
+
+    $('body').append(cover);
+
+    $('body').append(imgElement);
+
+    $('body').append(removeElement);
+
+    imgElement.css({left: ($(window).width() - imgElement.width())/2 });
+
+    removeElement.css({ left: imgElement.offset().left + imgElement.width(), 'cursor': 'pointer'});
+
+    removeElement.click(function (e) {
+    
+      cover.remove();
+      
+      imgElement.remove();
+
+      $(this).remove();
+    
+    });
+  
+  });
+
+})();
+
 
 function modal (e, th) {
 
@@ -2226,6 +2526,5 @@ $linpai.toast = function (shortStr, scripts, timeout) {
    window.setTimeout(scripts, timeout);
 
    window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', timeout);
-
 
 };

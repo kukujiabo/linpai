@@ -1,5 +1,5 @@
 @section('edit_car')
-  <div class="gray-light edit-info" id="car-info-edit">
+  <div class="edit-info" id="car-info-edit">
     <h4 id="c-i-tit">使用新车</h4>
     <div class="padding-5">
       <div class="alert alert-danger hide" id="carinfo-error">
@@ -14,14 +14,14 @@
               <span class="require">*</span>
               车辆所有人信息
             </label>
-            <input type="text" class="form-control col-md-5" name="owner" placeholder="vehical owner" id="owner-info">
+            <input type="text" class="form-control col-md-5" name="owner" placeholder="" id="owner-info">
         </div>
         <div class="form-group col-md-6">
             <label for="v-brand" class="control-label col-md-5">
               <span class="require">*</span>
               车辆品牌
             </label>
-            <input type="text" class="form-control col-md-5" name="brand" placeholder="vehical brand" id="v-brand">
+            <input type="text" class="form-control col-md-5" name="brand" placeholder="" id="v-brand">
         </div>
       </fieldset>
       <br>
@@ -31,9 +31,9 @@
               <span class="require">*</span>
               车辆厂牌型号 
             </label>
-            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="vehical factory type" id="v-factory">
+            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="" id="v-factory">
             <div class="col-md-1 padding-5">
-              <span class="glyphicon glyphicon-info-sign i-img" data-disclass="flow-img" id="fac-t-img"></span>
+              <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="fac-t-img"></span>
             </div>
         </div>
         <div class="form-group col-md-6">
@@ -41,9 +41,9 @@
             <span class="require">*</span>
             识别号码（车架号）
           </label>
-          <input type="text" name="reco_code" class="form-control col-md-5" placeholder="vehical factory type" id="v-factory">
+          <input type="text" name="reco_code" class="form-control col-md-5" placeholder="" id="v-factory">
           <div class="col-md-1 padding-5">
-            <span class="glyphicon glyphicon-info-sign i-img" data-disclass="flow-img" id="reco-t-img"></span>
+            <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="reco-t-img"></span>
           </div>
         </div>
       </fieldset>
@@ -69,7 +69,7 @@
         <div class="form-group col-md-12">
           <p class="col-md-12" style="margin: 20px 0px;">
             <span class="require">*</span>
-            车辆相关文件（请上传大小小于 <span class="require">2M</span> 的附件）
+            车辆相关文件（请上传大小小于 <span class="require">3M</span> 的附件）
           </p>
         </div>
       </fieldset>
@@ -92,10 +92,13 @@
                       <div class="progress-bar progress-bar-info" id="progress_bar_{{$good_attrib['code']}}">
                       </div>
                     </div> 
-                    <a class="btn btn-default btn-sm no-padding">
-                     <label class="h-cursor no-margin" style="padding:5px" for="{{$good_attrib['code']}}">选择图片</label>
-                    </a>
-                    <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
+                        <a class="btn btn-default btn-sm no-padding">
+                         <label class="h-cursor no-margin" style="padding:5px" for="{{$good_attrib['code']}}">选择图片</label>
+                        </a>
+                        <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
+                    <div style="position:absolute;right:10px;buttom:5px;">
+                        <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-img="{{$good_attrib['code']}}"></span>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -90,7 +90,7 @@ class ReceiverInfosController extends Controller {
 
     if ($validate->fails()) {
     
-      return $this->validateFail($validate);
+      return $this->failResponse($this->validateFail($validate));
     
     }
 

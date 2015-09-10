@@ -20,7 +20,7 @@
           <th class="col-md-3 t-center"></th>
           <th class="col-md-2 t-center">所有人</th>
           <th class="col-md-3 t-center">车辆型号</th>
-          <th class="col-md-2 t-center">识别代码</th>
+          <th class="col-md-2 t-center">车架号</th>
           <th class="col-md-2 t-center">操作</th>
         </tr>
       </thead> 
