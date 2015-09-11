@@ -22,6 +22,7 @@ use Session;
 use Validator;
 use App\Events\TriggerSms;
 use App\User;
+use App\Models\PayCheck;
 use App\Models\Bank;
 
 class OrdersController extends Controller {
@@ -610,7 +611,7 @@ class OrdersController extends Controller {
     $notify_url = "http://www.51linpai.com:8000/order/paynotify";
 
     //页面跳转同步通知页面路径
-    $return_url = "http://www.51linpai.com:8000/payredirect";
+    $return_url = "http://www.51linpai.com:8000/order/payredirect";
 
     //商户网站订单系统中唯一订单号
     $out_trade_no = $order->code;
@@ -720,8 +721,68 @@ class OrdersController extends Controller {
   
   }
 
-  public function postPayed (Request $request)
+  public function getPayed (Request $request)
   {
+
+    require_once('lib/alipay_notify.class.php');
+
+    $alipayNotify = new \AlipayNotify($this->payConfig());
+
+    $verifyResult = $alipayNotify->verifyReturn();
+
+    $order = null;
+
+    $user = null;
+
+    if ($verify_result) {
+
+      $orderCode = $_GET['out_trade_no'];
+
+      $trade_no = $_GET['trade_no'];
+
+      $trade_status = $_GET['trade_status'];
+
+
+
+     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
+      //判断该笔订单是否在商户网站中已经做过处理
+      //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
+      //如果有做过处理，不执行商户的业务程序
+       
+       $order = Order::where('code', '=', $orderCode)->first();
+
+       /*
+        * 如果订单已经支付过
+        */
+       if ($order->status > 0) {
+
+         return;
+
+       }
+
+     } else {
+
+       PayCheck::create([
+       
+         'out_trade_no' => $orderCode,
+
+         'trade_no' => $trade_no,
+       
+         'trade_status' => $trade_status
+       
+       ]);
+
+     }
+
+     $user = User::find($order->uid);
+
+    } else {
+
+      return;
+
+    }
+
+    /*
     if (Session::get('pay_token') == $request->input('pay_token')) {
 
       return redirect('/home');
@@ -731,11 +792,13 @@ class OrdersController extends Controller {
       Session::put('pay_token', $request->input('pay_token'));
 
     }
+     */
 
 
     /*
      * 防止表单被重复提交
      */
+    /*
     $user = Auth::user();
 
     $pay = $request->input('pay');
@@ -747,10 +810,12 @@ class OrdersController extends Controller {
       //return redirect('/order/pay');
     
     }
+    */
 
     /*
      * 订单
      */
+    /*
     $order = Order::where ('code', '=', $orderCode)
 
       ->where('uid', '=', $user->id)
@@ -758,6 +823,7 @@ class OrdersController extends Controller {
       ->where('active', '=', 1)
 
       ->first();
+     */
 
     /*
      * 订单优惠券
@@ -801,7 +867,17 @@ class OrdersController extends Controller {
      */
     $boun = event(new TriggerBounGenerator(Auth::user(), 'recommend'))[0];
 
-    $sms = event(new TriggerSms($user->mobile, 'payed', ['order' => $order->code, 'boun' => $boun->code, 'fee' => $boun->note]));
+    $sms = event(new TriggerSms($user->mobile, 'payed', [
+      
+      'order' => $order->code, 
+      
+      'boun' => $boun->code, 
+      
+      'fee' => $boun->note
+    
+    ]));
+
+    $mail = event(new TriggerMail('payed', $user->email, [ 'order_code' => $order->code, 'boun' => $boun->code ]));
 
     /*
      * pay success.
@@ -832,6 +908,11 @@ class OrdersController extends Controller {
            * 触发短信
            */
           event(new TriggerSms($friend->mobile, 'friend_use'));
+
+          /*
+           * 触发邮件
+           */
+          event(new TriggerEmail('friend_user', $friend->email));
 
         }
 

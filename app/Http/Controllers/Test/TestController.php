@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Events\TriggerSms;
+use App\Events\TriggerEmail;
 use Illuminate\Http\Request;
 
 
@@ -87,6 +88,15 @@ class TestController extends Controller {
     $result = event(new TriggerSms(15201932985, 'register'));  
   
     var_dump($result);
+  }
+
+  public function getMail()
+  {
+
+    $result = event(new TriggerEmail('kukujiabo@163.com', 'register', '15201932985'));
+
+    var_dump($result);
+
   }
 
 }

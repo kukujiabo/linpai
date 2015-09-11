@@ -1981,7 +1981,7 @@ var addressBind;
       if (data.code) {
       
         //$linpai.toast('注册成功', 'window.location.href="/home"', 1500)
-        window.location.href = "/home";
+        //window.location.href = "/home";
       
       } else {
 
