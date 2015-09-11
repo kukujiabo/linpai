@@ -128,7 +128,7 @@ class UploadsController extends Controller {
 
       $file = $request->file($code);
 
-      if ($file->getSize() > /*3145728*/1024) {
+      if ($file->getSize() > 3145728) {
 
         return $this->failResponse('size_exceed');
 
