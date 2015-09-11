@@ -28,6 +28,11 @@ class EventServiceProvider extends ServiceProvider {
     
       'App\Handlers\Events\BounTriggerHandler'
 
+    ],
+    'App\Events\TriggerEmail' => [
+
+      'App\Handlers\Events\EmailHandler'
+
     ]
 	];
 
