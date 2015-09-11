@@ -724,6 +724,8 @@ class OrdersController extends Controller {
   public function getPayed (Request $request)
   {
 
+    return redirect('/home');
+
     require_once('lib/alipay_notify.class.php');
 
     $alipayNotify = new \AlipayNotify($this->payConfig());

@@ -9,7 +9,7 @@
       <input type="hidden" name="rid" value="">
       <fieldset class="padding-5"> 
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span class="require">*</span>
             &nbsp;收&nbsp;货&nbsp;人&nbsp;&nbsp;
           </label>
@@ -20,7 +20,7 @@
       </fieldset>
       <fieldset class="padding-5"> 
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span class="require">*</span>
             收货地址&nbsp;
           </label>
@@ -35,7 +35,7 @@
       </fieldset> 
       <fieldset class="padding-5"> 
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span class="require">*</span>
             详细地址&nbsp;
           </label>
@@ -46,7 +46,7 @@
       </fieldset> 
       <fieldset class="padding-5"> 
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span class="require">*</span>
             手机号码&nbsp;
           </label>
@@ -56,7 +56,7 @@
       </fieldset>
       <fieldset class="padding-5">
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span>&nbsp;</span>
             固定电话&nbsp;
           </label>
@@ -67,7 +67,7 @@
       </fieldset> 
       <fieldset class="padding-5"> 
         <div class="form-group">
-          <label class="control-label col-xs-1 no-padding-both-side">
+          <label class="control-label col-xs-2 no-padding-both-side">
             <span class="require">*</span>
             &nbsp;邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编&nbsp;
           </label>
