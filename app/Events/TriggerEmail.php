@@ -27,8 +27,6 @@ class TriggerEmail extends Event {
 
   protected $mail_type = "register";
 
-  protected $info ;
-
 	/**
 	 * Create a new event instance.
 	 *
