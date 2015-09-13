@@ -51,6 +51,10 @@ Route::controllers([
 
   'test' => 'Test\TestController',
 
-  'verify' => 'Verify\VerifyController'
+  'verify' => 'Verify\VerifyController',
+
+  'userboard' => 'Admin\UserManageController',
+
+  'orderboard' => 'Admin\OrderManageController'
 
 ]);
