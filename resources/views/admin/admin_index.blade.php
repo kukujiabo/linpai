@@ -7,11 +7,14 @@
 </head>
 <body style="width:100%;height:100%;">
   <header class="navbar navbar-static-top no-margin" id="top" role="banner">
-    <div class="container">
-      <div class="navbar-header">
+    <div class="container margin-5">
+      <div class="navbar-header theme-font-blue">
+        <!-- <img src="/imgs/logo-linpai.png" width="100px"> -->
+        <h3>51临牌管理后台</h3>
       </div>
     </div>
   </header>
+  <hr class="no-margin no-padding">
   </nav>
   <div class="row">
     <div class="col-md-1 nav-vertical sidebar">
@@ -20,30 +23,31 @@
           <span class="glyphicon glyphicon-cd"></span>
         </li>
         <li role="presentation">
-          <a href="#">
-            <span class="glyphicon glyphicon-home"></span>
+          <a href="/admin">
+            <span class="glyphicon glyphicon-home theme-orig"></span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="/userboard">
+            <span class="glyphicon glyphicon-user theme-orig"></span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="/orderboard">
+            <span class="glyphicon glyphicon-list theme-orig"></span>
           </a>
         </li>
         <li role="presentation">
           <a href="#">
-            <span class="glyphicon glyphicon-user"></span>
-          </a>
-        </li>
-        <li role="presentation">
-          <a href="#">
-            <span class="glyphicon glyphicon-list"></span>
-          </a>
-        </li>
-        <li role="presentation">
-          <a href="#">
-            <span class="glyphicon glyphicon-hdd"></span>
+            <span class="glyphicon glyphicon-hdd theme-orig"></span>
           </a>
         </li>
       </ul>
     </div>
     <div class="col-md-11">
       <div class="admin-content">
-        <h4 class="page-header">{{$pageName}}</h4>
+        <h3 class="theme-orig">{{$pageName}}</h3>
+        <hr>
         @yield('content')
       </div>
     </div>

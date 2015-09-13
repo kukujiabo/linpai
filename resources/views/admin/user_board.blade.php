@@ -1,10 +1,37 @@
 @extends('admin/admin_index')
 
+@include('pages_nav')
+
 @section('content')
 
 <div class="list-page">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
+      <div class="box board-search padding-5">
+        <form class="form-inline" role="form" action="#" method="get">
+          <div class="col-xs-11">
+            <div class="form-group padding-5">
+              <label class="control-label" for="order_code">用户名</label>
+              &nbsp;&nbsp;<input type="text" name="user_name" class="form-control input-sm" value="{{$user_name}}">
+            </div>
+            <div class="form-group padding-5">
+              <label class="control-label" for="mobile">手机号</label>
+              &nbsp;&nbsp;<input type="text" name="mobile" class="form-control input-sm" value="{{$mobile}}">
+            </div>
+            <div class="form-group padding-5">
+              <label class="control-label" for="mail">邮箱</label>
+              &nbsp;&nbsp;<input type="text" name="mail" class="form-control input-sm" value="{{$mail}}">
+            </div>
+          </div>
+          <div class="col-xs-1">
+            <div class="form-group padding-5">
+              <button class="btn btn-primary btn-sm" type="submit">查询</button>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+        </form>
+      </div>
+      <div class="board-control">
       <table class="table table-hover table-striped" id="user_table">
         <thead class="tab_title">
           <tr class="text-center">
@@ -29,12 +56,15 @@
           </tr>
         </thead>
         <tbody id="user_list">
+
+          @foreach ($users as $user)
+
           <tr>
-            <td class="col-md-1">1</td>
-            <td class="col-md-2">Meroc</td>
-            <td class="col-md-2">15201932985</td>
-            <td class="col-md-4">kukujiabo@163.com</td>
-            <td class="col-md-2">2015-06-07</td>
+            <td class="col-md-1">{{$user->id}}</td>
+            <td class="col-md-2">{{$user->name}}</td>
+            <td class="col-md-2">{{$user->mobile}}</td>
+            <td class="col-md-4">{{$user->email}}</td>
+            <td class="col-md-2">{{$user->created_at}}</td>
             <td class="col-md-1">
               <a href="javasript:void(0);">
                 <span class="glyphicon glyphicon-zoom-in"></span>
@@ -45,33 +75,16 @@
               </a>
             </td>
           </tr> 
-          <tr>
-            <td class="col-md-1">2</td>
-            <td class="col-md-2">Ryan</td>
-            <td class="col-md-2">15201932985</td>
-            <td class="col-md-4">ryan@163.com</td>
-            <td class="col-md-2">2014-07-09</td>
-            <td class="col-md-1">
-              <a href="#">
-                <span class="glyphicon glyphicon-zoom-in"></span>
-              </a>
-                |
-              <a href="#">
-                <span class="glyphicon glyphicon-remove"></span>
-              </a>
-            </td>
-          </tr> 
+
+          @endforeach
+
         </tbody>
       </table>
-    </div>
-    <div class="col-md-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          筛选    
-        </div>
-        <div class="panel-body">
-           
-        </div>
+      </div>
+      <div class="padding-5 text-center">
+
+        @yield('page_nav')
+
       </div>
     </div>
   </div>

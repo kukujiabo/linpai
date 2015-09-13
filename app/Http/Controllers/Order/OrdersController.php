@@ -34,7 +34,7 @@ class OrdersController extends Controller {
    */
   public function __construct ()
   {
-    $this->middleware('auth');
+    $this->middleware('auth', [ 'except' => ['getPayed'] ]);
   }
 
   /*
@@ -62,8 +62,6 @@ class OrdersController extends Controller {
         $error .= $this->orderindexerror($key);
       
       }
-    
-      //return redirect()->action('Goods\GoodsController@index', ['gid' => $request->input('gid')]);
     
     }
 
@@ -723,9 +721,6 @@ class OrdersController extends Controller {
 
   public function getPayed (Request $request)
   {
-
-    return redirect('/home');
-
     require_once('lib/alipay_notify.class.php');
 
     $alipayNotify = new \AlipayNotify($this->payConfig());
@@ -736,15 +731,13 @@ class OrdersController extends Controller {
 
     $user = null;
 
-    if ($verify_result) {
+    if ($veifyResult) {
 
       $orderCode = $_GET['out_trade_no'];
 
       $trade_no = $_GET['trade_no'];
 
       $trade_status = $_GET['trade_status'];
-
-
 
      if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
       //判断该笔订单是否在商户网站中已经做过处理
