@@ -731,7 +731,7 @@ class OrdersController extends Controller {
 
     $user = null;
 
-    if ($veifyResult) {
+    if ($verifyResult) {
 
       $orderCode = $_GET['out_trade_no'];
 
