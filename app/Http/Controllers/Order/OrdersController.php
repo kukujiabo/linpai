@@ -770,8 +770,6 @@ class OrdersController extends Controller {
 
          $order->save();
 
-         return;
-
        }
 
      } else {
