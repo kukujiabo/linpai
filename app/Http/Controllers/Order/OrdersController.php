@@ -21,6 +21,7 @@ use Auth;
 use Session;
 use Validator;
 use App\Events\TriggerSms;
+use App\Events\TriggerMail;
 use App\User;
 use App\Models\PayCheck;
 use App\Models\Bank;
@@ -751,21 +752,32 @@ class OrdersController extends Controller {
         */
        if ($order->status > 0) {
 
+         /*
+          * 创建支付凭据
+          */
+         PayCheck::create([
+         
+           'out_trade_no' => $orderCode,
+
+           'trade_no' => $trade_no,
+         
+           'trade_status' => $trade_status
+         
+         ]);
+
+         /*
+          * 修改订单状态
+          */
+         $order->status = 1;
+
+         $order->save();
+
          return;
 
        }
 
      } else {
 
-       PayCheck::create([
-       
-         'out_trade_no' => $orderCode,
-
-         'trade_no' => $trade_no,
-       
-         'trade_status' => $trade_status
-       
-       ]);
 
      }
 
@@ -776,49 +788,6 @@ class OrdersController extends Controller {
       return redirect('/home');
 
     }
-
-    /*
-    if (Session::get('pay_token') == $request->input('pay_token')) {
-
-      return redirect('/home');
-
-    } else {
-
-      Session::put('pay_token', $request->input('pay_token'));
-
-    }
-     */
-
-
-    /*
-     * 防止表单被重复提交
-     */
-    /*
-    $user = Auth::user();
-
-    $pay = $request->input('pay');
-
-    $orderCode = $request->input('order_code');
-
-    if (empty($pay)) {
-    
-      //return redirect('/order/pay');
-    
-    }
-    */
-
-    /*
-     * 订单
-     */
-    /*
-    $order = Order::where ('code', '=', $orderCode)
-
-      ->where('uid', '=', $user->id)
-
-      ->where('active', '=', 1)
-
-      ->first();
-     */
 
     /*
      * 订单优惠券
@@ -881,10 +850,6 @@ class OrdersController extends Controller {
      * 2.判断是否使用推荐码
      *
      */ 
-    $order->status = 1;
-
-    $order->save();
-
     foreach ($orderBouns as $orderBoun) {
 
       $orderBoun->success = 1;
