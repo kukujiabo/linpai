@@ -21,14 +21,12 @@ use Auth;
 use Session;
 use Validator;
 use App\Events\TriggerSms;
-use App\Events\TriggerMail;
+use App\Events\TriggerEmail;
 use App\User;
 use App\Models\PayCheck;
 use App\Models\Bank;
 
 class OrdersController extends Controller {
-
-
 
   /*
    *
