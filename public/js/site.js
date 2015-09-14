@@ -2386,9 +2386,13 @@ var addressBind;
 
     var src = that.data('img') == undefined ? '/imgs/logo-linpai.png' : '/imgs/' + that.data('img') + '.jpg';
 
-    var img = '<img class="flow-eg-img" src="' + src + '" style="position:fixed;z-index:10005;top:8%;width:60%;left:20%;height:80%">';
+    var boxRect = '<div class="text-center" style="z-index:10004;position:fixed;width:80%;height:80%;left:10%;top:10%"></div>';
 
-    var remove = '<span class="glyphicon glyphicon-remove" style="position:fixed;top:5%;z-index:10006;font-size:24px;"></span>';
+    var img = '<img class="flow-eg-img" src="' + src + '" style="z-index:10005;height:100%">';
+
+    var remove = '<span class="glyphicon glyphicon-remove eg-img-rm" style="position:absolute;right:0px;top:0px;z-index:10006;font-size:24px;"></span>';
+
+    var $boxRect = $(boxRect);
 
     var imgElement = $(img);
 
@@ -2396,19 +2400,23 @@ var addressBind;
 
     $('body').append(cover);
 
-    $('body').append(imgElement);
+    $('body').append($boxRect);
 
-    $('body').append(removeElement);
+    $boxRect.append(imgElement);
+
+    $boxRect.append(removeElement);
 
     imgElement.css({left: ($(window).width() - imgElement.width())/2 });
 
-    removeElement.css({ left: imgElement.offset().left + imgElement.width(), 'cursor': 'pointer'});
+    removeElement.css({'cursor': 'pointer'});
 
     removeElement.click(function (e) {
     
       cover.remove();
       
       imgElement.remove();
+
+      $boxRect.remove();
 
       $(this).remove();
     
