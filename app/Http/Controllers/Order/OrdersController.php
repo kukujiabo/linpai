@@ -748,7 +748,7 @@ class OrdersController extends Controller {
        /*
         * 如果订单已经支付过
         */
-       if ($order->status > 0) {
+       if ($order->status) {
 
          /*
           * 创建支付凭据
@@ -776,6 +776,7 @@ class OrdersController extends Controller {
 
      } else {
 
+       //todo 支付未完成！
 
      }
 
