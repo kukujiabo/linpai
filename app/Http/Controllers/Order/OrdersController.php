@@ -748,7 +748,7 @@ class OrdersController extends Controller {
        /*
         * 如果订单已经支付过
         */
-       if ($order->status) {
+       if (!$order->status) {
 
          /*
           * 创建支付凭据
@@ -822,7 +822,6 @@ class OrdersController extends Controller {
      * todo pay.
      */
     
-  
     /*
      * 发送订单确认短信
      * 1.查询用户是否有推荐码，如果没有，则生成
