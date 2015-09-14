@@ -609,7 +609,7 @@ class OrdersController extends Controller {
     $notify_url = "http://www.51linpai.com:8000/order/paynotify";
 
     //页面跳转同步通知页面路径
-    $return_url = "http://www.51linpai.com:8000/order/payredirect";
+    $return_url = "http://www.51linpai.com:8000/order/payed";
 
     //商户网站订单系统中唯一订单号
     $out_trade_no = $order->code;
@@ -773,7 +773,7 @@ class OrdersController extends Controller {
 
     } else {
 
-      return;
+      return redirect('/home');
 
     }
 
