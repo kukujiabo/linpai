@@ -10,6 +10,7 @@
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico"/>
 </head>
 @if (empty($auth)) 
 <body>
@@ -58,7 +59,10 @@
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>
   				@else
   					<li class="dropdown">
-  						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Hi,&nbsp;{{ Auth::user()->name }} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span class="glyphicon glyphicon-user theme-font-blue"></span>
+                  &nbsp;&nbsp;Hi,&nbsp;{{ Auth::user()->name }}
+                <span class="caret"></span></a>
   						<ul class="dropdown-menu" role="menu">
                 <li><a href="{{ url('/profile/myorder') }}" class="font-black">个人设置</a></li>
   							<li><a href="{{ url('/auth/logout') }}" class="font-black">退出</a></li>

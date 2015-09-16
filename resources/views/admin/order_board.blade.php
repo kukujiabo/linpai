@@ -7,7 +7,7 @@
 <div class="list-page"> 
   <div class="row">
     <div class="col-md-12">
-e     <div class="box board-search padding-5">
+       <div class="box board-search padding-5">
         <form class="form-inline" role="form" action="#" method="get">
           <div class="col-xs-11">
             <div class="form-group padding-5">
@@ -73,7 +73,7 @@ e     <div class="box board-search padding-5">
               <td class="col-xs-2">{{$order->mobile}}</td>
               <td class="col-xs-1">{{$order->status}}</td>
               <td class="col-xs-1">
-                <a href="#">
+                <a class="get_order_details" href="#" data-oid="{{$order->order_code}}" data-user="{{$order->uid}}" >
                   <span class="glyphicon glyphicon-zoom-in theme-orig"></span>
                 </a>
               </td>

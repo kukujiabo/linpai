@@ -7,6 +7,7 @@ use App\Models\Good;
 use App\Models\OrderAllInfo;
 use Illuminate\Http\Request;
 use App\Models\ReceiverInfo;
+use App\User;
 
 class OrderManageController extends Controller {
 
@@ -156,6 +157,42 @@ class OrderManageController extends Controller {
     ];
 
     return view('/admin/order_board', $data);
+
+  }
+
+  public function getOrderlargeinfo (Request $request)
+  {
+    $code = $request->input('order_code');
+
+    $uid = $request->input('user');
+
+    $user = User::find($uid);
+
+    if (empty($user->id)) {
+
+      return $this->failResponse('user_not_found');
+
+    }
+
+    $order = OrderAllInfo::where('order_code', '=', $code)->first();
+
+    if (empty($order->oid)) {
+
+      return $this->failResponse('order_not_found');
+
+    }
+
+    $data = [
+    
+      'user' => $user,
+
+      'order' => $order
+    
+    ];
+
+    $html = view('admin/order_panel', $data).'';
+
+    return $this->successResponse('res', $html);
 
   }
 

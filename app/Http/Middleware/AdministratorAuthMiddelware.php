@@ -2,8 +2,18 @@
 
 use Closure;
 use Session;
+use Illuminate\Contracts\Auth\Guard;
 
 class AdministratorAuthMiddelware {
+
+  protected $auth;
+
+  public function __construct (Guard $auth) 
+  {
+
+    $this->auth = $auth;
+
+  }
 
 	/**
 	 * Handle an incoming request.
@@ -17,7 +27,7 @@ class AdministratorAuthMiddelware {
 
     $admin = Session::get('admin');
 
-    if (empty($admin->id)) {
+    if (empty($admin->id) || !$this->auth->guest()) {
 
       return redirect('/admin/login');
 

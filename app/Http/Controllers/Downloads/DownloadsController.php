@@ -1,13 +1,11 @@
-<?php namespace App\Http\Controllers\Test;
+<?php namespace App\Http\Controllers\Downloads;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Events\TriggerSms;
-use App\Events\TriggerEmail;
+
 use Illuminate\Http\Request;
 
-
-class TestController extends Controller {
+class DownloadsController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -83,19 +81,17 @@ class TestController extends Controller {
 		//
 	}
 
-  public function getSms() 
+  public function getIndex (Request $request) 
   {
-    $result = event(new TriggerSms(15201932985, 'register'));  
-  
-    var_dump($result);
-  }
+    $file = $request->input('file');
 
-  public function getMail()
-  {
+    $path = '';
 
-    $result = event(new TriggerEmail('kukujiabo@163.com', 'register', [ 'mobile' => '15201932985']));
+    if (file_exists($path = storage_path() . '/app/uploads/tmps/' . $file)) {
 
-    var_dump($result);
+      return response()->download($path);
+
+    }
 
   }
 

@@ -1,13 +1,11 @@
-<?php namespace App\Http\Controllers\Test;
+<?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Events\TriggerSms;
-use App\Events\TriggerEmail;
+use App\Models\Cooperators;
 use Illuminate\Http\Request;
 
-
-class TestController extends Controller {
+class CoopManageController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -83,19 +81,35 @@ class TestController extends Controller {
 		//
 	}
 
-  public function getSms() 
+  public function getIndex (Request $request) 
   {
-    $result = event(new TriggerSms(15201932985, 'register'));  
-  
-    var_dump($result);
-  }
+    $page = $request->input('page'); 
 
-  public function getMail()
-  {
+    $offset = 20;
 
-    $result = event(new TriggerEmail('kukujiabo@163.com', 'register', [ 'mobile' => '15201932985']));
+    $pages = ceil(Cooperators::count()/$offset);
 
-    var_dump($result);
+    $page = empty($page) ? 1 : $page > $pages ? $pages : $page < 1 ? 1 : $page;
+
+    $coopers = Cooperators::skip(($page - 1) * $offset)
+
+      ->take($offset)
+
+      ->get();
+
+    $data = [
+
+      'cooperators' => $coopers,
+    
+      'pageName' => '合作伙伴',
+
+      'current_page' => $page,
+
+      'pages' => $pages
+    
+    ];
+
+    return view('admin/coope_board', $data);
 
   }
 

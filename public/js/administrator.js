@@ -86,3 +86,60 @@
   });
 
 })();
+
+/*
+ * 
+ */
+(function () {
+
+  var orderInfos = $('.get_order_details');
+
+  if (orderInfos.size() == 0) {
+
+    return;
+
+  }
+
+  orderInfos.click(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this); 
+
+    $.get('/orderboard/orderlargeinfo', {
+
+      'order_code': that.data('oid'),
+
+      'user': that.data('user')
+    
+    }, function (data) {
+
+      if (data.code) {
+
+        var object = $(data.res);
+
+        $('body').append(object);
+
+      } else {
+
+
+      }
+
+    }, 'json');
+
+  });
+
+})();
+
+(function () {
+
+  $('.file-download').click(function (e) {
+  
+    e.preventDefault();
+  
+    window.open('/imgs/tmp/' + $(this).data('url'));
+  
+  });
+
+
+})();

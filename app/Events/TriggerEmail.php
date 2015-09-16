@@ -15,11 +15,15 @@ class TriggerEmail extends Event {
 
   protected $signature = "7399a424e640ebe28630dd8c6746c4b3";
 
-  protected $pro_register = "5g59Q";
+  protected $pro_register = "Sk2FJ2";
 
-  protected $pro_friend_use = "bAn8G2";
+  protected $pro_friend_use = "dDHmO";
 
-  protected $pro_payed = "ZHVDq2";
+  protected $pro_payed = "ynVEV1";
+
+  protected $pro_deliver = "CBh3B2";
+
+  protected $pro_invite = "5BVmK4";
 
   protected $info;
 
@@ -39,7 +43,7 @@ class TriggerEmail extends Event {
 
     $this->mailType = $mailType;
 
-    $this->mobile = $info;
+    $this->info = $info;
 
 	}
 

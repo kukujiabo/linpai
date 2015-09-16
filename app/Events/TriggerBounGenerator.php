@@ -118,6 +118,8 @@ class TriggerBounGenerator extends Event {
 
       case 'discount':
 
+        return $this->generateDiscount();
+
         break;
   
     }

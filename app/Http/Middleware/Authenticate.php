@@ -32,6 +32,13 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+    
+    if (Session::get('admin')) {
+
+      Session::forget('admin');
+
+    }
+
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())
