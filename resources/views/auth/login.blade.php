@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-	<div class="row box" id="login-box">
+	<div class="box" id="login-box">
     <div class="col-md-6 padding-20">
     </div>
 		<div class="col-md-6"  style="border-left: 1px solid #eee;">
@@ -79,6 +79,7 @@
 					</form>
 				</div>
 			</div>
+      <div style="clear:both"></div>
 		</div>
     <script type="text/javascript">
       window.onload = function () { 
