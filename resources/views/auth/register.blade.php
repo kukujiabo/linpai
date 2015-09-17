@@ -3,7 +3,7 @@
 @include('modal-box')
 
 @section('content')
-	<div class="row box" id="register-box">
+	<div class="box" id="register-box">
 		<div class="col-md-6 padding-20">
     </div>
 		<div class="col-md-6" style="border-left: 1px solid #eee;">
@@ -84,6 +84,7 @@
         </div>
 			</form>
 		</div>
+    <div style="clear:both"></div>
 	</div>
 
   @yield('modal-box')
