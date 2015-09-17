@@ -201,7 +201,7 @@ class OrderManageController extends Controller {
     
     ];
 
-    if ($order->status == 1 || $order->status == 2) {
+    if ($order->status == 2) {
 
       $deliver_info = DeliverInfo::where('order_code', '=', $order->order_code)
 
