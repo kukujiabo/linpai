@@ -107,10 +107,10 @@
       @if ($order->status == 1)
         <div class="col-xs-10 padding-5 hide" id="deliver_info">
           <div class="col-xs-3 padding-5">
-            快递公司：<span content="company">{{$deliver->company}}</span>
+            快递公司：<span content="company"></span>
           </div>
           <div class="col-xs-3">
-            运单号：<span content="deliver_code">{{$deliver->code}}</span>
+            运单号：<span content="deliver_code"></span>
           </div>
           <div coass="col-xs-1">
             <a href="#" id="deliver_modify">修改</a>
