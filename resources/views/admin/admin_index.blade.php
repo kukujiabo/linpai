@@ -38,6 +38,11 @@
           </a>
         </li>
         <li role="presentation">
+          <a href="/coopboard">
+            <span class="glyphicon glyphicon-link theme-orig"></span>
+          </a>
+        </li>
+        <li role="presentation">
           <a href="#">
             <span class="glyphicon glyphicon-hdd theme-orig"></span>
           </a>
@@ -52,5 +57,10 @@
       </div>
     </div>
   </div>
+<script src="{{ asset('js/jquery.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery.form.js')}}"></script>
+<script src="{{ asset('js/jquery.ui.widget.js')}}"></script>
+<script src="{{ asset('js/administrator.js')}}"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Session;
 use Illuminate\Contracts\Auth\Guard;
 
 class Authenticate {
@@ -32,6 +33,13 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
+    
+    if (Session::get('admin')) {
+
+      Session::forget('admin');
+
+    }
+
 		if ($this->auth->guest())
 		{
 			if ($request->ajax())

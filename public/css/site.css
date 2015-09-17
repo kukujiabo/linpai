@@ -1501,3 +1501,30 @@ a.good-tab:hover {
 .board-search {
   background: #f5f5f5;
 }
+
+#order_info {
+  position: fixed;
+  width: 80%;
+  height: 90%;
+  left: 10%;
+  top: 5%;
+  background: #fff;
+  z-index: 10005;
+  overflow-y: scroll;
+}
+
+a:hover {
+  font-weight: normal !important; 
+}
+
+.profile-active > a:hover {
+  background-color: #138ed1 !important;
+}
+
+a.theme-back-blue:hover {
+  background-color: #138ed1 !important;
+}
+
+.padding-4 {
+  padding: 4px;
+}

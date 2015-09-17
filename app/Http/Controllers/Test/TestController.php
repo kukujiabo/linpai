@@ -93,7 +93,7 @@ class TestController extends Controller {
   public function getMail()
   {
 
-    $result = event(new TriggerEmail('kukujiabo@163.com', 'register', '15201932985'));
+    $result = event(new TriggerEmail('kukujiabo@163.com', 'register', [ 'mobile' => '15201932985']));
 
     var_dump($result);
 

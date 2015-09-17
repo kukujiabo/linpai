@@ -14,6 +14,7 @@ use App\Models\District;
 use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
+use App\Models\OrderAllInfo;
 use App\Events\TriggerBounGenerator;
 use \Pingpp\Pingpp as Pingpp;
 use Illuminate\Http\Request;
@@ -745,6 +746,12 @@ class OrdersController extends Controller {
        
        $order = Order::where('code', '=', $orderCode)->first();
 
+       if (empty($order->id)) {
+
+         //todo
+
+       }
+
        /*
         * 如果订单已经支付过
         */
@@ -778,6 +785,9 @@ class OrdersController extends Controller {
 
      }
 
+    /*
+     * 获取下单用户
+     */
      $user = User::find($order->uid);
 
     } else {
@@ -825,7 +835,7 @@ class OrdersController extends Controller {
      * 1.查询用户是否有推荐码，如果没有，则生成
      * 2.发送短信 订单号，推荐码，抵扣费用
      */
-    $boun = event(new TriggerBounGenerator(Auth::user(), 'recommend'))[0];
+    $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
 
     $sms = event(new TriggerSms($user->mobile, 'payed', [
       
@@ -1184,7 +1194,7 @@ class OrdersController extends Controller {
 
     }
 
-    $result = Order::where('code', '=', $order)->first();
+    $result = OrderAllInfo::where('code', '=', $order)->first();
 
     if (empty($result->id)) {
 

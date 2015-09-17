@@ -55,6 +55,10 @@ Route::controllers([
 
   'userboard' => 'Admin\UserManageController',
 
-  'orderboard' => 'Admin\OrderManageController'
+  'orderboard' => 'Admin\OrderManageController',
+
+  'coopboard' => 'Admin\CoopManageController',
+
+  'download' => 'Downloads\DownloadsController'
 
 ]);
