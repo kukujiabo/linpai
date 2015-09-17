@@ -24,6 +24,7 @@ class Orders extends Migration {
       $table->integer('sum');
       $table->integer('num');
       $table->string('comment', 200)->nullable();
+      $table->string('plate_number')->nullable();
       $table->integer('status');
       $table->integer('active');
       $table->timestamps();

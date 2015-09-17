@@ -746,6 +746,12 @@ class OrdersController extends Controller {
        
        $order = Order::where('code', '=', $orderCode)->first();
 
+       if (empty($order->id)) {
+
+         //todo
+
+       }
+
        /*
         * 如果订单已经支付过
         */

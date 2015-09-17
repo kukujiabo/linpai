@@ -1525,4 +1525,6 @@ a.theme-back-blue:hover {
   background-color: #138ed1 !important;
 }
 
-
+.padding-4 {
+  padding: 4px;
+}

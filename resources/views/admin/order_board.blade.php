@@ -71,10 +71,25 @@
                 </div>
               </td>
               <td class="col-xs-2">{{$order->mobile}}</td>
-              <td class="col-xs-1">{{$order->status}}</td>
+              <td class="col-xs-1">
+                @if ($order->status == 0)
+                未付款
+                @elseif ($order->status == 1)
+                已付款
+                @elseif ($order->status == 2)
+                已发货
+                @elseif ($order->status == 3)
+                已签收
+                @endif 
+
+              </td>
               <td class="col-xs-1">
                 <a class="get_order_details" href="#" data-oid="{{$order->order_code}}" data-user="{{$order->uid}}" >
                   <span class="glyphicon glyphicon-zoom-in theme-orig"></span>
+                </a>
+                |
+                <a class="download_pdf" href="/orderboard/orderpdf?order_code={{$order->order_code}}" target="_blank" data-oid="{{$order->order_code}}">
+                  <span class="glyphicon glyphicon-download theme-orig"></span>
                 </a>
               </td>
             </tr>

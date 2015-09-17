@@ -7,6 +7,8 @@ a.gid as gid,
 a.rid as rid,
 a.num as num,
 a.sum as sum,
+a.plate_number as plate_number,
+a.created_at as created_at,
 a.comment as 'comment',
 a.status as status,
 b.receiver as receiver,
@@ -33,7 +35,8 @@ d.orig_price as orig_price,
 d.cut_fee as cut_fee,
 d.final_price as final_price,
 e.name as good_name,
-e.code as good_code
+e.code as good_code,
+f.value as g_single_price
 from 
-orders a, receiver_infos b, cars c, order_prices d, goods e
-where a.rid = b.id and a.cid = c.id and a.id = d.oid and a.gid = e.id;
+orders a, receiver_infos b, cars c, order_prices d, goods e, v_goods_attributes f
+where a.rid = b.id and a.cid = c.id and a.id = d.oid and a.gid = e.id and f.gid = a.gid and f.acode = 'price';
