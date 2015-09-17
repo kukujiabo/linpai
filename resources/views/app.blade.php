@@ -115,35 +115,27 @@
       </b>
     </p>
     <hr style="border-top: #ddd 1px solid;">
-    <div class="t-center footer-link row">
-      <div class="col-md-4">
-      </div>
-      <div class="col-xs-2 col-md-1">
-        <a class="c" href="{{asset('text/contact')}}">联系我们</a>
-      </div>
-      <div class="col-xs-3 col-md-1">
-        <a href="{{asset('communitcate/cooperation')}}">成为服务商</a>
-      </div>
-      <div class="col-xs-3 col-md-2" style="width:10%">
-        <a href="{{asset('text/problems')}}">常见问题与解答</a>
-      </div>
-      <div class="col-xs-2 col-md-1">
-        <a href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
+    <div class="t-center footer-link">
+      <div class="col-md-6 col-xs-offset-3 text-center">
+        <a class="bottom-link" href="{{asset('text/contact')}}">联系我们</a> |
+        <a class="bottom-link" href="{{asset('communitcate/cooperation')}}">成为服务商</a> |
+        <a class="bottom-link" href="{{asset('text/problems')}}">常见问题与解答</a> |
+        <a class="bottom-link" href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
-           微信</a>
-      </div>
-      <div class="col-xs-2 col-md-1 no-border">
-        <a href="http://weibo.com/hi/">
+           微信</a> |
+        <a class="bottom-link" href="http://weibo.com/hi/">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
       </div>
+      <div style="clear:both"></div>
     </div>
   </div>
   <br>
   <div class="footer-bottom">
-    <div class="col-xs-offset-2 col-md-offset-4">
+    <div class="col-xs-offset-3 col-xs-6 text-center">
       @2015 51LinPai all rights reserved 沪ICP备 15037577
     </div>
+    <div style="clear:both"></div>
   </div>
   <br>
 </footer>

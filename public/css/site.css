@@ -1528,3 +1528,12 @@ a.theme-back-blue:hover {
 .padding-4 {
   padding: 4px;
 }
+
+.bottom-link {
+  margin: 0px 5px;
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
