@@ -106,7 +106,10 @@
 
       @if ($order->status == 1)
         <div class="col-xs-10 padding-5 hide" id="deliver_info">
-          <div class="col-xs-3 padding-5">
+          <div class="col-xs-3">
+            车牌号：<span content="plate_number"></span>
+          </div>
+          <div class="col-xs-3">
             快递公司：<span content="company"></span>
           </div>
           <div class="col-xs-3">
@@ -120,6 +123,9 @@
 
       @elseif ($order->status == 2)
         <div class="col-xs-10 padding-5" id="deliver_info">
+          <div class="col-xs-3">
+            车牌号：<span content="plate_number">{{$order->plate_number}}</span>
+          </div>
           <div class="col-xs-3">
             快递公司：<span content="company">{{$deliver->company}}</span>
           </div>
@@ -230,9 +236,13 @@
 
           $('#deliver_edit').addClass('hide');
 
-          $('#deliver_info').find('span[content=company]').html(data.res.company);
+          var obj = data.res
 
-          $('#deliver_info').find('span[content=deliver_code').html(data.res.code);
+          $('#deliver_info').find('span[content=company]').html(obj.deliver.company);
+
+          $('#deliver_info').find('span[content=deliver_code]').html(obj.deliver.code);
+
+          $('#deliver_info').find('span[content=plate_number]').html(obj.order.plate_number);
 
         } else {
       
@@ -316,10 +326,6 @@
       var elementTop = (that.offset().top - window.scrollY) + that.height();
 
       var elementLeft = that.offset().left;
-
-      console.log(elementTop);
-
-      console.log(elementLeft);
 
       bounTips.css({'position':'fixed','left':elementLeft,'top':elementTop});
 

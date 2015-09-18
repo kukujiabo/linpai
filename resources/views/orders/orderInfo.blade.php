@@ -129,12 +129,13 @@
     </p>
   </div>
   <div class="edit-info gray-light" id="quan-box">    
-    <ul class="row quan-list">
       @if (!count($bouns))
+        <div class="alert alert-warning text-center">
+          <h4>您的帐户中暂时还没有优惠券，<a href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
+        </div>
+      @else 
+        <ul class="row quan-list">
 
-        <h4>您的帐户中暂时还没有优惠券，<a href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
-
-      @else
         @foreach ($bouns as $boun) 
 
           <li class="col-md-3 bouns" >
@@ -147,8 +148,8 @@
           </li>
 
         @endforeach
+        </ul>
       @endif
-    </ul>
   </div>
 </div>
 <div class="require">
@@ -174,12 +175,14 @@
   <p>
   <div class="col-md-6" id="next-step">
     <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <!--
     <div class="padding-5">
       <label  for="contract" class="checkbox">
         <b>请阅读</b>
         <a href="#" class="text-agreement" data-url="buyagreement">《51临牌商品购买协议》</a>
       </label>
     </div>
+    -->
     <div class="">
     </div>
     <fieldset id="good-info-field">

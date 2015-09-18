@@ -252,6 +252,8 @@ class OrderManageController extends Controller {
 
       ->first();
 
+    $order = Order::where('code', '=', $order_code)->first();
+
     if (empty($deliver->id)) {
 
       $result = DeliverInfo::create([
@@ -270,8 +272,6 @@ class OrderManageController extends Controller {
 
       if (!empty($result->id)) {
 
-        $order = Order::where('code', '=', $order_code)->first();
-
         if (!empty($order->id)) {
 
           $order->status = 2;
@@ -280,7 +280,7 @@ class OrderManageController extends Controller {
 
           $order->save();
 
-          return $this->successResponse('res', $result);
+          return $this->successResponse('res', ['deliver' => $result, 'order' => $order]);
 
         } else {
 
@@ -302,7 +302,11 @@ class OrderManageController extends Controller {
 
       $deliver->save();
 
-      return $this->successResponse('res', $deliver);
+      $order->plate_number = $plate_number;
+
+      $order->save();
+
+      return $this->successResponse('res', [ 'deliver' => $deliver, 'order' => $order ]);
 
     }
 
