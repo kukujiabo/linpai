@@ -81,7 +81,6 @@
                 @elseif ($order->status == 3)
                 已签收
                 @endif 
-
               </td>
               <td class="col-xs-1">
                 <a class="get_order_details" href="#" data-oid="{{$order->order_code}}" data-user="{{$order->uid}}" >

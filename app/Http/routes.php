@@ -59,6 +59,8 @@ Route::controllers([
 
   'coopboard' => 'Admin\CoopManageController',
 
+  'adboard' => 'Admin\AdvertiseManageController',
+
   'download' => 'Downloads\DownloadsController'
 
 ]);
