@@ -123,7 +123,7 @@
         <a class="bottom-link" href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a> |
-        <a class="bottom-link" href="http://weibo.com/hi/">
+        <a class="bottom-link" target="_blank" href="http://weibo.com/hi/">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
       </div>

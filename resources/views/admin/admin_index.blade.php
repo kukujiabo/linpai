@@ -4,6 +4,7 @@
   <meta charset="utf8">
   <link href="{{asset('/css/app.css')}}" rel="stylesheet">
   <link href="{{asset('/css/site.css')}}" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico"/>
 </head>
 <body style="width:100%;height:100%;">
   <header class="navbar navbar-static-top no-margin" id="top" role="banner">
