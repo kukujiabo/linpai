@@ -106,6 +106,27 @@ class TriggerEmail extends Event {
   
   }
 
+  private function deliverMail ()
+  {
+
+    $post_data = [
+
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'to' => $this->to,
+
+      'project' => $this->pro_deliver,
+
+      'vars' => "{ \"order_code\": \"{$this->info['order_code']}\", \"deliver_code\": \"{$this->info['deliver_code']}\", \"company\": \"{$this->info['company']}\", \"boun\": \"{$this->info['boun']}\", \"url\": \"{$this->info['url']}\"}"
+
+    ];
+    
+    $this->send('post', $post_data);
+
+  }
+
   public function execSend()
   {
     
@@ -122,6 +143,10 @@ class TriggerEmail extends Event {
       case 'payed' :
 
         return $this->payedMail();
+
+      case 'deliver' :
+
+        return $this->deliverMail();
 
     }
   
@@ -162,5 +187,6 @@ class TriggerEmail extends Event {
     return $res;
 
   }
+
 
 }

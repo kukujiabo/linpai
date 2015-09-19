@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\ReceiverInfo;
 use App\Models\DeliverInfo;
 use App\Models\OrderBoun;
+use App\Events\TriggerSms;
+use App\Events\TriggerEmail;
 use Validator;
 use App\User;
 use Session;
@@ -219,7 +221,6 @@ class OrderManageController extends Controller {
 
   public function postDeliver (Request $request) 
   {
-
     $validator = Validator::make($request->input(), [
 
       'plate_number' => 'required',
@@ -280,7 +281,35 @@ class OrderManageController extends Controller {
 
           $order->save();
 
-          return $this->successResponse('res', ['deliver' => $result, 'order' => $order]);
+          $user = User::find($order->uid);
+
+          $smsRes = event(new TriggerSms($user->mobile, 'deliver', [ 
+            
+            'order_code' => $order->code,
+
+            'deliver_code' => $result->code,
+
+            'company' => $result->company,
+
+            'url' => "www.baidu.com"
+          
+          ]));
+
+          $mailRes = event(new TriggerEmail($user->email, 'deliver', [
+          
+            'order_code' => $order->code,
+
+            'deliver_code' => $result->code,
+
+            'company' => $result->company,
+
+            'boun' => 'boun',
+
+            'url' => "www.baidu.com"
+          
+          ]));
+
+          return $this->successResponse('res', ['deliver' => $result, 'order' => $order, 'sms' => $smsRes, 'mailRes' => $mailRes]);
 
         } else {
 

@@ -43,6 +43,11 @@
           </a>
         </li>
         <li role="presentation">
+          <a href="/adboard">
+            <span class="glyphicon glyphicon-picture theme-orig"></span>
+          </a>
+        </li>
+        <li role="presentation">
           <a href="#">
             <span class="glyphicon glyphicon-hdd theme-orig"></span>
           </a>

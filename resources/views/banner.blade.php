@@ -10,9 +10,6 @@
       <img class="banner-img" src="../imgs/carousel/race1.png">
       <div class="container">
         <div class="carousel-caption s-d-caption">
-          <div class="pading-20">
-            <h2>新车临时牌照</h2>
-          </div>
           <div class="padding-5"></div>
           <div>
             <a class="btn btn-default btn-lg btn-center btn-banner no-border" href="#buy" role="button">即刻购买临牌</a>
@@ -24,9 +21,6 @@
       <img class="banner-img" src="../imgs/carousel/race2.png">
       <div class="container">
         <div class="carousel-caption s-d-caption">
-          <div class="padding-20">
-            <h2>新车临时牌照</h2>
-          </div>
           <div class="padding-5"></div>
           <div class="padding-5">
             <a class="btn btn-default btn-lg btn-center btn-banner" href="#buy" role="button">即刻购买临牌</a>
@@ -38,9 +32,6 @@
       <img class="banner-img" src="../imgs/carousel/race3.png">
       <div class="container">
         <div class="carousel-caption s-d-caption">
-          <div class="padding-20">
-            <h2>新车临时牌照</h2>
-          </div>
           <div class="padding-5"></div>
           <div class="padding-5">
             <a class="btn btn-default btn-lg btn-center btn-banner" href="#buy" role="button">即刻购买临牌</a>

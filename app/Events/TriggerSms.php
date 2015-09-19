@@ -24,6 +24,8 @@ class TriggerSms extends Event {
 
   protected $pro_reset = "vcVfe4";
 
+  protected $pro_deliver = "IhV8c4";
+
   protected $info;
 
   protected $mobile = "";
@@ -186,6 +188,26 @@ class TriggerSms extends Event {
 
   }
 
+  private function deliverSms ()
+  {
+    $post_data = array (
+    
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_deliver,
+
+      'vars' => "{\"order_code\": \"{$this->info['order_code']}\", \"company\": \"{$this->info['company']}\", \"deliver_code\": \"{$this->info['deliver_code']}\", \"url\": \"{$this->info['url']}\"}",
+
+      'to' => $this->mobile
+
+    );
+
+    $this->send('post', $this->mobile, $post_data);
+
+  }
+
 
   private function payedSms () 
   {
@@ -205,7 +227,7 @@ class TriggerSms extends Event {
     
     ];
 
-    return  $this->send('post', $this->mobile, $post_data);
+    return $this->send('post', $this->mobile, $post_data);
 
   }
 
@@ -230,6 +252,10 @@ class TriggerSms extends Event {
       case 'reset_passwd':
 
         return $this->resetSms();
+
+      case 'deliver':
+
+        return $this->deliverSms();
       
       default:
 
