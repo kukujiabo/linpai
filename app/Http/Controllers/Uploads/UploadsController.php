@@ -124,6 +124,8 @@ class UploadsController extends Controller {
 
     $storage_path = $path . $userDir;
 
+    var_dump($request->hasFile($code));
+
     if ($request->hasFile($code)) {
 
       $file = $request->file($code);

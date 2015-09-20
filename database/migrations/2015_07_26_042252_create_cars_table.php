@@ -17,7 +17,7 @@ class CreateCarsTable extends Migration {
 			$table->increments('id');
       $table->integer('uid');
       $table->string('owner');
-      $table->string('brand');
+      $table->string('brand')->nullable();
       $table->string('factory_code');
       $table->string('reco_code');
       $table->string('dir_identity_face');

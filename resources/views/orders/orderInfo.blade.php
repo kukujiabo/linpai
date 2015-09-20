@@ -42,7 +42,7 @@
     @yield('car_info')
   </div>
   <div class="sub-wrapper" id="car-info-toggle">
-    @if (count($cars) < 2)
+    @if (count($cars) < 3)
     <button role="button" class="hide btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">
     @else
     <button role="button" class="btn btn-default more-info" id="more-car-info" data-target="car-list-table" data-mode="hide">

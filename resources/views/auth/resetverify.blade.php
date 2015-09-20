@@ -49,7 +49,7 @@
           <fieldset>
             <div class="form-group padding-20">
               <div class="col-xs-offset-3">
-                <button class="btn btn-primary" type="submit" id="passwd_reset_submit" role="button">重设密码</button>
+                <button class="btn btn-primary theme-back-blue" type="submit" id="passwd_reset_submit" role="button">重设密码</button>
               </div>
             </div>
           </fieldset>

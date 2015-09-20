@@ -30,11 +30,11 @@
 
           @if ($key > 1)
 
-          <tr seq="hide" class="hide" id="car-item-{{$car->id}}">
+          <tr seq="hide" class="car-list-item hide" id="car-item-{{$car->id}}">
 
           @else
 
-          <tr id="car-item-{{$car->id}}">
+          <tr class="car-list-item" id="car-item-{{$car->id}}">
 
           @endif
 
@@ -50,7 +50,7 @@
                 <div class="use-card t-padding" id="use-car-{{$car->id}}" data-id="{{$car->id}}">
 
               @endif
-                  {{$car->owner}}&nbsp;&nbsp;&nbsp;&nbsp;{{$car->brand}}
+                  {{$car->owner}}&nbsp;&nbsp;&nbsp;&nbsp;{{$car->factory_code}}
                   <b></b>
                 </div>
                 <input class="hide" name="selected-car" type="radio" data-id="{{$car->id}}">
@@ -60,7 +60,7 @@
               <div class="t-padding">{{$car->owner}}</div>
             </td>
             <td class="col-md-3 text-center">
-              <div class="t-padding">{{$car->brand}}</div>
+              <div class="t-padding">{{$car->factory_code}}</div>
             </td>
             <td class="col-md-2 text-center">
               <div class="t-padding">{{$car->reco_code}}</div>

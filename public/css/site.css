@@ -1453,8 +1453,12 @@ div#youhui-alert {
   background-color: #138ed1;
 }
 
+.theme-back-blue:hover {
+  background-color: #138ed1 !important;
+}
+
 .theme-font-blue {
-  color: #138ed1;
+  color: #138ed1 !important;
 }
 
 #confirm-pay {

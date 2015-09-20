@@ -1,6 +1,6 @@
 @section('edit_car')
   <div class="edit-info" id="car-info-edit">
-    <h4 id="c-i-tit">使用新车</h4>
+    <h4 id="c-i-tit" class="hide">使用新车</h4>
     <div class="padding-5">
       <div class="alert alert-danger hide" id="carinfo-error">
       </div>
@@ -14,8 +14,9 @@
               <span class="require">*</span>
               车辆所有人信息
             </label>
-            <input type="text" class="form-control col-md-5" name="owner" placeholder="" id="owner-info">
+            <input type="text" class="form-control col-md-5" name="owner" placeholder="车辆所有人" id="owner-info">
         </div>
+<!--
         <div class="form-group col-md-6">
             <label for="v-brand" class="control-label col-md-5">
               <span class="require">*</span>
@@ -23,19 +24,7 @@
             </label>
             <input type="text" class="form-control col-md-5" name="brand" placeholder="" id="v-brand">
         </div>
-      </fieldset>
-      <br>
-      <fieldset>
-        <div class="form-group col-md-6">
-            <label for="v-brand" class="col-md-5 control-label ">
-              <span class="require">*</span>
-              车辆厂牌型号 
-            </label>
-            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="" id="v-factory">
-            <div class="col-md-1 padding-5">
-              <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="fac-t-img"></span>
-            </div>
-        </div>
+-->
         <div class="form-group col-md-6">
           <label for="v-brand" class="control-label col-md-5" >
             <span class="require">*</span>
@@ -49,6 +38,16 @@
       </fieldset>
       <br>
       <fieldset>
+        <div class="form-group col-md-6">
+            <label for="v-brand" class="col-md-5 control-label ">
+              <span class="require">*</span>
+              车辆厂牌型号 
+            </label>
+            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="车辆厂牌型号" id="v-factory">
+            <div class="col-md-1 padding-5">
+              <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="fac-t-img"></span>
+            </div>
+        </div>
         <div class="form-group col-md-6">
             <label for="v-brand" class="col-md-5 control-label ">
               <span class="require">*</span>
@@ -97,7 +96,11 @@
                         </a>
                         <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
                     <div style="position:absolute;right:10px;buttom:5px;">
-                        <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-img="{{$good_attrib['code']}}"></span>
+
+        @if ($good_attrib['code'] != 'identity_face' && $good_attrib['code'] != 'identity_back')
+
+                        <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-img="{{$good_attrib['code']}}" id="{{$good_attrib['code']}}" data-url="/imgs/{{$good_attrib['code']}}.jpg"></span>
+        @endif
                     </div>
                   </div>
                 </div>

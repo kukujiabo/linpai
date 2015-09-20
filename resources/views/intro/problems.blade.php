@@ -19,6 +19,16 @@
       <div class="panel panel-info">
         <div class="panel-heading pro-head">
           <img src="/imgs/wenhao.png" class="problems-notion">
+          <b>新车没有临时牌照能上路吗？</b>
+        </div>
+        <div class="panel-body">
+  新交规出台后，新车上路必须规范张贴临时号牌，对不挂牌或在号牌上动手脚的，一旦被交警查获，司机将被一次记满12分，并予以罚款。
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading pro-head">
+          <img src="/imgs/wenhao.png" class="problems-notion">
           <b>临时牌照可以在高峰时段上高架行驶吗？</b>
         </div>
         <div class="panel-body">
