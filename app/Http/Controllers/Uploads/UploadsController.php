@@ -124,8 +124,6 @@ class UploadsController extends Controller {
 
     $storage_path = $path . $userDir;
 
-    var_dump($request->hasFile($code));
-
     if ($request->hasFile($code)) {
 
       $file = $request->file($code);
@@ -135,7 +133,6 @@ class UploadsController extends Controller {
         return $this->failResponse('size_exceed');
 
       }
-
 
       if (!is_dir($storage_path)) {
       

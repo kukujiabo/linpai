@@ -413,7 +413,7 @@ window.linpai = $linpai;
         
       } else {
 
-        var html = data.result;
+        var html = $(data.result);
 
         if (0 == carBody.children().size()) {
         
@@ -476,6 +476,8 @@ window.linpai = $linpai;
           $(t).css({width: '0px'});
         
         });
+
+        $('#next-form').find('input[name=car]').val(html.data('id'));
 
         /*
          * 绑定选中车辆事件
@@ -559,7 +561,7 @@ window.linpai = $linpai;
 
     success: function (data) {
 
-      console.log(data);
+      var recBody = $('#receiver-body');
 
       if (data.code == 0) {
 
@@ -579,7 +581,9 @@ window.linpai = $linpai;
 
       } else {
 
-        var item = data.result;
+        var item = $(data.result);
+
+        recBody.find('.use-active').removeClass('use-active');
 
         if (0 == $('#receiver-body').children().size()) {
         
@@ -588,7 +592,6 @@ window.linpai = $linpai;
             $('#receiver-list-table').removeClass('hide').show();
 
             $('#more-receiver-info').removeClass('hide');
-
           
           });
         
@@ -614,9 +617,11 @@ window.linpai = $linpai;
 
         } else { 
 
-          $('#receiver-body').append(item);
+          $('#receiver-body').prepend(item);
 
         }
+
+        $('#next-form').find('input[name=receiver]').val(item.data('id'));
 
         /*
          * 绑定删除事件
@@ -640,8 +645,6 @@ window.linpai = $linpai;
         $('#selected-district').html('选择区域');
 
         receiverInfoClick();
-
-        //$linpai.toast('保存成功！', '', 1000);
 
        }
     
