@@ -3,25 +3,25 @@
   <ul class="process">
     <li class="process-icon">
       @if (empty($is_select))
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/select-good-inactive.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/select-inactive.png') }}"></i>
       @else 
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/select-good.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/select-active.png') }}"></i>
       @endif
     </li>
     <li class="process-line"></li>
     <li class="process-icon">
       @if (empty($is_upload))
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/upload-files-inactive.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/upload-inactive.png') }}"></i>
       @else
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/upload-files.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/upload-active.png') }}"></i>
       @endif
     </li>
     <li class="process-line"></li>
     <li class="process-icon">
       @if (empty($is_pay))
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/pay-online-inactive.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/pay-inactive.png') }}"></i>
       @else
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/pay-online.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/pay-active.png') }}"></i>
       @endif
     </li>
     <li class="process-line"></li>
@@ -29,7 +29,7 @@
       @if (empty($is_deliver))
       <i><img class="p-i-img img-rounded" src="{{ asset('imgs/deliver-inactive.png') }}"></i>
       @else
-      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/deliver.png') }}"></i>
+      <i><img class="p-i-img img-rounded" src="{{ asset('imgs/deliver-active.png') }}"></i>
       @endif
     </li>
     <div style="clear:both"></div>
