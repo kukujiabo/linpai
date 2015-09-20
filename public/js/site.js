@@ -379,7 +379,7 @@ window.linpai = $linpai;
 
     success: function (data) {
 
-      console.log(data);
+      var carBody = $('#car-body'); 
 
       if (!data.code) {
 
@@ -415,7 +415,7 @@ window.linpai = $linpai;
 
         var html = data.result;
 
-        if (0 == $('#car-body').children().size()) {
+        if (0 == carBody.children().size()) {
         
           $('#car-empty-info').fadeOut('fast', function () {
           
@@ -441,14 +441,22 @@ window.linpai = $linpai;
 
           } else { 
           
-            $('#car-body').prepend(html); 
+            carBody.prepend(html); 
           }
 
           oldItm.remove();
 
         } else {
 
-          $('#car-body').append(html);
+          carBody.find('.use-active').removeClass('use-active');
+
+          carBody.prepend(html);
+
+          if (carBody.find('.car-list-item').size() > 2) {
+
+            carBody.find('.car-list-item')[2].attr('seq', 'hide').addClass('hide');
+
+          }
 
         }
 
@@ -488,7 +496,13 @@ window.linpai = $linpai;
 
         $linpai.editCar();
 
-        //$linpai.toast('保存成功', '', 1000);
+        var carNum = $('#car-body');
+
+        if (carNum.find('.car-list-item').size() > 2) {
+
+          $('#more-car-info').removeClass('hide');
+
+        }
       
       }
     
@@ -918,6 +932,7 @@ window.linpai = $linpai;
       sequentialUploads: true,
 
       dataType: 'json', 
+
       formData: {
       
         code: that.attr('name'),
@@ -960,7 +975,7 @@ window.linpai = $linpai;
 
           progressBar.css({width: 0});
 
-          alert('上传图片大小不能超过3M！');
+          alert('上传图片大小不能超过3M！请重新上传');
 
         } else if (data.result.msg == 'empty_file') {
 
@@ -1152,6 +1167,8 @@ var addressBind;
  */
 ($linpai.resetInfoRemove = resetInfoRemove = function () {
 
+  var carBody = $('#car-body');
+
   $('a.remove-receiver').click(function (e) {
   
     e.preventDefault();
@@ -1161,10 +1178,30 @@ var addressBind;
   });
 
   $('a.remove-car').click(function (e) {
-  
+
     e.preventDefault();
 
-    modal('delete', this);
+    var that = $(this);
+
+    var seqReset = function () {
+
+      var line = $('#car-item-' + that.data('id'));
+
+      if (carBody.find('.car-list-item').size() < 3) {
+
+        $('#more-car-info').addClass('hide');
+
+      }
+
+      if (line.attr('seq') != 'hide' && line.next().attr('seq') == 'hide') {
+
+        line.next().attr('seq', '').removeClass('hide');
+
+      }
+
+    };
+
+    modal('delete', this, seqReset);
   
   });
 
@@ -1897,11 +1934,12 @@ var addressBind;
     
       clientHeight = $(window).height();
 
-  $('.i-img').mouseover(function (e) {
+  $('.i-img').hover(function (e) {
 
     var that = $(this);
-  
-    var newNode = "<div class=\"box " + that.data('disclass') + "\" trigger=\"" + that.attr('id') + "\"></div>";
+
+    //var newNode = "<div class=\"box " + that.data('disclass') + "\" trigger=\"" + that.attr('id') + "\"></div>";
+    var newNode = '<img src="' + that.data('url') + '" trigger="' + that.attr('id') + '">';
 
     var introImg = $(newNode);
 
@@ -1916,35 +1954,43 @@ var addressBind;
      */
     if (that.data('flow-pos') == 'above') {
 
-      console.log(elementTop);
-
       introImg.css({'left': elementLeft - (introImg.width()/3), 'top': elementTop - (introImg.height() + that.height() * 4), 'position': 'fixed' });
 
       introImg.show();
+
+      console.log(introImg);
 
       return;
 
     }
 
+    introImg.css({
+      'position': 'fixed', 
+      'top': '80px',
+      'height': $(window).width()/2.4 + 'px'
+    });
+
     if (clientWidth/elementLeft > 2) {
 
-      introImg.css({left: elementLeft + that.width() * 2});
+      introImg.css({
+        'left': elementLeft + that.width() * 2, 
+      });
     
     } else {
 
-      introImg.css({left: elementLeft - introImg.width() - that.width()});
+      introImg.css({
+        'left': elementLeft - introImg.width() - that.width(), 
+      });
     
     }
 
-  });
-
-  $('.i-img').mouseout(function (e) {
+  }, function (e) {
   
     var that = $(this);
-
-    $("div[trigger=\"" + that.attr('id') + "\"]").remove();
+    
+    $("img[trigger=\"" + that.attr('id') + "\"]").remove();
   
-  })
+  });
 
 })();
 
@@ -2020,6 +2066,12 @@ var addressBind;
   
     e.preventDefault();
       
+    if (!$linpai.validPass) {
+
+      return;
+
+    }
+
     regForm.find('input').each(function (i, t) {
 
       var iele = $(t);
@@ -2059,12 +2111,18 @@ var addressBind;
 
     if (pwd.length < 6 || pwd.length > 18) {
 
+      $linpai.validPass = false;      
+
       that.val('');
 
       that.addClass('alert-red-back');
 
       that.attr('placeholder', '请输入长度 6 －18 位的密码');
     
+    } else {
+
+      $linpai.validPass = true;
+
     }
 
   });
@@ -2072,8 +2130,6 @@ var addressBind;
   pInput.focus(function () {
   
     var that = $(this);
-
-    console.log(1);
 
     that.removeClass('alert-red-back');
   
@@ -2098,7 +2154,7 @@ var addressBind;
 
     passBlock.removeClass('hide').fadeIn();
 
-    $('.over-all').click(function () {
+    $('#modify_pass_remove').click(function () {
 
       passBlock.fadeOut();
     
@@ -2199,7 +2255,7 @@ var addressBind;
  */
 (function () {
 
-  var resetForm = $('#passwd_reset_form');
+  var resetForm = $('#passwd_reset_form'); 
 
   resetForm.find('input[name=reset_code]').focus(function () {
   
@@ -2237,9 +2293,9 @@ var addressBind;
 
           if (result == 'not_match') {
 
-            $('#reset-notice').html('两次输入的密码不一致，请重新输入！').removeClass('hide');
+            //$('#reset-notice').html('两次输入的密码不一致，请重新输入！').removeClass('hide');
 
-            $('input[type=password]').css({'background': 'rgb(235, 204, 209)'});
+            //$('input[type=password]').css({'background': 'rgb(235, 204, 209)'});
 
           } else if ('user_err') {
 
@@ -2283,31 +2339,23 @@ var addressBind;
 
     e.preventDefault();
 
-    console.log(1);
+    if ($linpai.validPass) {
 
-    var filled = true;
+      var confirmpass = resetForm.find('input[name=confirmpassword]');
 
-    var inputs = resetForm.find('input[type!=hidden]').each(function (i, t) {
+      var newpass = resetForm.find('input[name=newpassword]');
 
-      if ($(t).val().length == 0) {
+      if (confirmpass.val() != newpass.val()) {
 
-        filled = false;
+        $('#reset-notice').html('两次输入的密码不一致').removeClass('hide');
 
-        if ($(t).attr('type') == 'password') {
+        confirmpass.val('');
 
-          $(t).css({ 'background': 'rgb(235, 204, 209)' }).attr('placeholder', $(t).attr('title') + '请输入 6 － 18 位密码');
+        newpass.val('');
 
-        } else {
-
-          $(t).css({ 'background': 'rgb(235, 204, 209)' }).attr('placeholder', $(t).attr('title') + '不能为空');
-
-        }
+        return;
 
       }
-
-    });
-  
-    if (filled) {
 
       resetForm.ajaxSubmit(resetOptions);
 
@@ -2427,7 +2475,7 @@ var addressBind;
 })();
 
 
-function modal (e, th) {
+function modal (e, th, callback) {
 
   var postDelete = function(e, t) {
 
@@ -2464,6 +2512,12 @@ function modal (e, th) {
           deletedItem.remove();
 
           $('#modal-dismiss').click();
+
+          if (typeof(callback) == 'function') {
+
+            callback();
+
+          }
         
         }
     

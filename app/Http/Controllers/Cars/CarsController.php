@@ -12,7 +12,6 @@ class CarsController extends Controller {
   public function __construct () 
   {
     $this->middleware('auth'); 
-  
   }
 
   public function postAdd(Request $request)
@@ -29,9 +28,13 @@ class CarsController extends Controller {
 
     $user = Auth::user();
 
+    Car::where('uid', '=', $user->id) ->update([ 'last_used' => 0 ]);
+
     $input = $request->all();
 
     $input['uid'] = $user->id;
+
+    $input['last_used'] = 1;
 
     unset($input['_token']);
     
@@ -212,7 +215,7 @@ class CarsController extends Controller {
     
     $fields["owner"] = "车辆所有人 必须填写！";
 
-    $fields["brand"] = "车辆品牌 必须填写！";
+    //$fields["brand"] = "车辆品牌 必须填写！";
 
     $fields["factory_code"] = "车辆厂牌型号 必须填写！";
 
@@ -242,7 +245,7 @@ class CarsController extends Controller {
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<div class=\"use-card t-padding\" data-id=\"{$obj->id}\" id=\"use-car-{$obj->id}\">{$obj->owner}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->brand}</div>";
+    $html .= "<div class=\"use-card t-padding use-active\" data-id=\"{$obj->id}\" id=\"use-car-{$obj->id}\">{$obj->owner}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->brand}</div>";
 
     $html .= "<input class=\"hide\" type=\"radio\" name=\"selected-car\" data-id=\"$obj->id\">";
 
@@ -294,12 +297,11 @@ class CarsController extends Controller {
 
   private function carInfoValidate($values)
   {
-  
     return Validator::make($values, [
 
       'owner' => 'required|min:2',
 
-      'brand' => 'required',
+      //'brand' => 'required',
 
       'factory_code' => 'required',
 

@@ -76,6 +76,7 @@
   <div class="hide" id="passwd-modify">
     <div class="over-all"></div>
     <div class="box padding-20" id="passwd-box">
+      <span class="glyphicon glyphicon-remove" style="z-index:10004;position:absolute;right:5px;top:5px;cursor:pointer" id="modify_pass_remove"></span>
       <div class="alert alert-success margin-5 hide"></div>
       <div class="alert alert-danger margin-5 hide"></div>
       <div class="padding-20"></div>

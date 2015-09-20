@@ -111,9 +111,9 @@
         <i style="color: #FF8800;font-size: 24px;">
           <span class="glyphicon glyphicon-earphone"></span>
           4006937465</i>
-        &nbsp;&nbsp;&nbsp;&nbsp;周一到周日 10:00 － 18:00
       </b>
     </p>
+    <p>周一到周日 10:00 － 18:00</p>
     <hr style="border-top: #ddd 1px solid;">
     <div class="t-center footer-link">
       <div class="col-md-6 col-xs-offset-3 text-center">

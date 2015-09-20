@@ -36,7 +36,7 @@
 						<input type="text" class="form-control" name="verify_code" placeholder="验证码" tips="验证码">
 					</div>
           <div class="col-xs-4 no-padding-left">
-            <button class="btn btn-info btn-group-justified" width="100%" type="button" role="button" id="check_send">发送验证码</button>
+            <button class="btn btn-info btn-group-justified theme-back-blue" width="100%" type="button" role="button" id="check_send">发送验证码</button>
           </div>
 				</div>
 				<div class="form-group">
@@ -65,13 +65,13 @@
             <label for="agree">
               <input type="checkbox" name="agree" id="agree" checked> 我已经阅读且同意
             </label> 
-            <a href="#" class="text-agreement links" data-url="useagreement">《51临牌网站使用协议》</a>
+            <a href="#" class="text-agreement links theme-font-blue" data-url="useagreement">《51临牌网站使用协议》</a>
           </div>
         </div>
 
 				<div class="form-group">
 					<div class="col-xs-10 col-xs-offset-1">
-						<button type="submit" id="register-submit" class="btn btn-info btn-group-justified">
+						<button type="submit" id="register-submit" class="btn btn-info btn-group-justified theme-back-blue">
 							提交
 						</button>
 					</div>
@@ -79,7 +79,7 @@
         <div class="form-group">
           <div class="col-xs-10 col-xs-offset-1">
             已有51临牌账号？  
-            <a class="links" href="{{asset('auth/login')}}" style="display:inline;">直接登录</a>
+            <a class="links theme-font-blue" href="{{asset('auth/login')}}" style="display:inline;">直接登录</a>
           </div>
         </div>
 			</form>
