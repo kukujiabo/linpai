@@ -119,10 +119,10 @@
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
       </div>
       <div class="form-group padding-5">
-        <a class="" id="quan-view"  role="button" data-status="show">查看可用优惠码</a>
+        <a class="theme-font-blue" id="quan-view"  role="button" data-status="show">查看可用优惠码</a>
       </div>
       <div class="padding-5">
-        <a class="links" href="/profile/mybouns?type=discount" target="_blank">什么是优惠券?</a>
+        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠券?</a>
       </div>
     </form>
     <p>
@@ -131,7 +131,7 @@
   <div class="edit-info gray-light" id="quan-box">    
       @if (!count($bouns))
         <div class="alert alert-warning text-center">
-          <h4>您的帐户中暂时还没有优惠券，<a href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
+          <h4>您的帐户中暂时还没有优惠券，<a class="theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
         </div>
       @else 
         <ul class="row quan-list">
@@ -218,7 +218,7 @@
       <input type="hidden" name="youhui_2" value="">
       <input type="hidden" name="youhui_3" value="">
     </fieldset>
-    <button role="button" type="submit" class="btn btn-info btn-lg" role="button" id="to-pay">下一步</button>
+    <button role="button" type="submit" class="btn btn-info btn-lg theme-back-blue" role="button" id="to-pay">下一步</button>
   </div>
   </p>
 </form>

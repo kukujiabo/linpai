@@ -12,7 +12,7 @@
         <div class="intro-bar"></div>
         <div class="col-xs-2 col-sm-2 col-md-2"></div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img" src="/imgs/i-select.png">
+          <img class="process-bar-img" src="/imgs/i-selected.png" style="padding: 0px 3px; background:#fff;">
           <div class="padding-5"></div>
           <h4>选择临牌</h4>
           <p class="process-bar-step">
@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-upload.png">
+          <img class="process-bar-img"  src="/imgs/i-upload.png" style="padding: 0px 3px; background: #fff;">
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
           <p class="process-bar-step">
@@ -28,7 +28,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-pay.jpg" style="padding: 0px 3px; background:#fff;">
+          <img class="process-bar-img"  src="/imgs/i-pay.png" style="padding: 0px 3px; background:#fff;">
           <div class="padding-5"></div>
           <h4>在线支付</h4>
           <p class="process-bar-step">
@@ -36,7 +36,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-deliver.jpg">
+          <img class="process-bar-img"  src="/imgs/i-deliver.png" style="background:#fff; padding: 0px 3px;">
           <div class="padding-5"></div>
           <h4>等待收货</h4>
           <p class="process-bar-step">

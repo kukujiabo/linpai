@@ -113,6 +113,10 @@ class ProfilesController extends Controller {
 
       ->where('active', '=', 1)
 
+      ->orderBy('last_used', 'desc')
+
+      ->orderBy('created_at', 'desc')
+
       ->get();
 
     $cars = array();
@@ -235,6 +239,10 @@ class ProfilesController extends Controller {
     $receiverInfoSet = ReceiverInfo::where('uid', '=', $user->id)
 
       ->where('active', '=', '1')
+
+      ->orderBy('last_used', 'desc')
+
+      ->orderBy('created_at', 'desc')
 
       ->get();
 
@@ -534,6 +542,14 @@ class ProfilesController extends Controller {
     
     }
   
+  }
+
+  public function batchInvite (Request $request) 
+  {
+    $list = $request->input('list');
+
+    //$array = explode(
+
   }
 
 }

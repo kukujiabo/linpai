@@ -63,16 +63,16 @@
             -->
 						<div class="form-group">
 							<div class="col-xs-10 col-xs-offset-1">
-								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified">登录</button>
+								<button type="submit" id="login-submit" class="btn btn-info btn-group-justified theme-back-blue">登录</button>
 							</div>
 						</div>
             <div class="form-group">
               <div class="col-xs-2 col-xs-offset-1">
-						    <a class="btn btn-link require links no-padding-left" href="{{ url('/user/password') }}">忘记密码？</a>
+						    <a class="btn btn-link require links no-padding-left theme-font-blue" href="{{ url('/user/password') }}">忘记密码？</a>
               </div>
               <div class="col-xs-8 col-xs-offset-1">
                 还没有51临牌账号？
-                <a class="btn btn-link links" style="padding-left:0px;padding-right:0px;" href="{{asset('auth/register')}}">
+                <a class="btn btn-link links theme-font-blue" style="padding-left:0px;padding-right:0px;" href="{{asset('auth/register')}}">
                 点击注册</a>
               </div>
             </div>
