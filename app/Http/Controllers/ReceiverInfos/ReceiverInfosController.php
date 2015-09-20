@@ -98,9 +98,13 @@ class ReceiverInfosController extends Controller {
 
     $user = Auth::user();
 
+    ReceiverInfo::where('uid', '=', $user->id)->update([ 'last_used' => 0 ]);
+
     $input['uid'] = $user->id;
 
     unset($input['_token']);
+
+    $input['last_used'] = 1;
 
     $result = ReceiverInfo::create($input);
 
@@ -237,7 +241,7 @@ class ReceiverInfosController extends Controller {
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<div class=\"use-card t-padding\" id=\"use-receiver-{$obj->id}\" data-id=\"{$obj->id}\">";
+    $html .= "<div class=\"use-card t-padding use-active\" id=\"use-receiver-{$obj->id}\" data-id=\"{$obj->id}\">";
 
     $html .= "{$obj->receiver}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->city}";
 

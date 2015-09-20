@@ -15,7 +15,8 @@ class ReceiverInfo extends Model {
     'mobile', 
     'phone', 
     'uid',
-    'oid'
+    'oid',
+    'last_used'
   ];
 
 }
