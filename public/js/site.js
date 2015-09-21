@@ -2195,6 +2195,20 @@ var addressBind;
 
 })();
 
+(function () {
+
+  var maxHeight = 0;
+
+  $('.h-good-intro').each(function (i, t) {
+
+    maxHeight < $(t).height() ? maxHeight = $(t).height() : maxHeight;
+
+  });
+
+  $('.h-good-intro').height(maxHeight);
+
+})();
+
 /*
  * 修改密码
  */

@@ -69,7 +69,7 @@
               <img class="good-img" src="{{ asset($good->pic) }}">
               <div class="caption good-block text-left">
                 <h3>{{ $good->name }}</h3>
-                <p class="over-elis">
+                <p class="h-good-intro">
                   {{ $good->intro }}
                 </p>
                 <div class="padding-5"></div>
