@@ -12,6 +12,7 @@ use App\Models\Boun;
 use App\Models\OrderPrices;
 use App\User;
 use App\Models\District;
+use App\Models\DeliverInfo;
 use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
@@ -22,7 +23,8 @@ use Crypt;
 
 class ProfilesController extends Controller {
 
-  public function __construct () {
+  public function __construct () 
+  {
   
     $this->middleware('auth');
   
@@ -549,6 +551,40 @@ class ProfilesController extends Controller {
     $list = $request->input('list');
 
     //$array = explode(
+
+  }
+
+  public function getDeliverinfo (Request $request)
+  {
+    $order_code = $request->input('order_code');
+
+    if (empty($order_code)) {
+
+      return $this->failResponse('empty');
+
+    }
+
+    $info = DeliverInfo::where('order_code', '=', $order_code)->first();
+
+    if (empty($info->id)) {
+
+      return $this->failResponse('not_found');
+
+    }
+
+    $order = Order::where('code', '=', $order_code)->first();
+
+    $result = [
+    
+      'deliver_code' => $info->code,
+
+      'company' => $info->company,
+
+      'plate_number' => $order->plate_number
+    
+    ];
+
+    return $this->successResponse('result', $result);
 
   }
 
