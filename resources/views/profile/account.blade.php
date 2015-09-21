@@ -2,10 +2,10 @@
 
 @section('subcontent')
 <div class="sub-wrapper">
-  <div class="padding-5">
-    <h3>账号设置</h3>
-    <hr>
-  </div>
+  <h4>账号设置</h4>
+</div>
+<hr class="no-margin">
+<div class="padding-20">
   <form class="form-inline" id="person-form" action="{{ asset('profile/update') }}" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <fieldset>
@@ -66,13 +66,14 @@
     </div>
     </fieldset>
   </form>
-  <hr>
-  <div class="padding-5">
-    <button class="btn btn-warning" id="password-modify">
-      <span class="glyphicon glyphicon-lock"></span>
-      修改密码
-    </button>  
-  </div>
+</div>
+<hr>
+<div class="padding-20">
+  <button class="btn btn-warning" id="password-modify">
+    <span class="glyphicon glyphicon-lock"></span>
+    修改密码
+  </button>  
+</div>
   <div class="hide" id="passwd-modify">
     <div class="over-all"></div>
     <div class="box padding-20" id="passwd-box">

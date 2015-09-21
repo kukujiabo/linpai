@@ -58,23 +58,29 @@
 
       @foreach ($goods as $goodLine)
       
-        <div class="col-md-2">
+        <div class="col-md-3">
         </div> 
 
         @foreach ($goodLine as $key => $good)
 
-        <div class="col-xs-6 col-md-4">
-          <div class="thumbnail">
+        <div class="col-xs-6 col-md-3">
+          <div class="thumbnail no-radius">
             <a href="{{ asset('goods?gid='. $good->id) }}">
               <img class="good-img" src="{{ asset($good->pic) }}">
-              <div class="caption good-block">
+              <div class="caption good-block text-left">
                 <h3>{{ $good->name }}</h3>
-                <p>
+                <p class="over-elis">
                   {{ $good->intro }}
                 </p>
-                <p>
-                  {{ $good->price }}元/张
-                </p>
+                <div class="padding-5"></div>
+                <div class="row">
+                  <div class="col-xs-3 no-padding-left">
+                    <h3 class="require no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>
+                  </div>
+                  <div class="col-xs-6 col-xs-offset-3 no-padding">
+                    <button class="btn btn-danger no-radius btn-group-justified">立即购买</button>
+                  </div>
+                </div>
               </div>
             </a>
           </div>

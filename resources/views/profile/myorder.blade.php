@@ -3,12 +3,10 @@
 
 @section('subcontent')
 @include('modal-box')
-  <div class="sub-wrapper">
-    <div class="padding-5">
-      <h3>我的订单</h3>
-    </div>
-  </div>
-  <hr style="margin: 5px 0px;">
+<div class="sub-wrapper">
+  <h4>我的订单</h4>
+</div>
+<hr class="no-margin">
 @if (empty($orders))
 
   <div class="padding-5"></div>
@@ -20,6 +18,7 @@
 
 @else
   <div class="sub-wrapper">
+    <div class="padding-5"></div>
     <div class="order-head text-center">
       <div class="col-md-3">商品名称</div>
       <div class="col-md-2">单价（元）</div>

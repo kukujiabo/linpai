@@ -10,7 +10,7 @@
 
 @section('subcontent')
 <div class="sub-wrapper">
-  <h3>收货信息</h3>
+  <h4>收货信息</h4>
 </div>
 <hr class="no-margin">
 <div class="sub-wrapper">
