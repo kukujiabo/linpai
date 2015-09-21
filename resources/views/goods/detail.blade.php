@@ -76,8 +76,8 @@
                 </div>
               </div>
               <div class="padding-5"></div>
-              <div class="">
-                价格：￥<span class="g-price" id="price-{{$good->id}}">{{$goodInfos[$key]->value}}</span> 元
+              <div class="require">
+                <b>￥</b><span class="g-price" id="price-{{$good->id}}">{{$goodInfos[$key]->value}}</span>
                 <input type="hidden" id="single-price-{{$good->id}}" value="{{$goodInfos[$key]->value}}">
               </div>
               <div class="padding-5"></div>

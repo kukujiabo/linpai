@@ -120,7 +120,7 @@
         <a class="bottom-link" href="{{asset('text/contact')}}">联系我们</a> |
         <a class="bottom-link" href="{{asset('communitcate/cooperation')}}">成为服务商</a> |
         <a class="bottom-link" href="{{asset('text/problems')}}">常见问题与解答</a> |
-        <a class="bottom-link" href="#" id="wechat-qrcode" class="i-img" data-disclass="tiny-flow-img" data-flow-pos="above">
+        <a class="bottom-link i-img" href="#" id="wechat-qrcode" data-disclass="tiny-flow-img" data-flow-pos="above" data-url="{{asset('imgs/wechat-code.png')}}">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a> |
         <a class="bottom-link" target="_blank" href="http://weibo.com/hi/">

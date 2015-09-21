@@ -1950,6 +1950,8 @@ var addressBind;
 
     var elementTop = that.offset().top - document.body.scrollTop;
 
+    console.log(newNode);
+
     $('body').append(introImg);
 
     /*

@@ -76,19 +76,21 @@
       <div class="radio padding-5">
         <label class="control-label" for="zhifubao">
           @if (!empty($bank_omit)) 
-            <input type="radio" id="zhifubao" name="pay" value="zhifubao"> 支付宝
+            <input type="radio" id="zhifubao" name="pay" value="zhifubao">
           @else
-            <input type="radio" id="zhifubao" name="pay" value="zhifubao" checked> 支付宝
+            <input type="radio" id="zhifubao" name="pay" value="zhifubao" checked>
           @endif
+          <img src="/imgs/alipay.jpg" height="25px;" style="padding:3px;">
         </label>
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="credit">
           @if (!empty($bank_omit))
-            <input type="radio" id="credit" name="pay" value="union" checked>网银或信用卡
+            <input type="radio" id="credit" name="pay" value="union" checked>
           @else
-            <input type="radio" id="credit" name="pay" value="union">网银或信用卡
+            <input type="radio" id="credit" name="pay" value="union">
           @endif
+          <img src="/imgs/union_pay.jpg" height="25px;" style="padding:3px;">
         </label>
           @if (!empty($bank_omit)) 
 
@@ -118,7 +120,8 @@
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="wechat">
-          <input type="radio" id="wechat" name="pay" value="wechat"> 微信支付
+          <input type="radio" id="wechat" name="pay" value="wechat">
+          <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px">
         </label>
       </div>
       <!--

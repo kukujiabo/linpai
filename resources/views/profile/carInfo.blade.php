@@ -8,7 +8,7 @@
 
 @section('subcontent')
 <div class="sub-wrapper">
-  <h3>车辆信息</h3> 
+  <h4>车辆信息</h4> 
 </div>
 <hr class="no-margin">
 <div class="sub-wrapper">

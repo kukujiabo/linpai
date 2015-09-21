@@ -225,7 +225,7 @@
 <div id="price-pad">
   <img src="/imgs/price-pad.png" class="price-pad-bk">
   <div class="price-content padding-5 t-center" >
-    <h4 class="no-margin">临时牌照</h4>
+    <h4 class="no-margin">订单总计</h4>
     <br>
     <hr class="price-divider">
     <p class="no-margin">

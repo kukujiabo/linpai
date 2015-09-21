@@ -741,7 +741,7 @@ transform:rotate(5deg);
 }
 
 .no-margin {
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .progress-sm {
@@ -1544,4 +1544,8 @@ a.theme-back-blue:hover {
 
 a:hover {
   text-decoration: none !important;
+}
+
+.no-radius {
+  border-radius: 0px !important;
 }

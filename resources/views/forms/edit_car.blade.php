@@ -14,7 +14,7 @@
               <span class="require">*</span>
               车辆所有人信息
             </label>
-            <input type="text" class="form-control col-md-5" name="owner" placeholder="车辆所有人" id="owner-info">
+            <input type="text" class="form-control col-md-5" name="owner" placeholder="车辆所有人姓名" id="owner-info">
         </div>
 <!--
         <div class="form-group col-md-6">
@@ -30,7 +30,7 @@
             <span class="require">*</span>
             识别号码（车架号）
           </label>
-          <input type="text" name="reco_code" class="form-control col-md-5" placeholder="" id="v-factory">
+          <input type="text" name="reco_code" class="form-control col-md-5" placeholder="例子：WD78" id="v-factory">
           <div class="col-md-1 padding-5">
             <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="reco-t-img"></span>
           </div>
@@ -43,7 +43,7 @@
               <span class="require">*</span>
               车辆厂牌型号 
             </label>
-            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="车辆厂牌型号" id="v-factory">
+            <input type="text" class="form-control col-md-5" name="factory_code" placeholder="例：奔驰Benz CLA260轿车" id="v-factory">
             <div class="col-md-1 padding-5">
               <span class="glyphicon glyphicon-info-sign i-c-img theme-font-blue" data-disclass="flow-img" id="fac-t-img"></span>
             </div>
