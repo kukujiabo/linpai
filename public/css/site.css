@@ -1541,3 +1541,7 @@ a.theme-back-blue:hover {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
+a:hover {
+  text-decoration: none !important;
+}

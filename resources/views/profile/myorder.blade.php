@@ -1,6 +1,8 @@
+
 @extends('profile/profile')
 
 @section('subcontent')
+@include('modal-box')
   <div class="sub-wrapper">
     <div class="padding-5">
       <h3>我的订单</h3>
@@ -68,11 +70,14 @@
 
             @elseif ($order->status == 1)
             已付款
-            <div>
-              <a href="#" class="require deliver-info" data-id="{{$order->code}}">查看物流</a>
-            </div>
             @elseif ($order->status == 2)
               已完成
+              <div>
+                <a href="#" class="theme-font-blue deliver-info" data-id="{{$order->code}}">
+                  <span class="glyphicon glyphicon-info"></span>
+                  查看物流
+                </a>
+              </div>
 
             @elseif ($order->status == 3)
               已取消
@@ -132,5 +137,8 @@
     </nav>
   </div>
 @endif
+<div>
+  @yield('modal-box')
+</div>
 
 @endsection

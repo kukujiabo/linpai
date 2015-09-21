@@ -1998,6 +1998,59 @@ var addressBind;
 })();
 
 /*
+ * 查询物流
+ */
+(function () {
+
+  var deliverInfos = $('a.deliver-info');
+
+  deliverInfos.click(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    $.get('/profile/deliverinfo', {
+
+      'order_code': that.data('id'),
+    
+    }, function (data) {
+
+      if (data.code) {
+
+        var result = data.result;
+
+        var s = '';
+
+        s += '<p>承运公司：<b>' + result.company + '</b></p>';
+
+        s += '<p>运单号：<b>' + result.deliver_code + '</b></p>';
+
+        s += '<p>车牌号：<b>' + result.plate_number + '</b></p>';
+
+        $('#linpai-modal').on('show.bs.modal', function () {
+
+          var modal = $(this);
+
+          modal.find('.modal-body').html(s);
+
+          modal.find('#modal-confirm').hide();
+
+          modal.find('.modal-title').html('物流信息');
+        
+        });
+
+        $('#linpai-modal').modal('show');
+
+      }
+
+    }, 'json');
+
+  });
+
+})();
+
+/*
  * 用户注册
  */
 (function () {
