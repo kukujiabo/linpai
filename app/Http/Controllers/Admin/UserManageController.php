@@ -21,6 +21,7 @@ class UserManageController extends Controller {
 	 */
 	public function index()
 	{
+
 	}
 
 	/**
@@ -129,25 +130,96 @@ class UserManageController extends Controller {
 
               ->get();
 
-    $data = [
-    
-      'users' => $users,
+    $excel = $request->input('excel');
 
-      'current_page' => $page,
+    if (empty($excel)) {
 
-      'pages' => $pages,
+      $data = [
+      
+        'users' => $users,
 
-      'pageName' => '用户管理',
+        'current_page' => $page,
 
-      'user_name' => empty($user_name) ? '' : $user_name,
+        'pages' => $pages,
 
-      'mobile' => empty($mobile) ? '' : $mobile,
+        'pageName' => '用户管理',
 
-      'mail' => empty($mail) ? '' : $mail
-    
-    ];
+        'user_name' => empty($user_name) ? '' : $user_name,
 
-    return view('/admin/user_board', $data);
+        'mobile' => empty($mobile) ? '' : $mobile,
+
+        'mail' => empty($mail) ? '' : $mail
+      
+      ];
+
+      return view('/admin/user_board', $data);
+
+    } else {
+
+      require_once('phpexcel/Classes/PHPExcel.php');
+
+      $excel = new \PHPExcel();
+
+      $letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+      $tableheader = ['序号', '用户名', '手机号', '邮箱', '注册时间'];
+
+      for ($i = 0; $i < count($tableheader); $i++) {
+
+        $excel->getActiveSheet()->setCellValue("{$letters[$i]}1", "{$tableheader[$i]}");
+
+      }
+
+      $j = 2;
+
+      foreach ($users as $key => $user) {
+
+        $seq = $user->id;
+
+        $name = $user->name; 
+
+        $mobile = $user->mobile;
+
+        $email = $user->email;
+
+        $created_at = $user->created_at;
+
+        $excel->getActiveSheet()->setCellValue("A" . $j, $seq);
+
+        $excel->getActiveSheet()->setCellValue("B" . $j, $name);
+
+        $excel->getActiveSheet()->setCellValue("C" . $j, $mobile);
+
+        $excel->getActiveSheet()->setCellValue("D" . $j, $email);
+
+        $excel->getActiveSheet()->setCellValue("E" . $j, $created_at . '');
+
+        $j++;
+
+      }
+
+      $doc = new \PHPExcel_Writer_Excel5($excel);
+
+      header("Pragma: public");
+      header("Expires: 0");
+      header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+      header("Content-Type:application/force-download");
+      header("Content-Type:application/vnd.ms-execl");
+      header("Content-Type:application/octet-stream");
+      header("Content-Type:application/download");;
+      header('Content-Disposition:attachment;filename="users.xls"');
+      header("Content-Transfer-Encoding:binary");
+
+      $doc->save('php://output');
+
+    }
+
+  }
+
+  public function getDownloaduserlist(Request $request) 
+  {
+
+
 
   }
 

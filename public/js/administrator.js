@@ -143,3 +143,29 @@
 
 
 })();
+
+(function () {
+
+  var $form = $('#user_board_form');
+
+  $('#download_excel').click(function (e) {
+
+    e.preventDefault();
+
+    $form.find('input[name=excel]').val(1);
+
+    $form[0].submit();
+
+  });
+
+  $('#query_user').click(function (e) {
+
+    e.preventDefault();
+
+    $form.find('input[name=excel]').val(0);
+
+    $form[0].submit();
+
+  });
+
+})();
