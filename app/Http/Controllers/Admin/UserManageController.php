@@ -123,16 +123,16 @@ class UserManageController extends Controller {
       $query->where('email', '=', $mail);
 
     }
-      
-    $users = $query->skip(($page - 1) * $offset)
-
-              ->take($offset)
-
-              ->get();
 
     $excel = $request->input('excel');
 
     if (empty($excel)) {
+      
+      $users = $query->skip(($page - 1) * $offset)
+
+                ->take($offset)
+
+                ->get();
 
       $data = [
       
@@ -155,6 +155,8 @@ class UserManageController extends Controller {
       return view('/admin/user_board', $data);
 
     } else {
+
+      $users = $query->get();
 
       require_once('phpexcel/Classes/PHPExcel.php');
 
@@ -207,7 +209,7 @@ class UserManageController extends Controller {
       header("Content-Type:application/vnd.ms-execl");
       header("Content-Type:application/octet-stream");
       header("Content-Type:application/download");;
-      header('Content-Disposition:attachment;filename="users.xls"');
+      header('Content-Disposition:attachment;filename="cooperators.xls"');
       header("Content-Transfer-Encoding:binary");
 
       $doc->save('php://output');

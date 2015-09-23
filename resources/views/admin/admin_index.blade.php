@@ -67,6 +67,7 @@
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/jquery.form.js')}}"></script>
 <script src="{{ asset('js/jquery.ui.widget.js')}}"></script>
+<script src="{{ asset('js/jquery.fileupload.js') }}"></script>
 <script src="{{ asset('js/administrator.js')}}"></script>
 </body>
 </html>

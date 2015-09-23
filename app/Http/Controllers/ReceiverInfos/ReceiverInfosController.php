@@ -245,6 +245,8 @@ class ReceiverInfosController extends Controller {
 
     $html .= "{$obj->receiver}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->city}";
 
+    $html .= "<b></b>";
+
     $html .= "<input class=\"hide\" type=\"radio\" name=\"selected-receiver\" data-id=\"{$obj->id}\">";
 
     $html .= "</div>";

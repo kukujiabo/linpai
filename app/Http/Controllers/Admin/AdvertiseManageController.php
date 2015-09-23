@@ -2,11 +2,18 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\ImageCata;
 use Illuminate\Http\Request;
 use App\Models\Advertise;
 
 class AdvertiseManageController extends Controller {
+
+  public function __construct ()
+  {
+
+    $this->middleware('admin_auth');
+
+  }
 
 	/**
 	 * Display a listing of the resource.
@@ -132,6 +139,49 @@ class AdvertiseManageController extends Controller {
     ];
 
     return view('admin/advertise_board', $data);
+
+  }
+
+  public function postImgupload (Request $request)
+  {
+    $code = $request->input('code');  
+
+    $type = $request->input('type');
+
+    if (empty($code)) {
+
+      return $this->failResponse('empty_code');
+
+    }
+
+    if (empty($type)) {
+
+      return $this->failResponse('empty_type');
+
+    }
+
+    if (!$request->hasFile($code)) {
+
+      return $this->failResponse('file_empty');
+
+    }
+
+    $imgCata = ImageCata::where('type', '=', $type)->get();
+
+    if (empty($imgCata)) {
+
+      return $this->failResponse('invalid_type');
+
+    }
+
+    $path = $imgCata->store_path;
+
+    if (!is_dir($path)) {
+
+      mkdir($path, 0777, true);
+
+    }
+    
 
   }
 

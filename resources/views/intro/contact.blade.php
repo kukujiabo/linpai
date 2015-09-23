@@ -13,7 +13,7 @@
     </h4>
     <br />
     <p>
-      要更加详细了解有关车辆临时牌照的相关信息，请拨打 4008－753－365 联系 SUBMAIL 客户服务。 
+      要更加详细了解有关车辆临时牌照的相关信息，请拨打 4008－753－365 联系 [51临牌] 客户服务。 
       <br />
       客户服务人员的工作时间为周一至周五上午10点到下午6点 （不含中国公众假期）。 
     </p>
@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-xs-6">
           <p style="padding: 5px 0px;">
-          > 服务邮箱：service@submail.cn
+          > 服务邮箱：service#51linpai.cn
           </p>
           <p style="padding: 5px 0px;">
           > 官方新浪微博：weibo.com/51linpai
@@ -45,12 +45,12 @@
     <br />
     <p>
       <h4 class="theme-font-blue">市场合作</h4>
-      > 邮箱：marketing@51linpai.com
+      > 邮箱：marketing#51linpai.com
     </p>
     <br />
     <p>
       <h4 class="theme-font-blue">服务商合作</h4>
-      > 邮箱：cooperation@51linpai.com
+      > 邮箱：cooperation#51linpai.com
     </p>
   </div>
 </div>

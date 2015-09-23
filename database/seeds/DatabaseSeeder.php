@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder {
 		//$this->call('ReceiverInfosTableSeeder');
     //$this->call('BounsTableSeeder');
     //$this->call('BankTableSeeder');
-    $this->call('AdminsTableSeeder');
+    //$this->call('AdminsTableSeeder');
+    $this->call('AdsTableSeeder');
 	}
 
 }

@@ -1,6 +1,9 @@
 /*
  * 管理员登录
+ *
  */
+$linpai = {};
+
 (function () {
 
   var alogForm = $('#admin_login_form');
@@ -146,25 +149,256 @@
 
 (function () {
 
-  var $form = $('#user_board_form');
+  /*
+   * 用户列表下载
+   */
+  var queryForm = $('.query_form');
 
-  $('#download_excel').click(function (e) {
+  $('.excel_download').click(function (e) {
 
     e.preventDefault();
 
-    $form.find('input[name=excel]').val(1);
+    queryForm.find('input[name=excel]').val(1);
 
-    $form[0].submit();
+    queryForm[0].submit();
 
   });
 
-  $('#query_user').click(function (e) {
+  $('.board_query').click(function (e) {
 
     e.preventDefault();
 
-    $form.find('input[name=excel]').val(0);
+    queryForm.find('input[name=excel]').val(0);
 
-    $form[0].submit();
+    queryForm[0].submit();
+
+  });
+
+  /*
+   * 合作伙伴列表下载
+   */
+
+})();
+
+
+/*
+ * 选择地区
+ */
+var addressBind;
+
+(addressBind = function () {
+
+  /*
+   * 绑定省份选择事件
+   */
+  addressBind.provinceBind = function () {
+
+    /*
+     * 获取省份数据.
+     */
+    $.get('/location/province', {}, function (data) { 
+
+      if (data.code) {
+
+        $('#province-menu').html(data.res);
+
+        $('#nav-province-list').html(data.res);
+
+        $('.province-item').click(function (e) {
+
+          e.preventDefault();
+
+          $('input[name=province]').val('');
+          $('input[name=city]').val('');
+          $('input[name=district]').val('');
+          $('#city-menu').html('');
+          $('#district-menu').html('');
+          $('#selected-city').html('选择城市');
+          $('#selected-district').html('选择区域');
+        
+          var that = $(this);
+
+          var code = that.data('code');
+
+          if (code != undefined && code != '') {
+
+            console.log(code);
+
+            $('.selected-province').html(that.html());
+
+            $('#post-province').val(that.html());
+
+            $('#v-province').removeClass('alert-info-border');
+          
+            $.get('/location/city', { province: code }, function (data) {
+
+              if (data.code) {
+
+                $('#city-menu').html(data.res);
+
+                if ($('#city-menu').find('.city-item').size() > 8) {
+
+                  $('#city-menu').css({'width': '480px'});
+
+                  $('#city-menu').find('li').addClass('col-xs-4');
+                
+                } else {
+                
+                  $('#city-menu').css({'width': 'auto'});
+                
+                }
+
+                addressBind.cityBind();
+              
+              }
+            
+            }, 'json');
+          
+          }
+        
+        });
+
+      }
+
+    }, 'json');
+
+  };
+
+  addressBind.cityBind = function () {
+
+    $('.city-item').each(function (i, t) {
+  
+      $(t).click(function (e) {
+
+        e.preventDefault();
+
+        $('#selected-district').html('选择区域');
+        $('input[name=district]').val('');
+    
+        var name = $(this).html();
+
+        $('#selected-city').html(name);
+
+        $('#post-city').val(name);
+    
+        $('#v-city').removeClass('alert-info-border');
+
+        $.get('/location/district', { city: $(t).data('code') }, function (data) {
+
+          if (data.code) {
+          
+            var dmenu = $('#district-menu');
+            
+            dmenu.html(data.res);
+
+            if (dmenu.find('.district-item').size() > 8) {
+            
+              dmenu.css({'width': '480px'});
+
+              dmenu.find('li').addClass('col-xs-4');
+            
+            } else {
+            
+              dmenu.css({ 'width': 'auto' });
+            
+            }
+
+            addressBind.districtBind();
+          
+          }
+        
+        }, 'json')
+
+      })
+  
+    });
+
+  };
+
+  addressBind.districtBind = function () {
+
+    $('.district-item').each(function (i, t) {
+    
+      $(t).click(function (e) {
+      
+        e.preventDefault();
+
+        var name = $(this).html();
+
+        $('#selected-district').html(name);
+
+        $('#post-district').val(name);
+
+        $('#v-district').removeClass('alert-info-border');
+      
+      })
+    
+    });
+
+  };
+
+  addressBind.provinceBind();
+
+  $linpai.areaReset = function () {
+  
+    $('.selected-province').html('选择省份');
+    $('#selected-city').html('选择城市');
+    $('#selected-district').html('选择区域');
+
+    addressBind.provinceBind();
+  
+  };
+
+})();
+
+(function () {
+
+  var uploadsBtn = $('.board_img_uploads');
+
+  uploadsBtn.click(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    var uploadBox = $('#upload_box');
+
+    var imgUrl = that.data('url');
+
+    uploadBox.find('#u_p_img').attr('src', imgUrl); 
+
+    uploadBox.find('#board_upload').fileupload({
+    
+      autoUpload: true,
+
+      url: '/adboard/imgupload',
+
+      sequentialUploads: true,
+
+      dataType: 'json',
+
+      formData: {
+
+        'code': that.data('code')
+
+      },
+
+      add: function (e, data) {
+
+        data.submit();
+
+      }
+    
+    }).bind('fileuploadprogress', function (e, data) {
+      
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+
+    }).bind('fileuploaddone', function (e, data) {
+      
+      
+    });
+
+    uploadBox.removeClass('hide');
 
   });
 

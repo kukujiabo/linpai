@@ -14,7 +14,7 @@
               <span class="require">*</span>
               车辆所有人信息
             </label>
-            <input type="text" class="form-control col-md-5" name="owner" placeholder="车辆所有人姓名" id="owner-info">
+            <input type="text" class="form-control" width="100%" name="owner" placeholder="车辆所有人姓名" id="owner-info">
         </div>
 <!--
         <div class="form-group col-md-6">

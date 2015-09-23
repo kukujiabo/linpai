@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box board-search padding-5">
-        <form class="form-inline" id="user_board_form" role="form" action="#" method="get">
+        <form class="form-inline query_form"  role="form" action="#" method="get">
           <div class="col-xs-10">
             <div class="form-group padding-5">
               <label class="control-label" for="order_code">用户名</label>
@@ -26,10 +26,10 @@
           <input type="hidden" name="excel" value="">
           <div class="col-xs-2">
             <div class="form-group padding-5">
-              <button class="btn btn-primary btn-sm" id="query_user" type="submit">查询</button>
+              <button class="btn btn-primary btn-sm board_query" type="submit">查询</button>
             </div>
             <div class="form-group padding-5">
-              <a class="btn btn-default btn-sm" type="submit" id="download_excel">下载列表</a>
+              <a class="btn btn-default btn-sm excel_download" type="submit" id="users_download">下载列表</a>
             </div>
           </div>
           <div style="clear:both"></div>

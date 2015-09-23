@@ -1,5 +1,7 @@
 @extends('admin/admin_index')
 
+@include('upload_box')
+
 @section('content')
 
 <div class="list-page">
@@ -48,9 +50,40 @@
           <th class="col-xs-2"> 操作</th>
         </tr>
       </thead>  
+      <tbody>
+        @foreach ($ads as $ad) 
+
+          <tr>
+            <td>
+              @if (empty($ad->url))
+                没有图片
+              @else
+                <img class="board-img" src="{{$ad->url}}">
+              @endif
+            </td>
+            <td>{{$ad->url}}</td>
+            <td>{{$ad->type}}</td>
+            <td>{{$ad->code}}</td>
+            <td>{{$ad->seq}}</td>
+            <td>
+              <a href="#" class="board_img_uploads" data-code="{{$ad->code}}" data-url="{{$ad->url}}">
+                <span class="glyphicon glyphicon-upload"></span>
+              </a>
+              &nbsp;|&nbsp;
+              <a href="#" class="board_img_remove" data-code="{{$ad->code}}">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </td>
+          </tr>
+
+        @endforeach
+      </tbody>
     </table>
   </div>
 </div>
 
+<div>
+  @yield('upload_box')
+</div>
 
 @endsection
