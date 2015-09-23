@@ -2304,25 +2304,28 @@ var addressBind;
 
       var legal = true;
 
-      for (var i = 0; i < inputs.size(); i++) {
+      if ($linpai.validPass) {
 
-        var input = $(inputs[i]);
+        for (var i = 0; i < inputs.size(); i++) {
 
-        if (input.val() == '') {
+          var input = $(inputs[i]);
 
-          legal = false;
+          if (input.val() == '') {
 
-          input.css({ 'background': '#ebccd1' }).attr('placeholder', '请填写' + input.attr('title'));
+            legal = false;
+
+            input.css({ 'background': '#ebccd1' }).attr('placeholder', '请填写' + input.attr('title'));
+
+          }
 
         }
 
+        if (legal) {
+
+          passform.ajaxSubmit(passOptions);
+
+        } 
       }
-
-      if (legal) {
-
-        passform.ajaxSubmit(passOptions);
-
-      } 
 
     });
 
@@ -2421,6 +2424,7 @@ var addressBind;
 
     if ($linpai.validPass) {
 
+      /*
       var confirmpass = resetForm.find('input[name=confirmpassword]');
 
       var newpass = resetForm.find('input[name=newpassword]');
@@ -2436,6 +2440,7 @@ var addressBind;
         return;
 
       }
+      */
 
       resetForm.ajaxSubmit(resetOptions);
 

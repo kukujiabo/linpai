@@ -99,6 +99,7 @@
             </div>
           </div>
         </fieldset>
+        <!--
         <fieldset>
           <div class="form-group">
             <label class="control-label col-xs-3 text-right padding-5">确认密码：</label>
@@ -107,6 +108,7 @@
             </div>
           </div>
         </fieldset>
+        -->
         <fieldset>
           <div class="padding-5 width-100">
             <label class="control-label sr-only">提交表单</label>
