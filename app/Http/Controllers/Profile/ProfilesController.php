@@ -487,9 +487,7 @@ class ProfilesController extends Controller {
     
       'oldpassword' => 'required',
 
-      'newpassword' => 'required',
-
-      'confirmpassword' => 'required'
+      'newpassword' => 'required'
     
     ]);
 
@@ -511,13 +509,14 @@ class ProfilesController extends Controller {
   
     $newpassword = $request->input('newpassword'); 
 
-    $confirmpassword = $request->input('confirmpassword');
 
+    /*
     if ($confirmpassword != $newpassword) {
 
       return $this->failResponse('not_match');
 
     }
+     */
 
     /*
      * 查询原密码
