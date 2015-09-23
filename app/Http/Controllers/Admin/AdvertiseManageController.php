@@ -91,7 +91,6 @@ class AdvertiseManageController extends Controller {
 
   public function getIndex (Request $request) 
   {
-
     $page = $request->input('page');
 
     $type = $request->input('type');
@@ -116,16 +115,16 @@ class AdvertiseManageController extends Controller {
 
     $count = $query->count();
 
-    $pages = $count/$offset;
+    $pages = ceil($count/$offset);
 
-    $page = empty($page) ? 1 : $page > $pages ? $pages : $page < 1 ? 1 : $page;
+    $page = !empty($page) ? $page > $pages ? $pages : $page < 1 ? 1 : $page : 1;
 
     $ads = $query->skip(($page - 1) * $offset)
 
       ->take($offset)
 
       ->get();
-    
+
     $data = [
 
       'pageName' => '广告位管理',
@@ -176,6 +175,9 @@ class AdvertiseManageController extends Controller {
 
     $path = $imgCata->store_path;
 
+    /*
+     * 如果不存在目录则创建目录
+     */
     if (!is_dir($path)) {
 
       mkdir($path, 0777, true);

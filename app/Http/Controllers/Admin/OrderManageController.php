@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php namespace app\http\controllers\admin;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -423,7 +423,9 @@ class OrderManageController extends Controller {
      
      // set default font subsetting mode 
     $pdf->setFontSubsetting(true); 
-     
+
+    $pdf->SetDefaultMonospacedFont('courier'); 
+
      //设置字体 
     $pdf->SetFont('stsongstdlight', 1, 12); 
      
@@ -432,8 +434,7 @@ class OrderManageController extends Controller {
     $user = User::find($order->uid);
 
     $html = <<<EOD
-
-      <div style="font-family:'微软雅黑'">
+    <div style="font-family:SimHei;">
       <h1>感谢您选择［51临牌］的服务</h1>
       <p>订单号：{$order->order_code}</p>
       <p>下单时间：{$order->created_at}</p>
@@ -441,7 +442,7 @@ class OrderManageController extends Controller {
       <p>用户名：{$user->name}</p>
       <p>收件人：{$order->receiver}</p>
       <p>手机号码：{$order->mobile}</p>
-      <p>收货地址：{$order->province}{$order->city}{$order->address}</p>
+      <p style="border-bottom:1px solid black;width:100%;">收货地址：{$order->province}{$order->city}{$order->address}</p>
       <br>
       <p>订单详情：</p>
       <table style="text-align:center">
@@ -471,15 +472,17 @@ class OrderManageController extends Controller {
       </table>
       <br>
       <p>如果您有任何问题，欢迎给我们发送邮件 service@51linpai.com 或与周一至周五</p>
-      <p>的 10:00 －18:00 给我们来电 4006932724</p>
-      </div>
+      <p style="border-bottom:1px solid black;width:100%;">的 10:00 －18:00 给我们来电 4006932724</p>
+      <br>
       <p>诚挚的问候</p>
       <p>51临牌团队</p>
       <p width="100%" style="text-align:center"><h2>www.51linpai.com</h2></p>
+    </div>
 EOD;
 
-    $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+    //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
+    $pdf->writeHTML($html, true, false, true, false, '');
 
     $pdf->Output('t.pdf', 'I');
 

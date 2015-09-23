@@ -16,7 +16,7 @@
       </a>
     </li>
     @endif
-    
+
     @for ($i = 1; $i <= $pages; $i++) 
 
       <li><a href="#" class="o-page" data-page="{{$i}}" data-token={{csrf_token()}}>{{$i}}</a></li>
