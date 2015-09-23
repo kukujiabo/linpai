@@ -25,7 +25,7 @@
     <div class="media">
       <div class="media-left">
         <a href="#" class="gray-light" style="display:block">
-          <img class="media-object" src="imgs/blip-64.png" alt="">
+          <img class="media-object" src="{{$good->tiny_good}}" alt="" width=80px>
         </a>
       </div>
       <div class="media-body">

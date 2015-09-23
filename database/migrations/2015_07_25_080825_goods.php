@@ -20,6 +20,7 @@ class Goods extends Migration {
       $table->string('code', 100)->unique();
       $table->string('intro', 500)->nullable();
       $table->string('pic', 200)->nullable();
+      $table->string('tiny_good')->nullable();
       $table->integer('active');
       $table->timestamps();
 
