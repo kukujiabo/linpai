@@ -1,9 +1,15 @@
 @section('banner')
 <div id="my-carousel" class="carousel slide" data-interval="5000" style="height: auto; border-radius: 3px;">
   <ol class="carousel-indicators">
-    <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#my-carousel" data-slide-to="1"></li>
-    <li data-target="#my-carousel" data-slide-to="2"></li>
+    @foreach ($banners as $key => $banner)
+
+    @if ($key == 0)
+      <li data-target="#my-carousel" data-slide-to="{{$key}}" class="active"></li>
+    @else
+      <li data-target="#my-carousel" data-slide-to="{{$key}}"></li>
+    @endif
+
+    @endforeach
   </ol>
   <div class="carousel-inner">
   
