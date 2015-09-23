@@ -100,7 +100,7 @@ class UserManageController extends Controller {
 
     $offset = 20;
 
-    $pages = ceil(User::count()/20);
+    $pages = ceil(User::count()/$offset);
 
     $page = !empty($page) ? $page > $pages ? $pages : $page < 1 ? 1 : $page : 1;
 

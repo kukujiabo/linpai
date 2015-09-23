@@ -2,6 +2,8 @@
 
 @include('upload_box')
 
+@include('pages_nav')
+
 @section('content')
 
 <div class="list-page">
@@ -37,6 +39,14 @@
       </div>
       <div style="clear:both"></div>
     </form>
+  </div>
+  <div class="row padding-5">
+    <div class="col-xs-1">
+      <button class="btn btn-default btn-sm">新增图片</button>
+    </div>
+    <div class="col-xs-1">
+      <button class="btn btn-default btn-sm">新增类型</button>
+    </div>
   </div>
   <div class="board-control">
     <table class="table table-hover table-stripped" id="table-ad">
@@ -79,6 +89,9 @@
         @endforeach
       </tbody>
     </table>
+  </div>
+  <div class="padding-5 text-center">
+    @yield('page_nav')
   </div>
 </div>
 
