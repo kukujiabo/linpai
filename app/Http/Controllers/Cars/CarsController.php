@@ -245,7 +245,7 @@ class CarsController extends Controller {
 
     $html .= "<label class=\"radio no-margin\">";
 
-    $html .= "<div class=\"use-card t-padding use-active\" data-id=\"{$obj->id}\" id=\"use-car-{$obj->id}\">{$obj->owner}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->factory_code}</div>";
+    $html .= "<div class=\"use-card t-padding use-active\" data-id=\"{$obj->id}\" id=\"use-car-{$obj->id}\">{$obj->owner}&nbsp;&nbsp;&nbsp;&nbsp;{$obj->factory_code}<b></b></div>";
 
     $html .= "<input class=\"hide\" type=\"radio\" name=\"selected-car\" data-id=\"$obj->id\">";
 

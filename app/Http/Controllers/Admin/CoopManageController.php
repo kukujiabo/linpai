@@ -91,25 +91,102 @@ class CoopManageController extends Controller {
 
     $page = empty($page) ? 1 : $page > $pages ? $pages : $page < 1 ? 1 : $page;
 
-    $coopers = Cooperators::skip(($page - 1) * $offset)
+    $excel = $request->input('excel');
 
-      ->take($offset)
+    $province = $request->input('province');
 
-      ->get();
+    $city = $request->input('city');
 
-    $data = [
+    $district = $request->input('district');
 
-      'cooperators' => $coopers,
+    $query  = Cooperators::where('id', '>', 0);
     
-      'pageName' => '合作伙伴',
+    if (!empty($province)) {
 
-      'current_page' => $page,
+      $query->where('province', '=', $province);
 
-      'pages' => $pages
-    
-    ];
+    }
 
-    return view('admin/coope_board', $data);
+    if (!empty($city)) {
+
+      $query->where('city', '=', $city);
+
+    }
+
+    if (!empty($district)) {
+
+      $query->where('district', '=', $district);
+
+    }
+
+    if (empty($excel)) {
+
+      $coopers = $query->skip(($page - 1) * $offset)->take($offset)->get();
+
+      $data = [
+
+        'cooperators' => $coopers,
+      
+        'pageName' => '合作伙伴',
+
+        'current_page' => $page,
+
+        'pages' => $pages
+      
+      ];
+
+      return view('admin/coope_board', $data);
+
+    } else {
+
+      $coopers = $query->get();
+
+      require_once('phpexcel/Classes/PHPExcel.php');
+
+      $excel = new \PHPExcel();
+
+      $letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' ];
+
+      $tableheader = [ '序号', '联系人', '公司', '手机号', '固定电话', '所属区域', '电子邮箱', '提交时间' ];
+
+      for ($i = 0; $i < count($tableheader); $i++) {
+
+        $excel->getActiveSheet()->setCellValue("{$letters[$i]}1", "{$tableheader[$i]}");
+
+      }
+
+      $j = 2;
+
+      foreach ($coopers as $cooper) {
+
+        $excel->getActiveSheet()->setCellValue("A{$j}", $cooper->id);
+        $excel->getActiveSheet()->setCellValue("B{$j}", $cooper->contact);
+        $excel->getActiveSheet()->setCellValue("C{$j}", $cooper->company);
+        $excel->getActiveSheet()->setCellValue("D{$j}", $cooper->mobile);
+        $excel->getActiveSheet()->setCellValue("E{$j}", $cooper->phone);
+        $excel->getActiveSheet()->setCellValue("F{$j}", $cooper->province . $cooper->city . $cooper->district);
+        $excel->getActiveSheet()->setCellValue("G{$j}", $cooper->email);
+        $excel->getActiveSheet()->setCellValue("H{$j}", $cooper->created_at . '');
+
+        $j++;
+
+        $doc = new \PHPExcel_Writer_Excel5($excel);
+
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-execl");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        header('Content-Disposition:attachment;filename="cooperators.xls"');
+        header("Content-Transfer-Encoding:binary");
+
+        $doc->save('php://output');
+
+      }
+
+    }
 
   }
 

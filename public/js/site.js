@@ -943,7 +943,7 @@ window.linpai = $linpai;
         spec: that.data('spec'),
 
         _token: $('#_token').val()
-      
+
       },
 
       add: function (e, data) {
@@ -997,7 +997,6 @@ window.linpai = $linpai;
 /*
  * 选择地址
  */
-
 var addressBind;
 
 (addressBind = function () {
@@ -1959,7 +1958,7 @@ var addressBind;
      */
     if (that.data('flow-pos') == 'above') {
 
-      introImg.css({'left': elementLeft - (introImg.width()/3), 'top': elementTop - (introImg.height() + that.height() * 4), 'position': 'fixed' });
+      introImg.css({'left': elementLeft - (introImg.width()/3), 'top': elementTop - introImg.height(), 'position': 'fixed' });
 
       introImg.show();
 
@@ -2206,6 +2205,15 @@ var addressBind;
   });
 
   $('.h-good-intro').height(maxHeight);
+
+})();
+
+/*
+ *
+ */
+(function () {
+  
+
 
 })();
 

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\Good;
+use App\Models\Advertise;
 use Illuminate\Http\Request;
 use App\Models\GoodAttribsInfo;
 
@@ -38,6 +39,14 @@ class HomeController extends Controller {
 
     $goods = array();
 
+    $banners = Advertise::where('type', '=', 'index_banner')
+      
+      ->where('active', '=', 1)
+      
+      ->orderBy('seq', 'asc')
+      
+      ->get();
+
     foreach ($goodDatas as $good) {
 
       $gInfo = GoodAttribsInfo::where('gid', '=', $good->id)
@@ -69,6 +78,8 @@ class HomeController extends Controller {
     return view('home', array(
     
       'goods' => $homeGoodsDisplay,
+
+      'banners' => $banners,
 
       'home' => 1
     

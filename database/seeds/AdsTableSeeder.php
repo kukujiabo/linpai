@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Advertise;
 
-class AdsTab;eSeeder extends Seeder {
+class AdsTableSeeder extends Seeder {
 
   public function run ()
   {
@@ -15,7 +15,7 @@ class AdsTab;eSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '',
+      'url' => '/imgs/carousel/race1.png',
 
       'seq' => 1,
 
@@ -29,7 +29,7 @@ class AdsTab;eSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '',
+      'url' => '/imgs/carousel/race2.png',
 
       'seq' => 2,
 
@@ -43,7 +43,7 @@ class AdsTab;eSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '',
+      'url' => '/imgs/carousel/race3.png',
 
       'seq' => 3,
 
