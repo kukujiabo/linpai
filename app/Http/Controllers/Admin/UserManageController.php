@@ -209,7 +209,7 @@ class UserManageController extends Controller {
       header("Content-Type:application/vnd.ms-execl");
       header("Content-Type:application/octet-stream");
       header("Content-Type:application/download");;
-      header('Content-Disposition:attachment;filename="cooperators.xls"');
+      header('Content-Disposition:attachment;filename="users.xls"');
       header("Content-Transfer-Encoding:binary");
 
       $doc->save('php://output');
