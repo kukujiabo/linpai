@@ -33,7 +33,7 @@
         @foreach ($orders as $order)
         <div class="order-title">
           <div class="col-xs-4">
-            <b>编号：{{$order->code}} </b>
+            <b>编号：{{$order->order_code}} </b>
           </div>
           <div class="col-xs-4">
             <b>{{$order->created_at}}</b>
@@ -43,10 +43,10 @@
         <div class="order-body">
           <div class="col-xs-3 no-padding">
             <div class="col-xs-4 no-padding" style="background:#eee;">
-              <img src="{{ asset('/imgs/blip-64.png') }}">
+              <img src="{{$order->good_tiny_pic}}">
             </div>
             <div class="col-xs-8  order-col">
-              {{$order->gname}}
+              {{$order->good_name}}
             </div> 
           </div>
           <div class="col-xs-2 order-col">

@@ -21,6 +21,7 @@ use Validator;
 use Hash;
 use Crypt;
 
+
 class ProfilesController extends Controller {
 
   public function __construct () 
