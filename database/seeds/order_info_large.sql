@@ -35,6 +35,7 @@ d.orig_price as orig_price,
 d.cut_fee as cut_fee,
 d.final_price as final_price,
 e.name as good_name,
+e.tiny_good as good_tiny_pic,
 e.code as good_code,
 f.value as g_single_price
 from 
