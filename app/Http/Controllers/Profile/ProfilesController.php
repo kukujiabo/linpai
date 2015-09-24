@@ -95,9 +95,9 @@ class ProfilesController extends Controller {
 
     if ($request->ajax()) {
      
-      $html = view('profile/order_list', $data) . '';//$this->orderListTemplate($orders);
+      $data['html'] = view('profile/order_list', $data) . '';//$this->orderListTemplate($orders);
 
-      return $this->successResponse('res', $html);
+      return $this->successResponse('res', $data);
     
     }
 
