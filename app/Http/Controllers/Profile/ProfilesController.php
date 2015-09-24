@@ -57,7 +57,7 @@ class ProfilesController extends Controller {
 
     $page = $page > $pages ? $pages : $page;
 
-    $orderSet = VOrderInfos::where('uid', '=', $user->id)
+    $orders = VOrderInfos::where('uid', '=', $user->id)
 
       ->orderBy('status', 'asc')
 
@@ -69,6 +69,7 @@ class ProfilesController extends Controller {
 
       ->get();
 
+    /*
     $orders = array();
 
     foreach ($orderSet as $order) {
@@ -76,6 +77,7 @@ class ProfilesController extends Controller {
       array_push($orders, $order);
     
     }
+     */
 
     $data = [
     
