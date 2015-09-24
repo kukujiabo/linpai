@@ -35,6 +35,7 @@
 
       @include('profile/order_list')
 
+      </div>
     </div>    
   </div>
   <div class="col-md-12 text-center">
