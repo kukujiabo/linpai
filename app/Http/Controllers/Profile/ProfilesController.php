@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\VOrderInfos;
+use App\Models\OrderAllInfo;
 use App\Models\Car;
 use App\Models\Province;
 use App\Models\City;
@@ -58,7 +59,7 @@ class ProfilesController extends Controller {
 
     $page = $page > $pages ? $pages : $page;
 
-    $orders = VOrderInfos::where('uid', '=', $user->id)
+    $orders = OrderAllInfo::where('uid', '=', $user->id)
 
       ->orderBy('status', 'asc')
 
