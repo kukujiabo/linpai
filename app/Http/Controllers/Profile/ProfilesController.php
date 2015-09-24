@@ -95,9 +95,9 @@ class ProfilesController extends Controller {
 
     if ($request->ajax()) {
      
-      $data['html'] = $this->orderListTemplate($orders);
+      $html = view('profile/order_list', $data) . '';//$this->orderListTemplate($orders);
 
-      return $this->successResponse('res', $data);
+      return $this->successResponse('res', $html);
     
     }
 
@@ -384,10 +384,10 @@ class ProfilesController extends Controller {
      
       if ($data->status == 0) {
 
-        $status = "<a href=\"/order/pay?order={$data->code}\" class=\"require go_to_pay\" data-id=\"{$data->id}\">未付款</a>";
+        $status = "<a href=\"/order/pay?order={$data->order_code}\" class=\"require go_to_pay\" data-id=\"{$data->oid}\">未付款</a>";
       } else if ($data->status == 1) {
 
-        $status = "已付款<div><a href=\"#\" class=\"require\" data-id=\"{$data->id}\">查看物流</a></div>";
+        $status = "已付款<div><a href=\"#\" class=\"require\" data-id=\"{$data->oid}\">查看物流</a></div>";
 
       } else if ($data->status == 2) {
 
@@ -403,7 +403,7 @@ class ProfilesController extends Controller {
     
         . "<div class=\"col-xs-4\">"
 
-        . "<b>编号：{$data->code} </b>"
+        . "<b>编号：{$data->order_code} </b>"
 
         . "</div>"
 
@@ -423,13 +423,13 @@ class ProfilesController extends Controller {
 
         . "<div class=\"col-xs-4 no-padding\" style=\"background:#eee;\">"
 
-        . "<img src=\"/imgs/blip-64.png\">"
+        . "<img src=\"{$data->good_tiny_pic}\">"
 
         . "</div>"
 
         . "<div class=\"col-xs-8 order-col\">"
 
-        . $data->gname
+        . $data->good_name
 
         . "</div>"
 
