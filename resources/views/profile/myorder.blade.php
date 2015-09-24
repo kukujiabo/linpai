@@ -63,7 +63,7 @@
           </div>
           <div class="col-xs-1 order-col">
             @if ($order->status == 0)
-            <a href="{{asset('order/pay')}}?order={{$order->code}}" class="require go-to-pay" data-id="{{$order->id}}">
+            <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">
                未付款
             </a>
 
@@ -72,7 +72,7 @@
             @elseif ($order->status == 2)
               已完成
               <div>
-                <a href="#" class="theme-font-blue deliver-info" data-id="{{$order->code}}">
+                <a href="#" class="theme-font-blue deliver-info" data-id="{{$order->order_code}}">
                   <span class="glyphicon glyphicon-info"></span>
                   查看物流
                 </a>
