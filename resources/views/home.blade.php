@@ -1,5 +1,6 @@
 @extends('app')
 
+
 @extends('banner')
 
 @extends('area_select')
@@ -58,7 +59,7 @@
 
       @foreach ($goods as $goodLine)
       
-        <div class="col-md-3">
+        <div class="col-md-2">
         </div> 
 
         @foreach ($goodLine as $key => $good)
@@ -85,10 +86,8 @@
             </a>
           </div>
         </div> 
-
+        <div class="col-md-2"></div>
         @endforeach
-        <div class="col-md-2">
-        </div> 
 
       @endforeach
 
@@ -106,7 +105,7 @@
           <div class="padding-5"></div>
           <h3>专业</h3>
           <p>
-            专业临牌办理团队，<br>让您全程无忧
+            车管所正规办理，100%真临牌，出险可理赔
           </p>
         </div>
         <div class="col-md-2">

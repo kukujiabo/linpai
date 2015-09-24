@@ -1919,9 +1919,13 @@ var addressBind;
 
       $('p[filename=validate_paper]').html('合格证扫描件');
 
+      $('span#validate_paper').data('url', '/imgs/notice/validate_paper.jpg');
+
     } else {
     
       $('p[filename=validate_paper]').html('报关单扫描件');
+
+      $('span#validate_paper').data('url', '/imgs/notice/import_certify.jpg');
     
     }
   

@@ -32,7 +32,7 @@
           </label>
           <input type="text" name="reco_code" class="form-control col-md-5" placeholder="例子：WD78" id="v-factory">
           <div class="col-md-1 padding-5">
-            <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-disclass="flow-img" id="reco-t-img" data-url="/imgs/reco_code.jpg"></span>
+            <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-disclass="flow-img" id="reco-t-img" data-url="/imgs/notice/reco_code.jpg"></span>
           </div>
         </div>
       </fieldset>
@@ -45,7 +45,7 @@
             </label>
             <input type="text" class="form-control col-md-5" name="factory_code" placeholder="例：奔驰Benz CLA260轿车" id="v-factory">
             <div class="col-md-1 padding-5">
-              <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-disclass="flow-img" id="fac-t-img"></span>
+              <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-disclass="flow-img" data-url="/imgs/notice/factory_code.jpg" id="fac-t-img"></span>
             </div>
         </div>
         <div class="form-group col-md-6">
@@ -67,8 +67,7 @@
       <fieldset>
         <div class="form-group col-md-12">
           <p class="col-md-12" style="margin: 20px 0px;">
-            <span class="require">*</span>
-            车辆相关文件（请上传大小小于 <span class="require">3M</span> 的附件）
+            扫描件大小不得大于 3M 且仅可上传 jpg、png、tif 格式
           </p>
         </div>
       </fieldset>
@@ -99,7 +98,7 @@
 
         @if ($good_attrib['code'] != 'identity_face' && $good_attrib['code'] != 'identity_back')
 
-                        <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-img="{{$good_attrib['code']}}" id="{{$good_attrib['code']}}" data-url="/imgs/{{$good_attrib['code']}}.jpg"></span>
+                        <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-img="{{$good_attrib['code']}}" id="{{$good_attrib['code']}}" data-url="/imgs/notice/{{$good_attrib['code']}}.jpg"></span>
         @endif
                     </div>
                   </div>
