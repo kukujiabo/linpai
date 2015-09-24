@@ -42,10 +42,10 @@
         </div>
         <div class="order-body">
           <div class="col-xs-3 no-padding">
-            <div class="col-xs-5 padding-5">
-              <img src="{{$order->good_tiny_pic}}" width="100%">
+            <div class="col-xs-4 no-padding">
+              <img src="{{$order->good_tiny_pic}}" height="100%;">
             </div>
-            <div class="col-xs-7 padding-5">
+            <div class="col-xs-8  order-col">
               {{$order->good_name}}
             </div> 
           </div>
