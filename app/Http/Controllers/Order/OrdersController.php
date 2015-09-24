@@ -1194,7 +1194,7 @@ class OrdersController extends Controller {
 
     }
 
-    $result = OrderAllInfo::where('code', '=', $order)->first();
+    $result = OrderAllInfo::where('order_code', '=', $order)->first();
 
     if (empty($result->id)) {
 
