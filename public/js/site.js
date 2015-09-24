@@ -1738,6 +1738,8 @@ var addressBind;
           }
         
         });
+
+        $linpai.deliverBind();
       
       }, 'json');
   
@@ -2001,7 +2003,7 @@ var addressBind;
 /*
  * 查询物流
  */
-(function () {
+($linpai.deliverBind = function () {
 
   var deliverInfos = $('a.deliver-info');
 
