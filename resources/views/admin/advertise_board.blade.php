@@ -4,6 +4,8 @@
 
 @include('pages_nav')
 
+@include('admin/new_ad')
+
 @section('content')
 
 <div class="list-page">
@@ -93,6 +95,9 @@
   <div class="padding-5 text-center">
     @yield('page_nav')
   </div>
+</div>
+<div>
+  @yield('new_ad')
 </div>
 
 <div>
