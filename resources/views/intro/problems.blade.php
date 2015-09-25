@@ -4,7 +4,7 @@
 
   <div class="top-50"></div>
   <div class="box" style="padding-top:0px;background:#fff;">
-    <img src="/imgs/problems.png" width="100%">
+    <img src="/imgs/problems.jpg" width="100%">
     <div class="padding-20">
       <div class="panel panel-info">
         <div class="panel-heading pro-head">

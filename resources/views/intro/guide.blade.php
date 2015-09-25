@@ -5,7 +5,7 @@
 <div class="top-50">
 </div>
 <div class="box" style="padding-top:0px;background:#fff;">
-  <img src="/imgs/zhinan.png" style="width:100%">
+  <img src="/imgs/guide.jpg" style="width:100%">
   <div class="padding-20">
     <h3 class="text-center meta-font">车辆临时牌照办理指南</h3>
     <hr>
@@ -19,19 +19,19 @@
       </p>
       <p>
         <3> 机动车交通事故责任强制保险单扫描件<span class="theme-orig">（交强险副本扫描件）</span>
-        <span class="glyphicon glyphicon-info-sign i-c-img meta-font" data-img="trans_ensurance" data-disclass="flow-img"></span>
+        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/trans_ensurance.jpg" data-img="trans_ensurance" data-disclass="flow-img"></span>
       </p>
       <p>
         <4> 机动车销售统一发票扫描件<span class="theme-orig">（车辆购买发票）</span>
-        <span class="glyphicon glyphicon-info-sign i-c-img meta-font" data-img="car_check" data-disclass="flow-img"></span>
+        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/car_check.jpg" data-img="car_check" data-disclass="flow-img"></span>
       </p>
       <p>
         <5> 机动车整车出厂合格证扫描件<span class="theme-orig">（国产车辆合格证）</span>
-        <span class="glyphicon glyphicon-info-sign i-c-img meta-font" data-disclass="flow-img"></span>
+        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/validate_paper.jpg" data-disclass="flow-img"></span>
       </p>
       <p>
         <6> 货物进口证明书扫描件<span class="theme-orig">（进口车辆海关关单）</span>
-        <span class="glyphicon glyphicon-info-sign i-c-img meta-font" data-disclass="flow-img" data-img="import_certify"></span>
+        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/import_certify.jpg" data-disclass="flow-img" data-img="import_certify"></span>
       </p>
     </div>
   </div>
