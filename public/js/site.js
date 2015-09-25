@@ -2337,11 +2337,13 @@ var addressBind;
 
     success: function (data) {
 
+      console.log(data);
+
       if (data.code) {
 
         $('.toast-notice').html('发送成功');
 
-        window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 2000);
+        window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1000);
 
       } else {
 
