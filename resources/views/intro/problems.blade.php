@@ -42,7 +42,7 @@
           <b>如果办理完三次临时牌照后，还要继续办理临时牌照怎么办？</b>
         </div>
         <div class="panel-body">
-您可以办理外省临时号牌。注意：外省的车辆临时号牌在高峰期（7:00 – 9:30，16:00 – 18:30）是不能在上海上高架行驶的。<a href="/home#buy" class="theme-orig" target="_blank">即刻购买外省临时号牌</a>
+您可以办理外省临时号牌。注意：外省的车辆临时号牌在高峰期（7:00 – 9:30，16:00 – 18:30）是不能在上海上高架行驶的，<a href="/home#buy" class="theme-orig" target="_blank">即刻购买外省临时号牌</a>。
         </div>
       </div>
 
@@ -78,7 +78,7 @@
           <b>如果购买外省临时号牌，我可以指定外省临时号牌的开设地区吗？</b>
         </div>
         <div class="panel-body">
-        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig" target="_blank">请联系我们</a>的工作人员，我们的客服我尽量满足您的要求。
+        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，请<a href="{{asset('text/contact')}}" class="theme-orig" target="_blank">联系我们</a>的工作人员，我们的客服我尽量满足您的要求。
         </div>
       </div>
 
