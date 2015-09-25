@@ -651,7 +651,7 @@ class ProfilesController extends Controller {
 
     }
 
-    return $this->successResponse('result', [ 'sms' => $mResult, 'mail' => $mailResult]);
+    return $this->successResponse('result', [ 'sms' => $mResult, 'mail' => $mailResult, 'arr' => $arr]);
   
   }
 
