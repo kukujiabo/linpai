@@ -38,13 +38,11 @@ class TriggerEmail extends Event {
 	 */
 	public function __construct($to, $mailType, $info = null)
 	{
-		//
     $this->to = $to;
 
     $this->mailType = $mailType;
 
     $this->info = $info;
-
 	}
 
   private function registerMail ()
@@ -138,7 +136,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_invite,
 
-      'vars' => "{\"friend\": \"{$this->info['friend']}\", \"recommend\": \"$this->info['recommend']\"}"
+      'vars' => "{\"friend\": \"{$this->info['friend']}\", \"recommend\": \"{$this->info['recommend']}\"}"
     
     ];
 
