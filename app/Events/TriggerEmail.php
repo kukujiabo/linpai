@@ -108,7 +108,6 @@ class TriggerEmail extends Event {
 
   private function deliverMail ()
   {
-
     $post_data = [
 
       'appid' => $this->appid,
@@ -125,6 +124,26 @@ class TriggerEmail extends Event {
     
     $this->send('post', $post_data);
 
+  }
+
+  private function inviteMail ()
+  {
+    $post_data = [
+
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'to' => $this->to,
+
+      'project' => $this->pro_invite,
+
+      'vars' => "{\"friend\": \"{$this->info['friend']}\", \"recommend\": \"$this->info['recommend']\"}"
+    
+    ];
+
+    $this->send('post', $post_data);
+  
   }
 
   public function execSend()

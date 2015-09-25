@@ -26,6 +26,8 @@ class TriggerSms extends Event {
 
   protected $pro_deliver = "IhV8c4";
 
+  protected $pro_invite = "";
+
   protected $info;
 
   protected $mobile = "";
@@ -165,6 +167,26 @@ class TriggerSms extends Event {
      * 短信发送
      */
     return $this->send('post', $mobile, $post_data);
+
+  }
+
+  private function inviteSms()
+  {
+    $post_data = array(
+    
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_invite,
+
+      'vars' => "{}",
+
+      'to' => $this->mobile
+    
+    );
+
+    $this->send();
 
   }
 

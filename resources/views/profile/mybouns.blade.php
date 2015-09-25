@@ -57,12 +57,12 @@
       </div>
     </div>
     <div class="padding-20 text-left col-md-8">
-      <form class="form" method="post" action="#">
+      <form class="form" method="post" action="/profile/invite" id="invite_form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <h5>输入电子邮箱或手机号码</h5>
         <textarea class="form-control" placeholder="可以输入多个邮箱或手机号，并用“空格”区分。" name="shares"></textarea>
         <div class="padding-5"></div>
-        <button class="btn btn-danger" role="button" type="submit" id="invite">发送邀请</button>
+        <button class="btn btn-danger" role="button" type="submit" id="invite_btn">发送邀请</button>
       </form>
     </div>
     <div style="clear:both;"></div>

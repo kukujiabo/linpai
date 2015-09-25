@@ -17,6 +17,8 @@ use App\Models\DeliverInfo;
 use App\Models\ReceiverInfo;
 use App\Models\GoodAttribsInfo;
 use App\Models\Attribute;
+use App\Events\TriggerSms;
+use App\Events\TriggerEmail;
 use Auth;
 use Validator;
 use Hash;
@@ -589,6 +591,68 @@ class ProfilesController extends Controller {
 
     return $this->successResponse('result', $result);
 
+  }
+
+  public function postInvite(Request $request) 
+  {
+    $shares = $request->input('shares'); 
+
+    if (empty($shares)) {
+
+      return $this->failResponse('empty');
+
+    }
+
+    $arr = explode(' ', $shares); 
+
+    if (!count($arr)) {
+
+      return $this->failResponse('invalid');
+
+    }
+
+    $user = Auth::user();
+
+    $boun = Boun::where('uid', '=', $user->id)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    if (empty($boun->id)) {
+
+      return $this->failResponse('not_found');
+
+    }
+
+    $info = [ 'friend' => $user->name, 'recommend' => $boun->code ];
+
+    $mResult = $mailResult = null;
+
+    foreach ($arr as $val) {
+
+      /*
+       * 手机号
+       */
+      if (is_numeric($val) && strlen($val) == 11) {
+
+        $mResult = event(new TriggerSms($val, 'invite', $info));
+
+      } 
+
+      /*
+       * 邮箱
+       */
+      if (strlen($val) > 6 && preg_match("/^[w-.]+@[w-]+(.w+)+$/", $val)) {
+
+        $mailResult = event(new TriggerEmail($val, 'invite', $info));
+
+      }
+
+    }
+
+    return $this->successResponse('result', [ 'sms' => $mResult, 'mail' => $mailResult]);
+  
   }
 
 }
