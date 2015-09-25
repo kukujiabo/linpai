@@ -2337,21 +2337,31 @@ var addressBind;
 
     success: function (data) {
 
-      console.log(data);
-
       if (data.code) {
 
+        $('.toast-notice').html('发送成功');
+
+        window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 2000);
 
       } else {
 
         if (data.msg == 'empty') {
 
+          $('.toast-notice').html('请输入邮箱或手机号');
+
+          window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1500);
 
         } else if (data.msg == 'invalid') {
 
+          $('.toast-notice').html('请输入有效手机号或邮箱');
+    
+          window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1500);
 
         } else if (data.msg == 'not_found') {
 
+          $('.toast-notice').html('抱歉，没有找到您的推荐码，请联系管理员');
+
+          window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1500);
 
         }
 
