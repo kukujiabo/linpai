@@ -2399,7 +2399,7 @@ var addressBind;
 
     e.preventDefault();
 
-    $linpai.toast('发送中...', '', 0);
+    $linpai.toast('正在发送...', '', 0);
 
     var that = $(this);
 
