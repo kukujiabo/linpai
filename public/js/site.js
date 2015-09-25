@@ -2315,6 +2315,71 @@ var addressBind;
 })();
 
 /*
+ * 发送邀请
+ */
+(function () {
+
+  var inviteForm = $('#invite_form');
+
+  if (inviteForm.size() == 0) {
+
+    return;
+
+  }
+
+  inviteForm.ajaxForm();
+
+  var inviteOptions = {
+    
+    dataType: 'json',
+
+    resetForm: false,
+
+    success: function (data) {
+
+      console.log(data);
+
+      if (data.code) {
+
+
+      } else {
+
+        if (data.msg == 'empty') {
+
+
+        } else if (data.msg == 'invalid') {
+
+
+        } else if (data.msg == 'not_found') {
+
+
+        }
+
+      }
+
+    }, 
+
+    error: function (err) {
+
+      console.log(err);
+
+    }
+  
+  }; 
+
+  $('#invite_btn').click(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    inviteForm.ajaxSubmit(inviteOptions);  
+
+  });
+
+})();
+
+/*
  * 重置密码
  */
 (function () {
