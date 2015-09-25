@@ -163,7 +163,7 @@
     <div class="row">
       <div class="col-md-7">
         <label class="sr-only">备注</label>
-        <textarea class="form-control" name="comment" id="comment" value=""></textarea>
+        <textarea class="form-control" name="comment" id="comment" style="resize:none" value=""></textarea>
       </div>
       <div class="col-md-5">
         如果您有任何特别要求，请在此告诉我们，51linpai团队将尽量满足您的一切合理要求。
@@ -248,6 +248,13 @@
     </p>
   </div>
 </div>
+<script type="text/javascript">
+window.onbeforeunload = function (event) {
+
+  return '您的订单尚未完成，确定要离开页面吗？';
+
+};
+</script>
 @yield('more-info');
 
 @endsection

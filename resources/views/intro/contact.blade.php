@@ -4,7 +4,7 @@
 
 <div class="top-50"></div>
 <div class="box" style="background:#fff;padding-top:0px">
-  <img src="/imgs/contact_us.png" width="100%">
+  <img src="/imgs/contact_us.jpg" width="100%">
   <div style="padding:40px;">
     <h3>联系我们</h3>
     <hr> 
