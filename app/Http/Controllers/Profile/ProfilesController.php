@@ -651,7 +651,7 @@ class ProfilesController extends Controller {
        */
       if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
 
-        $res = event(new TriggerEmail($val, 'invite', $info))
+        $res = event(new TriggerEmail($val, 'invite', $info));
 
         array_push($sent, $val);
 
