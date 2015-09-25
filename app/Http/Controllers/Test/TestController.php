@@ -99,4 +99,13 @@ class TestController extends Controller {
 
   }
 
+  public function getInvitemail()
+  {
+  
+    $result = event(new TriggerEmail('kukujiabo@163.com', 'invite', [ 'friend' => 'meroc', 'recommend' => '123456']));
+
+    var_dump($result);
+  
+  }
+
 }

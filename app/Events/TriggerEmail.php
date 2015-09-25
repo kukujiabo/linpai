@@ -126,6 +126,7 @@ class TriggerEmail extends Event {
 
   private function inviteMail ()
   {
+
     $post_data = [
 
       'appid' => $this->appid,
@@ -140,7 +141,7 @@ class TriggerEmail extends Event {
     
     ];
 
-    $this->send('post', $post_data);
+    return $this->send('post', $post_data);
   
   }
 
@@ -164,6 +165,10 @@ class TriggerEmail extends Event {
       case 'deliver' :
 
         return $this->deliverMail();
+
+      case 'invite':
+
+        return $this->inviteMail();
 
     }
   

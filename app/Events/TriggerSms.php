@@ -278,6 +278,10 @@ class TriggerSms extends Event {
       case 'deliver':
 
         return $this->deliverSms();
+
+      case 'invite':
+
+        return $this->inviteSms();
       
       default:
 
