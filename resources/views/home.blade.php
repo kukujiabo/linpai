@@ -125,7 +125,7 @@
           </p>
         </div>
         <div class="col-md-2">
-          <img src="/imgs/efficiency.png"> 
+          <img src="/imgs/shunfeng.png"> 
           <div class="padding-5"></div>
           <h3>高效</h3>
           <p>
