@@ -103,7 +103,7 @@
         <div class="col-md-2">
           <img src="/imgs/professional.png"> 
           <div class="padding-5"></div>
-          <h3>专业</h3>
+          <h3>安全</h3>
           <p>
             车管所正规办理，100%真临牌，出险可理赔
           </p>
