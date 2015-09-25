@@ -10,13 +10,13 @@ window.linpai = $linpai;
 
   $('.carousel').carousel();
 
-   var btop = $('#b-top');
-   
-   btop.click(function () {
-   
-     window.scrollTo(0, 0);
-   
-   })
+  var btop = $('#b-top');
+  
+  btop.click(function () {
+  
+   window.scrollTo(0, 0);
+  
+  });
 
    /*
     * 回到顶部按钮
@@ -2370,6 +2370,8 @@ var addressBind;
   $('#invite_btn').click(function (e) {
 
     e.preventDefault();
+
+    $linpai.toast('发送中...', '', 0);
 
     var that = $(this);
 
