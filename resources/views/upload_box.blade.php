@@ -1,5 +1,5 @@
 @section('upload_box')
-<div class="hide" id="upload_box">
+<div class="hide edit_box">
   <div class="over-all">
   </div>
   <div id="upload-box">
