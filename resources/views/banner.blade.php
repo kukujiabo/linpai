@@ -24,14 +24,18 @@
       <div class="item rounded" style="width: auto">
 
       @endif
-        <img class="banner-img" src="{{$banner->url}}">
+        <a href="#">
+          <img class="banner-img" src="{{$banner->url}}">
+        </a>
         <div class="container">
+          <!--
           <div class="carousel-caption s-d-caption">
             <div class="padding-5"></div>
             <div>
               <a class="btn btn-default btn-lg btn-center btn-banner no-border" href="#buy" role="button">即刻购买临牌</a>
             </div>
           </div>
+          -->
         </div>
       </div>
 

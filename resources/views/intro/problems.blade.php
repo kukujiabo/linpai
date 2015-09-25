@@ -12,7 +12,7 @@
           <b>办理上海临时车牌号（即上海临时牌照）需要满足什么条件？</b>
         </div>
         <div class="panel-body">
-每台车辆均可以累计办理每个地区的临时号牌总共3次，因此您的爱车总共可以办理3次上海即沪字开头的临时汽车牌照。<a href="/home#buy" class="theme-orig" target="_blank">即刻购买上海临时号牌</a>
+每台车辆均可以累计办理每个地区的临时号牌总共3次，因此您的爱车总共可以办理3次上海即沪字开头的临时汽车牌照，<a href="/home#buy" class="theme-orig" target="_blank">即刻购买上海临时号牌</a>。
         </div>
       </div>
 
@@ -85,16 +85,6 @@
       <div class="panel panel-info">
         <div class="panel-heading pro-head">
           <img src="/imgs/wenhao.png" class="problems-notion">
-          <b>如果购买外省临时号牌，我可以指定外省临时号牌的开设地区吗？</b>
-        </div>
-        <div class="panel-body">
-        目前您还不能指定外省临时号牌的开设地区，如您有特别需求，<a href="{{asset('text/contact')}}" class="theme-orig" target="_blank">请联系我们</a>的工作人员，我们的客服我尽量满足您的要求。
-        </div>
-      </div>
-
-      <div class="panel panel-info">
-        <div class="panel-heading pro-head">
-          <img src="/imgs/wenhao.png" class="problems-notion">
           <b>我是北京的，可以通过51临牌办理临时牌照吗？ </b>
         </div>
         <div class="panel-body">
@@ -110,7 +100,7 @@
         <div class="panel-body">
 如果您的网页出现了技术问题，或者在如何下订单上需要进一步指导，您尽可以放心联系我们，我们的客服将尽快帮助您解决问题。
         </div>
-      </div>
+      </div>。
 
       <div class="panel panel-info">
         <div class="panel-heading pro-head">
