@@ -2337,11 +2337,27 @@ var addressBind;
 
     success: function (data) {
 
-      console.log(data);
-
       if (data.code) {
 
-        $('.toast-notice').html('发送成功');
+        var illegal = data.result.illegal;
+
+        var sent = data.result.sent;
+        
+        var s= '';
+
+        for (var ky in sent) {
+
+          s += '<p>' + sent[ky] + ' 已发送!' + '</p>';
+
+        }
+
+        for (var ky in illegal) {
+
+          s += '<p>' + illegal[ky] + ': 不是有效的手机号或邮箱' + '</p>';
+
+        }
+
+        $('.toast-notice').html(s);
 
         window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1000);
 

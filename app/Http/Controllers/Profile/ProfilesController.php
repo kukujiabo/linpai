@@ -627,7 +627,9 @@ class ProfilesController extends Controller {
 
     $info = [ 'friend' => $user->name, 'recommend' => $boun->code ];
 
-    $mResult = $mailResult = array();
+    $illegal = array();
+
+    $sent = array();
 
     foreach ($arr as $val) {
 
@@ -636,7 +638,9 @@ class ProfilesController extends Controller {
        */
       if (is_numeric($val) && strlen($val) == 11) {
 
-        array_push($mResult, event(new TriggerSms($val, 'invite', $info)));
+        array_push($sent, event(new TriggerSms($val, 'invite', $info)));
+
+        continue;
 
       } 
 
@@ -645,13 +649,17 @@ class ProfilesController extends Controller {
        */
       if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
 
-        array_push($mailResult, event(new TriggerEmail($val, 'invite', $info)));
+        array_push($sent, event(new TriggerEmail($val, 'invite', $info)));
+
+        continue;
 
       }
 
+      array_push($illegal, $val);
+
     }
 
-    return $this->successResponse('result', [ 'sms' => $mResult, 'mail' => $mailResult, 'arr' => $arr]);
+    return $this->successResponse('result', [ 'illegal' => $illegal, 'sent' => $sent ]);
   
   }
 
