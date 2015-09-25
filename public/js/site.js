@@ -2713,12 +2713,16 @@ function isMobile(mobile) {
 
 $linpai.toast = function (shortStr, scripts, timeout) {
 
-   $('body').append("<div class=\"over-all\"></div>");
+  $('body').append("<div class=\"over-all\"></div>");
 
-   $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
+  $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
 
-   window.setTimeout(scripts, timeout);
+  window.setTimeout(scripts, timeout);
 
-   window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', timeout);
+  if (timeout > 0) {
+
+    window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', timeout);
+
+  }
 
 };
