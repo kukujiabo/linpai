@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-xs-6">
           <p style="padding: 5px 0px;">
-          > 服务邮箱：service#51linpai.com
+          > 服务邮箱：service#51linpai.com （请将#换成@）
           </p>
           <p style="padding: 5px 0px;">
           > 官方新浪微博：weibo.com/51linpai
@@ -45,12 +45,12 @@
     <br />
     <p>
       <h4 class="theme-font-blue">市场合作</h4>
-      > 邮箱：marketing#51linpai.com
+      > 邮箱：marketing#51linpai.com （请将#换成@）
     </p>
     <br />
     <p>
       <h4 class="theme-font-blue">服务商合作</h4>
-      > 邮箱：cooperation#51linpai.com
+      > 邮箱：cooperation#51linpai.com （请将#换成@）
     </p>
   </div>
 </div>

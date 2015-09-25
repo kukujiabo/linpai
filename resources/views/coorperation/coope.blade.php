@@ -7,7 +7,7 @@
 @section('content')
   <div class="top-50"></div>
   <div class="box" style="background: #fff; padding-top: 0px;">
-    <img width="100%" src="/imgs/coope.png">
+    <img width="100%" src="/imgs/coope.jpg">
     <div class="cooperation-content"> 
       <p class="intro">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;51临牌是基于互联网的车辆临时牌照服务平台，我们致力于给众多需要临时牌照的车主提供更专业，更超值，更便捷，更高效的服务。
