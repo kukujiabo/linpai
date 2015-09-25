@@ -1444,33 +1444,6 @@ var addressBind;
 
 })();
 
-/*
- * 订单提交
- */
-(function () {
-
-  var bt = $('#to-pay');
-
-  $('#contract').click(function () {
-  
-    /*
-    var that = $(this);
-
-    if (that.is(':checked')) {
-    
-      bt.enable();
-    
-    } else {
-    
-      bt.enable(false);
-    
-    }
-    */
-    
-  });
-
-})();
-
 //提交订单
 (function () {
   
@@ -1507,16 +1480,18 @@ var addressBind;
   
   orderSubmit.click(function (e) {
 
-    if (!checkOrderForm()) {
+    e.preventDefault();
 
-      e.preventDefault();
+    if (!checkOrderForm()) {
 
       orderErr.removeClass('hide');
 
       orderErr.fadeIn('fast');
     
     } else {
-    
+
+      window.onbeforeunload = undefined;
+
       orderErr.html('');
 
       $('#next-form').submit();
