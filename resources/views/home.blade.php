@@ -20,7 +20,7 @@
           </p>
         </div>
         <div class="col-md-2">
-          <img src="/imgs/caozhi.png"> 
+          <img src="/imgs/money.jpg"> 
           <div class="padding-5"></div>
           <h3>超值</h3>
           <p>
@@ -47,8 +47,8 @@
       </div>
     </div>
   </div>
-  <div id="why-us">
-    <b class="home-section">如何购买？</b> 
+  <div id="why-us" style="background:#eee;padding-top:100px">
+    <b class="home-section" >如何购买？</b> 
     <div class="home-block">
       <div class="row">
         <div class="intro-bar"></div>
@@ -136,7 +136,4 @@
 
     </div>
   </div>
-<div class="qr-code">
-  <img src="/imgs/m-code.png">
-</div>
 @endsection
