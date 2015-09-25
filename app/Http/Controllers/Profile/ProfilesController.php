@@ -643,7 +643,7 @@ class ProfilesController extends Controller {
       /*
        * 邮箱
        */
-      if (strlen($val) > 6 && preg_match("/^[w-.]+@[w-]+(.w+)+$/", $val)) {
+      if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
 
         $mailResult = event(new TriggerEmail($val, 'invite', $info));
 
