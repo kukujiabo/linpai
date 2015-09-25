@@ -796,6 +796,10 @@ class OrdersController extends Controller {
 
     }
 
+    var_dump($user);
+
+    var_dump($order);
+
     /*
      * 订单优惠券
      */
