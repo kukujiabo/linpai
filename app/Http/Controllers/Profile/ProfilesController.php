@@ -638,7 +638,9 @@ class ProfilesController extends Controller {
        */
       if (is_numeric($val) && strlen($val) == 11) {
 
-        array_push($sent, event(new TriggerSms($val, 'invite', $info)));
+        $res = event(new TriggerSms($val, 'invite', $info));
+
+        array_push($sent, $val);
 
         continue;
 
@@ -649,7 +651,9 @@ class ProfilesController extends Controller {
        */
       if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
 
-        array_push($sent, event(new TriggerEmail($val, 'invite', $info)));
+        $res = event(new TriggerEmail($val, 'invite', $info))
+
+        array_push($sent, $val);
 
         continue;
 
