@@ -1,12 +1,11 @@
 @extends('app')
 
-
 @extends('banner')
 
 @extends('area_select')
 
 @section('content')
-  <div id="why-us" class="top-100">
+  <div id="why-us">
     <b class="home-section">为什么选择我们？</b>
     <div class="home-block">
       <div class="row">
@@ -47,10 +46,10 @@
       </div>
     </div>
   </div>
-  <div id="why-us" style="background:#eee;padding-top:100px">
+  <div id="why-us" style="background:#eee;padding-top:50px">
     <b class="home-section" >如何购买？</b> 
     <div class="home-block">
-      <div class="row">
+      <div class="row" style="min-height:244px;">
         <div class="intro-bar"></div>
         <div class="col-xs-2 col-sm-2 col-md-2"></div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -66,7 +65,7 @@
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
           <p class="process-bar-step">
-            上传相关的车辆档案，请参考 <a href="/text/metaguide">办理材料指南</a>
+            上传相关的车辆档案，请参考 <a class="theme-font-blue" href="/text/metaguide">办理材料指南</a>
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
@@ -90,10 +89,8 @@
     </div>
   </div>
   <div class="padding-5"></div>
-  <div class="padding-5"></div>
   <div id="buy">
     <b class="home-section">购买临时号牌 </b>
-    <div class="padding-5"></div>
     <div class="row home-block">
   
       <!-- 商品列表开始 -->
@@ -114,7 +111,6 @@
                 <p class="h-good-intro">
                   {{ $good->intro }}
                 </p>
-                <div class="padding-5"></div>
                 <div class="row">
                   <div class="col-xs-3 no-padding-left">
                     <h3 class="require no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>

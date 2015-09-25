@@ -94,7 +94,7 @@
   </div>
 @else
 
-<div class="top-100 content-body">
+<div class="top-50 content-body">
 	  @yield('content')
 </div>
 @endif
