@@ -1,7 +1,7 @@
 @foreach ($orders as $order)
 <div class="order-title">
   <div class="col-xs-4">
-    <b>编号：{{$order->order_code}} </b>
+    <b>订单号：{{$order->order_code}} </b>
   </div>
   <div class="col-xs-4">
     <b>{{$order->created_at}}</b>

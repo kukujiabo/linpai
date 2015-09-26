@@ -71,8 +71,8 @@
 
                   <span class="glyphicon glyphicon-plus"></span>
                 </button>
-                <div class="col-xs-6 require" style="padding-top:5px;">
-                  <span class="require" >&nbsp;&nbsp;每位用户每次限购1份</span>
+                <div class="col-xs-6" style="padding-top:5px;color:#000;">
+                  &nbsp;&nbsp;每位用户每次限购1份
                 </div>
               </div>
               <div class="padding-5"></div>
@@ -89,22 +89,25 @@
           <div style="clear:both;"></div>
         </div>
       </div>
+      <div class="good-info-desc text-left">
+      <!--
+        <h4>产品描述</h4>
+        <p>
+          1.在您完成第一次购买以后，您将会得到一个推荐码，并可以推荐给朋友；
+        </p>
+        <p>
+          2.您推荐的推荐码可以多人使用，不限人数，但每人只能使用一次。
+        </p>
+        <p>
+          3.每一位使用您的推荐码结帐的朋友都将得到30元的减免，而座位分享推荐码的奖励，您也将获得一张30元的现金优惠券，优惠券会自动放入“我的优惠券”中； 
+        </p>
+      -->
+        {!! htmlspecialchars_decode($good->comment) !!}
+      </div>
     </div>
 
     @endforeach
 
-  </div>
-  <div class="good-info-desc">
-    <h4>产品描述</h4>
-    <p>
-      1.在您完成第一次购买以后，您将会得到一个推荐码，并可以推荐给朋友；
-    </p>
-    <p>
-      2.您推荐的推荐码可以多人使用，不限人数，但每人只能使用一次。
-    </p>
-    <p>
-      3.每一位使用您的推荐码结帐的朋友都将得到30元的减免，而座位分享推荐码的奖励，您也将获得一张30元的现金优惠券，优惠券会自动放入“我的优惠券”中； 
-    </p>
   </div>
   </div>
   <script type="text/javascript">

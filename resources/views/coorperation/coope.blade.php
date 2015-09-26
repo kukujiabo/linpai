@@ -17,7 +17,7 @@
       </p>
       <div class="padding-5"></div>
       <p style="color: #31b0d5">
-        如果您希望和［51临牌］进行深度合作，请填写以下信息，我们的工作人员会在<span class="require">2个工作日内</span>与您取得联系。 
+        如果您希望和［51临牌］进行深度合作，请填写以下信息，我们的工作人员会在2个工作日内与您取得联系。 
       </p>
     </div>
     <div class="padding-20" style="width: 90%">
@@ -25,7 +25,7 @@
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <fieldset>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="contact">联系人</label>
+            <label class="control-label col-xs-2" for="contact"><span class="require">*</span>联系人</label>
             <div class="col-xs-5">
               <input class="form-control" type="text" name="contact" id="contact">
             </div>
@@ -44,7 +44,7 @@
         </fieldset> 
         <fieldset>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="mobile">手机号码</label>
+            <label class="control-label col-xs-2" for="mobile"><span class="require">*</span>手机号码</label>
             <div class="col-xs-5">
               <input class="form-control mobile-input" type="text" name="mobile" id="mobile">
             </div>
@@ -55,7 +55,7 @@
         </fieldset> 
         <fieldset>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="telephone">固定电话</label>
+            <label class="control-label col-xs-2" for="telephone"><span class="require">*</span>固定电话</label>
             <div class="col-xs-5">
               <input class="form-control" type="text" name="telephone" id="telephone" placeholder="eg: 010-66336633">
             </div>
@@ -63,7 +63,7 @@
         </fieldset> 
         <fieldset>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="contact">所属区域</label>
+            <label class="control-label col-xs-2" for="contact"><span class="require">*</span>所属区域</label>
             <div class="col-xs-5">
               @yield('area')
             </div>
@@ -77,7 +77,7 @@
         </fieldset> 
         <fieldset>
           <div class="form-group">
-            <label class="control-label col-xs-2" for="email">电子邮箱</label>
+            <label class="control-label col-xs-2" for="email"><span class="require">*</span>电子邮箱</label>
             <div class="col-xs-5">
               <input class="form-control" type="email" name="email" id="email">
             </div>
