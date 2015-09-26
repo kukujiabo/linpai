@@ -8,7 +8,7 @@
 <div class="alert alert-warning" role="alert">
   <div class="wrapper">
     <h4>订单号：{{$order->code}}</h4>
-    <h4>购买商品：{{$good->name}} * {{$order->num}}</h4>
+    <h4>购买商品：{{$good->name}}</h4>
     <p>
       感谢您的购买，请在<span class="require">48小时内支付</span>以便于我们开办临牌，48小时后您的订单将自动取消。
     </p>
@@ -120,8 +120,8 @@
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="wechat">
-          <input type="radio" id="wechat" name="pay" value="wechat">
-          <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px">
+          <input type="radio" id="wechat" name="pay" value="wechat" disabled>
+          <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px"> （即将开通）
         </label>
       </div>
       <!--

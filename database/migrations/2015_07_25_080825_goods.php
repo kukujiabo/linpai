@@ -21,6 +21,7 @@ class Goods extends Migration {
       $table->string('intro', 500)->nullable();
       $table->string('pic', 200)->nullable();
       $table->string('tiny_good')->nullable();
+      $table->text('comment')->nullable();
       $table->integer('active');
       $table->timestamps();
 

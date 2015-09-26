@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-2">
-          <img src="/imgs/professional.png"> 
+          <img src="/imgs/safe.jpg"> 
           <div class="padding-5"></div>
           <h3>安全</h3>
           <p>
@@ -53,7 +53,7 @@
         <div class="intro-bar"></div>
         <div class="col-xs-2 col-sm-2 col-md-2"></div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img" src="/imgs/i-selected.png" style="padding: 0px 3px; background:#fff;">
+          <img class="process-bar-img" src="/imgs/i-selected.jpg" style="padding: 0px 3px;">
           <div class="padding-5"></div>
           <h4>选择临牌</h4>
           <p class="process-bar-step">
@@ -61,7 +61,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-upload.png" style="padding: 0px 3px; background: #fff;">
+          <img class="process-bar-img"  src="/imgs/i-upload.jpg" style="padding: 0px 3px;">
           <div class="padding-5"></div>
           <h4>上传扫描件</h4>
           <p class="process-bar-step">
@@ -69,7 +69,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-pay.png" style="padding: 0px 3px; background:#fff;">
+          <img class="process-bar-img"  src="/imgs/i-pay.jpg" style="padding: 0px 3px;">
           <div class="padding-5"></div>
           <h4>在线支付</h4>
           <p class="process-bar-step">
@@ -77,7 +77,7 @@
           </p>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
-          <img class="process-bar-img"  src="/imgs/i-deliver.png" style="background:#fff; padding: 0px 3px;">
+          <img class="process-bar-img"  src="/imgs/i-deliver.jpg" style="background:#fff;">
           <div class="padding-5"></div>
           <h4>等待收货</h4>
           <p class="process-bar-step">
@@ -102,8 +102,9 @@
 
         @foreach ($goodLine as $key => $good)
 
-        <div class="col-xs-6 col-md-3">
-          <div class="thumbnail no-radius">
+        <div class="col-xs-6 col-md-3" style="">
+          <div class="thumbnail no-radius" style="background:#eee;">
+            <b class="no_trans_fee"></b>
             <a href="{{ asset('goods?gid='. $good->id) }}">
               <img class="good-img" src="{{ asset($good->pic) }}">
               <div class="caption good-block text-left">

@@ -113,13 +113,13 @@
       </div>
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_3" id="youhui_3" class="form-control" placeholder="优惠码">
+        <input type="text" name="youhui_3" id="youhui_3" class="form-control" placeholder="优惠码或推荐码">
       </div>
       <div class="form-group padding-5">
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
       </div>
       <div class="form-group padding-5">
-        <a class="theme-font-blue" id="quan-view"  role="button" data-status="show">查看可用优惠码</a>
+        <a class="theme-font-blue" id="quan-view"  role="button" data-status="show">什么是优惠码和推荐码？</a>
       </div>
       <div class="padding-5">
         <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠券?</a>
@@ -131,7 +131,7 @@
   <div class="edit-info gray-light" id="quan-box">    
       @if (!count($bouns))
         <div class="alert alert-warning text-center">
-          <h4>您的帐户中暂时还没有优惠券，<a class="theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取</h4>
+          您的帐户中暂时还没有优惠券，<a class="theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取
         </div>
       @else 
         <ul class="row quan-list">
@@ -166,7 +166,7 @@
         <textarea class="form-control" name="comment" id="comment" style="resize:none" value=""></textarea>
       </div>
       <div class="col-md-5">
-        如果您有任何特别要求，请在此告诉我们，51linpai团队将尽量满足您的一切合理要求。
+        如果您有任何特别要求，请在此告诉我们，我们将尽可能的协助您。
       </div>
     </div>
   </div>

@@ -2,6 +2,10 @@ li {
   list-style: none;
 }
 
+ol > li {
+  list-style: decimal !important;
+}
+
 .receive-address {
   width: 300px;
 }
@@ -383,7 +387,7 @@ ul.dropdown-menu {
 }
 
 #comment {
-  min-height: 160px;
+  min-height: 120px;
 }
 
 #customer-info, #car-info, #quan {
@@ -1460,6 +1464,11 @@ div#youhui-alert {
   color: #138ed1 !important;
 }
 
+a.theme-font-blue:hover {
+  font-weight: normal !important;
+  color: #138ed1;
+}
+
 #confirm-pay {
   background: #fff;
   z-index: 10005;
@@ -1565,3 +1574,11 @@ a:hover {
   padding: 20px;
 }
 
+.no_trans_fee {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  background: url(../imgs/mass.png) no-repeat 0px -435px;
+  width: 110px;
+  height: 80px;
+}
