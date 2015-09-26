@@ -116,7 +116,7 @@
     <p>周一到周日 10:00 － 18:00</p>
     <hr style="border-top: #ddd 1px solid;">
     <div class="t-center footer-link">
-      <div class="col-md-6 col-xs-offset-3 text-center">
+      <div class="col-md-6 col-md-offset-3 text-center">
         <a class="bottom-link" href="{{asset('text/contact')}}">联系我们</a> |
         <a class="bottom-link" href="{{asset('communitcate/cooperation')}}">成为服务商</a> |
         <a class="bottom-link" href="{{asset('text/problems')}}">常见问题与解答</a> |
@@ -132,7 +132,7 @@
   </div>
   <br>
   <div class="footer-bottom">
-    <div class="col-xs-offset-3 col-xs-6 text-center">
+    <div class="col-md-offset-3 col-md-6 text-center">
       @2015 51LinPai all rights reserved 沪ICP备 15037577
     </div>
     <div style="clear:both"></div>
