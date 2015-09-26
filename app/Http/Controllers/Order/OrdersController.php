@@ -744,11 +744,15 @@ class OrdersController extends Controller {
       //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
       //如果有做过处理，不执行商户的业务程序
        
+       /*
+        * 获取订单
+        */
        $order = Order::where('code', '=', $orderCode)->first();
 
        if (empty($order->id)) {
 
          //todo
+         //return view();  
 
        }
 
@@ -795,10 +799,6 @@ class OrdersController extends Controller {
       return redirect('/home');
 
     }
-
-    var_dump($user);
-
-    var_dump($order);
 
     /*
      * 订单优惠券
