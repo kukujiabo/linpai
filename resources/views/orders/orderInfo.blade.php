@@ -140,9 +140,10 @@
 
           <li class="col-md-3 bouns" >
             <a class="bouns" href="#" data-code="{{$boun->code}}" id="b-{{$boun->code}}" data-value="{{$boun->note}}">
-              <div class="quan-itm r-trans">
+              <img src="/imgs/quan-avai.png" style="width:100%;z-index:10001">
+              <div class="quan-itm">
                 <b class="q-price">{{$boun->note}}RMB</b>
-                <b>CODE:{{$boun->code}}</b>
+                <b>CODE：{{$boun->code}}</b>
               </div>
             </a>
           </li>
