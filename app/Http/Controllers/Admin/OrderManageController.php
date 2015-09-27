@@ -256,6 +256,9 @@ class OrderManageController extends Controller {
 
     $order = Order::where('code', '=', $order_code)->first();
 
+    /*
+     * 如果未创建
+     */
     if (empty($deliver->id)) {
 
       $result = DeliverInfo::create([
