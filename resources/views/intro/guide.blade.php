@@ -26,7 +26,7 @@
         <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/car_check.jpg" data-img="car_check" data-disclass="flow-img"></span>
       </p>
       <p>
-        <5> 机动车整车出厂合格证扫描件<span class="theme-orig">（国产车辆合格证）</span>
+        <5> 机动车整车出厂合格证扫描件<span class="theme-orig">（国产车辆合格证，仅需扫描带有二维码的详情页面）</span>
         <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/validate_paper.jpg" data-disclass="flow-img"></span>
       </p>
       <p>

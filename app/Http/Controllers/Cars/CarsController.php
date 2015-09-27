@@ -20,9 +20,11 @@ class CarsController extends Controller {
       
     $validate = $this->carInfoValidate($request->input());
 
+    $car_type = $request->car_type;
+
     if ($validate->fails()) {
     
-      return $this->validateFail($validate);
+      return $this->validateFail($validate, $car_type);
     
     }
 
@@ -101,10 +103,12 @@ class CarsController extends Controller {
   public function postEdit (Request $request)
   {
     $validate = $this->carInfoValidate($request->input());
+
+    $car_type = $request->input('car_type');
   
     if ($validate->fails()) {
 
-      return $this->validateFail($validate);
+      return $this->validateFail($validate, $car_type);
 
     }
 
@@ -209,7 +213,7 @@ class CarsController extends Controller {
   
   }
 
-  private function carinfoRequiredField ($key) 
+  private function carinfoRequiredField ($key, $car_type) 
   {
     $fields = array();
     
@@ -229,7 +233,15 @@ class CarsController extends Controller {
 
     $fields["dir_car_check"] = "车辆购买发票上传失败，请重新上传，图片大小不能大于3M ！";
 
-    $fields["dir_validate_paper"] = "合格证件上传失败，请重新上传，图片大小不能大于3M ！";
+    if ($car_type == 'domestic') {
+
+      $fields["dir_validate_paper"] = "合格证件上传失败，请重新上传，图片大小不能大于3M ！";
+
+    } else {
+
+      $fields["dir_validate_paper"] = "报关单件上传失败，请重新上传，图片大小不能大于3M ！";
+
+    }
   
     return $fields[$key];
   
@@ -321,7 +333,7 @@ class CarsController extends Controller {
   
   }
 
-  private function validateFail ($validate)
+  private function validateFail ($validate, $car_type)
   {
     $failed = $validate->failed();
 
@@ -329,7 +341,7 @@ class CarsController extends Controller {
 
     foreach ($failed as $key => $fail) {
     
-      $message[$key] = $this->carinfoRequiredField($key);
+      $message[$key] = $this->carinfoRequiredField($key, $car_type);
     
     }
 

@@ -79,7 +79,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_friend_use,
 
-      'friend' => $this->info['friend']
+      'friend' => '1221'
 
     ];
 

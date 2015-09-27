@@ -34,7 +34,7 @@ class OrdersController extends Controller {
    */
   public function __construct ()
   {
-    $this->middleware('auth', [ 'except' => ['getPayed'] ]);
+    $this->middleware('auth');//, [ 'except' => ['getPayed'] ]);
   }
 
   /*
