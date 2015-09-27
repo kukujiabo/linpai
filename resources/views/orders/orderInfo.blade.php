@@ -105,11 +105,11 @@
     <form class="form-inline" id="selected-bouns">
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_1" id="youhui_1" class="form-control" placeholder="优惠码">
+        <input type="text" name="youhui_1" id="youhui_1" class="form-control" placeholder="优惠码或推荐码">
       </div>
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_2" id="youhui_2" class="form-control" placeholder="优惠码">
+        <input type="text" name="youhui_2" id="youhui_2" class="form-control" placeholder="优惠码或推荐码">
       </div>
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
@@ -119,10 +119,10 @@
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
       </div>
       <div class="form-group padding-5">
-        <a class="theme-font-blue" id="quan-view"  role="button" data-status="show">什么是优惠码和推荐码？</a>
+        <a class="btn btn-default" id="quan-view"  role="button" data-status="show"><span class="glyphicon glyphicon-plus"></span>&nbsp;查看可用优惠券</a>
       </div>
       <div class="padding-5">
-        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠券?</a>
+        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠码和推荐码？</a>
       </div>
     </form>
     <p>
