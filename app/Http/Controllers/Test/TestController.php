@@ -123,4 +123,12 @@ class TestController extends Controller {
     var_dump($mail);
   }
 
+  public function getFriend ()
+  {
+    $mail = event(new TriggerEmail('kukujiabo@163.com', 'friend_use', [ 'friend' => '123']));
+  
+    var_Dump($mail);
+  
+  }
+
 }

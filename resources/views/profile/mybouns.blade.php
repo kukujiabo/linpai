@@ -67,21 +67,13 @@
     </div>
     <div style="clear:both;"></div>
     <div class="padding-5">
-      <div class="col-md-8 text-left">
-        <div class="row">
-          <div class="col-xs-1"> 1.</div>
-          <div class="col-xs-11 no-padding">在您完成一次购买后您将获得一个推荐码，并可以推荐给朋友。</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-1">2.</div>
-          <div class="col-xs-11 no-padding">每一位使用您推荐码购买的朋友都将获得30元的减免！作为奖励，您也将获得一张30元的优惠券，优惠券自动放入“我的优惠券”中！</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-1">3.</div><div class="col-xs-11 no-padding">您推荐的朋友数量将不受限制。</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-1">4.</div><div class="col-xs-11 no-padding">您的每位朋友之能使用一次该推荐码。</div>
-        </div>
+      <div class="col-md-10 text-left no-padding-left">
+        <ol class="info_list">
+          <li>在您完成一次购买后您将获得一个推荐码，并可以推荐给朋友。</li>
+          <li>每一位使用您推荐码购买的朋友都将获得30元的减免！作为奖励，您也将获得一张30元的优惠券，优惠券自动放入“我的优惠券”中！</li>
+          <li>您推荐的朋友数量将不受限制。</li>
+          <li>您的每位朋友之能使用一次该推荐码。</li>
+        </ol>
       </div>
       <div style="clear:both;"></div>
       <div class="padding-5"></div>
@@ -121,7 +113,7 @@
         
         @endforeach
         </ul>
-        <ol class="t-left width-100 padding-20">
+        <ol class="info_list text-left">
           <li>
             每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
           </li>
