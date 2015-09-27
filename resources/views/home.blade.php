@@ -31,7 +31,7 @@
           <div class="padding-5"></div>
           <h3>简单</h3>
           <p>
-            轻松4步购买，瞬间搞定
+            在线4步轻松购买，告别传统繁复流程
           </p>
         </div>
         <div class="col-md-2">
