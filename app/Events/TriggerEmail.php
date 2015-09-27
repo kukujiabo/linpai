@@ -101,7 +101,8 @@ class TriggerEmail extends Event {
 
     ];
   
-  
+    return $this->send('post', $post_data);
+
   }
 
   private function deliverMail ()
