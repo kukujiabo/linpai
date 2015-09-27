@@ -851,7 +851,7 @@ class OrdersController extends Controller {
     
     ]));
 
-    $mail = event(new TriggerEmail('payed', $user->email, [ 
+    $mail = event(new TriggerEmail($user->email, 'payed', [ 
       
       'order_code' => $order->code, 
       
@@ -958,8 +958,6 @@ class OrdersController extends Controller {
 
     ];
 
-    var_dump($mail);
-  
     return view('orders/pay_success', $data); 
   
   }

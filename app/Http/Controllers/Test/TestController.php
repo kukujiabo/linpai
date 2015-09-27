@@ -108,4 +108,19 @@ class TestController extends Controller {
   
   }
 
+  public function getPayed () 
+  {
+    $mail = event(new TriggerEmail('kukujiabo@163.com', 'payed', [ 
+      
+      'order_code' => '123',
+      
+      'recommend' => '123',
+
+      'order_date' => '123'
+    
+    ]));
+  
+    var_dump($mail);
+  }
+
 }
