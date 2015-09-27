@@ -957,6 +957,8 @@ class OrdersController extends Controller {
       'order' => $order
 
     ];
+
+    var_dump($mail);
   
     return view('orders/pay_success', $data); 
   
