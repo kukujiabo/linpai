@@ -1593,3 +1593,7 @@ a:hover {
   width: 110px;
   height: 80px;
 }
+
+ol.info_list > li {
+  padding: 5px 0px;
+}
