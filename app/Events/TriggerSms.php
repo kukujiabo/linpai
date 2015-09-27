@@ -26,7 +26,7 @@ class TriggerSms extends Event {
 
   protected $pro_deliver = "IhV8c4";
 
-  protected $pro_invite = "";
+  protected $pro_invite = "ciMfc1";
 
   protected $info;
 
@@ -180,13 +180,13 @@ class TriggerSms extends Event {
 
       'project' => $this->pro_invite,
 
-      'vars' => "{}",
+      'vars' => "{\"friend\": \"{$this->info['friend']}\", \"recommend\": \"{$this->info['recommend']}\"}",
 
       'to' => $this->mobile
     
     );
 
-    $this->send();
+    $this->send('post', $this->mobile, $post_data);
 
   }
 

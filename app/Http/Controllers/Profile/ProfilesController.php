@@ -644,12 +644,10 @@ class ProfilesController extends Controller {
 
         continue;
 
-      } 
-
-      /*
-       * 邮箱
-       */
-      if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
+      } else if (filter_var($val, FILTER_VALIDATE_EMAIL)) {
+        /*
+         * 邮箱
+         */
 
         $res = event(new TriggerEmail($val, 'invite', $info));
 
