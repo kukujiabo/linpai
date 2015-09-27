@@ -66,7 +66,7 @@ class TriggerEmail extends Event {
   
   }
 
-  private function friendUser ()
+  private function friendUse ()
   {
   
     $post_data = [
@@ -77,7 +77,9 @@ class TriggerEmail extends Event {
 
       'to' => $this->to,
 
-      'project' => $this->pro_friend_use
+      'project' => $this->pro_friend_use,
+
+      'friend' => $this->info['friend']
 
     ];
 
@@ -157,7 +159,7 @@ class TriggerEmail extends Event {
 
       case 'friend_use' :
 
-        return $this->friendUser();
+        return $this->friendUse();
 
       case 'payed' :
 
