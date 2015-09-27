@@ -100,7 +100,7 @@ class TriggerEmail extends Event {
       'vars' => "{ \"recommend\": \"{$this->info['recommend']}\", \"order_code\": \"{$this->info['order_code']}\", \"order_date\": \"{$this->info['order_date']}\" }"
 
     ];
-  
+
     return $this->send('post', $post_data);
 
   }
