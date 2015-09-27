@@ -890,7 +890,7 @@ class OrdersController extends Controller {
           /*
            * 触发邮件
            */
-          event(new TriggerEmail('friend_user', $friend->email));
+          event(new TriggerEmail($friend->email, 'friend_use', [ 'friend' => $user->name ]));
 
         }
 
