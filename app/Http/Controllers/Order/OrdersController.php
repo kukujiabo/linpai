@@ -1,4 +1,4 @@
-<?php namespace app\http\controllers\order;
+<?php namespace app\http\controllers\order; 
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

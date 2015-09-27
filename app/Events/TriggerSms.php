@@ -233,7 +233,7 @@ class TriggerSms extends Event {
 
   private function payedSms () 
   {
-    $vars = "{ \"order\": \"{$this->info['order']}\", \"recommend\": \"{$this->info['boun']}\", \"fee\": \"{$this->info['fee']}\"}";
+    $vars = "{ \"order_code\": \"{$this->info['order_code']}\", \"recommend\": \"{$this->info['boun']}\", \"fee\": \"{$this->info['fee']}\"}";
 
     $post_data = [
 
