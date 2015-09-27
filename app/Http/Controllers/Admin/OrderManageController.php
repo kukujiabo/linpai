@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Good;
+use App\Models\Boun;
 use App\Models\OrderAllInfo;
 use Illuminate\Http\Request;
 use App\Models\ReceiverInfo;
