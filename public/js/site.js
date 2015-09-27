@@ -237,13 +237,13 @@ window.linpai = $linpai;
     
       if (that.data('status') == 'show') {
       
-        that.html('---收起优惠券---');
+        that.html('<span class="glyphicon glyphicon-minus"></span>&nbsp;收起优惠券列表');
 
         that.data('status', 'hide');
       
       } else {
       
-        that.html('查看可用优惠券');
+        that.html('<span class="glyphicon glyphicon-plus"></span>&nbsp;查看可用优惠券');
 
         that.data('status', 'show');
       
