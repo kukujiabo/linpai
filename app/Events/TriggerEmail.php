@@ -97,7 +97,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_payed,
 
-      'vars' => "{ \"boun\": \"{$this->info['boun']}\", \"order_code\": \"{$this->info['order_code']}\" }"
+      'vars' => "{ \"recommend\": \"{$this->info['recommend']}\", \"order_code\": \"{$this->info['order_code']}\", \"order_date\": \"{$this->info['order_date']}\" }"
 
     ];
   

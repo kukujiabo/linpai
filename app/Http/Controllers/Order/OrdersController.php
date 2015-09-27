@@ -851,7 +851,15 @@ class OrdersController extends Controller {
     
     ]));
 
-    $mail = event(new TriggerEmail('payed', $user->email, [ 'order_code' => $order->code, 'boun' => $boun->code ]));
+    $mail = event(new TriggerEmail('payed', $user->email, [ 
+      
+      'order_code' => $order->code, 
+      
+      'recommend' => $boun->code,
+
+      'order_date' => $order->created_at
+    
+    ]));
 
     /*
      * pay success.
