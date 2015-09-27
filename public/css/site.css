@@ -636,6 +636,13 @@ div.quan-itm {
   font-family: 微软雅黑;
 }
 
+.good-info-desc > ol {
+}
+
+.good-info-desc > ol > li {
+  padding: 5px 5px;
+}
+
 /*
  * animation three bounce
  */

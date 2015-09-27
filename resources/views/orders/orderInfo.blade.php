@@ -98,7 +98,7 @@
     @yield('edit_receiver')
 
 </div>
-<p>优惠码</p>
+<p>优惠码／推荐码</p>
 <div class="box" id="quan">
   <div class="sub-wrapper">
     <p>请输入 优惠码 / 推荐码</p>
@@ -119,7 +119,7 @@
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
       </div>
       <div class="form-group padding-5">
-        <a class="btn btn-default" id="quan-view"  role="button" data-status="show"><span class="glyphicon glyphicon-plus"></span>&nbsp;查看可用优惠券</a>
+        <a class="btn btn-info theme-back-blue" id="quan-view"  role="button" data-status="show"><span class="glyphicon glyphicon-plus"></span>&nbsp;查看可用优惠券</a>
       </div>
       <div class="padding-5">
         <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠码和推荐码？</a>

@@ -283,7 +283,9 @@ class OrderManageController extends Controller {
 
           $user = User::find($order->uid);
 
-          $smsRes = event(new TriggerSms($user->mobile, 'deliver', [ 
+          $boun = Boun::where('uid', '=', $user->id)->where('type', '=', 0)->where('active', '=', 1)->first();
+
+          $post_data = [
             
             'order_code' => $order->code,
 
@@ -291,23 +293,15 @@ class OrderManageController extends Controller {
 
             'company' => $result->company,
 
-            'url' => "www.baidu.com"
-          
-          ]));
-
-          $mailRes = event(new TriggerEmail($user->email, 'deliver', [
-          
-            'order_code' => $order->code,
-
-            'deliver_code' => $result->code,
-
-            'company' => $result->company,
-
-            'boun' => 'boun',
+            'recommend' => !empty($boun->code) ? $boun->code : '您还没有优惠码',
 
             'url' => "www.baidu.com"
           
-          ]));
+          ];
+
+          $smsRes = event(new TriggerSms($user->mobile, 'deliver', $post_data));
+
+          $mailRes = event(new TriggerEmail($user->email, 'deliver', $post_data));
 
           return $this->successResponse('res', ['deliver' => $result, 'order' => $order, 'sms' => $smsRes, 'mailRes' => $mailRes]);
 

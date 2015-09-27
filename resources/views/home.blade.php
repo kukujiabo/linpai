@@ -104,7 +104,7 @@
 
         <div class="col-xs-6 col-md-3" style="">
           <div class="thumbnail no-radius" style="background:#eee;">
-            <b class="no_trans_fee"></b>
+            <!--            <b class="no_trans_fee"></b> -->
             <a href="{{ asset('goods?gid='. $good->id) }}">
               <img class="good-img" src="{{ asset($good->pic) }}">
               <div class="caption good-block text-left">

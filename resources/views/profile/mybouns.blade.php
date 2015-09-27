@@ -115,22 +115,22 @@
             <div class="quan-itm">
               <b class="q-price">{{$boun->note}}RMB</b>
               <br>
-              <b>CODE:{{$boun->code}}</b>
+              <b>CODE：{{$boun->code}}</b>
             </div>
           </li>
         
         @endforeach
         </ul>
-        <div class="t-left width-100 padding-20">
-          <p>
-            1. 每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
-          </p>
-          <p>
-            2. 您的优惠码仅限您本人使用。
-          </p>
-          <p>
-            3. 同一优惠码不可重复使用。
-          </p>
+        <ol class="t-left width-100 padding-20">
+          <li>
+            每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
+          </li>
+          <li>
+            您的优惠码仅限您本人使用。
+          </li>
+          <li>
+            同一优惠码不可重复使用。
+          </li>
           <div class="padding-5"></div>
         </div>
       </div>
@@ -138,12 +138,12 @@
       <div class="padding-20 text-left">
        <h3>您当前没有优惠券</h3> 
        <div class="padding-5"></div>
-       <p>
+       <div class="padding-5">
           将您的优惠码分享给好友，好友使用您提供的推荐码成功购买临牌后，您将获得一张价值30元的现金抵扣券。
-       </p>
-       <p>
+       </div>
+       <div class="padding-5">
           一张优惠券只能使用一次，一次购买最多可使用三张优惠券或推荐码。
-        </p>
+        </div>
       </div>
     @endif
   </div>

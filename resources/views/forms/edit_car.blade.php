@@ -33,7 +33,7 @@
             识别号码（车架号）
           </label>
           <div class="col-md-6 no-padding-left">
-          <input type="text" name="reco_code" class="form-control width-100" placeholder="例子：WD78" id="v-factory">
+          <input type="text" name="reco_code" class="form-control width-100" placeholder="例：WDDEJ6GB3EM099882" id="v-factory">
           </div>
           <div class="col-md-1 padding-5">
             <span class="glyphicon glyphicon-info-sign i-img theme-font-blue" data-disclass="flow-img" id="reco-t-img" data-url="/imgs/notice/reco_code.jpg"></span>
