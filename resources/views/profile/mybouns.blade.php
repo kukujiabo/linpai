@@ -111,6 +111,7 @@
         <ul class="row quan-list">
         @foreach ($bouns as $boun)
           <li class="col-sm-4 col-md-4 bouns">
+            <img src="/imgs/quan-avai.png" style="width:100%;z-index:10001">
             <div class="quan-itm">
               <b class="q-price">{{$boun->note}}RMB</b>
               <br>

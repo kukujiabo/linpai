@@ -1270,7 +1270,9 @@ var addressBind;
 
       bindItm.data('selected', false);
 
-      bindItm.find('div.quan-itm').addClass('r-trans').removeClass('selected-boun');
+      bindItm.find('div.quan-itm').removeClass('selected-boun');
+
+      bindItm.find('img').attr('src', '/imgs/quan-avai.png');
 
       var num = that.data('denomination') == undefined ? 0 : that.data('denomination');
 
@@ -1284,7 +1286,9 @@ var addressBind;
 
       bindItm = $('#b-' + that.val());
 
-      bindItm.find('div.quan-itm').removeClass('r-trans').addClass('selected-boun');
+      bindItm.find('div.quan-itm').addClass('selected-boun');
+
+      bindItm.find('img').attr('src', '/imgs/quan-unavai.png');
 
       bindItm.data('selected', 'true');
 
@@ -1418,7 +1422,7 @@ var addressBind;
 
             var bounItm = $(bounsList[i]);
 
-            if (bounItm.val() == '' || bounItm.val().length != 8) {
+            if (bounItm.val() == '' || bounItm.val().length != 5) {
 
               bounItm.val($(this).data('code'));
 

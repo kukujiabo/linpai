@@ -27,7 +27,7 @@ class BounsTableSeeder extends Seeder {
 
           'oid' => 1,
 
-          'code' => $this->seed(8),
+          'code' => $this->seed(5),
 
           'active' => 1
         
@@ -52,7 +52,7 @@ class BounsTableSeeder extends Seeder {
     
     }
   
-    return $output;
+    return strtoupper($output);
 
   }
 

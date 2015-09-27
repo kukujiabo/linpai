@@ -89,7 +89,7 @@ class TriggerBounGenerator extends Event {
   }
 
 
-  private function generateCode ($length = 8)
+  private function generateCode ($length = 5)
   {
   
     $pattern = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
