@@ -843,7 +843,7 @@ class OrdersController extends Controller {
 
     $sms = event(new TriggerSms($user->mobile, 'payed', [
       
-      'order' => $order->code, 
+      'order_code' => $order->code, 
       
       'boun' => $boun->code, 
       
