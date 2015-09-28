@@ -597,6 +597,9 @@ class ProfilesController extends Controller {
   {
     $shares = $request->input('shares'); 
 
+    $shares = str_replace("\n", " ", $shares);
+
+
     if (empty($shares)) {
 
       return $this->failResponse('empty');
