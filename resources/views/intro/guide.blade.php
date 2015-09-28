@@ -71,7 +71,7 @@
       如果以上方法仍无法解决您的问题
     </p>
     <p>
-      欢迎给我们发送邮件到 service@51linpai.com 或于周一至周日10:00 － 18:00给我们来电<span style="color:#FF8800;"> <i><b>{{$company_phone}}</b></i></span>
+      欢迎给我们发送邮件到 service@51linpai.com 或于周一至周日10:00 － 18:00给我们来电<span style="color:#FF8800;"> <i><b>4000602620</b></i></span>
     </p>
   </div>
 </div>

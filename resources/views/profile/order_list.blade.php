@@ -29,26 +29,33 @@
   <div class="col-xs-2 order-col">
     {{$order->final_price}}
   </div>
-  <div class="col-xs-1 order-col">
+  <div class="col-xs-1 order-col" style="margin-top:10px">
     @if ($order->status == 0)
-    <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">
+    <div>
+      <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">
        未付款
-    </a>
-
+      </a>
+    </div>
     @elseif ($order->status == 1)
-    已付款
+      已付款
     @elseif ($order->status == 2)
-      已完成
+      已发货
+    @elseif ($order->status == 3)
+      已取消
+    @endif
+      <div>
+        <a href="#" class="theme-font-blue order-detail" data-id="{{$order->order_code}}">
+          <span class="glyphicon glyphicon-info"></span>
+          订单详情
+        </a>
+      </div>
+    @if ($order->status == 2)
       <div>
         <a href="#" class="theme-font-blue deliver-info" data-id="{{$order->order_code}}">
           <span class="glyphicon glyphicon-info"></span>
           查看物流
         </a>
       </div>
-
-    @elseif ($order->status == 3)
-      已取消
-
     @endif
   </div>
   <div class="col-xs-2 order-col">
