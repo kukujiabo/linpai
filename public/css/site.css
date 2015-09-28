@@ -189,7 +189,6 @@ i.personal {
 }
 
 .good-nav {
-  font-family: 微软雅黑;
 }
 
 .good-nav > li > a {
@@ -211,7 +210,6 @@ i.personal {
   padding: 5px;
   border-radius: 2px;
   background: #ffffff;
-  font-family: 微软雅黑;
   text-align: center;
 }
 
@@ -226,7 +224,6 @@ i.personal {
 
 .profile-menu li a {
   color: #666666;
-  font-family: 微软雅黑;
   text-align: center;
   font-size: 16px;
 }
@@ -633,7 +630,6 @@ div.quan-itm {
 
 .good-info-desc {
   padding: 10px 30px;
-  font-family: 微软雅黑;
 }
 
 .good-info-desc > ol {
@@ -851,7 +847,6 @@ div.selected-boun {
 
 .home-section {
   font-size: 46px;
-  font-family: "Microsoft YaHei";
 }
 
 .a-login-block {
