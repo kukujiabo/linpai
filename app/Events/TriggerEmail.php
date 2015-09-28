@@ -68,6 +68,8 @@ class TriggerEmail extends Event {
 
   private function friendUse ()
   {
+
+    $vars = [ 'friend' => $this->info['friend'] ];
   
     $post_data = [
 
@@ -79,7 +81,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_friend_use,
 
-      'friend' => '1221'
+      'vars' => json_encode($vars)
 
     ];
 

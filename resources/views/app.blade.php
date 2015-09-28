@@ -24,7 +24,7 @@
     <div class="padding-5">
       <div class="col-md-offset-9" style="color: #999">
         周一至周日 10:00 － 18:00 
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4006937465</i></b>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b>
       </div> 
     </div>
     <hr style="margin:0px;">
@@ -108,9 +108,7 @@
   <div class="footer-top">
     <p>
       <b>
-        <i style="color: #FF8800;font-size: 24px;">
-          <span class="glyphicon glyphicon-earphone"></span>
-          4006937465</i>
+        <i style="color: #FF8800;font-size: 24px;"><span class="glyphicon glyphicon-earphone"></span>4000602620</i>
       </b>
     </p>
     <p>周一到周日 10:00 － 18:00</p>

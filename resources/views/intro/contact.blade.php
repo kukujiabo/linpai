@@ -13,9 +13,9 @@
     </h4>
     <br />
     <p>
-      要更加详细了解有关车辆临时牌照的相关信息，请拨打 4008－753－365 联系［51临牌］客户服务。 
+      要更加详细了解有关车辆临时牌照的相关信息，请拨打 4000602620 联系［51临牌］客户服务。 
       <br />
-      客户服务人员的工作时间为周一至周五上午10点到下午6点 （不含中国公众假期）。 
+      客户服务人员的工作时间为周一至周日上午10点到下午6点 （不含中国公众假期）。 
     </p>
     <br />
     <p>
@@ -30,15 +30,15 @@
           > 官方新浪微博：weibo.com/51linpai
           </p>
           <p style="padding: 5px 0px;">
-          > 微信公众平台：LinPai51
+          > 微信公众号：LinPai51
           </p>
           <p style="padding: 5px 0px;">
-          > 电话：4008753365
+          > 电话：4000602620
           </p>
         </div>
         <div class="col-xs-5" style="background:#eee;padding: 3px;">
           <img src="/imgs/wechat-code.jpg" width="150px">
-          &nbsp;&nbsp;&nbsp;&nbsp;微信公众平台：<span class="theme-orig"><b>LinPai51</b></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;微信公众号：<span class="theme-orig"><b>LinPai51</b></span>
         </div>
       </div>
     </p>

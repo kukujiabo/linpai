@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Models\Attribute;
+ucompany_phone_numberse illuminate\database\seeder;
+use app\models\attribute;
 
 class AttributesTableSeeder extends Seeder {
 

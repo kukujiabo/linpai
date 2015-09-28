@@ -63,7 +63,7 @@ class ProfilesController extends Controller {
 
     $orders = OrderAllInfo::where('uid', '=', $user->id)
 
-      ->orderBy('status', 'asc')
+      //->orderBy('status', 'asc')
 
       ->orderBy('created_at', 'desc')
 
