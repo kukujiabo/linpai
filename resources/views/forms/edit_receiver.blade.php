@@ -51,7 +51,7 @@
             手机号码&nbsp;
           </label>
           <div class="col-xs-3">
-            <input class="form-control" type="text" name="mobile" id="v-mobile">
+            <input class="form-control mobile-input" type="text" name="mobile" id="v-mobile">
           </div>
       </fieldset>
       <fieldset class="padding-5">
