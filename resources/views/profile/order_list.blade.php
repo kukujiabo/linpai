@@ -29,7 +29,7 @@
   <div class="col-xs-2 order-col">
     {{$order->final_price}}
   </div>
-  <div class="col-xs-1 order-col" style="margin-top:10px">
+  <div class="col-xs-1 order-col" style="margin-top:10px;font-size:10px;">
     @if ($order->status == 0)
     <div>
       <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">
