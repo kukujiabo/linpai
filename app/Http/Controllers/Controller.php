@@ -60,4 +60,9 @@ abstract class Controller extends BaseController {
   
   }
 
+  protected function view($view, $data) {
+
+
+  }
+
 }

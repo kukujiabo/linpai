@@ -4,6 +4,7 @@ use App\Models\Good;
 use App\Models\Advertise;
 use Illuminate\Http\Request;
 use App\Models\GoodAttribsInfo;
+use App\Models\MassInfo;
 
 class HomeController extends Controller {
 

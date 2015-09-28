@@ -299,7 +299,7 @@ class OrderManageController extends Controller {
 
             'recommend' => !empty($boun->code) ? $boun->code : '您还没有优惠码',
 
-            'url' => "www.baidu.com"
+            'url' => "www.sf-express.com"
           
           ];
 
