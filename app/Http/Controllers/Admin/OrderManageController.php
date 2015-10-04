@@ -101,16 +101,17 @@ class OrderManageController extends Controller {
 
   public function getIndex (Request $request) 
   {
-
     $page = $request->input('page');
 
-    $order_code = $request->input('order_code');
+    $order_code = $request->input('order_code'); 
 
     $receiver = $request->input('receiver');
 
     $mobile = $request->input('mobile');
 
     $status = $request->input('status');
+
+    $user = $request->input('user');
 
     $offset = 20;
 
@@ -120,21 +121,27 @@ class OrderManageController extends Controller {
 
     $query = OrderAllInfo::where('order_code', '>', '1');
 
+    if (!empty($user)) {
+
+      $query->where('uid', '=', $user);
+
+    }
+
     if (!empty($order_code)) {
 
-      $query->where('order_code', '=', $order_code);
+      $query->where('order_code', 'like', '%' . $order_code . '%');
 
     }
 
     if (!empty($receiver)) {
 
-      $query->where('receiver', '=', $receiver);
+      $query->where('receiver', 'like', '%' . $receiver . '%');
 
     }
 
     if (!empty($mobile)) {
 
-      $query->where('mobile', '=', $mobile);
+      $query->where('mobile', 'like', '%' . $mobile . '%');
 
     }
 
@@ -166,7 +173,7 @@ class OrderManageController extends Controller {
 
       'mobile' => empty($mobile) ? '' : $mobile,
 
-      'status' => empty($status) ? '' : $status
+      'status' => empty($status) ? '-1' : $status
 
     ];
 

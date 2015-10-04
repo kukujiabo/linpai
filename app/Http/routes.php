@@ -61,6 +61,9 @@ Route::controllers([
 
   'adboard' => 'Admin\AdvertiseManageController',
 
-  'download' => 'Downloads\DownloadsController'
+  'download' => 'Downloads\DownloadsController',
+
+  'news' => 'News\NewsController'
+
 
 ]);

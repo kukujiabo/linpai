@@ -70,7 +70,7 @@
             <td class="col-md-4">{{$user->email}}</td>
             <td class="col-md-2">{{$user->created_at}}</td>
             <td class="col-md-1">
-              <a href="javasript:void(0);">
+              <a href="/orderboard?user={{$user->id}}">
                 <span class="glyphicon glyphicon-zoom-in"></span>
               </a>
                 |

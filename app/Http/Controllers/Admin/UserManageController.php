@@ -13,7 +13,6 @@ class UserManageController extends Controller {
     $this->middleware('admin_auth'); 
   }
 
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -108,19 +107,19 @@ class UserManageController extends Controller {
 
     if (!empty($mobile)) {
 
-      $query->where('mobile', '=', $mobile);
+      $query->where('mobile', 'like', '%' . $mobile . '%');
 
     }
 
     if (!empty($user_name)) {
 
-      $query->where('name', '=', $user_name);
+      $query->where('name', 'like', '%' . $user_name . '%');
 
     }
 
     if (!empty($mail)) {
 
-      $query->where('email', '=', $mail);
+      $query->where('email', 'like', '%' . $mail . '%');
 
     }
 
@@ -215,13 +214,6 @@ class UserManageController extends Controller {
       $doc->save('php://output');
 
     }
-
-  }
-
-  public function getDownloaduserlist(Request $request) 
-  {
-
-
 
   }
 

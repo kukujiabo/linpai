@@ -154,5 +154,8 @@
   <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
   <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
   <script src="{{ asset('js/site.js') }}"></script>
+<script type="text/javascript">
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 </body>
 </html>

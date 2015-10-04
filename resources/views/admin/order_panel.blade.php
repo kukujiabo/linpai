@@ -21,6 +21,14 @@
         <a href="#" id="view_boun" class="theme-font-blue" data-user="{{$order->uid}}" data-order="{{$order->order_code}}">查看优惠券</a>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-3">
+        下单时间：<span id="order_time">{{$order->created_at}}</span>
+      </div>
+      <div class="col-xs-3">
+        支付方式：<span id="pay_typ"></span>
+      </div>
+    </div>
     <hr>
     <h4>下单用户信息</h4>
     <hr>

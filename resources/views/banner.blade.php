@@ -25,7 +25,10 @@
 
       @endif
         <a href="#">
+          <!--
           <img class="banner-img" src="{{$banner->url}}">
+          -->
+          <div class="banner-img" style="background:url({{$banner->url}}) 50% 0% no-repeat"></div>
         </a>
         <div class="container">
           <!--

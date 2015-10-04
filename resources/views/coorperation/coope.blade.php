@@ -86,6 +86,17 @@
             </div>
           </div>
         </fieldset> 
+        <fieldset>
+          <div class="form-group">
+            <label class="control-label col-xs-2" for="business_intro"><span class="require">*</span>业务介绍</label>
+            <div class="col-xs-5">
+              <textarea class="form-control" type="text" name="business" id="business_intro"></textarea>
+            </div>
+            <div class="col-xs-5">
+              <p class="alert alert-danger no-margin p-5 hide" notice="business"></p>
+            </div>
+          </div>
+        </fieldset>
         <div class="padding-5"></div>
         <div class="form-group">
           <div class="col-xs-2">

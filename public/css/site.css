@@ -455,7 +455,7 @@ ul.dropdown-menu {
 
 @media (min-width: 1200px) {
   .container {
-    width: 1000px; 
+    width: 1080px; 
   }
 
   .margin-wide {
@@ -487,6 +487,7 @@ ul.dropdown-menu {
 
 .banner-img {
   width: 100%;
+  height: 480px;
   margin: 0px;
   padding: 0px; 
 }
@@ -1527,7 +1528,7 @@ a.good-tab:hover {
 #order_info {
   position: fixed;
   width: 80%;
-  height: 90%;
+  min-height: 360px;
   left: 10%;
   top: 5%;
   background: #fff;
@@ -1596,3 +1597,42 @@ a:hover {
 ol.info_list > li {
   padding: 5px 0px;
 }
+
+#news_wrapper {
+  width: 100%;
+  min-height: 300px;
+  color: #aaa;
+}
+
+#new_content_list, #new_cat_list {
+  background: #fff;
+}
+
+#new_content_list {
+  min-height: 300px;
+}
+
+#new_cat_list {
+  min-height: 240px;
+}
+
+.data-panel {
+  border: 1px solid #eee;
+  width: 100%;
+  min-height: 200px;
+  color: #999;
+}
+
+.data-panel-head {
+  padding: 5px 10px;
+  background: #bbb;
+  font-size: 20px;
+  color: #fff;
+}
+
+.data-panel-body {
+  padding: 20px 20px;
+  font-size: 16px;
+}
+
+

@@ -25,7 +25,7 @@ class AdminController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin/admin_index');
+		return view('admin/admin_home');
 	}
 
 	/**
@@ -159,7 +159,7 @@ class AdminController extends Controller {
   {
     $pageName = "首页";
 
-    return view('admin/admin_index', [
+    return view('admin/admin_home', [
 
       'pageName' => $pageName
     
@@ -214,6 +214,15 @@ class AdminController extends Controller {
     
     ]); 
   
+  }
+
+  public function postLogout (Request $request) 
+  {
+
+    Session::forget('admin');
+          
+    return redirect('/home');
+
   }
 
   public function searchBox (Request $request)
