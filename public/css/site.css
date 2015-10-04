@@ -1615,3 +1615,24 @@ ol.info_list > li {
 #new_cat_list {
   min-height: 240px;
 }
+
+.data-panel {
+  border: 1px solid #eee;
+  width: 100%;
+  min-height: 200px;
+  color: #999;
+}
+
+.data-panel-head {
+  padding: 5px 10px;
+  background: #bbb;
+  font-size: 20px;
+  color: #fff;
+}
+
+.data-panel-body {
+  padding: 20px 20px;
+  font-size: 16px;
+}
+
+
