@@ -8,11 +8,18 @@
 </head>
 <body style="width:100%;height:100%;">
   <header class="navbar navbar-static-top no-margin" id="top" role="banner">
-    <div class="container margin-5">
+    <div class="margin-5" style="width:100%;padding:0px 10px;">
       <div class="navbar-header theme-font-blue">
         <!-- <img src="/imgs/logo-linpai.png" width="100px"> -->
         <h3>51临牌管理后台</h3>
       </div>
+      <div class="nav navbar-nav navbar-right hidden-sm">
+        <form class="form" method="post" action="/admin/logout" style="margin-top:20px;padding:0 30px;">
+          <input type="hidden" name="_token" value="{{csrf_token()}}">
+          <button class="btn btn-warning btn-sm" role="button" type="submit">退出</button>
+        </form>
+      </div>
+      <div style="clear:both;"></div>
     </div>
   </header>
   <hr class="no-margin no-padding">

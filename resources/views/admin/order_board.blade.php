@@ -46,31 +46,30 @@
           <thead class="tab_title">
             <tr class="text-center">
               <th class="col-xs-2">订单号</th>
-              <th class="col-xs-1">收件人</th>
-              <th class="col-xs-1">商品</th>
-              <th class="col-xs-1">数量</th>
-              <th class="col-xs-3">地址</th>
-              <th class="col-xs-2">手机</th>
+              <th class="col-xs-1">下单时间</th>
+              <th class="col-xs-2">下单账号</th>
+              <th class="col-xs-2">下单用户名</th>
+              <th class="col-xs-1">商品名称</th>
+              <th class="col-xs-2">车辆所有人</th>
               <th class="col-xs-1">状态</th>
               <th class="col-xs-1">操作</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($orders as $order)        
-
             <tr class="text-center">
               <td class="col-xs-2">{{$order->order_code}}</td>
-              <td class="col-xs-1">{{$order->receiver}}</td>
-              <td class="col-xs-1 no-padding-both-side">
-                <div class="over-elis" style="width:80px;" all="{{$order->good_name}}">{{$order->good_name}}</div>
+              <td class="col-xs-1">{{$order->created_at}}</td>
+              <td class="col-xs-2 no-padding-both-side">
+                <div class="over-elis"  all="{{$order->good_name}}">{{$order->order_owner_mobile}}</div>
               </td>
-              <td class="col-xs-1">{{$order->num}}</td>
-              <td class="col-xs-3 no-padding-both-side">
-                <div class="over-elis" style="width:280px;" all="{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}" >
-                  {{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}
+              <td class="col-xs-2">{{$order->order_owner}}</td>
+              <td class="col-xs-1 no-padding-both-side">
+                <div class="over-elis" all="{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}" >
+                  {{$order->good_name}}
                 </div>
               </td>
-              <td class="col-xs-2">{{$order->mobile}}</td>
+              <td class="col-xs-2">{{$order->car_owner}}</td>
               <td class="col-xs-1">
                 @if ($order->status == 0)
                 未付款

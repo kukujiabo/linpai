@@ -216,6 +216,15 @@ class AdminController extends Controller {
   
   }
 
+  public function postLogout (Request $request) 
+  {
+
+    Session::forget('admin');
+          
+    return redirect('/home');
+
+  }
+
   public function searchBox (Request $request)
   {
     

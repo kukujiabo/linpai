@@ -22,6 +22,7 @@ class CreateCooperatorsTable extends Migration {
       $table->string('province');
       $table->string('city');
       $table->string('district');
+      $table->text('business')->nullable();
       $table->string('email');
 			$table->timestamps();
 		});

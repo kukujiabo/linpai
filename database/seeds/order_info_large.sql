@@ -37,7 +37,9 @@ d.final_price as final_price,
 e.name as good_name,
 e.tiny_good as good_tiny_pic,
 e.code as good_code,
-f.value as g_single_price
+f.value as g_single_price,
+g.name as order_owner,
+g.mobile as order_owner_mobile
 from 
-orders a, receiver_infos b, cars c, order_prices d, goods e, v_goods_attributes f
-where a.rid = b.id and a.cid = c.id and a.id = d.oid and a.gid = e.id and f.gid = a.gid and f.acode = 'price';
+orders a, receiver_infos b, cars c, order_prices d, goods e, v_goods_attributes f, users g
+where a.rid = b.id and a.cid = c.id and a.id = d.oid and a.gid = e.id and f.gid = a.gid and f.acode = 'price' and a.uid = g.id;
