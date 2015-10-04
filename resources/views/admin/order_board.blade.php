@@ -25,11 +25,33 @@
             <div class="form-group padding-5">
               <label class="control-label" for="order_status">状态</label>
               &nbsp;&nbsp;
-              <select class="form-control input-sm" name="status" id="order_status">
-                <option value="-1">全部</option>
-                <option value="0">未付款</option>
-                <option value="1">已付款</option>
-                <option value="2">已发货</option>
+              <select class="form-control input-sm" name="status" id="order_status" >
+                @if ($status == '-1')
+                  <option value="-1" selected>全部</option>
+                  <option value="0">未付款</option>
+                  <option value="1">已付款</option>
+                  <option value="2">已发货</option>
+                @elseif ($status == '0')
+                  <option value="-1">全部</option>
+                  <option value="0" selected>未付款</option>
+                  <option value="1">已付款</option>
+                  <option value="2">已发货</option>
+                @elseif ($status == '1')
+                  <option value="-1">全部</option>
+                  <option value="0">未付款</option>
+                  <option value="1" selected>已付款</option>
+                  <option value="2">已发货</option>
+                @elseif ($status == '2')
+                  <option value="-1">全部</option>
+                  <option value="0">未付款</option>
+                  <option value="1">已付款</option>
+                  <option value="2" selected>已发货</option>
+                @else
+                  <option value="-1">全部</option>
+                  <option value="0">未付款</option>
+                  <option value="1">已付款</option>
+                  <option value="2">已发货</option>
+                @endif
               </select>
             </div>
           </div>

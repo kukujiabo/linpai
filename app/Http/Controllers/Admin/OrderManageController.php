@@ -103,7 +103,7 @@ class OrderManageController extends Controller {
   {
     $page = $request->input('page');
 
-    $order_code = $request->input('order_code');
+    $order_code = $request->input('order_code'); 
 
     $receiver = $request->input('receiver');
 
@@ -173,7 +173,7 @@ class OrderManageController extends Controller {
 
       'mobile' => empty($mobile) ? '' : $mobile,
 
-      'status' => empty($status) ? '' : $status
+      'status' => empty($status) ? '-1' : $status
 
     ];
 
