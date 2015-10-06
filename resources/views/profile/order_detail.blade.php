@@ -63,7 +63,7 @@
   </p>
   <p>
     @if (!empty($deliver->id))
-      物流信息：<img src="/imgs/shunfeng_icon.png">&nbsp;顺丰速运
+      物流信息：<img src="/imgs/shunfeng_icon.png" style="width:36px;height:36px;">&nbsp;顺丰速运
     @else
       物流信息：暂无物流信息
     @endif
