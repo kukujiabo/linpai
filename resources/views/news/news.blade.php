@@ -23,7 +23,9 @@
         </div>
         <div class="news_cats padding-5">
           <ul class="no-padding text-left">
-            <li class="news_itm padding-5">新车拍照规定</li>
+            <li class="news_itm padding-5">
+              <a href="/news/detail">新车拍照规定</a>
+            </li>
           </ul>
         </div>
       </div>
