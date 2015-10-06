@@ -44,7 +44,7 @@
       已取消
     @endif
       <div>
-        <a href="#" class="theme-font-blue order-detail" data-id="{{$order->order_code}}">
+        <a href="orderdetail?order_code={{$order->order_code}}" class="theme-font-blue order-detail" data-id="{{$order->order_code}}">
           <span class="glyphicon glyphicon-info"></span>
           订单详情
         </a>

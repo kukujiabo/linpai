@@ -41,8 +41,6 @@ class ProfilesController extends Controller {
   
   }
 
-
-
   public function getMyorder(Request $request)
   {
     $page = !empty($request->input('page')) ? $request->input('page') : 1;
@@ -105,6 +103,34 @@ class ProfilesController extends Controller {
 
     return view('profile/myorder', $data);
   
+  }
+
+  public function getOrderdetail (Request $request) {
+
+    $order_code = $request->input('order_code');
+
+    $order = OrderAllInfo::where('order_code', '=', $order_code)->first();
+
+    $deliver = DeliverInfo::where('order_code', '=', $order_code)->first();
+
+    $data = [
+    
+      'order' => $order,
+
+      'deliver' => $deliver
+    
+    ];
+
+    if (!empty($order->order_code)) {
+
+      return view('profile/order_detail', $data);
+
+    } else {
+
+      return view('profile/order_not_found');
+
+    }
+
   }
 
   public function getCarinfo()
