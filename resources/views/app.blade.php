@@ -53,7 +53,7 @@
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   		  <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ url('/text/metaguide') }}" class="font-black"><span class="glyphicon glyphicon-file" style="color:#138ed1;"></span>&nbsp;办理材料指南</a></a>  
+            <li><a href="{{ url('/text/metaguide') }}" class="font-black"><span class="glyphicon glyphicon-file" style="color:#138ed1;"></span>&nbsp;办理材料指南</a></a>  
   				@if (Auth::guest())
   					<li><a href="{{ url('/auth/login') }}" class="font-black">登录</a></li>
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>
@@ -76,6 +76,9 @@
                 <b>我的订单</b>
               </a>
             </div>
+          </li>
+          <li>
+            <a href="{{ asset('news')}}" class="font-black">&nbsp;&nbsp;新闻</a>
           </li>
   			</ul>
   		</div>

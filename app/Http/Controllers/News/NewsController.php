@@ -84,7 +84,14 @@ class NewsController extends Controller {
   public function getIndex () 
   {
 
-    return view('news/news');
+    return view('news/news_list');
+
+  }
+
+  public function getDetail () 
+  {
+
+    return view('news/news_detail');
 
   }
 
