@@ -455,7 +455,7 @@ ul.dropdown-menu {
 
 @media (min-width: 1200px) {
   .container {
-    width: 1080px; 
+    width: 1000px; 
   }
 
   .margin-wide {
@@ -1635,4 +1635,7 @@ ol.info_list > li {
   font-size: 16px;
 }
 
+.news_itm {
+  border-bottom: 1px solid #eee;
+}
 
