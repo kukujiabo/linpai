@@ -83,14 +83,50 @@
             <input type="hidden" id="_token" value="{{csrf_token()}}">
           </div>
           @foreach ($good_attribs as $good_attrib) 
-  
+
             @if ($good_attrib['spec'] == 'file_upload')
 
-            <div class="col-md-2">
+            @if ($car_hand == 'one')  
+
+              @if ($good_attrib['code'] == 'driving_license')
+            
+                <div class="col-md-2 hide" attrib="dir_{{$good_attrib['code']}}">
               <div style="padding-5">
-                <div class="thumbnail">
-                  <img class="upload-img" target="dir_{{$good_attrib['code']}}" id="upload-img-{{$good_attrib['code']}}" src="" alt="" style="width:100%;height:110px;">
+                  <input type="hidden" disabled name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
+
+              @else
+
+                <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
+              <div style="padding-5">
                   <input type="hidden" name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
+                
+              @endif
+
+            @elseif ($car_hand == 'second')
+
+              @if ($good_attrib['code'] == 'trans_ensurance' ||
+
+                  $good_attrib['code'] == 'car_check' || 
+
+                  $good_attrib['code'] == 'validate_paper'
+
+                  )
+
+                <div class="col-md-2 hide" attrib="dir_{{$good_attrib['code']}}">
+              <div style="padding-5">
+                  <input type="hidden" disabled name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
+
+              @else
+
+                <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
+              <div style="padding-5">
+                  <input type="hidden" name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
+
+              @endif
+
+            @endif
+                <div class="thumbnail no-margin">
+                  <img class="upload-img" target="dir_{{$good_attrib['code']}}" id="upload-img-{{$good_attrib['code']}}" src="" alt="" style="width:100%;height:110px;">
                   <div class="caption" align="center">
                     <div class="progress progress-striped progress-sm" role="progressbar">
                       <div class="progress-bar progress-bar-info" id="progress_bar_{{$good_attrib['code']}}">
@@ -112,8 +148,7 @@
               </div>
               <p class="text-center" filename="{{$good_attrib['code']}}">{{ $good_attrib['name']}}</p>
             </div>
-
-            @endif
+          @endif
 
           @endforeach    
 
@@ -121,12 +156,12 @@
           </div>
         </div>        
       </div>
+      <input type="hidden" name="car_hand" value="{{$car_hand}}">
       <div class="padding-5"></div>
       <div class="form-group sub-wrapper">
         <button type="submit" role="button" class="btn btn-primary" id="new-car-submit">保存车辆信息</button>
       </div>
     </form> 
   </div>
-
 
 @endsection

@@ -20,15 +20,15 @@ class DatabaseSeeder extends Seeder {
     //$this->call('CitiesTableSeeder');
     //$this->call('DistrictsTableSeeder');
     //$this->call('RoadsTableSeeder');
-		//$this->call('AttributesTableSeeder');
 		//$this->call('GoodsTableSeeder');
-		//$this->call('GoodsAttributesTableSeeder');
+		$this->call('AttributesTableSeeder');
+		$this->call('GoodsAttributesTableSeeder');
 		//$this->call('ReceiverInfosTableSeeder');
     //$this->call('BounsTableSeeder');
     //$this->call('BankTableSeeder');
     //$this->call('AdminsTableSeeder');
     //$this->call('AdsTableSeeder');
-    $this->call('MassInfoTableSeeder');
+    //$this->call('MassInfoTableSeeder');
 	}
 
 }

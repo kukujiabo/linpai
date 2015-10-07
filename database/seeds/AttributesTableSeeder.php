@@ -1,7 +1,7 @@
 <?php
 
-ucompany_phone_numberse illuminate\database\seeder;
-use app\models\attribute;
+use Illuminate\database\seeder;
+use App\Models\Attribute;
 
 class AttributesTableSeeder extends Seeder {
 
@@ -156,6 +156,26 @@ class AttributesTableSeeder extends Seeder {
       'spec' => 'file_upload',
 
       'code' => 'validate_paper',
+
+      'intro' => '',
+
+      'parent' => 0,
+
+      'class' => 0,
+
+      'important' => 0,
+
+      'active' => 1
+    
+    ]);
+
+    Attribute::create([
+
+      'name' => '行驶证主副页扫描件',
+
+      'spec' => 'file_upload',
+
+      'code' => 'driving_license',
 
       'intro' => '',
 

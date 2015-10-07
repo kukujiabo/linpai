@@ -47,9 +47,13 @@ class OrdersController extends Controller {
     
       'gid' => 'required',
 
-      'num' => 'required|min:1'
+      'num' => 'required|min:1',
+
+      'car_hand' => 'required'
     
     ]);
+
+    $carHand = $request->input('car_hand');
 
     if ($validate->fails()) {
 
@@ -145,20 +149,6 @@ class OrdersController extends Controller {
 
     $receiverInfos = array();
 
-    /*
-    foreach ($citiesData as $city) {
-      
-      array_push($cities, $city);
-    
-    }
-
-    foreach ($districtsData as $district) {
-    
-      array_push($districts, $district);
-    
-    }
-     */
-
     $defaultReceiver = null;
 
     foreach ($receiverInfosData as $receiverInfo) {
@@ -175,13 +165,18 @@ class OrdersController extends Controller {
 
     $formCode = md5(time());
 
+
     $data = [
 
       'good' => $good,
 
       'num' => $num,
 
+      'car_hand' => $carHand,
+
       'good_attribs' => $attribs,
+
+      'car_hand' => $carHand,
 
       //'cities' => $cities,
 
@@ -230,17 +225,39 @@ class OrdersController extends Controller {
     
     $user = Auth::user();
 
-    $validate = Validator::make($request->input(), [
-    
-      'good' => 'required',
+    $carHand = $request->input('car_hand');
 
-      'num' => 'required|min:1',
+    $required = null;
 
-      'car' => 'required',
+    if ($carHand == 'one') {
 
-      'receiver' => 'required'
+      $required = array (
+      
+        'good' => 'required',
 
-    ]);
+        'num' => 'required|min:1',
+
+        'car' => 'required',
+
+        'receiver' => 'required'
+      
+      );
+
+    } elseif ($carHand == 'second') {
+
+      $required = array (
+      
+        'good' => 'required',
+
+        'num' => 'required|min:1',
+
+        'receiver' => 'required'
+      
+      );
+
+    }
+
+    $validate = Validator::make($request->input(), $required);
 
     if ($validate->fails()) {
     
@@ -519,7 +536,7 @@ class OrdersController extends Controller {
       Session::forget('bank_omit');
 
     }
-
+    
     return view('orders/pay', $data);
   
   }
@@ -1075,7 +1092,9 @@ class OrdersController extends Controller {
     
       'gid' => '<p>商品选择错误，请返回首页重新选择！</p>',
 
-      'num' => '<p>商品数量错误，商品数量必须大于1！</p>'
+      'num' => '<p>商品数量错误，商品数量必须大于1！</p>',
+
+      'car_hand' => '<p>请选择车辆类型：新车／二手车</p>'
     
     );
 

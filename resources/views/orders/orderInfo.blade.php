@@ -14,6 +14,8 @@
 
 @include('scripts.moreinfo')
 
+@include('intro/meta_info')
+
 @section('content')
 
 <div class="process">
@@ -36,7 +38,10 @@
     </div>
   </div>
 </div>
+
+@if ($good->code == 'beyond-three')
 <p>临牌车辆所有人信息</p>
+
 <div class="box" id="car-info">
   <div class="sub-wrapper">
     @yield('car_info')
@@ -59,11 +64,18 @@
   </div>
   <div class="padding-5">
   </div>
-
   <!-- 车辆信息编辑 -->
-  @yield('edit_car')
 
+  @yield('edit_car')
 </div>
+
+  
+@else 
+
+  @yield('meta_info')
+
+@endif
+
 <p>收货人信息</p>
 <div class="box" id="customer-info">
   <div class="sub-wrapper">
@@ -160,6 +172,7 @@
 <p>备注</p>
 <form class="form" id="next-form" method="post" action="order/pay">
   <input type="hidden" name="form_code" value="{{$formCode}}" >
+  <input type="hidden" name="car_hand" value="{{$car_hand}}">
   <div class="well">
     <div class="row">
       <div class="col-md-7">
@@ -192,13 +205,19 @@
     </fieldset>
     <fieldset id="car-info-field">
 
-      @if (!empty($defaultCar))
+      @if ($good->code == 'beyond-three')
+        @if (!empty($defaultCar))
 
-          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
+            <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
 
-      @else 
+        @else 
 
-          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+            <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
+
+        @endif
+      @else
+
+        <input type="hidden" required="yes" data-name="车辆信息" name="car" value="0">
 
       @endif
 
