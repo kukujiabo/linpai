@@ -44,7 +44,7 @@ class UploadValidateMiddleware {
 
     $gaInfos = GoodAttribsInfo::where('acode', '=', $code)
 
-      ->where('spec', '=', $spec)
+      //->where('spec', '=', $spec)
       
       ->first();
 
@@ -63,6 +63,7 @@ class UploadValidateMiddleware {
     $request['gaInfos'] = $gaInfos;
 
 		return $next($request);
+
 	}
 
 }

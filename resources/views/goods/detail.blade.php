@@ -52,9 +52,10 @@
           <div class="col-md-7" style="text-align:left;">
             <h4>{{ $good->name }}</h4>
             <hr>
-            <form class="form" method="get" action="order">
+            <form class="form" method="get" action="order" id="detail_form_{{$good->id}}">
               <input type="hidden" name="_token" value="{{csrf_token()}}">
               <input type="hidden" name="gid" value="{{$good->id}}">
+              <input type="hidden" name="car_hand" value="one">
               <input type="hidden" name="good_type" value="1">
               @if (!empty($error))
                 <div class="alert alert-danger" id="num-err">
@@ -82,7 +83,7 @@
               </div>
               <div class="padding-5"></div>
               <div class="form-group">
-                <button class="btn btn-danger" role="button" type="submit">立即购买</button>
+                <button class="btn btn-danger to_buy" role="button" type="submit" target_form="detail_form_{{$good->id}}">立即购买</button>
               </div>
             </form>        
           </div>
@@ -90,18 +91,6 @@
         </div>
       </div>
       <div class="good-info-desc text-left">
-      <!--
-        <h4>产品描述</h4>
-        <p>
-          1.在您完成第一次购买以后，您将会得到一个推荐码，并可以推荐给朋友；
-        </p>
-        <p>
-          2.您推荐的推荐码可以多人使用，不限人数，但每人只能使用一次。
-        </p>
-        <p>
-          3.每一位使用您的推荐码结帐的朋友都将得到30元的减免，而座位分享推荐码的奖励，您也将获得一张30元的现金优惠券，优惠券会自动放入“我的优惠券”中； 
-        </p>
-      -->
         {!! htmlspecialchars_decode($good->comment) !!}
       </div>
     </div>
@@ -110,6 +99,23 @@
 
   </div>
   </div>
+<div class="hide" id="car_hand">
+  <div class="over-all"></div>
+  <div id="choose_car_hand">
+    <div class="padding-20"></div>
+    <div class="row text-center padding-5">
+      <div class="col-xs-6 padding-5">
+        <div class="ck_button ck_checked" data-value="one">新车</div>
+      </div>
+      <div class="col-xs-6 padding-5">
+        <div class="ck_button ck_unchecked" data-value="second">二手车</div>
+      </div>
+    </div>
+    <div class="padding-5 col-xs-6 col-xs-offset-3">
+      <button class="btn btn-primary theme-back-blue btn-group-justified" id="next_order">下一步</button>
+    </div>
+  </div>
+</div>
   <script type="text/javascript">
 
     window.onload = function () {

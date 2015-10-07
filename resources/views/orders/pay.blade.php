@@ -1,6 +1,5 @@
 @extends('app')
 
-
 @extends('processbar')
 
 @section('content')

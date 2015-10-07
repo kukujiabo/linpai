@@ -233,6 +233,8 @@ class CarsController extends Controller {
 
     $fields["dir_car_check"] = "车辆购买发票上传失败，请重新上传，图片大小不能大于3M ！";
 
+    $fields["dir_driving_license"] = "车辆行驶证上传失败，请重新上传，图片大小不能大于3M！";
+
     if ($car_type == 'domestic') {
 
       $fields["dir_validate_paper"] = "合格证件上传失败，请重新上传，图片大小不能大于3M ！";
@@ -309,8 +311,8 @@ class CarsController extends Controller {
 
   private function carInfoValidate($values)
   {
-    return Validator::make($values, [
-
+    $required = [
+    
       'owner' => 'required|min:2',
 
       //'brand' => 'required',
@@ -322,14 +324,24 @@ class CarsController extends Controller {
       'dir_identity_face' => 'required',
 
       'dir_identity_back' => 'required',
-
-      'dir_trans_ensurance' => 'required',
-
-      'dir_car_check' => 'required',
-
-      'dir_validate_paper' => 'required'
     
-    ]);
+    ];
+
+    if($values['car_hand'] == 'one') {
+
+      $required['dir_trans_ensurance'] = 'required';
+
+      $required['dir_validate_paper'] = 'required';
+
+      $required['dir_car_check'] = 'required';
+
+    } elseif ($values['car_hand'] == 'second') {
+
+      $required['dir_driving_license'] = 'required';
+
+    }
+
+    return Validator::make($values, $required);
   
   }
 

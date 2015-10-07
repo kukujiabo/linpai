@@ -431,6 +431,8 @@ window.linpai = $linpai;
 
         if (carform.attr('status') == 'edit') {
 
+          carBody.find('.use-active').removeClass('use-active');
+
           var oldItm = $('#' + $(html).attr('id'));
 
           var preItm = oldItm.prev();
@@ -454,7 +456,7 @@ window.linpai = $linpai;
 
           if (carBody.find('.car-list-item').size() > 2) {
 
-            carBody.find('.car-list-item')[2].attr('seq', 'hide').addClass('hide');
+            $(carBody.find('.car-list-item')[2]).attr('seq', 'hide').addClass('hide');
 
           }
 
@@ -796,6 +798,32 @@ window.linpai = $linpai;
         itm.val(obj[ky]);
       
       } else if (itm.attr('type') == 'hidden') {
+
+        if (obj[ky] == null) {
+
+          $('div[attrib=' + ky + ']').addClass('hide');
+
+          $('input[name=' + ky + ']').enable(false);
+
+          if (ky == 'dir_driving_license') {
+
+            $('input[name=car_hand]').val('one');
+
+          }
+
+        } else {
+
+          $('div[attrib=' + ky + ']').removeClass('hide');
+
+          $('input[name=' + ky + ']').enable();
+
+          if (ky == 'dir_driving_license') {
+
+            $('input[name=car_hand]').val('second');
+
+          }
+
+        }
         
         itm.val(obj[ky]);
         
@@ -2525,6 +2553,62 @@ var addressBind;
       resetForm.ajaxSubmit(resetOptions);
 
     }
+  
+  });
+
+})();
+
+/*
+ * 选择新车/二手车
+ */
+(function () {
+
+  var submitbtn = $('.to_buy');
+
+  if (submitbtn.size() == 0) return;
+
+  var dform;
+
+  submitbtn.click(function (e) {
+
+    e.preventDefault();
+
+    dform = $('#' + $(this).attr('target_form'));
+  
+    $('#car_hand').removeClass('hide'); 
+
+  });
+
+  $('.over-all').click(function (e) {
+  
+    e.preventDefault();
+
+    $('#car_hand').addClass('hide');
+  
+  });
+
+
+  $('.ck_button').click(function (e) {
+
+    $('.ck_button').removeClass('ck_checked').addClass('ck_unchecked');
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    that.removeClass('ck_unchecked').addClass('ck_checked');
+
+    dform.find('input[name=car_hand]').val(that.data('value'));
+     
+  });
+
+  $('#next_order').click(function (e) {
+
+    e.preventDefault();
+
+    var that = $(this);
+
+    dform.submit();
   
   });
 
