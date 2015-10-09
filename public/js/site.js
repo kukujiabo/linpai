@@ -2683,7 +2683,7 @@ var addressBind;
 
     var src = that.data('img') == undefined ? '/imgs/logo-linpai.png' : '/imgs/' + that.data('img') + '.jpg';
 
-    var boxRect = '<div class="text-center" style="z-index:10004;position:fixed;width:80%;height:80%;left:10%;top:10%"></div>';
+    var boxRect = '<div class="text-center" style="z-index:10004;position:fixed;auto;height:80%;left:10%;top:10%"></div>';
 
     var img = '<img class="flow-eg-img" src="' + src + '" style="z-index:10005;height:100%">';
 

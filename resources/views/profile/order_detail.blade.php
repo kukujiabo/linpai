@@ -34,6 +34,8 @@
 </div>
 <hr class="no-margin">
 <div class="padding-20">
+  <div class="row">
+  <div class="col-xs-6 no-padding">
   <h4>订单状态：
     @if ($order->status == 0)
       未付款
@@ -45,6 +47,11 @@
       已取消
     @endif
   </h4>
+  </div>
+  <div class="col-xs-2 col-xs-offset-4">
+  <a href="/profile/myorder" class="btn btn-primary theme-back-blue">查看所有订单</a>
+  </div>
+  </div>
   <div class="padding-5"></div>
   <p class="theme">
     订&nbsp;&nbsp;单&nbsp;&nbsp;号：<span class="theme-orig">{{$order->order_code}}</span>

@@ -28,7 +28,7 @@
       <div class="col-md-1">优惠减免</div>
       <div class="col-md-2">实付款</div>
       <div class="col-md-1">交易状态</div>
-      <div class="col-md-2">开设地</div>
+      <div class="col-md-2">临牌号</div>
       <div style="clear:both"></div>
     </div>
     <div class="order-content" id="order-list">
