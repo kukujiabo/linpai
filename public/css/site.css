@@ -14,12 +14,20 @@ ol > li {
   width: 300px;
 }
 
+a.black {
+}
+
+a.black:hover {
+}
+
 a:hover {
+  color: #000 !important;
   cursor: pointer;
   text-decoration: none;
 }
 
 a {
+  color: #000 !important;
   text-decoration: none;
 }
 

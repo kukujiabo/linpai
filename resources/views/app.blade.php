@@ -111,6 +111,82 @@
 </div>
 <footer class="footer foot-bar">
   <div class="footer-top">
+    <div class="row text-left" style="padding-bottom:10px;">
+      <div class="col-sm-2 col-md-1 col-md-offset-2">
+        <h5>关于我们</h5>
+      </div>
+      <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
+        <h5>帮助中心</h5>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <h5>新闻资讯</h5>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <h5>联系客服</h5>
+      </div>
+      <div class="col-sm-1 col-md-1 text-center">
+        <h5>
+          <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
+          微信
+        </h5>
+      </div>
+      <div class="col-sm-1 col-md-1 text-center">
+        <h5>
+          <img class="contact-icon" src="{{ asset('imgs/weibo-icon.png') }}">
+          微博
+        </h5>
+      </div>
+    </div>
+    <div class="row text-left">
+      <div class="col-sm-2 col-md-1 col-md-offset-2">
+        <p>
+          <a href="{{asset('text/contact')}}">联系我们</a> 
+        </p>
+        <p>
+          <a href="#">服务协议</a> 
+        </p>
+      </div>
+      <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
+        <p>
+          <a href="{{asset('text/problems')}}">常见问题解答</a> 
+        </p>
+        <p>
+          <a href="{{asset('text/metaguide')}}">办理材料指南</a> 
+        </p>
+        </p>
+          <a href="#">推荐码和优惠券</a> 
+        </p>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <p>
+          <a href="#">2015上海外地车新闻资讯</a>
+        </p>
+        <p>
+          <a href="news">更多资讯</a>
+        </p>
+      </div>
+      <div class="col-sm-2 col-md-2">
+        <p>
+          <b>
+            <i style="color: #FF8800;font-size: 20px;">
+              <span class="glyphicon glyphicon-earphone"></span>&nbsp;4000602620
+              </i>
+        </p>
+        <p>
+          周一到周日 10:30 － 18:00
+        </p>
+      </div>
+      <div class="col-sm-1 col-md-1">
+        <img width=100% src="/imgs/weixin.png">
+        <br>
+        <div style="width:100%;text-align:center;color:#333;font-size:10px;font-weight:normal;padding:5px">LinPai51</div>
+      </div>
+      <div class="col-sm-1 col-md-1">
+        <img width=100% src="/imgs/weibo.png">
+        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px">@51临牌微博</div>
+      </div>
+    </div>
+    <!--
     <p>
       <b>
         <i style="color: #FF8800;font-size: 24px;"><span class="glyphicon glyphicon-earphone"></span>4000602620</i>
@@ -120,8 +196,8 @@
     <hr style="border-top: #ddd 1px solid;">
     <div class="t-center footer-link">
       <div class="col-md-6 col-md-offset-3 text-center">
-        <a class="bottom-link" href="{{asset('text/contact')}}">联系我们</a> |
-        <a class="bottom-link" href="{{asset('communitcate/cooperation')}}">成为服务商</a> |
+        <a class="bottom-link" href="">联系我们</a> |
+        <a class="bottom-link" href="">成为服务商</a> |
         <a class="bottom-link" href="{{asset('text/problems')}}">常见问题与解答</a> |
         <a class="bottom-link i-img" href="#" id="wechat-qrcode" data-disclass="tiny-flow-img" data-flow-pos="above" data-url="{{asset('imgs/wechat-code.jpg')}}">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
@@ -139,6 +215,12 @@
       @2015 51LinPai all rights reserved 沪ICP备 15037577
     </div>
     <div style="clear:both"></div>
+    -->
+  <hr>
+  <div class="footer-bottom">
+    <div class="col-md-offset-3 col-md-6 text-center">
+      @2015 51LinPai all rights reserved 沪ICP备 15037577
+    </div>
   </div>
   <br>
 </footer>
