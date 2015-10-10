@@ -100,7 +100,7 @@
         <div class="panel-body">
 如果您的网页出现了技术问题，或者在如何下订单上需要进一步指导，您尽可以放心联系我们，我们的客服将尽快帮助您解决问题。
         </div>
-      </div>。
+      </div>
 
       <div class="panel panel-info">
         <div class="panel-heading pro-head">

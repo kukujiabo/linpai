@@ -22,9 +22,9 @@
 <header id="" class="header" role="banner" style="border-bottom:1px solid #eee;">
   <nav class="navbar no-margin" style="background:#fff;">
     <div class="padding-5">
-      <div class="col-md-offset-9" style="color: #999">
-        周一至周日 10:00 － 18:00 
-        &nbsp;&nbsp;&nbsp;&nbsp;<b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b>
+      <div style="color: #999;margin-left:70%">
+        周一至周日 10:30 － 18:00&nbsp; 
+        <b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b>
       </div> 
     </div>
     <hr style="margin:0px;">
@@ -77,9 +77,11 @@
               </a>
             </div>
           </li>
+          <!--
           <li>
             <a href="{{ asset('news')}}" class="font-black">&nbsp;&nbsp;新闻</a>
           </li>
+          -->
   			</ul>
   		</div>
   	</div>
@@ -114,7 +116,7 @@
         <i style="color: #FF8800;font-size: 24px;"><span class="glyphicon glyphicon-earphone"></span>4000602620</i>
       </b>
     </p>
-    <p>周一到周日 10:00 － 18:00</p>
+    <p>周一到周日 10:30 － 18:00</p>
     <hr style="border-top: #ddd 1px solid;">
     <div class="t-center footer-link">
       <div class="col-md-6 col-md-offset-3 text-center">
@@ -124,7 +126,7 @@
         <a class="bottom-link i-img" href="#" id="wechat-qrcode" data-disclass="tiny-flow-img" data-flow-pos="above" data-url="{{asset('imgs/wechat-code.jpg')}}">
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
            微信</a> |
-        <a class="bottom-link" target="_blank" href="http://weibo.com/hi/">
+        <a class="bottom-link" target="_blank" href="http://weibo.com/51linpai">
           <img class="contact-icon" src="{{ asset('imgs/weibo.png') }}">
           新浪微博</a>
       </div>
