@@ -71,6 +71,7 @@
 
         <li>
 
+
         @endif
         
           <a href="{{ asset('profile/receiverinfo')}}">
@@ -94,7 +95,7 @@
           <!--
           <span class="glyphicon glyphicon-tag"></span>
           -->
-          优&nbsp;&nbsp;惠&nbsp;&nbsp;券</a>
+          邀请／优惠券</a>
         </li>
       </ul>
     </div>

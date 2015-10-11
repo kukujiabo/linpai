@@ -170,7 +170,9 @@ class ProfilesController extends Controller {
 
       'cars' => $cars,
 
-      'carActive' => true
+      'carActive' => true,
+
+      'profile' => true
     
     ];
 

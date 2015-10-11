@@ -31,7 +31,7 @@
     <span class="m-i-value">更多车辆信息</span>
   </button>
   &nbsp;&nbsp;
-  <button role="button" class="btn btn-default" id="car-info-add" data-status="show">
+  <button role="button" class="btn btn-default hide" id="car-info-add" data-status="show" disabled>
     <span class="glyphicon glyphicon-plus"></span>
     <span id="c-i-a-content" data-close="新增车辆信息" data-open="取消编辑信息">新增车辆信息</span>
   </button>

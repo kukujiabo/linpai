@@ -103,14 +103,22 @@
 
               @if ($good_attrib['code'] == 'driving_license')
             
-                <div class="col-md-2 hide" attrib="dir_{{$good_attrib['code']}}">
-              <div style="padding-5">
+                @if (empty($profile))
+                  <div class="col-md-2 hide" attrib="dir_{{$good_attrib['code']}}">
+                @else
+                  <div class="col-md-2 hide no-padding" style="margin:0px 3px" attrib="dir_{{$good_attrib['code']}}">
+                @endif
+                <div style="padding-5">
                   <input type="hidden" disabled name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
 
               @else
 
-                <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
-              <div style="padding-5">
+                @if (empty($profile))
+                  <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
+                @else
+                  <div class="col-md-2 no-padding" style="margin:0px 3px" attrib="dir_{{$good_attrib['code']}}">
+                @endif
+                <div style="padding-5">
                   <input type="hidden" name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
                 
               @endif
@@ -125,13 +133,21 @@
 
                   )
 
-                <div class="col-md-2 hide" attrib="dir_{{$good_attrib['code']}}">
+                @if (empty($profile))
+                  <div class="col-md-2  hide" attrib="dir_{{$good_attrib['code']}}">
+                @else
+                  <div class="col-md-2 no-padding hide" style="margin:0px 3px" attrib="dir_{{$good_attrib['code']}}">
+                @endif
               <div style="padding-5">
                   <input type="hidden" disabled name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
 
               @else
 
-                <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
+                @if (empty($profile))
+                  <div class="col-md-2" attrib="dir_{{$good_attrib['code']}}">
+                @else
+                  <div class="col-md-2 no-padding" style="margin:0px 3px" attrib="dir_{{$good_attrib['code']}}">
+                @endif
               <div style="padding-5">
                   <input type="hidden" name="dir_{{$good_attrib['code']}}" id="hint-{{$good_attrib['code']}}" value="">
 

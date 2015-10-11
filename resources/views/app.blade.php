@@ -140,29 +140,29 @@
     <div class="row text-left">
       <div class="col-sm-2 col-md-1 col-md-offset-2">
         <p>
-          <a href="{{asset('text/contact')}}">联系我们</a> 
+          <a class="black"  href="{{asset('text/contact')}}">联系我们</a> 
         </p>
         <p>
-          <a href="/text/agreement">服务协议</a> 
+          <a class="black"  href="/text/agreement">服务协议</a> 
         </p>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
         <p>
-          <a href="{{asset('text/problems')}}">常见问题解答</a> 
+          <a class="black"  href="{{asset('text/problems')}}">常见问题解答</a> 
         </p>
         <p>
-          <a href="{{asset('text/metaguide')}}">办理材料指南</a> 
+          <a class="black"  href="{{asset('text/metaguide')}}">办理材料指南</a> 
         </p>
         </p>
-          <a href="{{asset('text/bouninfo')}}">推荐码和优惠券</a> 
+          <a class="black"  href="{{asset('text/bouninfo')}}">推荐码和优惠券</a> 
         </p>
       </div>
       <div class="col-sm-2 col-md-2">
         <p>
-          <a href="/news/detail">2015上海外地车新闻资讯</a>
+          <a class="black"  href="/news/detail">2015上海外地车新闻资讯</a>
         </p>
         <p>
-          <a href="/news">更多资讯</a>
+          <a class="black" href="/news">更多资讯</a>
         </p>
       </div>
       <div class="col-sm-2 col-md-2">

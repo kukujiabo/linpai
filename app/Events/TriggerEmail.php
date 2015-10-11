@@ -2,6 +2,7 @@
 
 use App\Events\Event;
 use App\Models\Email;
+use Auth;
 
 use Illuminate\Queue\SerializesModels;
 
@@ -68,8 +69,9 @@ class TriggerEmail extends Event {
 
   private function friendUse ()
   {
+    $user = User::all();
 
-    $vars = [ 'friend' => $this->info['friend'] ];
+    $vars = [ 'friend' => $this->info['friend'], 'user' => $user->name ];
   
     $post_data = [
 
@@ -91,6 +93,8 @@ class TriggerEmail extends Event {
 
   private function payedMail ()
   {
+    $user = Auth::user();
+
     $post_data = [
     
       'appid' => $this->appid,
@@ -101,7 +105,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_payed,
 
-      'vars' => "{ \"recommend\": \"{$this->info['recommend']}\", \"order_code\": \"{$this->info['order_code']}\", \"order_date\": \"{$this->info['order_date']}\" }"
+      'vars' => "{ \"recommend\": \"{$this->info['recommend']}\", \"order_code\": \"{$this->info['order_code']}\", \"order_date\": \"{$this->info['order_date']}\", \"user\": \"{$user->name}\" }"
 
     ];
 
@@ -111,6 +115,8 @@ class TriggerEmail extends Event {
 
   private function deliverMail ()
   {
+    $user = Auth::user();
+
     $post_data = [
 
       'appid' => $this->appid,
@@ -121,7 +127,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_deliver,
 
-      'vars' => "{ \"order_code\": \"{$this->info['order_code']}\", \"deliver_code\": \"{$this->info['deliver_code']}\", \"company\": \"{$this->info['company']}\", \"recommend\": \"{$this->info['recommend']}\", \"url\": \"{$this->info['url']}\"}"
+      'vars' => "{ \"order_code\": \"{$this->info['order_code']}\", \"deliver_code\": \"{$this->info['deliver_code']}\", \"company\": \"{$this->info['company']}\", \"recommend\": \"{$this->info['recommend']}\", \"url\": \"{$this->info['url']}\", \"user\": \"{$user->name}\"}"
 
     ];
     

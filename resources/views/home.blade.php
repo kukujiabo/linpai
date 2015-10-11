@@ -15,7 +15,7 @@
           <div class="padding-5"></div>
           <h3>安全</h3>
           <p>
-            100%合法临牌，顺丰快递直送，安全省心
+            100%合法临牌，出险可理赔
           </p>
         </div>
         <div class="col-md-2">
