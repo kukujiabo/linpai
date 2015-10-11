@@ -162,6 +162,8 @@ class ProfilesController extends Controller {
     }
 
     $data = [
+
+      'car_hand' => 'one',
     
       'good_attribs' => $attributes,
 

@@ -1,4 +1,5 @@
-create view v_order_info_large as select distinct
+create view v_order_info_large as 
+select
 a.id as oid,
 a.code as order_code,
 a.uid as uid,
@@ -41,5 +42,18 @@ f.value as g_single_price,
 g.name as order_owner,
 g.mobile as order_owner_mobile
 from 
-orders a, receiver_infos b, cars c, order_prices d, goods e, v_goods_attributes f, users g
-where a.rid = b.id and a.cid = c.id and a.id = d.oid and a.gid = e.id and f.gid = a.gid and f.acode = 'price' and a.uid = g.id;
+orders a, 
+receiver_infos b, 
+cars c,
+order_prices d,
+goods e,
+v_goods_attributes f,
+users g
+where 
+a.rid = b.id and 
+a.cid = c.id and 
+a.id = d.oid and 
+a.gid = e.id and 
+f.gid = a.gid and 
+f.acode = 'price' and 
+a.uid = g.id;

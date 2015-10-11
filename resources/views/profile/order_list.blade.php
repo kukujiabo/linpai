@@ -11,7 +11,7 @@
 <div class="order-body">
   <div class="col-xs-3 no-padding">
     <div class="col-xs-5 padding-5">
-      <img src="{{$order->good_tiny_pic}}" width="100%">
+      <img src="{{asset($order->good_tiny_pic)}}" width="100%">
     </div>
     <div class="col-xs-7 padding-5">
       {{$order->good_name}}

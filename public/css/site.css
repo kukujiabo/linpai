@@ -1676,3 +1676,7 @@ ol.info_list > li {
 #business_intro {
   height: 200px !important; 
 }
+
+a.bdshare-slide-button {
+  display:none !important;
+}

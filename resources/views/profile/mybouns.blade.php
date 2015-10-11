@@ -106,7 +106,10 @@
            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
            }]
         }
+
+
         </script>
+
 
     </div>
     <div style="clear:both;"></div>
@@ -199,6 +202,8 @@
       itm.append('<b class="triggle-up"></b>');
     
     });
+
+    //document.getElementsByClassName('bdshare-slide-button')[0].style.display = 'none';
   
   };
 
