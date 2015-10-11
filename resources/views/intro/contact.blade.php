@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="top-50"></div>
-<div class="box" style="background:#fff;padding-top:0px">
+<div class="box" style="background:#fff;padding-top:0px;line-height:1.8em">
   <img src="/imgs/contact_us.jpg" width="100%">
   <div style="padding:40px;">
     <h3>联系我们</h3>
@@ -55,6 +55,10 @@
     <p>
       <h4 class="theme-font-blue">服务商合作</h4>
       > 邮箱：cooperation#51linpai.com （请将#换成@）
+    </p>
+    <br />
+    <p>
+      地址：上海市静安区延安西路433号金柏苑大厦2306室
     </p>
   </div>
 </div>

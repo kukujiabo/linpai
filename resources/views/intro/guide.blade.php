@@ -10,11 +10,11 @@
     <h3 class="text-center meta-font">车辆临时牌照办理指南</h3>
     <br />
     <p>
-      <a href="" class="btn btn-warning">外省临时牌照</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" class="btn btn-warning">上海临时牌照</a> 
+      <a href="#waisheng" class="btn btn-warning">外省临时牌照</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#shanghai" class="btn btn-warning">上海临时牌照</a> 
     </p>
     <hr>
     <h4 class="theme-font-blue" style="padding:5px 0px">外省临时牌照办理材料指南</h4>
-    <h5><b>在购买外省临时牌照之前，您需要准备以下文档图片:</b></h5>
+    <h5><b id="waisheng">在购买外省临时牌照之前，您需要准备以下文档图片:</b></h5>
     <div class="padding-5">
       <br />
       <p><b>新车</b></p>
@@ -103,7 +103,7 @@
     <hr>
   </div>
   <div class="padding-20">
-  <h4 class="theme-font-blue">上海临时牌照办理材料指南</h4>
+  <h4 id="shanghai" class="theme-font-blue">上海临时牌照办理材料指南</h4>
   <h5>在购买上海临时牌照之前，您需要准备以下文档原件:</h5>
   <br />
   <h5>新车</h5>
