@@ -143,7 +143,7 @@
           <a href="{{asset('text/contact')}}">联系我们</a> 
         </p>
         <p>
-          <a href="#">服务协议</a> 
+          <a href="/text/agreement">服务协议</a> 
         </p>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
