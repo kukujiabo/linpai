@@ -128,4 +128,11 @@ class TextInfoController extends Controller {
   
   }
 
+  public function getBouninfo (Request $request)
+  {
+
+    return view('intro/boun_intro');
+
+  }
+
 }

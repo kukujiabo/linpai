@@ -321,23 +321,27 @@ class CarsController extends Controller {
 
       'reco_code' =>'required',
 
-      'dir_identity_face' => 'required',
-
-      'dir_identity_back' => 'required',
-    
     ];
 
-    if($values['car_hand'] == 'one') {
+    if ($values['good_code'] == 'beyond-three') {
 
-      $required['dir_trans_ensurance'] = 'required';
+      $required['dir_identity_face'] = 'required';
 
-      $required['dir_validate_paper'] = 'required';
+      $required['dir_identity_back'] = 'required';
 
-      $required['dir_car_check'] = 'required';
+      if($values['car_hand'] == 'one') {
 
-    } elseif ($values['car_hand'] == 'second') {
+        $required['dir_trans_ensurance'] = 'required';
 
-      $required['dir_driving_license'] = 'required';
+        $required['dir_validate_paper'] = 'required';
+
+        $required['dir_car_check'] = 'required';
+
+      } elseif ($values['car_hand'] == 'second') {
+
+        $required['dir_driving_license'] = 'required';
+
+      }
 
     }
 

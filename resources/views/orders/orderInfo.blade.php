@@ -14,7 +14,6 @@
 
 @include('scripts.moreinfo')
 
-@include('intro/meta_info')
 
 @section('content')
 
@@ -39,7 +38,6 @@
   </div>
 </div>
 
-@if ($good->code == 'beyond-three')
 <p>临牌车辆所有人信息</p>
 
 <div class="box" id="car-info">
@@ -69,12 +67,7 @@
   @yield('edit_car')
 </div>
 
-  
-@else 
 
-  @yield('meta_info')
-
-@endif
 
 <p>收货人信息</p>
 <div class="box" id="customer-info">
@@ -205,19 +198,13 @@
     </fieldset>
     <fieldset id="car-info-field">
 
-      @if ($good->code == 'beyond-three')
-        @if (!empty($defaultCar))
+      @if (!empty($defaultCar))
 
-            <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
 
-        @else 
+      @else 
 
-            <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
-
-        @endif
-      @else
-
-        <input type="hidden" required="yes" data-name="车辆信息" name="car" value="0">
+          <input type="hidden" required="yes" data-name="车辆信息" name="car" value="">
 
       @endif
 

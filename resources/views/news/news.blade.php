@@ -24,7 +24,7 @@
         <div class="news_cats padding-5">
           <ul class="no-padding text-left">
             <li class="news_itm padding-5">
-              <a href="/news/detail">新车拍照规定</a>
+              <a href="/news/detail">2015上海外地车限行时间规定</a>
             </li>
           </ul>
         </div>

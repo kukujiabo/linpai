@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="临牌,牌照,号牌,临时牌照,车辆牌照,汽车,车牌号">
-	<title>51临牌 临时牌照 号牌 服务商</title>
+  <meta name="keywords" content="临牌、临时牌照、临时号牌、车辆临牌、车辆临时牌照、车辆临时号牌、上海临牌、外地临牌、临时行驶、车辆临时行驶号牌、车辆临时行驶牌照、临时行驶牌照、临时行驶号牌、上海临牌、上海车辆临时行驶号牌、上海临时车牌、上海临时行驶号牌、上海车辆临时行驶牌照">
+	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
@@ -154,7 +154,7 @@
           <a href="{{asset('text/metaguide')}}">办理材料指南</a> 
         </p>
         </p>
-          <a href="#">推荐码和优惠券</a> 
+          <a href="{{asset('text/bouninfo')}}">推荐码和优惠券</a> 
         </p>
       </div>
       <div class="col-sm-2 col-md-2">
