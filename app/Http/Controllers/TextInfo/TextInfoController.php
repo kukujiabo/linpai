@@ -135,4 +135,11 @@ class TextInfoController extends Controller {
 
   }
 
+  public function getAgreement (Request $request)
+  {
+
+    return view('intro/agreement');
+
+  }
+
 }
