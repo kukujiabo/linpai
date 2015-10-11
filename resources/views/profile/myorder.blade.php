@@ -4,7 +4,6 @@
 
 @include('modal-box')
 
-
 <div class="sub-wrapper">
   <h4>我的订单</h4>
 </div>
@@ -41,7 +40,6 @@
   <div class="col-md-12 text-center">
     <nav>
       <ul class="pagination">
-  
         @if ($page > 1)
         <li>
           <a href="#" id="" aria-label="Previous" id="o-pre-page" data-cpage="{{$page}}" data-token="{{csrf_token()}}">
