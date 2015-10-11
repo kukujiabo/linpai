@@ -11,8 +11,8 @@
         </div>
         <div class="data-panel-body">
           <ul class="no-padding-left">
-            <li>pv:</li>
-            <li>uv:</li>
+            <li>pv：</li>
+            <li>uv：</li>
           </ul>
         </div>
       </div>
@@ -25,8 +25,8 @@
         </div>
         <div class="data-panel-body">
           <ul class="no-padding-left">
-            <li>用户总数: </li>
-            <li>当日注册:</li>
+            <li>用户总数：{{count($users)}} </li>
+            <li>当日注册：</li>
           </ul>
         </div>
       </div>
@@ -41,8 +41,8 @@
         </div>
         <div class="data-panel-body">
           <ul class="no-padding-left">
-            <li>订单总数:</li>
-            <li>当日订单:</li>
+            <li>订单总数：{{count($orders)}}</li>
+            <li>当日订单：</li>
           </ul>
         </div>
       </div>
