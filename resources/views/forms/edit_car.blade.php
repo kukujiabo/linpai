@@ -1,3 +1,6 @@
+
+@include('intro/meta_info')
+
 @section('edit_car')
   <div class="edit-info" id="car-info-edit">
     <h4 id="c-i-tit" class="hide">使用新车</h4>
@@ -70,6 +73,8 @@
         </div>
       </fieldset>
       <br>
+
+  @if ($good->code == 'beyond-three')
       <fieldset>
         <div class="form-group col-md-12">
           <p class="col-md-12" style="margin: 20px 0px;">
@@ -156,7 +161,13 @@
           </div>
         </div>        
       </div>
+    @else
+
+      @yield('meta_info')
+
+    @endif
       <input type="hidden" name="car_hand" value="{{$car_hand}}">
+      <input type="hidden" name="good_code" value="{{$good->code}}">
       <div class="padding-5"></div>
       <div class="form-group sub-wrapper">
         <button type="submit" role="button" class="btn btn-primary" id="new-car-submit">保存车辆信息</button>
