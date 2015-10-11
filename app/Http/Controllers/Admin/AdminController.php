@@ -25,7 +25,8 @@ class AdminController extends Controller {
 	 */
 	public function index()
 	{
-		return view('admin/admin_home');
+		return view('admin/admin_home', $data);
+
 	}
 
 	/**
@@ -159,11 +160,21 @@ class AdminController extends Controller {
   {
     $pageName = "首页";
 
-    return view('admin/admin_home', [
+    $users = User::all();
+
+    $orders = Order::all();
+
+    $data = [
+    
+      'users' => $users,
+
+      'orders' => $orders,
 
       'pageName' => $pageName
     
-    ]);
+    ];
+
+    return view('admin/admin_home', $data);
 
   } 
 

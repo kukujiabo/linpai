@@ -36,6 +36,7 @@ class ProfilesController extends Controller {
 
   public function getIndex()
   {
+
   
     return view('profile/profile');
   
