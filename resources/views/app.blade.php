@@ -159,10 +159,10 @@
       </div>
       <div class="col-sm-2 col-md-2">
         <p>
-          <a href="#">2015上海外地车新闻资讯</a>
+          <a href="/news/detail">2015上海外地车新闻资讯</a>
         </p>
         <p>
-          <a href="news">更多资讯</a>
+          <a href="/news">更多资讯</a>
         </p>
       </div>
       <div class="col-sm-2 col-md-2">
