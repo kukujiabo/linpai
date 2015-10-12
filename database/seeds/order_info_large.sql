@@ -1,5 +1,6 @@
 create view v_order_info_large as 
 select
+distinct 
 a.id as oid,
 a.code as order_code,
 a.uid as uid,
