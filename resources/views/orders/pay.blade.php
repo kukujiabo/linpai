@@ -266,4 +266,11 @@
   
   };
 </script>
+<script type="text/javascript">
+  window.onbeforeunload = function (event) {
+
+  return '您的订单尚未支付，确定要离开页面吗？';
+
+};
+</script>
 @endsection
