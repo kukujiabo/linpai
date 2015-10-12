@@ -204,6 +204,8 @@
     });
 
     $('#pay-succeed').click(function (e) {
+      
+      window.onbeforeunload = undefined;
     
       var order_code = $('#o_code').val();
 
