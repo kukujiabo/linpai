@@ -125,16 +125,20 @@
         <h5>联系客服</h5>
       </div>
       <div class="col-sm-1 col-md-1 text-center">
+        <!--
         <h5>
           <img class="contact-icon" src="{{ asset('imgs/wechat.png') }}">
           微信
         </h5>
+        -->
       </div>
       <div class="col-sm-1 col-md-1 text-center">
+        <!--
         <h5>
           <img class="contact-icon" src="{{ asset('imgs/weibo-icon.png') }}">
           微博
         </h5>
+        -->
       </div>
     </div>
     <div class="row text-left">
@@ -177,13 +181,21 @@
         </p>
       </div>
       <div class="col-sm-1 col-md-1">
+        <div style="position:absolute;bottom:-100px">
         <img width=100% src="/imgs/weixin.png">
         <br>
-        <div style="width:100%;text-align:center;color:#333;font-size:10px;font-weight:normal;padding:5px">LinPai51</div>
+        <div style="width:100%;text-align:center;color:#333;font-size:10px;font-weight:normal;padding:5px 0px">
+          <img class="contact-icon" src="/imgs/wechat.png">
+          公众号 LinPai51</div>
+        </div>
       </div>
       <div class="col-sm-1 col-md-1">
+        <div style="position:absolute;bottom:-100px">
         <img width=100% src="/imgs/weibo.png">
-        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px">@51临牌微博</div>
+        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px">
+            <img class="contact-icon" src="/imgs/weibo-icon.png">
+            @51临牌微博</div>
+        </div>
       </div>
     </div>
     <!--

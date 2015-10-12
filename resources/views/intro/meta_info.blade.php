@@ -1,6 +1,7 @@
 @section('meta_info')
 
 @if ($car_hand == 'one')
+<div class="meta_box">
 <div class="alert alert-info">
   <h3 class="page-header">办理上海新车临牌</h3>
   
@@ -72,7 +73,9 @@
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的隐私对于51临牌而言至关重要，保护用户隐私是51临牌的一项基本政策，51临牌保证不对外公开或向第三方提供用户的注册资料和任何与用户有关的信息。为确保您个人信息的安全，我们将公司的隐私和安全准则告知全体51临牌雇员，并将在公司内部严格执行隐私保护措施。您可以参考《51临牌网站使用协议》了解51临牌隐私政策详情。
 </p>
 </div>
+</div>
 
 @endif
 
 @endsection
+

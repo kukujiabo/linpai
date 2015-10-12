@@ -74,8 +74,6 @@
       </fieldset>
       <br>
 
-  
-
   @if (!empty($good) && $good->code == 'below-three')
       
       @yield('meta_info')
@@ -83,6 +81,8 @@
     <div class="hide" id="file_upload_box">
   @else
     <div id="file_upload_box">
+
+  @endif
       <fieldset>
         <div class="form-group col-md-12">
           <p class="col-md-12" style="margin: 20px 0px;">
@@ -185,9 +185,8 @@
           </div>
         </div>        
       </div>
-    @endif
      </div>
-
+    </div>
       <input type="hidden" name="car_hand" value="{{$car_hand}}">
       @if (!empty($good))
         <input type="hidden" name="good_code" value="{{$good->code}}">
