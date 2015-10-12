@@ -160,15 +160,36 @@ class AdminController extends Controller {
   {
     $pageName = "首页";
 
-    $users = User::all();
+    $users = User::count();
 
-    $orders = Order::all();
+    $orders = Order::count();
+
+    //今日注册用户
+    $year = date('Y');
+
+    $month = date('m');
+
+    $day = date('d');
+
+    $todayTime = strtotime('today');//mktime(0, 0, 0, $month, $day, $year);
+
+    $dateTime = date('Y-m-d H:i:s', $todayTime) . '';
+
+    $todayUser = User::where('created_at', '>', $dateTime)->count();
+
+    $todayOrder = Order::where('created_at', '>', $dateTime)->count();
+
+    //今日产生订单
 
     $data = [
     
       'users' => $users,
 
       'orders' => $orders,
+
+      'todayUser' => $todayUser,
+
+      'todayOrder' => $todayOrder,
 
       'pageName' => $pageName
     
