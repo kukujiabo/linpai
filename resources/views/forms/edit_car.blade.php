@@ -5,21 +5,20 @@
   <div class="edit-info" id="car-info-edit">
     <h4 id="c-i-tit" class="hide">使用新车</h4>
     <div class="padding-5">
-      <div class="alert alert-danger hide" id="carinfo-error">
-      </div>
+      <div class="alert alert-danger hide" id="carinfo-error"></div>
     </div>
     <form class="form-inline" method="post" id="new-car-form" action="{{asset('car/add')}}" data-addurl="{{asset('car/add')}}" data-editurl="{{asset('car/edit')}}" enctype="multipart/form-data">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="cid" value="">
       <fieldset>
         <div class="form-group col-md-6">
-            <label for="owner-info" class="control-label col-md-5">
-              <span class="require">*</span>
-              车辆所有人信息
-            </label>
-            <div class="col-md-6 no-padding-left">
-            <input type="text" class="form-control width-100" name="owner" placeholder="车辆所有人姓名" id="owner-info">
-            </div>
+          <label for="owner-info" class="control-label col-md-5">
+            <span class="require">*</span>
+            车辆所有人信息
+          </label>
+          <div class="col-md-6 no-padding-left">
+          <input type="text" class="form-control width-100" name="owner" placeholder="车辆所有人姓名" id="owner-info">
+          </div>
         </div>
 <!--
         <div class="form-group col-md-6">
@@ -75,8 +74,10 @@
       <br>
 
   @if (!empty($good) && $good->code == 'below-three')
-      
+      <fieldset>
+
       @yield('meta_info')
+      </fieldset>
 
     <div class="hide" id="file_upload_box">
   @else
@@ -186,17 +187,16 @@
         </div>        
       </div>
      </div>
+    <input type="hidden" name="car_hand" value="{{$car_hand}}">
+    @if (!empty($good))
+      <input type="hidden" name="good_code" value="{{$good->code}}">
+    @else
+      <input type="hidden" name="good_code" value="">
+    @endif
+    <div class="padding-5"></div>
+    <div class="form-group sub-wrapper">
+      <button type="submit" role="button" class="btn btn-primary" id="new-car-submit">保存车辆信息</button>
     </div>
-      <input type="hidden" name="car_hand" value="{{$car_hand}}">
-      @if (!empty($good))
-        <input type="hidden" name="good_code" value="{{$good->code}}">
-      @else
-        <input type="hidden" name="good_code" value="">
-      @endif
-      <div class="padding-5"></div>
-      <div class="form-group sub-wrapper">
-        <button type="submit" role="button" class="btn btn-primary" id="new-car-submit">保存车辆信息</button>
-      </div>
     </form> 
   </div>
 
