@@ -166,6 +166,7 @@
 <form class="form" id="next-form" method="post" action="order/pay">
   <input type="hidden" name="form_code" value="{{$formCode}}" >
   <input type="hidden" name="car_hand" value="{{$car_hand}}">
+  <input type="hidden" name="good_code" value="{{$good->code}}">
   <div class="well">
     <div class="row">
       <div class="col-md-7">

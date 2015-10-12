@@ -15,19 +15,19 @@ ol > li {
 }
 
 a.black {
+  color: #000 !important;
 }
 
 a.black:hover {
+  color: #000 !important;
 }
 
 a:hover {
-  color: #000 !important;
   cursor: pointer;
   text-decoration: none;
 }
 
 a {
-  color: #000 !important;
   text-decoration: none;
 }
 
@@ -425,7 +425,7 @@ ul.dropdown-menu {
 }
 
 .contact-icon {
-  width: 18px;
+  width: 12px;
 }
 
 #order-info, #deliver {

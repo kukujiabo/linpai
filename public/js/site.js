@@ -124,6 +124,10 @@ window.linpai = $linpai;
   var addCar = $('#car-info-add')
 
   $linpai.editCar = function () {
+
+    var car_hand = $('#next-form').find('input[name=car_hand]');
+    
+    var good_code = $('#next-form').find('input[name=good_code]');
   
     $('#car-info-edit').slideToggle(function () {
 
@@ -154,7 +158,32 @@ window.linpai = $linpai;
       }
     
     });
-  
+
+    if (good_code == 'below-three') {
+      /*
+      $('#file_upload_box').addClass('hide');
+
+      $('#meta_box').removeClass('hide');
+      */
+
+    } else {
+
+      /*
+      $('#meta_box').addClass('hide');
+
+      $('#file_upload_box').removeClass('hide');
+      */
+
+      if (car_hand == 'one') {
+
+
+      } else {
+      
+      
+      }
+
+    }
+    
   };
     
   addCar.click(function () {
@@ -166,7 +195,8 @@ window.linpai = $linpai;
     carform.attr('action', carform.data('addurl'));
 
     carform.attr('status', 'add');
-  
+
+
     $linpai.editCar();
 
   });
