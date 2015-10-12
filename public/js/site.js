@@ -1403,9 +1403,9 @@ var addressBind;
         } else if (checkBoun.uid == userId && checkBoun.type == 0) {
 
           /*
-           * 不能使用自己的推荐码
+           * 不能使用自己的邀请码
            */
-          yAlert.html("抱歉，不能使用自己的推荐码：" + checkBoun.code + " 进行购买");
+          yAlert.html("抱歉，不能使用自己的邀请码：" + checkBoun.code + " 进行购买");
 
           yAlert.fadeIn();
         
@@ -1436,7 +1436,7 @@ var addressBind;
       
       } else {
       
-        yAlert.html("优惠码／推荐码：" + that.val() + " 不存在，请重新输入！");
+        yAlert.html("优惠码／邀请码：" + that.val() + " 不存在，请重新输入！");
 
         yAlert.fadeIn();
       
@@ -2439,7 +2439,7 @@ var addressBind;
 
         } else if (data.msg == 'not_found') {
 
-          $('.toast-notice').html('抱歉，没有找到您的推荐码，请联系管理员');
+          $('.toast-notice').html('抱歉，没有找到您的邀请码，请联系管理员');
 
           window.setTimeout('$(\'.over-all\').remove();$(\'.toast-notice\').remove();', 1500);
 

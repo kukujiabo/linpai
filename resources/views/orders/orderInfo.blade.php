@@ -103,22 +103,22 @@
     @yield('edit_receiver')
 
 </div>
-<p>优惠码／推荐码</p>
+<p>优惠码／邀请码</p>
 <div class="box" id="quan">
   <div class="sub-wrapper">
-    <p>请输入 优惠码 / 推荐码</p>
+    <p>请输入 优惠码 / 邀请码</p>
     <form class="form-inline" id="selected-bouns">
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_1" id="youhui_1" class="form-control" placeholder="优惠码或推荐码">
+        <input type="text" name="youhui_1" id="youhui_1" class="form-control" placeholder="优惠码或邀请码">
       </div>
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_2" id="youhui_2" class="form-control" placeholder="优惠码或推荐码">
+        <input type="text" name="youhui_2" id="youhui_2" class="form-control" placeholder="优惠码或邀请码">
       </div>
       <div class="form-group padding-5">
         <label class="sr-only" for=""></label>
-        <input type="text" name="youhui_3" id="youhui_3" class="form-control" placeholder="优惠码或推荐码">
+        <input type="text" name="youhui_3" id="youhui_3" class="form-control" placeholder="优惠码或邀请码">
       </div>
       <div class="form-group padding-5">
         <div class="alert alert-danger no-margin" id="youhui-alert"></div>
@@ -127,7 +127,7 @@
         <a class="btn btn-info theme-back-blue" id="quan-view"  role="button" data-status="show"><span class="glyphicon glyphicon-plus"></span>&nbsp;查看可用优惠券</a>
       </div>
       <div class="padding-5">
-        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠码和推荐码？</a>
+        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠码和邀请码？</a>
       </div>
     </form>
     <p>

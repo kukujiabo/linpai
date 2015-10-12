@@ -158,7 +158,7 @@
           <a class="black"  href="{{asset('text/metaguide')}}">办理材料指南</a> 
         </p>
         </p>
-          <a class="black"  href="{{asset('text/bouninfo')}}">推荐码和优惠券</a> 
+          <a class="black"  href="{{asset('text/bouninfo')}}">邀请码和优惠券</a> 
         </p>
       </div>
       <div class="col-sm-2 col-md-2">
