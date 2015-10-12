@@ -14,7 +14,7 @@
   @endif
 
     <a href="#boun-code" class="bouns-tab" role="tab" data-toggle="tab" style="border:0px">
-      我的推荐码
+      我的邀请码
       <b class="triggle-up"></b>
     </a>
   </li>
@@ -47,14 +47,20 @@
         <img src="{{ asset('/imgs/boun-code.png') }}">
       </div>
       <div class="col-md-9 text-left padding-5">
-        <h3 class="">分享您的推荐码</h3>
-        <p>每推荐一位好友使用51临牌，您都将获得30元优惠码奖励，奖励将不设上限。</p>
+        <h3 class="">分享您的邀请码</h3>
+
+        <p>
+          现在就把您的邀请码分享给朋友们，您也将获得高达 20RMB 的优惠减免。
+        </p>
         <div class="padding-5"></div>
-        <h5>您的推荐码</h5>
+        <h5>您的邀请码</h5>
         <p class="alert alert-warning col-md-3 padding-5 text-center">
           <b>{{$recomend->code}}</b>
         </p>
       </div>
+    </div>
+    <div style="line-height:1.8em;text-align:left;width:85%;padding:0px 0px 0px 20px">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  现在就把您的邀请码分享给朋友们，使用您的邀请码下单的每一位朋友都将获得高达 20RMB 的优惠减免，而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张20RMB 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
     </div>
     <div class="padding-20 text-left col-md-10">
       <form class="form" method="post" action="/profile/invite" id="invite_form">
@@ -116,10 +122,9 @@
     <div class="padding-5">
       <div class="col-md-10 text-left no-padding-left">
         <ol class="info_list">
-          <li>在您完成一次购买后您将获得一个推荐码，并可以推荐给朋友。</li>
-          <li>每一位使用您推荐码购买的朋友都将获得30元的减免！作为奖励，您也将获得一张30元的优惠码，优惠码自动放入“我的优惠码”中！</li>
-          <li>您推荐的朋友数量将不受限制。</li>
-          <li>您的每位朋友只能使用一次该推荐码。</li>
+          <li>您的朋友需在下单时在邀请码／优惠码页面输入您的邀请码，方能获得优惠减免。 </li>
+          <li>您可以邀请的朋友数量不设上限。</li>
+          <li>您的每位朋友仅能使用一次您的邀请码。</li>
         </ol>
       </div>
       <div style="clear:both;"></div>
@@ -127,8 +132,16 @@
     </div>
   @else
     <div class="padding-20 text-left">
-      <h3>您还没有推荐码</h3>
-      <p class="padding-5">在完成第一次购买后，您将会得到一个推荐码，并可以分享给朋友。</p>
+      <h3>您还没有邀请码</h3>
+      <div class="padding-5"></div>
+      <h4>什么是邀请码？</h4>
+      <p class="padding-5" style="line-height:1.8em">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀请码是［51临牌］提供给您的一种唯一编码，使用您的邀请码下单的朋友将获得高达 20RMB 的优惠减免；而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张20RMB 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
+      </p>
+      <h4>如何获取邀请码？</h4>
+      <p class="padding-5">
+      在您完成第一次订单以后，您将获得一个邀请码并可以分享给朋友们，该邀请码唯一且永久有效。
+      </p>
       <a role="button" class="btn btn-info theme-back-blue" href="/home#buy">立刻购买临牌</a>
     </div>
   @endif
@@ -147,6 +160,20 @@
     @if (count($bouns))
       <div class="sub-wrapper">
         <div class="padding-5"></div>
+        <ol class="info_list text-left">
+          <li>
+            在您下一次下单时，需要在邀请码／优惠码页面直接使用您的优惠码即可获得优惠减免。
+          </li>
+          <li>
+            优惠码可以累计使用。
+          </li>
+          <li>
+            每个优惠码仅可以使用一次。
+          </li>
+          <li>
+            您的优惠码仅限您本人使用。
+          </li>
+        </ol>
         <ul class="row quan-list">
         @foreach ($bouns as $boun)
           <li class="col-sm-4 col-md-4 bouns">
@@ -160,29 +187,17 @@
         
         @endforeach
         </ul>
-        <ol class="info_list text-left">
-          <li>
-            每当有朋友使用您的推荐码下单后，系统都会自动为您添加一个新的优惠码。
-          </li>
-          <li>
-            您的优惠码仅限您本人使用。
-          </li>
-          <li>
-            同一优惠码不可重复使用。
-          </li>
           <div class="padding-5"></div>
         </div>
       </div>
     @else
       <div class="padding-20 text-left">
-       <h3>您当前没有优惠码</h3> 
+       <h3>您还没有优惠码</h3> 
        <div class="padding-5"></div>
-       <div class="padding-5">
-          将您的优惠码分享给好友，好友使用您提供的推荐码成功购买临牌后，您将获得一张价值30元的现金抵扣券。
-       </div>
-       <div class="padding-5">
-          一张优惠码只能使用一次，一次购买最多可使用三张优惠码或推荐码。
-        </div>
+       <h4>如何获取优惠码</h4>
+       <p style="line-height:1.8em">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将您的邀请码分享给朋友，每当有朋友使用您的邀请码下单后，系统都会自动为您添加一个价值 20RMB 的优惠码，并可以在下次下单时使用以获得优惠减免。您邀请的朋友数量并不设上限。
+      </p>
       </div>
     @endif
   </div>
