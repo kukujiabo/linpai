@@ -47,7 +47,7 @@
       <div class="alert alert-warning" style="margin: 0px 10px;" >
         <div clas !importants="good-tab-info info-top">
           <div class="col-md-5" >
-            <img class="thumbnail" width="100%" src="{{$good->pic}}">
+            <img class="thumbnail" width="100%" src="{{asset($good->pic)}}">
           </div>
           <div class="col-md-7" style="text-align:left;">
             <h4>{{ $good->name }}</h4>

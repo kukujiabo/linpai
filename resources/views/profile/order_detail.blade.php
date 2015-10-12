@@ -13,7 +13,7 @@
 <div class="row padding-5">
   <div class="col-md-4">
     <div class="col-xs-5 padding-5">
-      <img src="{{$order->good_tiny_pic}}" width="100%">
+      <img src="{{asset($order->good_tiny_pic)}}" width="100%">
     </div>
     <div class="col-xs-7  order-col">
       {{$order->good_name}}
