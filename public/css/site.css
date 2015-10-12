@@ -1680,3 +1680,8 @@ ol.info_list > li {
 a.bdshare-slide-button {
   display:none !important;
 }
+
+a.dropdown-toggle:hover {
+  font-family: normal;
+  font-size: 14px !important;
+}
