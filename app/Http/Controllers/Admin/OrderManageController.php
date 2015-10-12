@@ -155,6 +155,8 @@ class OrderManageController extends Controller {
 
         ->take($offset)
 
+        ->orderBy('created_at', 'desc')
+
         ->get();
 
     $data = [

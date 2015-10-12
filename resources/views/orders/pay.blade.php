@@ -22,7 +22,7 @@
     <div class="media">
       <div class="media-left">
         <a href="#" class="gray-light" style="display:block">
-          <img class="media-object" src="{{$good->tiny_good}}" alt="" width=80px>
+          <img class="media-object" src="{{asset($good->tiny_good)}}" alt="" width=80px>
         </a>
       </div>
       <div class="media-body">
