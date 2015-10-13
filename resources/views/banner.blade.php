@@ -17,28 +17,20 @@
 
       @if ($key == 0)
 
-      <div class="item active rounded" style="width: auto">
+      <div class="item active rounded" style="width:100%">
 
       @else 
   
-      <div class="item rounded" style="width: auto">
+      <div class="item rounded" style="width:100%">
 
       @endif
         <a href="#">
           <!--
           <img class="banner-img" src="{{$banner->url}}">
           -->
-          <div class="banner-img" style="background:url({{$banner->url}}) 50% 0% no-repeat"></div>
+          <div class="banner-img" style="background:url({{$banner->url}}) 0% 0% no-repeat;width:100%"></div>
         </a>
         <div class="container">
-          <!--
-          <div class="carousel-caption s-d-caption">
-            <div class="padding-5"></div>
-            <div>
-              <a class="btn btn-default btn-lg btn-center btn-banner no-border" href="#buy" role="button">即刻购买临牌</a>
-            </div>
-          </div>
-          -->
         </div>
       </div>
 
