@@ -28,7 +28,7 @@
           <!--
           <img class="banner-img" src="{{$banner->url}}">
           -->
-          <div class="banner-img" style="background:url({{$banner->url}}) 0% 0% no-repeat;width:100%"></div>
+          <div class="banner-img" style="background:url({{$banner->url}}) 50% 0% no-repeat;width:100%"></div>
         </a>
         <div class="container">
         </div>
