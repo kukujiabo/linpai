@@ -195,17 +195,18 @@
 
             </div>
             &nbsp;&nbsp;
+            @if ($order->status > 1)
             <div class="form-group">
               <a role="button" id="deliver_submit">发货</a>
             </div>
 
             @if (!empty($deliver))
-
             |
             <div class="form-group">
               <a role="button" id="deliver_dismiss">取消</a>
             </div>
 
+            @endif
             @endif
           </form>
         @endif
