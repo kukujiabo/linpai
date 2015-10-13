@@ -28,6 +28,7 @@ class CreateCarsTable extends Migration {
       $table->string('ext_0')->nullable();
       $table->string('car_type')->nullable();
       $table->integer('last_used')->nullable();
+      $table->string('car_hand')->nullable();
       $table->integer('active')->default(1);
 			$table->timestamps();
 		});

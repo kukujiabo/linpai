@@ -18,7 +18,8 @@ class Car extends Model {
     'dir_validate_paper',
     'dir_driving_license',
     'car_type',
-    'last_used'
+    'last_used',
+    'car_hand'
   ];
 
 }

@@ -97,6 +97,8 @@ class OrdersController extends Controller {
 
       ->where('active', '=', 1)
 
+      ->where('car_hand', '=', $carHand)
+
       ->orderBy('last_used', 'desc')
 
       ->get();
