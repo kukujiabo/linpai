@@ -59,7 +59,7 @@
   					<li><a href="{{ url('/auth/register') }}" class="font-black">注册</a></li>
   				@else
   					<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <a href="#" class="no-bold"  data-toggle="dropdown" role="button" aria-expanded="false">
                 <span class="glyphicon glyphicon-user theme-font-blue"></span>
                   &nbsp;&nbsp;Hi,&nbsp;{{ Auth::user()->name }}
                 <span class="caret"></span></a>
@@ -149,6 +149,9 @@
         <p>
           <a class="black"  href="/text/agreement">服务协议</a> 
         </p>
+        <p>
+          <a class="black"  href="/communitcate/cooperation">成为服务商</a> 
+        </p>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
         <p>
@@ -185,17 +188,17 @@
         <div style="position:absolute;bottom:-100px">
         <img width=100% src="/imgs/weixin.png">
         <br>
-        <div style="width:100%;text-align:center;color:#333;font-size:10px;font-weight:normal;padding:5px 0px">
+        <div style="width:100%;text-align:center;color:#333;font-size:9px;font-weight:normal;padding:5px 0px">
           <img class="contact-icon" src="/imgs/wechat.png">
-          公众号 LinPai51</div>
+          公众号：LinPai51</div>
         </div>
       </div>
       <div class="col-sm-1 col-md-1">
         <div style="position:absolute;bottom:-100px">
         <img width=100% src="/imgs/weibo.png">
-        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px">
+        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px 0px">
             <img class="contact-icon" src="/imgs/weibo-icon.png">
-            @51临牌微博</div>
+            <a class="black" href="http://www.weibo.com/51linpai" target="_blank">@51LinPai临牌</a></div>
         </div>
       </div>
     </div>

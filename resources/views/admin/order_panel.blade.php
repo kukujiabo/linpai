@@ -147,6 +147,7 @@
         <div class="col-xs-10 hide" id="deliver_edit">
 
       @endif
+       @if ($order->status > 0)
           <form class="form-inline padding-4" id="deliver_form" method="post" action="/orderboard/deliver">
             <input type="hidden" name="order_code" value="{{$order->order_code}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -207,6 +208,7 @@
 
             @endif
           </form>
+        @endif
         </div>
     </div>
   </div>
