@@ -147,6 +147,7 @@
         <div class="col-xs-10 hide" id="deliver_edit">
 
       @endif
+       @if ($order->status > 0)
           <form class="form-inline padding-4" id="deliver_form" method="post" action="/orderboard/deliver">
             <input type="hidden" name="order_code" value="{{$order->order_code}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -194,19 +195,21 @@
 
             </div>
             &nbsp;&nbsp;
+            @if ($order->status > 1)
             <div class="form-group">
               <a role="button" id="deliver_submit">发货</a>
             </div>
 
             @if (!empty($deliver))
-
             |
             <div class="form-group">
               <a role="button" id="deliver_dismiss">取消</a>
             </div>
 
             @endif
+            @endif
           </form>
+        @endif
         </div>
     </div>
   </div>

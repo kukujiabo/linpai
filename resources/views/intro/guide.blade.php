@@ -13,8 +13,8 @@
       <a href="#waisheng" class="btn btn-warning">外省临时牌照</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#shanghai" class="btn btn-warning">上海临时牌照</a> 
     </p>
     <hr>
-    <h4 class="theme-font-blue" style="padding:5px 0px">外省临时牌照办理材料指南</h4>
-    <h5><b id="waisheng">在购买外省临时牌照之前，您需要准备以下文档图片:</b></h5>
+    <h4 id="waisheng" class="theme-font-blue" style="padding:5px 0px">外省临时牌照办理材料指南</h4>
+    <h5><b >在购买外省临时牌照之前，您需要准备以下文档图片:</b></h5>
     <div class="padding-5">
       <br />
       <p><b>新车</b></p>
