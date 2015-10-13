@@ -230,7 +230,7 @@
   <hr>
   <div class="footer-bottom">
     <div class="col-md-offset-3 col-md-6 text-center">
-      @2015 51LinPai all rights reserved 沪ICP备 15037577
+      @2015 51LinPai all rights reserved 沪ICP备 15037577-1
     </div>
   </div>
   <br>
