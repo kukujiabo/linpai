@@ -20,13 +20,15 @@ class CarsController extends Controller {
       
     $validate = $this->carInfoValidate($request->input());
 
-    $car_type = $request->car_type;
+    $car_type = $request->input('car_type');
 
     if ($validate->fails()) {
     
       return $this->validateFail($validate, $car_type);
     
     }
+
+    $carHand = $request->input('car_hand');
 
     $user = Auth::user();
 

@@ -1686,6 +1686,10 @@ a.dropdown-toggle:hover {
   font-size: 14px !important;
 }
 
-.btn {
+.btn-primary {
   border: 0px !important;
+}
+
+.col-md-offset-15 {
+  margin-left: 13%;
 }

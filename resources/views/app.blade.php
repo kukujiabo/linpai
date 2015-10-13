@@ -112,7 +112,7 @@
 <footer class="footer foot-bar">
   <div class="footer-top">
     <div class="row text-left" style="padding-bottom:10px;">
-      <div class="col-sm-2 col-md-1 col-md-offset-2">
+      <div class="col-sm-2 col-md-1 col-md-offset-15">
         <h5>关于我们</h5>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
@@ -142,7 +142,7 @@
       </div>
     </div>
     <div class="row text-left">
-      <div class="col-sm-2 col-md-1 col-md-offset-2">
+      <div class="col-sm-2 col-md-1 col-md-offset-15">
         <p>
           <a class="black"  href="{{asset('text/contact')}}">联系我们</a> 
         </p>
@@ -175,6 +175,7 @@
             <i style="color: #FF8800;font-size: 20px;">
               <span class="glyphicon glyphicon-earphone"></span>&nbsp;4000602620
               </i>
+          </b>
         </p>
         <p>
           周一到周日 10:30 － 18:00
@@ -200,9 +201,7 @@
     </div>
     <!--
     <p>
-      <b>
         <i style="color: #FF8800;font-size: 24px;"><span class="glyphicon glyphicon-earphone"></span>4000602620</i>
-      </b>
     </p>
     <p>周一到周日 10:30 － 18:00</p>
     <hr style="border-top: #ddd 1px solid;">
