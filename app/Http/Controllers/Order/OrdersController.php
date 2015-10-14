@@ -1569,9 +1569,5 @@ class OrdersController extends Controller {
 
   }
 
-  public function getPaynotify(Request $request) {
-
-
-  }
 
 }
