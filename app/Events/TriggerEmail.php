@@ -159,7 +159,7 @@ class TriggerEmail extends Event {
   public function execSend()
   {
     
-    switch ($this->mailType) {
+    switch ($this->mail_type) {
 
       case 'register' :
 

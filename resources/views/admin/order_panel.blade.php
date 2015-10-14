@@ -123,9 +123,11 @@
           <div class="col-xs-3">
             运单号：<span content="deliver_code"></span>
           </div>
+          <!--
           <div coass="col-xs-1">
             <a href="#" id="deliver_modify">修改</a>
           </div>
+          -->
         </div>
         <div class="col-xs-10" id="deliver_edit"> 
 
