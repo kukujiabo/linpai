@@ -625,7 +625,7 @@ class OrdersController extends Controller {
     $payment_type = "1";
 
     //服务器异步通知路径
-    $notify_url = "http://www.51linpai.com:8000/order/paynotify";
+    //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
 
     //页面跳转同步通知页面路径
     $return_url = "http://www.51linpai.com:8000/order/payed";
@@ -653,7 +653,7 @@ class OrdersController extends Controller {
        "partner" => trim($alipay_config['partner']),
        "seller_email" => trim($alipay_config['seller_email']),
        "payment_type"  => $payment_type,
-       "notify_url"  => $notify_url,
+       //"notify_url"  => $notify_url,
        "return_url"  => $return_url,
        "out_trade_no"  => $out_trade_no,
        "subject" => $subject,
@@ -681,7 +681,7 @@ class OrdersController extends Controller {
   
     $payment_type = 1;
 
-    $notify_url = "http://www.51linpai.com:8000/order/paynotify";
+    //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
 
     //页面跳转同步通知页面路径
     $return_url = "http://www.51linpai.com:8000/order/payed";
@@ -715,7 +715,7 @@ class OrdersController extends Controller {
        "partner" => trim($alipay_config['partner']),
        "seller_email" => trim($alipay_config['seller_email']),
        "payment_type"  => $payment_type,
-       "notify_url"  => $notify_url,
+       //"notify_url"  => $notify_url,
        "return_url"  => $return_url,
        "out_trade_no"  => $out_trade_no,
        "subject" => $subject,
@@ -975,6 +975,7 @@ class OrdersController extends Controller {
 
   }
 
+  /*
   public function getPayed (Request $request) {
 
     require_once('lib/alipay_notify.class.php');
@@ -1051,8 +1052,9 @@ class OrdersController extends Controller {
     }
 
   }
+   */
 
-  public function getPayedx (Request $request)
+  public function getPayed (Request $request)
   {
 
     require_once('lib/alipay_notify.class.php');
@@ -1244,13 +1246,11 @@ class OrdersController extends Controller {
 
           ->count();
 
-        /*
         if ($bCount >= 1) {
 
           /*
            * 成功使用次数达到10张，赠送一张优惠券
            */
-        /*
           Boun::create([
           
             'note' => 30,
@@ -1273,20 +1273,17 @@ class OrdersController extends Controller {
         
         }
       
-         */
       
       } else {
         
         /*
          * 如果是优惠码.
          */
-        /*
         Boun::where('code', '=', $orderBoun) 
 
           ->where('uid', '=', $user->id)
 
           ->update(['active' => 0]);
-        */
       
       }
     
