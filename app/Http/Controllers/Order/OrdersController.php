@@ -1212,7 +1212,7 @@ class OrdersController extends Controller {
 
         ];
 
-        var_dump($request->cookie('name'));
+        var_dump($request->cookie('51_linpai'));
 
         return view('orders/pay_success', $data); 
 
