@@ -743,6 +743,8 @@ class OrdersController extends Controller {
    */
   public function postPaynotify (Request $request) {
 
+    require_once('./alipay_config.php');
+
     require_once('lib/alipay_notify.class.php');
 
     $alipayNotify = new \AlipayNotify($this->payConfig());
