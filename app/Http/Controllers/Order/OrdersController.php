@@ -978,7 +978,6 @@ class OrdersController extends Controller {
 
   public function getPayed (Request $request)
   {
-
     require_once('lib/alipay_notify.class.php');
 
     $alipayNotify = new \AlipayNotify($this->payConfig());
@@ -997,7 +996,7 @@ class OrdersController extends Controller {
 
       $trade_status = $_GET['trade_status'];
 
-     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
+     if($trade_status == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS') {
       //判断该笔订单是否在商户网站中已经做过处理
       //如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
       //如果有做过处理，不执行商户的业务程序
@@ -1065,7 +1064,6 @@ class OrdersController extends Controller {
           ->where('success', 'is', 'null')
 
           ->get();
-        
         
         /*
          * 订单价钱
