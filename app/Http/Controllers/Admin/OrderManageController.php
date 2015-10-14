@@ -141,7 +141,7 @@ class OrderManageController extends Controller {
 
     if (!empty($mobile)) {
 
-      $query->where('mobile', 'like', '%' . $mobile . '%');
+      $query->where('order_owner_mobile', 'like', '%' . $mobile . '%');
 
     }
 
