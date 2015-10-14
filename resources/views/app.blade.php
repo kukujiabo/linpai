@@ -111,7 +111,7 @@
 </div>
 <footer class="footer foot-bar">
   <div class="footer-top text-left">
-    <div class="row" style="padding-bottom:10px;">
+    <div class="row text-left" style="padding-bottom:10px;">
       <div class="col-sm-2 col-md-1 col-md-offset-15" >
         <h5>关于我们</h5>
       </div>
@@ -142,7 +142,7 @@
       </div>
       <div style="clear:both"></div>
     </div>
-    <div class="row text-center">
+    <div class="row text-left">
       <div class="col-sm-2 col-md-1 col-md-offset-15">
         <p>
           <a class="black"  href="{{asset('text/contact')}}">联系我们</a> 
