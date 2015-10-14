@@ -39,7 +39,7 @@
   
     
     <br>
-    <a href="/profile/mybouns" class="btn btn-primary theme-back-blue"style="color:#fff">看我的邀请码／优惠码</a>
+    <a href="/profile/mybouns" class="btn btn-primary theme-back-blue"style="color:#fff">查看我的邀请码／优惠码</a>
   </div>
 </div>
 <script type="text/javascript">
