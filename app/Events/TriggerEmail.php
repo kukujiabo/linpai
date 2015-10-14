@@ -41,7 +41,7 @@ class TriggerEmail extends Event {
 	{
     $this->to = $to;
 
-    $this->mailType = $mailType;
+    $this->mail_type = $mailType;
 
     $this->info = $info;
 	}

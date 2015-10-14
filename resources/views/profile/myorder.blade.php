@@ -8,7 +8,7 @@
   <h4>我的订单</h4>
 </div>
 <hr class="no-margin">
-@if (empty($orders))
+@if (!count($orders))
 
   <div class="padding-5"></div>
   <div class="sub-wrapper">
