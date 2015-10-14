@@ -70,7 +70,7 @@
               <th class="col-xs-2">订单号</th>
               <th class="col-xs-1">下单时间</th>
               <th class="col-xs-2">下单账号</th>
-              <th class="col-xs-2">下单用户名</th>
+              <th class="col-xs-2">收件人</th>
               <th class="col-xs-1">商品名称</th>
               <th class="col-xs-2">车辆所有人</th>
               <th class="col-xs-1">状态</th>
@@ -85,7 +85,7 @@
               <td class="col-xs-2 no-padding-both-side">
                 <div class="over-elis"  all="{{$order->good_name}}">{{$order->order_owner_mobile}}</div>
               </td>
-              <td class="col-xs-2">{{$order->order_owner}}</td>
+              <td class="col-xs-2">{{$order->receiver}}</td>
               <td class="col-xs-1 no-padding-both-side">
                 <div class="over-elis" all="{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}" >
                   {{$order->good_name}}
