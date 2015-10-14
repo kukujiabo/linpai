@@ -76,6 +76,8 @@ class HomeController extends Controller {
 
     }
 
+    var_dump(Request::cookie('name'));
+
     return view('home', array(
     
       'goods' => $homeGoodsDisplay,

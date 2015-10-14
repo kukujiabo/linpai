@@ -1212,6 +1212,8 @@ class OrdersController extends Controller {
 
         ];
 
+        var_dump(Request::cookie('name'));
+
         return view('orders/pay_success', $data); 
 
       } else {
