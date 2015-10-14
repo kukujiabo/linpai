@@ -36,7 +36,7 @@ class HomeController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-    $goodDatas = Good::all();
+    $goodDatas = Good::orderBy('id', 'desc')->get();
 
     $goods = array();
 

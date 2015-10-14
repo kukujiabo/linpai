@@ -16,7 +16,7 @@ class GoodsController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-    $goods = Good::all();
+    $goods = Good::orderBy('id', 'desc')->get();
 
     $gid = empty($request->input('gid')) ? $goods[0]->id : $request->input('gid');
 
