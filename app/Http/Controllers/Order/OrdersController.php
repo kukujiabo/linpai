@@ -741,7 +741,7 @@ class OrdersController extends Controller {
   /*
    * 跳转异步通知页面
    */
-  public function postPaynotify (Request $request) {
+  public function postPaynotifyx (Request $request) {
 
     require_once('alipay_config.php');
 
