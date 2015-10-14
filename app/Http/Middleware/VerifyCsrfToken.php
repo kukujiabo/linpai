@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use Request;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {
@@ -14,7 +15,17 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
+    //edit by meroc chen 2015-10-14
+    //
+    if ($request->is('order/paynotify')) {
+
+      return $next($request);
+
+    }
+     
+    //original
 		return parent::handle($request, $next);
+
 	}
 
 }
