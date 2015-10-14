@@ -195,7 +195,7 @@
 
             </div>
             &nbsp;&nbsp;
-            @if ($order->status > 1)
+            @if ($order->status == 1)
             <div class="form-group">
               <a role="button" id="deliver_submit">发货</a>
             </div>
