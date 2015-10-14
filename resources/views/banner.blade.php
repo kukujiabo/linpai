@@ -24,7 +24,7 @@
       <div class="item rounded" style="width:100%">
 
       @endif
-        <a href="#">
+        <a href="{{asset($banner->link)}}">
           <!--
           <img class="banner-img" src="{{$banner->url}}">
           -->

@@ -95,7 +95,7 @@
           <!--
           <span class="glyphicon glyphicon-tag"></span>
           -->
-          邀请／优惠券</a>
+          邀请／优惠码</a>
         </li>
       </ul>
     </div>

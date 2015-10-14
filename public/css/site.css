@@ -14,6 +14,10 @@ ol > li {
   width: 300px;
 }
 
+.footer a:hover {
+  text-decoration: underline !important;
+}
+
 a.black {
   color: #000 !important;
   font-weight: normal !important;
@@ -1684,7 +1688,9 @@ ol.info_list > li {
 }
 
 #business_intro {
-  height: 200px !important; 
+  height: 120px;
+  max-height: 180px !important; 
+  max-width: 600px !important;
 }
 
 a.bdshare-slide-button {
@@ -1708,4 +1714,10 @@ img.notice-sending {
   position:absolute;
   width: 100%;
   height: 100%;
+}
+
+.transparent-50 {
+  pacity: 0.5;  
+  opacity:.50;  
+  filter: alpha(opacity=50);
 }

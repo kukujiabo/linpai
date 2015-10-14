@@ -20,6 +20,7 @@ class CreateAdvertisesTable extends Migration {
       $table->string('url');
       $table->integer('seq');
       $table->integer('active');
+      $table->string('link')->nullable();
 			$table->timestamps();
 		});
 	}

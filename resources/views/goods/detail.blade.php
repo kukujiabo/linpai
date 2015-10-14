@@ -83,7 +83,11 @@
               </div>
               <div class="padding-5"></div>
               <div class="form-group">
+        @if ($good->code == 'below-three')
+                <button class="btn btn-danger to_buy" role="button" disabled type="submit" target_form="detail_form_{{$good->id}}">立即购买</button> &nbsp;&nbsp;&nbsp;&nbsp; 即将上线，敬请期待！
+        @else
                 <button class="btn btn-danger to_buy" role="button" type="submit" target_form="detail_form_{{$good->id}}">立即购买</button>
+        @endif
               </div>
             </form>        
           </div>

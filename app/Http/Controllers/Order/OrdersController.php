@@ -79,6 +79,12 @@ class OrdersController extends Controller {
 
     $good = Good::where('id', '=', $gid)->first();
 
+    if ($good->code == 'below-three') {
+
+      return redirect('/goods');
+
+    }
+
     $bouns = Boun::where('uid', '=', $user->id)
       
       ->where('active', '=', 1)

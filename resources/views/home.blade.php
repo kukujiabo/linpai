@@ -102,10 +102,14 @@
 
         @foreach ($goodLine as $key => $good)
 
+
         <div class="col-xs-6 col-md-3" style="">
           <div class="thumbnail no-radius" style="background:#eee;">
-            <!--            <b class="no_trans_fee"></b> -->
-            <a href="{{ asset('goods?gid='. $good->id) }}">
+            <!-- <b class="no_trans_fee"></b> -->
+            @if ($good->code == 'beyond-three')
+            <a href="{{ asset('goods?gid='. $good->id) }}" id="{{$good->code}}">
+  
+            @endif
               <img class="good-img" src="{{ asset($good->pic) }}">
               <div class="caption good-block text-left">
                 <h3>{{ $good->name }}</h3>
@@ -117,11 +121,22 @@
                     <h3 class="require no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>
                   </div>
                   <div class="col-xs-6 col-xs-offset-3 no-padding">
+                    @if ($good->code == 'below-three')
+                    <button class="btn btn-danger no-radius btn-group-justified" disabled>立即购买</button>
+                    @else
                     <button class="btn btn-danger no-radius btn-group-justified">立即购买</button>
+                    @endif
                   </div>
                 </div>
+@if ($good->code == 'below-three')
+            <div class="transparent-50" style="position:absolute;top:0px;left:15px;width:91%;height:95%;z-index:999;background:#000"></div>
+@endif
               </div>
+          @if ($good->code == 'beyond-three')
             </a>
+          @else
+            <div style="position:absolute;font-size:24px;color:white;font-weight:bold;top:50px;left:60px;z-index:1000">上海临牌即将上线</div>
+          @endif
           </div>
         </div> 
         <div class="col-md-2"></div>
