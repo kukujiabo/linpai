@@ -19,7 +19,7 @@
               &nbsp;&nbsp;<input type="text" name="receiver" class="form-control input-sm" value="{{$receiver}}">
             </div>
             <div class="form-group padding-5">
-              <label class="control-label" for="mobile">手机号</label>
+              <label class="control-label" for="mobile">下单账号</label>
               &nbsp;&nbsp;<input type="text" name="mobile" class="form-control input-sm" value="{{$mobile}}">
             </div>
             <div class="form-group padding-5">
