@@ -1212,7 +1212,7 @@ class OrdersController extends Controller {
 
         ];
 
-        var_dump(Request::cookie('name'));
+        var_dump($request->cookie('name'));
 
         return view('orders/pay_success', $data); 
 
