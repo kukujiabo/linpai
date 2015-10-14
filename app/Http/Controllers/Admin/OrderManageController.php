@@ -308,6 +308,8 @@ class OrderManageController extends Controller {
 
             'recommend' => !empty($boun->code) ? $boun->code : '您还没有优惠码',
 
+            'user' => $user->name,
+
             'url' => "www.sf-express.com"
           
           ];
