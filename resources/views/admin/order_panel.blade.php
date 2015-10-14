@@ -74,26 +74,43 @@
       </div>
     </div>
     <div class="row">
+
+    @if (!empty($order->dir_identity_face))
       <div class="col-xs-2" id="dir_identity_face">
         <b class="theme-orig">身份证正面</b>
         <a class="btn btn-default btn-sm" href="/download?file={{$order->dir_identity_face}}">下载</a>
       </div>
+    @endif
+    @if (!empty($order->dir_identity_back))
       <div class="col-xs-2" id="dir_identity_back">
         <b class="theme-orig">身份证背面</b>
         <a class="btn btn-default btn-sm" href="/download?file={{$order->dir_identity_back}}">下载</a>
       </div>
+    @endif
+    @if (!empty($order->dir_trans_ensurance))
       <div class="col-xs-2" id="dir_trans_ensurance">
         <b class="theme-orig">交强险附件</b>
         <a class="btn btn-default btn-sm" href="/download?file={{$order->dir_trans_ensurance}}">下载</a>
       </div>
+    @endif
+    @if (!empty($order->dir_car_check))
       <div class="col-xs-2" id="dir_car_check">
         <b class="theme-orig">发票扫描件</b>
         <a class="btn btn-default btn-sm" href="/download?file={{$order->dir_car_check}}">下载</a>
       </div>
+    @endif
+    @if (!empty($order->dir_validate_paper))
       <div class="col-xs-2" id="dir_validate_paper">
         <b class="theme-orig">合格证附件</b>
         <a class="btn btn-default btn-sm file-download" href="/download?file={{$order->dir_validate_paper}}">下载</a>
       </div>
+    @endif
+    @if (!empty($order->driving_license))
+      <div class="col-xs-2" id="dir_validate_paper">
+        <b class="theme-orig">合格证附件</b>
+        <a class="btn btn-default btn-sm file-download" href="/download?file={{$order->driving_license}}">下载</a>
+      </div>
+    @endif
     </div>
     <hr>
     <div class="row">
