@@ -110,7 +110,7 @@
 </div>
 </div>
 <footer class="footer foot-bar">
-  <div class="footer-top text-center">
+  <div class="footer-top text-left">
     <div class="row" style="padding-bottom:10px;">
       <div class="col-sm-2 col-md-1 col-md-offset-15" >
         <h5>关于我们</h5>
