@@ -110,9 +110,9 @@
 </div>
 </div>
 <footer class="footer foot-bar">
-  <div class="footer-top">
-    <div class="row text-center" style="padding-bottom:10px;">
-      <div class="col-sm-2 col-md-1">
+  <div class="footer-top text-center">
+    <div class="row" style="padding-bottom:10px;">
+      <div class="col-sm-2 col-md-1 col-md-offset-15" >
         <h5>关于我们</h5>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">
@@ -140,8 +140,9 @@
         </h5>
         -->
       </div>
+      <div style="clear:both"></div>
     </div>
-    <div class="row text-left">
+    <div class="row text-center">
       <div class="col-sm-2 col-md-1 col-md-offset-15">
         <p>
           <a class="black"  href="{{asset('text/contact')}}">联系我们</a> 
