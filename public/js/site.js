@@ -2562,24 +2562,6 @@ var addressBind;
 
     if ($linpai.validPass) {
 
-      /*
-      var confirmpass = resetForm.find('input[name=confirmpassword]');
-
-      var newpass = resetForm.find('input[name=newpassword]');
-
-      if (confirmpass.val() != newpass.val()) {
-
-        $('#reset-notice').html('两次输入的密码不一致').removeClass('hide');
-
-        confirmpass.val('');
-
-        newpass.val('');
-
-        return;
-
-      }
-      */
-
       resetForm.ajaxSubmit(resetOptions);
 
     }
@@ -2861,7 +2843,7 @@ $linpai.toast = function (shortStr, scripts, timeout) {
 
   $('body').append("<div class=\"over-all\"></div>");
 
-  $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
+  $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\"><img src=\"/imgs/sending.png\" class=\"notice-sending\">" + shortStr + "</div>");
 
   window.setTimeout(scripts, timeout);
 

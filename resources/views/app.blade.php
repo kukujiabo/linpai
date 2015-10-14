@@ -111,8 +111,8 @@
 </div>
 <footer class="footer foot-bar">
   <div class="footer-top">
-    <div class="row text-left" style="padding-bottom:10px;">
-      <div class="col-sm-2 col-md-1 col-md-offset-15">
+    <div class="row text-center" style="padding-bottom:10px;">
+      <div class="col-sm-2 col-md-1">
         <h5>关于我们</h5>
       </div>
       <div class="col-sm-2 col-md-1 no-padding" style="margin: 0px 30px">

@@ -1703,3 +1703,9 @@ a.dropdown-toggle:hover {
 .col-md-offset-15 {
   margin-left: 13%;
 }
+
+img.notice-sending {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
