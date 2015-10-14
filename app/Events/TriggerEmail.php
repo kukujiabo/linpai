@@ -115,8 +115,6 @@ class TriggerEmail extends Event {
 
   private function deliverMail ()
   {
-    $user = Auth::user();
-
     $post_data = [
 
       'appid' => $this->appid,
@@ -127,7 +125,7 @@ class TriggerEmail extends Event {
 
       'project' => $this->pro_deliver,
 
-      'vars' => "{ \"order_code\": \"{$this->info['order_code']}\", \"deliver_code\": \"{$this->info['deliver_code']}\", \"company\": \"{$this->info['company']}\", \"recommend\": \"{$this->info['recommend']}\", \"url\": \"{$this->info['url']}\", \"user\": \"{$user->name}\"}"
+      'vars' => json_encode($this->info)
 
     ];
     
