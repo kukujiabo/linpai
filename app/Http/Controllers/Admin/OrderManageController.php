@@ -405,7 +405,7 @@ class OrderManageController extends Controller {
     
     $path = storage_path() . '/app/pdf/';
 
-    $pdf = $order->order_code . 'pdf';
+    $pdf = $order->order_code . '.pdf';
 
     if (!is_dir($path)) {
 
@@ -425,6 +425,10 @@ class OrderManageController extends Controller {
 
       exec($command, $out, $status); 
 
+      var_dump($out);
+
+      var_dump($status);
+
       DownloadRecord::create([
 
         'code' => $url,
@@ -443,103 +447,6 @@ class OrderManageController extends Controller {
 
     return response()->download($path . $pdf);
     
-
-    /*
-    require_once('tcpdf/tcpdf.php');
-
-    $pdf = new \TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-
-    $pdf->SetCreator('51linpai');
-
-    $pdf->SetAuthor(Session::get('admin')->admin_name);
-
-    $pdf->SetKeywords('TCPFF,PHP,PDF');
-
-    $pdf->SetHeaderData('logo-linpai-sm.jpg', 50, '', '', array(255, 255, 255), array(255,255,255));
-
-    $pdf->setPrintFooter(false);
-
-    //$pdf->setHeaderFont(Array('stsongstdlight', '', '10')); 
-     
-    $pdf->SetDefaultMonospacedFont('courier'); 
-    
-    // 设置间距 
-    $pdf->SetMargins(15, 45, 15); 
-    $pdf->SetHeaderMargin(20); 
-    $pdf->SetFooterMargin(5); 
-    
-    // 设置分页 
-    $pdf->SetAutoPageBreak(TRUE, 30); 
-     
-     // set image scale factor 
-    $pdf->setImageScale(1.25); 
-     
-     // set default font subsetting mode 
-    $pdf->setFontSubsetting(true); 
-
-    $pdf->SetDefaultMonospacedFont('courier'); 
-
-     //设置字体 
-    $pdf->SetFont('stsongstdlight', 1, 12); 
-     
-    $pdf->AddPage(); 
-
-    $user = User::find($order->uid);
-
-    $html = <<<EOD
-    <div style="font-family:SimHei;">
-      <h1>感谢您选择［51临牌］的服务</h1>
-      <p>订单号：{$order->order_code}</p>
-      <p>下单时间：{$order->created_at}</p>
-      <br>
-      <p>用户名：{$user->name}</p>
-      <p>收件人：{$order->receiver}</p>
-      <p>手机号码：{$order->mobile}</p>
-      <p style="border-bottom:1px solid black;width:100%;">收货地址：{$order->province}{$order->city}{$order->address}</p>
-      <br>
-      <p>订单详情：</p>
-      <table style="text-align:center">
-        <thead>
-          <tr>
-            <th>商品名称</th>
-            <th>单价（元）</th>
-            <th>数量</th>
-            <th>优惠码减免</th>
-            <th>实付款</th>
-            <th>临牌号</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td>{$order->good_name}</td>
-            <td>{$order->g_single_price}</td>
-            <td>{$order->num}</td>
-            <td>{$order->cut_fee}</td>
-            <td>{$order->final_price}</td>
-            <td style="">{$order->plate_number}</td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <p>如果您有任何问题，欢迎给我们发送邮件 service@51linpai.com 或与周一至周五</p>
-      <p style="border-bottom:1px solid black;width:100%;">的 10:00 －18:00 给我们来电 4006932724</p>
-      <br>
-      <p>诚挚的问候</p>
-      <p>51临牌团队</p>
-      <p width="100%" style="text-align:center"><h2>www.51linpai.com</h2></p>
-    </div>
-EOD;
-
-    //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
-    $pdf->writeHTML($html, true, false, true, false, '');
-
-    $pdf->Output('t.pdf', 'I');
-    */
-
   }
 
 }
