@@ -62,7 +62,7 @@
         <p>诚挚的问候</p>
         <p>51临牌团队</p>
       </div>
-      <div style="position:relative;float:right;margin-right:80px;text-align:center;">
+      <div style="position:relative;float:right;margin-top:20px;margin-right:80px;text-align:center;">
         <img src="/imgs/weixin.png" style="width:100px;">
         <p style="font-size:10px;width:120px;line-height:1.2em;padding-top:12px;">
           关注[51临牌]公众微信号 让我们与您随时保持联系
@@ -70,7 +70,7 @@
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:30px;width:100%;font-size:20px;text-align:center;">
+    <div style="margin-top:50px;width:100%;font-size:20px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>

@@ -1717,7 +1717,11 @@ img.notice-sending {
 }
 
 .transparent-50 {
-  pacity: 0.5;  
   opacity:.50;  
   filter: alpha(opacity=50);
+}
+
+.transparent-100 {
+  opacity:.100;  
+  filter: alpha(opacity=100);
 }
