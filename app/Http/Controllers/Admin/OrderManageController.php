@@ -425,19 +425,15 @@ class OrderManageController extends Controller {
 
       exec($command, $out, $status); 
 
-      var_dump($out);
-
-      var_dump($status);
-
       DownloadRecord::create([
 
         'code' => $url,
       
         'type' => 'pdf',
 
-        'output' => $out,
+        'output' => implode("", $out),
 
-        'status' => implode(",", $status),
+        'status' => $status,
       
         'key' => $order->order_code
       
