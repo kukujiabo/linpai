@@ -20,7 +20,7 @@
     <div style="background:#000;height:3px;width:100%;margin-top:30px;" ></div>
 
     <div style="margin:30px 0px;">订单详情：</div>
-    <table style="width:100%;margin-top:30px;text-align:left;">
+    <table style="width:100%;margin-top:30px;text-align:center;">
       <thead>
         <tr>
           <td>商品名称</td>
