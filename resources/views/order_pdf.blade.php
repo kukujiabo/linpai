@@ -5,9 +5,9 @@
 	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 </head>
 <body>
-  <div style="width:100%;height:auto;font-size:16px;line-height:1.1em">
-    <img src="/imgs/logo-linpai.png" style="width:200px">
-    <h2 style="margin-top:40px;">感谢您选择［51临牌的］服务</h2>
+  <div style="width:100%;height:auto;font-size:14px;line-height:1.1em">
+    <img src="/imgs/logo-linpai.png" style="width:180px">
+    <h3 style="margin-top:40px;">感谢您选择［51临牌的］服务</h3>
 
     <p style="margin-top:40px;">订单号：{{$order_code}}</p>
     <p>下单时间：{{$created_at}}</p>
