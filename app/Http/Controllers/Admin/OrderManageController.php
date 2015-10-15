@@ -409,7 +409,7 @@ class OrderManageController extends Controller {
 
     if (!is_dir($path)) {
 
-      mkdir($path, 0755, true);
+      mkdir($path, 0777, true);
 
     }
 
@@ -419,13 +419,11 @@ class OrderManageController extends Controller {
 
       $command = "/tools/wkhtmltopdf {$url}  {$path}";
 
-      var_dump($command);
-
       $out = array();
 
       $status = 0;
 
-      exec($commend, $out, $status); 
+      exec($command, $out, $status); 
 
       DownloadRecord::create([
 
