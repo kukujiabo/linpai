@@ -53,24 +53,24 @@
 
     <div style="background:#000;height:3px;width:100%;margin-top:50px;" ></div>
 
-    <p style="margin-top:40px;">
+    <p style="margin-top:30px;">
       如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周日的 10:00-18:00 给我们来电 4000602620。
     </p>
 
-    <div style="margin-top:50px;width:100%;margin-bottom:100px;">
+    <div style="margin-top:30px;width:100%;margin-bottom:100px;">
       <div style="float:left;">
         <p>诚挚的问候</p>
         <p>51临牌团队</p>
       </div>
       <div style="position:relative;float:right;margin-right:80px;text-align:center;">
         <img src="/imgs/weixin.png" style="width:100px;">
-        <p style="font-size:10px;width:160px;line-height:1.2em;padding-top:12px;">
+        <p style="font-size:10px;width:120px;line-height:1.2em;padding-top:12px;">
           关注[51临牌]公众微信号 让我们与您随时保持联系
         </p>
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:20px;width:100%;font-size:24px;text-align:center;">
+    <div style="margin-top:10px;width:100%;font-size:24px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
