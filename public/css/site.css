@@ -1305,8 +1305,8 @@ div#youhui-alert {
 .login-notice {
   position: fixed;
   top: 20%;
-  left: 35%;
-  width: 30%;
+  left: 40%;
+  width: 35%;
   font-size: 20px; 
   font-color: #666;
   font-weight: bold;
@@ -1724,4 +1724,11 @@ img.notice-sending {
 .transparent-100 {
   opacity:.100;  
   filter: alpha(opacity=100);
+}
+
+.toast-notice {
+  background: url('/imgs/sending.png') no-repeat;
+  width: 300px !important;
+  height: 110px !important;
+  padding-top: 40px;
 }
