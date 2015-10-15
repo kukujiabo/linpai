@@ -35,23 +35,28 @@
 <hr class="no-margin">
 <div class="padding-20">
   <div class="row">
-  <div class="col-xs-6 no-padding">
-  <h4>订单状态：
-    @if ($order->status == 0)
-      未付款
-    @elseif ($order->status == 1)
-      已付款
-    @elseif ($order->status == 2)
-      已发货
-    @else
-      已取消
-    @endif
-  </h4>
+    <div class="col-xs-6 no-padding">
+      <h4>订单状态：
+        @if ($order->status == 0)
+          未付款
+        @elseif ($order->status == 1)
+          已付款
+        @elseif ($order->status == 2)
+          已发货
+        @else
+          已取消
+        @endif
+      </h4>
+    </div>
+    <div class="col-xs-2 col-xs-offset-4">
+    <a href="/profile/myorder" class="btn btn-primary theme-back-blue">查看所有订单</a>
+    </div>
   </div>
-  <div class="col-xs-2 col-xs-offset-4">
-  <a href="/profile/myorder" class="btn btn-primary theme-back-blue">查看所有订单</a>
+  @if ($order->status == 0)
+  <div class="padding-5 no-padding-left">
+    <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">立即付款</a>
   </div>
-  </div>
+  @endif
   <div class="padding-5"></div>
   <p class="theme">
     订&nbsp;&nbsp;单&nbsp;&nbsp;号：<span class="theme-orig">{{$order->order_code}}</span>
