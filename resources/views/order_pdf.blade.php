@@ -20,7 +20,7 @@
     <div style="background:#000;height:3px;width:100%;margin-top:30px;" ></div>
 
     <div style="margin:30px 0px;">订单详情：</div>
-    <table style="width:100%;margin-top:50px;text-align:left;">
+    <table style="width:100%;margin-top:30px;text-align:left;">
       <thead>
         <tr>
           <td>商品名称</td>
@@ -33,17 +33,17 @@
       </thead>
       <tbody style="">      
         <tr style="">
-          <td style="padding-top:30px;">{{$good_name}}</td>
-          <td style="padding-top:30px;">{{$price}}</td>
-          <td style="padding-top:30px;">{{$num}}</td>
-          <td style="padding-top:30px;">{{$cut_fee}}</td>
-          <td style="padding-top:30px;">{{$final_fee}}</td>
-          <td style="padding-top:30px;">{{$car_num}}</td>
+          <td style="padding-top:20px;">{{$good_name}}</td>
+          <td style="padding-top:20px;">{{$price}}</td>
+          <td style="padding-top:20px;">{{$num}}</td>
+          <td style="padding-top:20px;">{{$cut_fee}}</td>
+          <td style="padding-top:20px;">{{$final_fee}}</td>
+          <td style="padding-top:20px;">{{$car_num}}</td>
         </tr>
       </tbody>
     </table>
 
-    <p style="margin-top:40px;">
+    <p style="margin-top:30px;">
       现在就把您的邀请码 {{$boun_code}} 分享给朋友们,使用您的邀请码下单的每一位朋友都将获 得高达 20RMB 的优惠减免。
     </p>
 
@@ -70,7 +70,7 @@
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:50px;width:100%;font-size:24px;text-align:center;">
+    <div style="margin-top:20px;width:100%;font-size:24px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
