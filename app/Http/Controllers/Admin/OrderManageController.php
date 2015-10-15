@@ -1,12 +1,4 @@
-<?php namespace app\http\controllers\admin;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Models\Good;
-use App\Models\Boun;
-use App\Models\OrderAllInfo;
-use Illuminate\Http\Request;
+<?php namespace app\http\controllers\admin; use App\Http\Requests; use App\Http\Controllers\Controller; use App\Models\Order; use App\Models\Good; use App\Models\Boun; use App\Models\OrderAllInfo; use Illuminate\Http\Request;
 use App\Models\ReceiverInfo;
 use App\Models\DeliverInfo;
 use App\Models\OrderBoun;
@@ -423,7 +415,7 @@ class OrderManageController extends Controller {
 
       $status = 0;
 
-      shell_exec("export LANG=zh_CN.utf8 && locale && " . $command);
+      shell_exec("export LANG=zh_CN.utf8 && export LANGUAGE=zh_CN:zh:en_US:en && export LC_ALL=zh_CN.utf8 && export LC_CTYPE=zh_CN.utf8 && locale && " . $command);
 
       /*
       LANG=zh_CN.utf8
