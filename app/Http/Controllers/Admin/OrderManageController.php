@@ -417,7 +417,7 @@ class OrderManageController extends Controller {
 
       $url = "http://www.51linpai.com:8000/download/orderpdf?oid=" . $order->order_code;
 
-      $command = "/tools/wkhtmltopdf {$url}  {$path}";
+      $command = "/tools/wkhtmltopdf {$url}  {$path}{$pdf}";
 
       $out = array();
 
