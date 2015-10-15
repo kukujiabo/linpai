@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\OrderAllInfo;
+use App\Models\Boun;
 use Illuminate\Http\Request;
 
 class DownloadsController extends Controller {
