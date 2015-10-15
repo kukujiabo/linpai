@@ -63,7 +63,6 @@ Route::controllers([
 
   'download' => 'Downloads\DownloadsController',
 
-  'news' => 'News\NewsController'
-
+  'news' => 'News\NewsController',
 
 ]);
