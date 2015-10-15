@@ -95,4 +95,41 @@ class DownloadsController extends Controller {
 
   }
 
+  public function getOrderpdf (Request $request) 
+  {
+
+    $order = ['order_code' => '123', 'created_at' => '2015-10-1 10:00:12' ];
+
+    $user = ['mobile' => '15201932985', 'name' => 'Meroc' ];
+
+    $data = [
+    
+      'order' => $order,
+
+      'user' => $user,
+
+      'receiver' => 'Ryan',
+
+      'address' => 'asdomd1owid',
+    
+      'boun_code' => '3213',
+
+      'good_name' => '上海临牌',
+
+      'price' => '388',
+
+      'num' => '1',
+
+      'cut_fee' => '30',
+
+      'final_fee' => '358',
+
+      'car_num' => '沪123123'
+    
+    ];
+
+    return view('order_pdf', $data);
+
+  }
+
 }
