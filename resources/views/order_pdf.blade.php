@@ -51,13 +51,13 @@
       而作为奖励,每当有一位朋友获得优惠的同时,您同样也将获得一张20RMB 的优惠码以便在下次下单 时获得优惠减免,奖励不设上限。赶快行动吧!
     </p>
 
-    <div style="background:#000;height:3px;width:100%;margin-top:50px;" ></div>
+    <div style="background:#000;height:3px;width:100%;margin-top:30px;" ></div>
 
     <p style="margin-top:30px;">
       如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周日的 10:00-18:00 给我们来电 4000602620。
     </p>
 
-    <div style="margin-top:30px;width:100%;margin-bottom:100px;">
+    <div style="margin-top:30px;width:100%">
       <div style="float:left;">
         <p>诚挚的问候</p>
         <p>51临牌团队</p>
@@ -70,7 +70,7 @@
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:10px;width:100%;font-size:24px;text-align:center;">
+    <div style="margin-top:10px;width:100%;font-size:20px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
