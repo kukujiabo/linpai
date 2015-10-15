@@ -19,7 +19,9 @@ class AdsTableSeeder extends Seeder {
 
       'seq' => 1,
 
-      'active' => 1
+      'active' => 1,
+
+      'link' => '/text/bouninfo'
     
     ]);
 
@@ -33,7 +35,9 @@ class AdsTableSeeder extends Seeder {
 
       'seq' => 2,
 
-      'active' => 1
+      'active' => 1,
+
+      'link' => '/home#buy'
     
     ]);
 
@@ -47,7 +51,9 @@ class AdsTableSeeder extends Seeder {
 
       'seq' => 3,
 
-      'active' => 1
+      'active' => 1,
+
+      'link' => '/home#buy'
     
     ]);
 
