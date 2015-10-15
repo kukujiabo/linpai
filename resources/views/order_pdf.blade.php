@@ -2,9 +2,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 </head>
-<body style="text-align:center;">
+<body style="text-align:center;font-family:Microsoft YaHei">
   <div style="width:90%;height:auto;font-size:13px;line-height:1em;text-align:left">
     <img src="/imgs/logo-linpai.png" style="width:150px">
     <h3 style="margin-top:40px;">感谢您选择［51临牌的］服务</h3>
