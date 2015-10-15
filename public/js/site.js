@@ -2843,7 +2843,7 @@ $linpai.toast = function (shortStr, scripts, timeout) {
 
   $('body').append("<div class=\"over-all\"></div>");
 
-  $('body').append("<div class=\"box login-notice animated infinite bounce toast-notice\"><img src=\"/imgs/sending.png\" class=\"notice-sending\">" + shortStr + "</div>");
+  $('body').append("<div class=\"theme-font-blue login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
 
   window.setTimeout(scripts, timeout);
 

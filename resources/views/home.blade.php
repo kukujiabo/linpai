@@ -131,7 +131,7 @@
 @if ($good->code == 'below-three')
             <div class="transparent-50" style="position:absolute;top:0px;left:15px;width:91%;height:95%;z-index:999;background:#000">
 </div>
-            <div style="left:0px;background:#d9534f;position:absolute;font-size:24px;color:white;font-weight:bold;top:30%;width:91%;height:35%;left:15px;text-align:center;z-index:1000;padding-top:10%;">
+            <div style="left:0px;background:#d9534f;position:absolute;font-size:20px;color:white;font-weight:bold;top:30%;width:91%;height:25%;left:15px;text-align:center;z-index:1000;padding-top:6%;">
       <p>上海临牌即将上线<p><p>COMING SOON</p></div>
 @endif
               </div>
