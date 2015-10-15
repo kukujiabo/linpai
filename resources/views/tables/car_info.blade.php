@@ -41,7 +41,7 @@
             <td class="col-md-3 text-center" style="padding-left:10px;">
               <label class="radio no-margin">
 
-              @if ($car->last_used) 
+              @if ($key == 1) 
 
                 <div class="use-card t-padding use-active" id="use-car-{{$car->id}}" data-id="{{$car->id}}">
 
