@@ -1,13 +1,8 @@
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
-  <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
-  <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
-  <link rel="shortcut icon" href="/favicon.ico"/>
 </head>
 <body>
   <div style="padding:100px;width:100%;height:auto;font-size:20px;line-height:2.0em">
