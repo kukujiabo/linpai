@@ -423,6 +423,9 @@ class OrderManageController extends Controller {
 
       $status = 0;
 
+      shell_exec("export LANG=zh_CN.UTF-8 && locale && " . $command);
+
+      /*
       $locale = "zh_CN.utf8";
 
       setlocale(LC_ALL, $locale);
@@ -430,6 +433,7 @@ class OrderManageController extends Controller {
       putenv('LC_ALL=' . $locale);
 
       exec($command, $out, $status); 
+       */
 
       DownloadRecord::create([
 
@@ -437,9 +441,9 @@ class OrderManageController extends Controller {
       
         'type' => 'pdf',
 
-        'output' => implode("", $out),
+        'output' => 1,
 
-        'status' => $status,
+        'status' => 1,
       
         'key' => $order->order_code
       
