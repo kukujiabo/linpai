@@ -5,7 +5,7 @@
 	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 </head>
 <body style="text-align:center;">
-  <div style="width:90%;height:auto;font-size:12px;line-height:1em">
+  <div style="width:90%;height:auto;font-size:13px;line-height:1em;text-align:left">
     <img src="/imgs/logo-linpai.png" style="width:150px">
     <h3 style="margin-top:40px;">感谢您选择［51临牌的］服务</h3>
 
@@ -16,9 +16,9 @@
     <p>手机号码：{{$mobile}}</p>
     <p>收货地址：{{$address}}</p>
 
-    <div style="background:#000;height:2px;width:100%;margin-top:20px;" ></div>
+    <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
 
-    <div style="margin:30px 0px;">订单详情：</div>
+    <h4 style="margin:30px 0px;">订单详情：</h4>
     <table style="width:100%;margin-top:20px;text-align:center;">
       <thead>
         <tr>
@@ -42,7 +42,7 @@
       </tbody>
     </table>
 
-    <div style="background:#000;height:2px;width:100%;margin-top:20px;" ></div>
+    <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
 
     <p style="margin-top:30px;">
       现在就把您的邀请码 {{$boun_code}} 分享给朋友们,使用您的邀请码下单的每一位朋友都将获 得高达 20RMB 的优惠减免。
@@ -52,7 +52,7 @@
       而作为奖励,每当有一位朋友获得优惠的同时,您同样也将获得一张20RMB 的优惠码以便在下次下单 时获得优惠减免,奖励不设上限。赶快行动吧!
     </p>
 
-    <div style="background:#000;height:2px;width:100%;margin-top:20px;" ></div>
+    <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
 
     <p style="margin-top:20px;">
       如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周日的 10:00-18:00 给我们来电 4000602620。
