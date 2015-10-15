@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body style="text-align:center;font-family:Microsoft YaHei">
-  <div style="width:90%;height:auto;font-size:13px;line-height:1em;text-align:left">
+  <div style="width:100%;height:auto;font-size:14px;line-height:1.1em;text-align:left">
     <img src="/imgs/logo-linpai.png" style="width:150px">
     <h3 style="margin-top:40px;">感谢您选择［51临牌的］服务</h3>
 
@@ -70,7 +70,7 @@
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:10px;width:100%;font-size:20px;text-align:center;">
+    <div style="margin-top:30px;width:100%;font-size:20px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
