@@ -417,7 +417,11 @@ class OrderManageController extends Controller {
 
       $url = "http://www.51linpai.com:8000/download/orderpdf?oid=" . $order->order_code;
 
-      exec("/tools/wkhtmltopdf {$url}  {$path}", $out, $status); 
+      $command = "/tools/wkhtmltopdf {$url}  {$path}";
+
+      var_dump($commend);
+
+      exec($commend, $out, $status); 
 
       DownloadRecord::create([
 
