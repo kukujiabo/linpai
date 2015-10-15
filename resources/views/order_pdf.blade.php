@@ -5,11 +5,11 @@
 	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 </head>
 <body>
-  <div style="padding:60px;width:100%;height:auto;font-size:18px;line-height:1.8em">
+  <div style="padding:40px;width:100%;height:auto;font-size:16px;line-height:1.5em">
     <img src="/imgs/logo-linpai.png" style="width:200px">
     <h2 style="margin-top:50px;">感谢您选择［51临牌的］服务</h2>
 
-    <p style="margin-top:50px;">订单号：{{$order['order_code']}}</p>
+    <p style="margin-top:40px;">订单号：{{$order['order_code']}}</p>
     <p>下单时间：{{$order['created_at']}}</p>
 
     <p>用户名：{{$user['name']}}</p>
@@ -57,7 +57,7 @@
       如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周日的 10:00-18:00 给我们来电 4000602620。
     </p>
 
-    <div style="margin-top:60px;width:100%;margin-bottom:100px;">
+    <div style="margin-top:50px;width:100%;margin-bottom:100px;">
       <div style="float:left;">
         <p>诚挚的问候</p>
         <p>51临牌团队</p>
@@ -70,7 +70,7 @@
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:80px;width:100%;font-size:24px;text-align:center;">
+    <div style="margin-top:60px;width:100%;font-size:24px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
