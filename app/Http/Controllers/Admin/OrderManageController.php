@@ -423,13 +423,11 @@ class OrderManageController extends Controller {
 
       $status = 0;
 
-      exec('export LANG=zh_CN.utf8');
+      $locale = "zh_CN.utf8";
 
-      exec('export LANGUAGE=zh_CN:zh:en_US:en');
+      setlocale(LC_ALL, $locale);
 
-      exec('export LC_ALL=zh_CN.utf8');
-
-      exec('export LC_CTYPE=zh_CN.utf8');
+      putenv('LC_ALL=' . $locale);
 
       exec($command, $out, $status); 
 
