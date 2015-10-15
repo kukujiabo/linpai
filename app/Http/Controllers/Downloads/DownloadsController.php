@@ -113,6 +113,8 @@ class DownloadsController extends Controller {
     
       'order_code' => $order->order_code,
 
+      'mobile' => $order->mobile,
+
       'user' => $order->order_owner,
 
       'created_at' => $order->created_at,
