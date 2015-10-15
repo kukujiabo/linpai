@@ -128,4 +128,8 @@
 
     </div>
   </div>
+
+<script type="text/javascript">
+  window.onload = function () {$('body').css({background: "#eee"});};
+</script>
 @endsection
