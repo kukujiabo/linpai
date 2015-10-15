@@ -12,6 +12,7 @@ use App\Models\DeliverInfo;
 use App\Models\OrderBoun;
 use App\Events\TriggerSms;
 use App\Events\TriggerEmail;
+use App\Models\DownloadRecord;
 use Validator;
 use App\User;
 use Session;
@@ -394,13 +395,50 @@ class OrderManageController extends Controller {
 
     if (empty($order_code)) {
     
+      return 'empty_ordercode';
 
     } 
 
     $order = OrderAllInfo::where('order_code', '=', $order_code)
 
       ->first();
+    
+    $path = storage_path() . '/app/pdf/';
 
+    $pdf = $order->order_code . 'pdf';
+
+    if (!is_dir($path)) {
+
+      mkdir($path, 0755, true);
+
+    }
+
+    if (!file_exists($pdf)) {
+
+      $url = "http://www.51linpai.com:8000/download/orderpdf?oid=" . $order->order_code;
+
+      exec("/tools/wkhtmltopdf {$url}  {$path}", $out, $status); 
+
+      DownloadRecord::create([
+
+        'code' => $url,
+      
+        'type' => 'pdf',
+
+        'output' => $out,
+
+        'status' => $status,
+      
+        'key' => $order->order_code
+      
+      ]);
+
+    }
+
+    return response()->download($path . $pdf);
+    
+
+    /*
     require_once('tcpdf/tcpdf.php');
 
     $pdf = new \TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -494,6 +532,7 @@ EOD;
     $pdf->writeHTML($html, true, false, true, false, '');
 
     $pdf->Output('t.pdf', 'I');
+    */
 
   }
 
