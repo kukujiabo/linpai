@@ -15,7 +15,7 @@ class AdsTableSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '/imgs/carousel/51BANNER-01.jpg',
+      'url' => '/imgs/carousel/banner_1.jpg',
 
       'seq' => 1,
 
@@ -29,7 +29,7 @@ class AdsTableSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '/imgs/carousel/51BANNER-02.jpg',
+      'url' => '/imgs/carousel/banner_2.jpg',
 
       'seq' => 2,
 
@@ -43,21 +43,7 @@ class AdsTableSeeder extends Seeder {
 
       'type' => 'index_banner',
 
-      'url' => '/imgs/carousel/51BANNER-03.jpg',
-
-      'seq' => 3,
-
-      'active' => 1
-    
-    ]);
-
-    Advertise::create([
-    
-      'code' => 'banner_4',
-
-      'type' => 'index_banner',
-
-      'url' => '/imgs/carousel/51BANNER-04.jpg',
+      'url' => '/imgs/carousel/banner_3.jpg',
 
       'seq' => 3,
 
