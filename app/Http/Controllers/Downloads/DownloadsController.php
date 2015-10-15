@@ -100,7 +100,7 @@ class DownloadsController extends Controller {
 
     $oid = $request->input('oid');
 
-    $order = OrderAllInfo::find($oid);
+    $order = OrderAllInfo::where('order_code', '=', $oid)->first();
 
     $boun = Boun::where('uid', '=', $order->uid)
 
