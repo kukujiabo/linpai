@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\OrderAllInfo;
 use Illuminate\Http\Request;
 
 class DownloadsController extends Controller {
@@ -98,33 +98,41 @@ class DownloadsController extends Controller {
   public function getOrderpdf (Request $request) 
   {
 
-    $order = ['order_code' => '123', 'created_at' => '2015-10-1 10:00:12' ];
+    $oid = $request->input('oid');
 
-    $user = ['mobile' => '15201932985', 'name' => 'Meroc' ];
+    $order = OrderAllInfo::find($oid);
+
+    $boun = Boun::where('uid', '=', $order->uid)
+
+      ->where('type', '=', 0)
+
+      ->first();
 
     $data = [
     
-      'order' => $order,
+      'order_code' => $order->order_code,
 
-      'user' => $user,
+      'user' => $order->order_owner,
 
-      'receiver' => 'Ryan',
+      'created_at' => $order->created_at,
 
-      'address' => 'asdomd1owid',
+      'receiver' => $order->receiver,
+
+      'address' => $order->city . $order->district . $order->address,
     
-      'boun_code' => '3213',
+      'boun_code' => $boun->code,
 
-      'good_name' => '上海临牌',
+      'good_name' => $order->good_name,
 
-      'price' => '388',
+      'price' => $order->g_single_price,
 
-      'num' => '1',
+      'num' => $order->num,
 
-      'cut_fee' => '30',
+      'cut_fee' => $order->cut_fee,
 
-      'final_fee' => '358',
+      'final_fee' => $order->final_price,
 
-      'car_num' => '沪123123'
+      'car_num' => $order->plate_number
     
     ];
 

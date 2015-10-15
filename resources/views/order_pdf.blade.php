@@ -5,19 +5,19 @@
 	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
 </head>
 <body>
-  <div style="padding:30px;width:100%;height:auto;font-size:16px;line-height:1.1em">
+  <div style="width:100%;height:auto;font-size:16px;line-height:1.1em">
     <img src="/imgs/logo-linpai.png" style="width:200px">
     <h2 style="margin-top:40px;">感谢您选择［51临牌的］服务</h2>
 
-    <p style="margin-top:40px;">订单号：{{$order['order_code']}}</p>
-    <p>下单时间：{{$order['created_at']}}</p>
+    <p style="margin-top:40px;">订单号：{{$order_code}}</p>
+    <p>下单时间：{{$created_at}}</p>
 
-    <p>用户名：{{$user['name']}}</p>
+    <p>用户名：{{$user}}</p>
     <p>收货人：{{$receiver}}</p>
-    <p>手机号码：{{$user['mobile']}}</p>
+    <p>手机号码：{{$mobile}}</p>
     <p>收货地址：{{$address}}</p>
 
-    <div style="background:#000;height:3px;width:100%;margin-top:50px;" ></div>
+    <div style="background:#000;height:3px;width:100%;margin-top:30px;" ></div>
 
     <div style="margin:30px 0px;">订单详情：</div>
     <table style="width:100%;margin-top:50px;text-align:left;">
@@ -62,15 +62,15 @@
         <p>诚挚的问候</p>
         <p>51临牌团队</p>
       </div>
-      <div style="position:relative;float:right;margin-right:100px;text-align:center;">
-        <img src="/imgs/weixin.png" style="width:120px;">
+      <div style="position:relative;float:right;margin-right:80px;text-align:center;">
+        <img src="/imgs/weixin.png" style="width:100px;">
         <p style="font-size:10px;width:160px;line-height:1.2em;padding-top:12px;">
           关注[51临牌]公众微信号 让我们与您随时保持联系
         </p>
       </div>
       <div style="clear:both;"></div>
     </div>
-    <div style="margin-top:60px;width:100%;font-size:24px;text-align:center;">
+    <div style="margin-top:50px;width:100%;font-size:24px;text-align:center;">
       www.51LinPai.com
     </div>
   </div>
