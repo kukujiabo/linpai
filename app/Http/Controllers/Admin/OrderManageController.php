@@ -437,7 +437,7 @@ class OrderManageController extends Controller {
 
         'output' => $out,
 
-        'status' => $status,
+        'status' => implode(",", $status),
       
         'key' => $order->order_code
       
