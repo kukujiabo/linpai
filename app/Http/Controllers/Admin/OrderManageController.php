@@ -419,7 +419,11 @@ class OrderManageController extends Controller {
 
       $command = "/tools/wkhtmltopdf {$url}  {$path}";
 
-      var_dump($commend);
+      var_dump($command);
+
+      $out = array();
+
+      $status = 0;
 
       exec($commend, $out, $status); 
 
