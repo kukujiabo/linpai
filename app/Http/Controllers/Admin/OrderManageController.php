@@ -423,6 +423,14 @@ class OrderManageController extends Controller {
 
       $status = 0;
 
+      exec('export LANG=zh_CN.utf8');
+
+      exec('export LANGUAGE=zh_CN:zh:en_US:en');
+
+      exec('export LC_ALL=zh_CN.utf8');
+
+      exec('export LC_CTYPE=zh_CN.utf8');
+
       exec($command, $out, $status); 
 
       DownloadRecord::create([
