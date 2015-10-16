@@ -11,6 +11,9 @@
   <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="/favicon.ico"/>
+  <!--[if lt IE 9]>
+      <script src="{{asset('/js/html5shiv.min.js')}}"></script>
+  <![endif]-->
 </head>
 @if (empty($auth)) 
 <body>
