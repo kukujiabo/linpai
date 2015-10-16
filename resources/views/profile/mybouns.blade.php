@@ -90,8 +90,8 @@
            common : {
            bdText : '51临牌是专业...',  
            bdDesc : '自定义分享摘要',  
-           bdUrl : 'http://51linpai.com:8000/home',  
-           bdPic : 'http://51linpai.com:8000/imgs/wechat-code.jpg'
+           bdUrl : 'http://51linpai.com/home',  
+           bdPic : 'http://51linpai.com/imgs/wechat-code.jpg'
            },
            share : [{
              "bdSize" : 16
