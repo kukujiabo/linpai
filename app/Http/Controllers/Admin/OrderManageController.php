@@ -407,7 +407,7 @@ class OrderManageController extends Controller {
 
     if (!file_exists($pdf)) {
 
-      $url = "http://www.51linpai.com:8000/download/orderpdf?oid=" . $order->order_code;
+      $url = "http://www.51linpai.com/download/orderpdf?oid=" . $order->order_code;
 
       $command = "/tools/wkhtmltopdf {$url}  {$path}{$pdf}";
 
