@@ -1494,6 +1494,7 @@ div#youhui-alert {
 }
 
 .theme-font-blue {
+  font-weight: normal !important;
   color: #138ed1 !important;
 }
 
