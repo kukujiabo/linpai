@@ -211,6 +211,7 @@
 
       if (order_code == undefined || order_code == '') {
 
+
         window.location.href = '/home';
 
       } else {
@@ -254,7 +255,7 @@
         }, 'json');
 
       }
-    
+
     });
 
     $('#pay-dismiss').click(function (e) {
@@ -262,7 +263,6 @@
       e.preventDefault();
 
       $('#waiting-pay').addClass('hide');
-    
     
     });
   

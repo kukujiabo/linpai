@@ -2830,12 +2830,12 @@ function htmlReplace (str) {
 
 function isMobile(mobile) {
 
+  return mobile.length == 11;
   /*
   var reg = /^0?1[3|4|5|7|8|][0-9]\d{8}$/;
 
   return reg.test(mobile);
   */
-  return mobile.length == 11;
 
 }
 

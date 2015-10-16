@@ -1484,7 +1484,7 @@ class OrdersController extends Controller {
 
     $result = OrderAllInfo::where('order_code', '=', $order)->first();
 
-    if (empty($result->id)) {
+    if (empty($result->oid)) {
 
       return $this->failResponse('not_found');
 
@@ -1501,6 +1501,5 @@ class OrdersController extends Controller {
     }
 
   }
-
 
 }
