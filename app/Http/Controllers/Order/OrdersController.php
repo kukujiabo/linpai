@@ -551,6 +551,7 @@ class OrdersController extends Controller {
 
   public function postPaying (Request $request)    
   {
+    /*
     if (Session::get('pay_token') == $request->input('pay_token')) {
 
       return redirect('/home');
@@ -560,10 +561,11 @@ class OrdersController extends Controller {
       Session::put('pay_token', $request->input('pay_token'));
 
     }
+     */
 
     $order = Order::where('code', '=', $request->input('order_code'))->first();
 
-    if (empty($order)) {
+    if (empty($order->id)) {
 
       return redirect('/home');
 
@@ -572,7 +574,7 @@ class OrdersController extends Controller {
     if ($order->status > 0) {
 
       //todo payed
-      return redirect('/home');
+      return redirect('/profile/myorder');
 
     } else if ($order->active == 0) {
 
