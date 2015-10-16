@@ -203,7 +203,7 @@
 
           <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$defaultCar->id}}">
 
-      @elseif (!count($cars))
+      @elseif (count($cars))
 
           <input type="hidden" required="yes" data-name="车辆信息" name="car" value="{{$cars[0]->id}}">
 
