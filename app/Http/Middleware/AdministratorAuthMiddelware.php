@@ -29,7 +29,7 @@ class AdministratorAuthMiddelware {
 
     if (empty($admin->id) || !$this->auth->guest()) {
 
-      return redirect('/admin/login');
+      return redirect('/administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS/login');
 
     }
 
