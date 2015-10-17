@@ -12,7 +12,9 @@
   <link href="{{ asset('/css/site.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="/favicon.ico"/>
   <!--[if lt IE 9]>
-      <script src="{{asset('/js/html5shiv.min.js')}}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
 @if (empty($auth)) 
@@ -259,8 +261,15 @@
   <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
   <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
   <script src="{{ asset('js/site.js') }}"></script>
-<script type="text/javascript">
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+  <script type="text/javascript">
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+  </script>
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+      $(function () {
+           $('input, textarea').placeholder();
+        });
+  </script>
+  <![endif]-->
 </body>
 </html>
