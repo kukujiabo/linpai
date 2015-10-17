@@ -51,7 +51,7 @@
       </p>
       <p>
         <3> 车辆行驶证主副页扫描件
-        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/driving_license.jpg" data-img="trans_ensurance" data-disclass="flow-img"></span>
+        <span class="glyphicon glyphicon-info-sign i-img meta-font" data-url="/imgs/notice/driving_license.jpg" data-img="driving_license" data-disclass="flow-img"></span>
       </p>
 
     </div>

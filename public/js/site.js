@@ -1992,8 +1992,6 @@ var addressBind;
 
     var elementTop = that.offset().top - document.body.scrollTop;
 
-    console.log(newNode);
-
     $('body').append(introImg);
 
     /*
@@ -2005,17 +2003,28 @@ var addressBind;
 
       introImg.show();
 
-      console.log(introImg);
-
       return;
 
     }
 
-    introImg.css({
-      'position': 'fixed', 
-      'top': '80px',
-      'height': $(window).width()/2.4 + 'px'
-    });
+    if (that.data('img') == 'driving_license') {
+
+      introImg.css({
+        'position': 'fixed', 
+        'top': '80px',
+        'min-width': '800px',
+      });
+
+    } else {
+
+      introImg.css({
+        'position': 'fixed', 
+        'top': '80px',
+        'height': $(window).width()/2.4 + 'px'
+      });
+
+    }
+
 
     if (clientWidth/elementLeft > 2) {
 
@@ -2695,9 +2704,21 @@ var addressBind;
 
     var src = that.data('img') == undefined ? '/imgs/logo-linpai.png' : '/imgs/' + that.data('img') + '.jpg';
 
-    var boxRect = '<div class="text-center" style="z-index:10004;position:fixed;auto;height:80%;left:10%;top:10%"></div>';
+    var boxRect;
 
-    var img = '<img class="flow-eg-img" src="' + src + '" style="z-index:10005;height:100%">';
+    if (that.data('img') == 'driving_license') {
+
+      console.log(1);
+
+      boxRect = '<div class="text-center" style="z-index:10004;position:fixed;auto;width:70%;left:10%;top:10%"></div>';
+
+    } else {
+
+      boxRect = '<div class="text-center" style="z-index:10004;position:fixed;auto;height:80%;left:10%;top:10%"></div>';
+
+    }
+
+    var img = '<img class="flow-eg-img" src="' + src + '" style="z-index:10005;height:auto">';
 
     var remove = '<span class="glyphicon glyphicon-remove eg-img-rm" style="position:absolute;right:0px;top:0px;z-index:10006;font-size:24px;"></span>';
 
