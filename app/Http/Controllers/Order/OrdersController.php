@@ -645,7 +645,7 @@ class OrdersController extends Controller {
     $subject = $good->name . ' * ' . $order->num;
 
     //订单金额
-    $total_fee = $orderPrice->final_price;
+    $total_fee = 0.1;//$orderPrice->final_price;
 
     //订单描述
     $body = '测试订单描述';
@@ -701,7 +701,7 @@ class OrdersController extends Controller {
     $subject = $good->name . ' * ' . $order->num;
 
     //订单金额
-    $total_fee = $orderPrice->final_price;
+    $total_fee = 0.1;// $orderPrice->final_price;
 
     //订单描述
     $body = '测试订单描述';

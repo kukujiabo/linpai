@@ -4,6 +4,8 @@
  */
 $linpai = {};
 
+$linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS';
+
 (function () {
 
   var alogForm = $('#admin_login_form');
@@ -30,7 +32,7 @@ $linpai = {};
 
       if (data.code) {
 
-        window.location.href = '/admin';
+        window.location.href = '/' + $linpai.route;
 
       } else {
 
