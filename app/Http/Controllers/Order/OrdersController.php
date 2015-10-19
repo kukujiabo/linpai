@@ -627,16 +627,27 @@ class OrdersController extends Controller {
 
   private function alipay ($order, $good, $orderPrice)
   {
+    $debug = Config::get('app.debug');
+
     $alipay_config = $this->payConfig();
   
     //支付类型
     $payment_type = "1";
 
-    //服务器异步通知路径
     //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
-
+    
     //页面跳转同步通知页面路径
-    $return_url = "http://www.51linpai.com/order/payed";
+    $return_url = "";
+
+    if (debug) {
+
+      $return_url = "http://www.51linpai.com:8000/order/payed";
+
+    } else {
+
+      $return_url = "http://www.51linpai.com/order/payed";
+
+    }
 
     //商户网站订单系统中唯一订单号
     $out_trade_no = $order->code;
@@ -685,6 +696,8 @@ class OrdersController extends Controller {
 
   private function creditpay ($order, $good, $orderPrice, $bank) 
   {
+    $debug = Config::get('app.debug');
+
     $alipay_config = $this->payConfig();
   
     $payment_type = 1;
@@ -692,7 +705,17 @@ class OrdersController extends Controller {
     //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
 
     //页面跳转同步通知页面路径
-    $return_url = "http://www.51linpai.com/order/payed";
+    $return_url = "";
+
+    if ($debug) {
+
+      $return_url = "http://www.51linpai.com:8000/order/payed";
+
+    } else {
+
+      $return_url = "http://www.51linpai.com/order/payed";
+
+    }
 
     //商户网站订单系统中唯一订单号
     $out_trade_no = $order->code;
