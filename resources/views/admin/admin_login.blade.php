@@ -10,7 +10,7 @@
   <div class="a-login-block">
     <h2><span class="glyphicon glyphicon-lock"></span> 运营后台登录</h2>
     
-    <form class="form" method="post" action="/admin/login" id="admin_login_form">
+    <form class="form" method="post" action="/{{$route}}/login" id="admin_login_form">
       <input type="hidden" name="_token" value="{{csrf_token()}}">
       <fieldset>
       <div class="alert alert-danger text-left hide" id="login-tips"></div>

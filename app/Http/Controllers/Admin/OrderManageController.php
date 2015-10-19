@@ -11,6 +11,8 @@ use Session;
 
 class OrderManageController extends Controller {
 
+  private $route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS';
+
   public function __construct () 
   {
 
@@ -168,7 +170,9 @@ class OrderManageController extends Controller {
 
       'mobile' => empty($mobile) ? '' : $mobile,
 
-      'status' => empty($status) ? '-1' : $status
+      'status' => empty($status) ? '-1' : $status,
+
+      'route' => $this->route
 
     ];
 
@@ -202,7 +206,9 @@ class OrderManageController extends Controller {
     
       'user' => $user,
 
-      'order' => $order
+      'order' => $order, 
+
+      'route' => $this->route
     
     ];
 

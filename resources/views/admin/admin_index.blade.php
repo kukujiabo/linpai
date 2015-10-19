@@ -14,7 +14,7 @@
         <h3>51临牌管理后台</h3>
       </div>
       <div class="nav navbar-nav navbar-right hidden-sm">
-        <form class="form" method="post" action="/admin/logout" style="margin-top:20px;padding:0 30px;">
+        <form class="form" method="post" action="/{{$route}}/logout" style="margin-top:20px;padding:0 30px;">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <button class="btn btn-warning btn-sm" role="button" type="submit">退出</button>
         </form>
@@ -31,7 +31,7 @@
           <span class="glyphicon glyphicon-cd"></span>
         </li>
         <li role="presentation">
-          <a href="/admin">
+          <a href="/{{$route}}">
             <span class="glyphicon glyphicon-home theme-orig"></span>
           </a>
         </li>

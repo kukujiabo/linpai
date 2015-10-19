@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class CoopManageController extends Controller {
 
+  private $route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS';
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -131,7 +133,9 @@ class CoopManageController extends Controller {
 
         'current_page' => $page,
 
-        'pages' => $pages
+        'pages' => $pages,
+
+        'route' => $this->route
       
       ];
 

@@ -8,6 +8,8 @@ use App\Models\Advertise;
 
 class AdvertiseManageController extends Controller {
 
+  private $route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS';
+
   public function __construct ()
   {
 
@@ -133,7 +135,9 @@ class AdvertiseManageController extends Controller {
 
       'pages' => $pages,
 
-      'ads' => $ads
+      'ads' => $ads,
+
+      'route' => $this->route
 
     ];
 
@@ -184,7 +188,6 @@ class AdvertiseManageController extends Controller {
 
     }
     
-
   }
 
 }

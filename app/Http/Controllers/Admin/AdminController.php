@@ -13,6 +13,8 @@ use Auth;
 
 class AdminController extends Controller {
 
+  private $route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7H5r6uCGdNSS';
+
   public function __construct () 
   {
     $this->middleware('admin_auth', [ 'except' => ['getLogin', 'postLogin'] ]); 
@@ -25,6 +27,7 @@ class AdminController extends Controller {
 	 */
 	public function index()
 	{
+
 		return view('admin/admin_home', $data);
 
 	}
@@ -95,8 +98,8 @@ class AdminController extends Controller {
 
   public function getLogin (Request $request) 
   {
-  
-    return view('admin/admin_login');
+
+    return view('admin/admin_login', [ 'route' => $this->route ]);
   
   }
 
@@ -191,7 +194,9 @@ class AdminController extends Controller {
 
       'todayOrder' => $todayOrder,
 
-      'pageName' => $pageName
+      'pageName' => $pageName,
+
+      'route' => $this->route
     
     ];
 
@@ -207,7 +212,9 @@ class AdminController extends Controller {
 
     return view('admin/user_board', [
     
-      'pageName' => $pageName
+      'pageName' => $pageName,
+
+      'route' => $this->route
     
     ]);
   
@@ -242,7 +249,9 @@ class AdminController extends Controller {
 
     return view('admin/order_board', [
     
-      'pageName' => $pageName
+      'pageName' => $pageName,
+
+      'route' => $this->route
     
     ]); 
   
