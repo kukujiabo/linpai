@@ -628,7 +628,7 @@ class OrdersController extends Controller {
 
   private function alipay ($order, $good, $orderPrice)
   {
-    $debug = Config::get('app.debug');
+    $debug = \Config::get('app.debug');
 
     $alipay_config = $this->payConfig();
   
@@ -697,7 +697,7 @@ class OrdersController extends Controller {
 
   private function creditpay ($order, $good, $orderPrice, $bank) 
   {
-    $debug = Config::get('app.debug');
+    $debug = \Config::get('app.debug');
 
     $alipay_config = $this->payConfig();
   
