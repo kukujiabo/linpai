@@ -640,7 +640,7 @@ class OrdersController extends Controller {
     //页面跳转同步通知页面路径
     $return_url = "";
 
-    if (debug) {
+    if ($debug) {
 
       $return_url = "http://www.51linpai.com:8000/order/payed";
 
