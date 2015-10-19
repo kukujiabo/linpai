@@ -26,7 +26,7 @@ use App\Events\TriggerEmail;
 use App\User;
 use App\Models\PayCheck;
 use App\Models\Bank;
-use Config;
+use \Config;
 
 class OrdersController extends Controller {
 
