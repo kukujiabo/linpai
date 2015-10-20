@@ -119,7 +119,7 @@
                 <div class="row">
                   <div class="col-xs-3 no-padding-left">
                   @if ($good->code == 'beyond-three')
-                    <h3 class="require no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>
+                    <h3 class="theme-orig no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>
                   @endif
                   </div>
                   <div class="col-xs-6 col-xs-offset-3 no-padding">
