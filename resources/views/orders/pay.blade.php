@@ -9,7 +9,7 @@
     <h5>订单号：{{$order->code}}</h5>
     <h5>购买商品：{{$good->name}}</h5>
     <p>
-      感谢您的购买，请在<span class="require">48小时内支付</span>以便于我们开办临牌，48小时后您的订单将自动取消。
+      感谢您的购买，请在48小时内支付以便于我们开办临牌，48小时后您的订单将自动取消。
     </p>
   </div>
 </div>
@@ -45,7 +45,7 @@
       <div class="media-right">
         <p class="">
           <span class="line-info">实付金额</span>
-          <span class="total-price">{{$orderPrice->final_price}}元</span>
+          <span class="total-price theme-orig">{{$orderPrice->final_price}}元</span>
         </p>
       </div>
     </div>

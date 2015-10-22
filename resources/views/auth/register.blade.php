@@ -4,7 +4,10 @@
 
 @section('content')
 	<div class="box" id="register-box">
-		<div class="col-md-6 padding-20">
+		<div class="col-md-6 padding-20 text-center">
+      <a href="/text/bouninfo">
+        <img width=80% style="margin-top:20%" src="/imgs/guanggao.png">
+      </a>
     </div>
 		<div class="col-md-6" style="border-left: 1px solid #eee;">
 			@if (count($errors) > 0)

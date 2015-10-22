@@ -50,7 +50,7 @@
         <h3 class="">分享您的邀请码</h3>
 
         <p>
-          现在就把您的邀请码分享给朋友们，您也将获得高达 20RMB 的优惠减免。
+          现在就把您的邀请码分享给朋友们，您也将获得高达 <span class="theme-orig">20RMB</span> 的优惠减免。
         </p>
         <div class="padding-5"></div>
         <h5>您的邀请码</h5>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div style="line-height:1.8em;text-align:left;width:85%;padding:0px 0px 0px 20px">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  现在就把您的邀请码分享给朋友们，使用您的邀请码下单的每一位朋友都将获得高达 20RMB 的优惠减免，而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张20RMB 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  现在就把您的邀请码分享给朋友们，使用您的邀请码下单的每一位朋友都将获得高达 <span class="theme-orig">20RMB</span> 的优惠减免，而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张 <span class="theme-orig">20RMB</span> 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
     </div>
     <div class="padding-20 text-left col-md-10">
       <form class="form" method="post" action="/profile/invite" id="invite_form">
@@ -136,7 +136,7 @@
       <div class="padding-5"></div>
       <h4>什么是邀请码？</h4>
       <p class="padding-5" style="line-height:1.8em">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀请码是［51临牌］提供给您的一种唯一编码，使用您的邀请码下单的朋友将获得高达 20RMB 的优惠减免；而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张20RMB 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邀请码是［51临牌］提供给您的一种唯一编码，使用您的邀请码下单的朋友将获得高达 <span class="theme-orig">20RMB</span> 的优惠减免；而作为奖励，每当有一位朋友获得优惠的同时，您同样也将获得一张 <span class="theme-orig">20RMB</span> 的优惠码以便在下次下单时获得优惠减免，奖励不设上限，优惠码将自动放入“我的优惠券码”中。
       </p>
       <h4>如何获取邀请码？</h4>
       <p class="padding-5">
@@ -196,7 +196,7 @@
        <div class="padding-5"></div>
        <h4>如何获取优惠码</h4>
        <p style="line-height:1.8em">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将您的邀请码分享给朋友，每当有朋友使用您的邀请码下单后，系统都会自动为您添加一个价值 20RMB 的优惠码，并可以在下次下单时使用以获得优惠减免。您邀请的朋友数量并不设上限。
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将您的邀请码分享给朋友，每当有朋友使用您的邀请码下单后，系统都会自动为您添加一个价值 <span class="theme-orig">20RMB</span> 的优惠码，并可以在下次下单时使用以获得优惠减免。您邀请的朋友数量并不设上限。
        </p>
         <br>
        <p>
