@@ -31,7 +31,7 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{ $good->name }}</h4>
-        <div><span class="total-price">{{$price}}</span>元</div>
+        <div><span class="total-price theme-orig">{{$price}}</span>元</div>
         <div>数量：{{$num}} &nbsp;张</div>
       </div>
     </div>
@@ -158,7 +158,7 @@
       @endif
   </div>
 </div>
-<div class="require">
+<div class="">
     *每位用户每次最多仅可使用3个优惠码，每个优惠码仅可使用一次!
 </div>
 <div class="padding-5"></div>
@@ -241,21 +241,21 @@
     <br>
     <hr class="price-divider">
     <p class="no-margin">
-      商品：&nbsp;&nbsp;<span style="color:red;">¥{{$single_price}}</span>
+      商品：&nbsp;&nbsp;<span class="theme-orig">¥{{$single_price}}</span>
     </p>
     <hr class="price-divider">
     <p class="no-margin">
-      数量：&nbsp;&nbsp;<span style="color:red">{{$num}}</span>
+      数量：&nbsp;&nbsp;<span class="theme-orig">{{$num}}</span>
     </p>
     <hr class="price-divider">
     <p class="no-margin">
-      减免：&nbsp;&nbsp;<span style="color:red" id="discount">0</span>
+      减免：&nbsp;&nbsp;<span class="theme-orig" id="discount">0</span>
     </p>
     <hr class="price-divider">
     <p class="no-margin">
       <b style="margin-top:8px;">合计：</b>&nbsp;&nbsp;
       <span>
-        ¥<b class="total-price">{{$price}}</b>
+        ¥<b class="total-price theme-orig">{{$price}}</b>
       </span>
     </p>
   </div>

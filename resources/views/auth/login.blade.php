@@ -2,7 +2,10 @@
 
 @section('content')
 	<div class="box" id="login-box">
-    <div class="col-md-6 padding-20">
+    <div class="col-md-6 padding-20 text-center">
+      <a href="/text/bouninfo">
+        <img width=80% style="margin-top:10%" src="/imgs/guanggao.png">
+      </a>
     </div>
 		<div class="col-md-6"  style="border-left: 1px solid #eee;">
       <div class="text-center login-logo">

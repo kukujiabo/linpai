@@ -32,7 +32,7 @@
   <div class="col-xs-1 order-col" style="margin-top:10px;font-size:11px;">
     @if ($order->status == 0)
     <div>
-      <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="require go-to-pay" data-id="{{$order->oid}}">
+      <a href="{{asset('order/pay')}}?order={{$order->order_code}}" class="theme-orig go-to-pay" data-id="{{$order->oid}}">
        未付款
       </a>
     </div>
