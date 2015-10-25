@@ -41,7 +41,8 @@ e.tiny_good as good_tiny_pic,
 e.code as good_code,
 f.value as g_single_price,
 g.name as order_owner,
-g.mobile as order_owner_mobile
+g.mobile as order_owner_mobile,
+g.email as order_owner_email
 from 
 orders a, 
 receiver_infos b, 
