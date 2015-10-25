@@ -1733,3 +1733,15 @@ img.notice-sending {
   height: 110px !important;
   padding-top: 40px;
 }
+
+.deliver_toggle {
+  position: absolute;
+  width: 200px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #FF8800;
+  left: -60px;
+  margin-top: 5px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  z-index: 10000;
+}

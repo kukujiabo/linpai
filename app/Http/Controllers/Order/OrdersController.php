@@ -1528,4 +1528,24 @@ class OrdersController extends Controller {
 
   }
 
+  public function postDinfo(Request $request) 
+  {
+    $order_code = $request->input('order_code'); 
+
+    if (empty($order_code)) {
+
+      return $this->failResponse('empty_code.');
+
+    }
+
+    $order = OrderAllInfo::where('order_code', '=', $order_code)
+
+            ->first();
+
+    $html = view('profile/deliver_info', [ 'order' => $order ]).'';
+
+    return $this->successResponse('html', $html);    
+  
+  }
+
 }
