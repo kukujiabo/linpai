@@ -26,6 +26,8 @@ class TriggerEmail extends Event {
 
   protected $pro_invite = "5BVmK4";
 
+  protected $pro_unpay = "Mdk6t";
+
   protected $info;
 
   protected $to = "";
@@ -69,7 +71,7 @@ class TriggerEmail extends Event {
 
   private function friendUse ()
   {
-    $user = User::all();
+    $user = Auth::user();
 
     $vars = [ 'friend' => $this->info['friend'], 'user' => $user->name ];
   
@@ -154,6 +156,26 @@ class TriggerEmail extends Event {
   
   }
 
+  private function unpayNotify () 
+  {
+    $post_data = [
+
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'to' => $this->to,
+
+      'project' => $this->pro_unpay,
+
+      'vars' => json_encode($this->info)
+    
+    ];
+
+    return $this->send('post', $post_data);
+
+  }
+
   public function execSend()
   {
     
@@ -178,6 +200,10 @@ class TriggerEmail extends Event {
       case 'invite':
 
         return $this->inviteMail();
+
+      case 'unpay':
+
+        return $this->unpayNotify();
 
     }
   
