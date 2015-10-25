@@ -83,5 +83,6 @@
 <div>
   @yield('modal-box')
 </div>
+<input type="hidden" id="out_csrf_code" value="{{csrf_token()}}">
 
 @endsection
