@@ -1776,7 +1776,8 @@ var addressBind;
         
         });
 
-        $linpai.deliverBind();
+        //弃用
+        //$linpai.deliverBind();
       
       }, 'json');
   
@@ -2051,8 +2052,9 @@ var addressBind;
 })();
 
 /*
- * 查询物流
+ * 查询物流(弃用)
  */
+/*
 ($linpai.deliverBind = function () {
 
   var deliverInfos = $('a.deliver-info');
@@ -2102,6 +2104,7 @@ var addressBind;
   });
 
 })();
+*/
 
 /*
  * 用户注册
@@ -2477,6 +2480,76 @@ var addressBind;
     inviteForm.ajaxSubmit(inviteOptions);  
 
   });
+
+})();
+
+/*
+ * 快递信息
+ */
+(function () {
+
+  var deliver_itms = $('a.deliver-info');
+
+  var csrf_code = $('input#out_csrf_code').val();
+
+  if (deliver_itms == undefined || deliver_itms.length == 0 || csrf_code == undefined || csrf_code == '') {
+
+    return;
+
+  }
+
+  deliver_itms.each(function (i, element) {
+
+    var that = $(this);
+
+    var deliver_itm = $(element);
+
+    var order_code = deliver_itm.data('id');
+
+    var offsetX = deliver_itm.offset().left;
+
+    var offsetY = deliver_itm.offset().top - window.scrollY;
+  
+    $.post('/order/dinfo', {
+    
+      '_token': csrf_code,
+
+      'order_code': deliver_itm.data('id')
+    
+    }, function (result) {
+
+      if (result.code == 1) {
+
+        var html = result.html;
+
+        var infoNode = $(html);
+
+        that.after(infoNode);
+
+        that.hover(function () {
+
+          infoNode.slideToggle('fast', function () {
+
+            infoNode.css({'display': 'block'});
+            
+          });
+        
+        }, function () {
+        
+          infoNode.slideToggle('fast', function () {
+
+            infoNode.css({ 'display': 'none'});
+            
+          });
+        
+        });
+
+      }
+    
+    }, 'json');
+
+  });
+
 
 })();
 
