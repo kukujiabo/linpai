@@ -21,6 +21,8 @@ Route::group([ 'prefix' =>  'goods', 'namespace' => 'Goods'], function () {
 
 });
 
+Route::get('/management999/admin777', 'Admin\AdminController@index');
+
 Route::controllers([
 
   'auth' => 'Auth\AuthController',
