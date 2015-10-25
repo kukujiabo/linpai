@@ -2,12 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
 use App\Events\TriggerSms;
-use App\Events\TiggerEmail;
+use App\Events\TriggerEmail;
+use App\Models\OrderAllInfo;
 
 class ProcessController extends Controller {
 
@@ -138,7 +138,7 @@ class ProcessController extends Controller {
 
     for ($i = 0; $i < $pages; $i++) {
 
-      $orders = Order::where('status', '=', 0)->take($i * 1000, $length)->get();
+      $orders = OrderAllInfo::where('status', '=', 0)->take($i * 1000, $length)->get();
 
       foreach ($orders as $order) {
 
@@ -148,25 +148,23 @@ class ProcessController extends Controller {
 
         if ($time >= $interval) {
 
-          $sms = event(new TriggerSms($order->order_owner_mobile, [
+          $sms = event(new TriggerSms($order->order_owner_mobile, 'unpay', [
             
-              'created_at' => $order->created_at,
+              'created_at' => $order->created_at . '',
             
               'order_code' => $order->order_code
             
             ])); 
 
-          $mail = event(new TriggerEmal($order->order_owner_email, [
+          $mail = event(new TriggerEmail($order->order_owner_email, 'unpay', [
             
               'user' => $order->order_owner,
 
-              'order_date' => $order->created_at,
+              'order_date' => $order->created_at . '',
             
               'order_code' => $order->order_code
             
             ]));
-
-
 
         }
 

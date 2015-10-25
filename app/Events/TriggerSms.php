@@ -221,9 +221,9 @@ class TriggerSms extends Event {
 
       'signature' => $this->signature,
 
-      'project' => $this->pro_deliver,
+      'project' => $this->pro_unpay,
 
-      'vars' => json_encode($this->info);
+      'vars' => json_encode($this->info),
 
       'to' => $this->mobile
     
@@ -305,6 +305,10 @@ class TriggerSms extends Event {
       case 'invite':
 
         return $this->inviteSms();
+
+      case 'unpay':
+
+        return $this->unpayNotify();
       
       default:
 
