@@ -1,4 +1,11 @@
-<?php namespace app\http\controllers\admin; use App\Http\Requests; use App\Http\Controllers\Controller; use App\Models\Order; use App\Models\Good; use App\Models\Boun; use App\Models\OrderAllInfo; use Illuminate\Http\Request;
+<?php namespace app\http\controllers\admin; 
+use App\Http\Requests; 
+use App\Http\Controllers\Controller; 
+use App\Models\Order; 
+use App\Models\Good; 
+use App\Models\Boun; 
+use App\Models\OrderAllInfo;
+use Illuminate\Http\Request;
 use App\Models\ReceiverInfo;
 use App\Models\DeliverInfo;
 use App\Models\OrderBoun;
@@ -8,6 +15,7 @@ use App\Models\DownloadRecord;
 use Validator;
 use App\User;
 use Session;
+use \Config;
 
 class OrderManageController extends Controller {
 
@@ -413,7 +421,17 @@ class OrderManageController extends Controller {
 
     if (!file_exists($pdf)) {
 
-      $url = "http://www.51linpai.com/download/orderpdf?oid=" . $order->order_code;
+      $debug = Config::get('app.debug');
+
+      if ($debug) {
+
+        $url = "http://www.51linpai.com:8000/download/orderpdf?oid=" . $order->order_code;
+
+      } else {
+
+        $url = "http://www.51linpai.com/download/orderpdf?oid=" . $order->order_code;
+
+      }
 
       $command = "/tools/wkhtmltopdf {$url}  {$path}{$pdf}";
 

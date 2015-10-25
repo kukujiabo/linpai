@@ -103,6 +103,12 @@ class DownloadsController extends Controller {
 
     $order = OrderAllInfo::where('order_code', '=', $oid)->first();
 
+    if (empty($order) || count($order) == 0) {
+
+      return 'fail';
+
+    }
+
     $boun = Boun::where('uid', '=', $order->uid)
 
       ->where('type', '=', 0)
