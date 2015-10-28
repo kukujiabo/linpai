@@ -2416,8 +2416,10 @@ var addressBind;
         var illegal = data.result.illegal;
 
         var sent = data.result.sent;
+
+        var s= '<p>发送成功！</p>';
+        /*
         
-        var s= '';
 
         for (var ky in sent) {
 
@@ -2430,6 +2432,7 @@ var addressBind;
           s += '<p>' + illegal[ky] + ': 不是有效的手机号或邮箱' + '</p>';
 
         }
+        */
 
         $('.toast-notice').html(s);
 
@@ -2476,6 +2479,8 @@ var addressBind;
     $linpai.toast('正在发送...', '', 0);
 
     var that = $(this);
+
+    var sendStr = inviteForm.find('textarea[name=shares]').val();
 
     inviteForm.ajaxSubmit(inviteOptions);  
 
