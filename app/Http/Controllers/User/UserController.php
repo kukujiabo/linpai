@@ -91,6 +91,8 @@ class UserController extends Controller {
 
     $data = ['form_token' => $token];
 
+    $data['wTitle'] = '重置密码';
+
     if (Session::get('VERIFYNOUSER')) {
 
       $data['nouser'] = true;
