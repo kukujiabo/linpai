@@ -5,7 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="临牌、临时牌照、临时号牌、车辆临牌、车辆临时牌照、车辆临时号牌、上海临牌、外地临牌、临时行驶、车辆临时行驶号牌、车辆临时行驶牌照、临时行驶牌照、临时行驶号牌、上海临牌、上海车辆临时行驶号牌、上海临时车牌、上海临时行驶号牌、上海车辆临时行驶牌照">
-	<title>51临牌 临时牌照 号牌 服务商 车辆行驶临时号牌 临时号牌</title>
+  @if (!empty($wTitle))
+
+    <title>{{$wTitle}} － 51临牌</title> 
+
+  @else
+
+	  <title>51临牌</title>
+
+  @endif
+
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/jquery.fileupload.css') }}" rel="stylesheet">
   <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">

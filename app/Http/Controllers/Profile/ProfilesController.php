@@ -37,8 +37,7 @@ class ProfilesController extends Controller {
   public function getIndex()
   {
 
-  
-    return view('profile/profile');
+    return view('profile/profile', ['wTitle' => '个人中心 － 我的订单' ]);
   
   }
 
@@ -90,7 +89,9 @@ class ProfilesController extends Controller {
 
       'pages' => $pages,
 
-      'orderActive' => true
+      'orderActive' => true,
+
+      'wTitle' => '个人中心 － 我的订单'
     
     ];
 
@@ -118,7 +119,9 @@ class ProfilesController extends Controller {
     
       'order' => $order,
 
-      'deliver' => $deliver
+      'deliver' => $deliver,
+
+      'wTitle' => '个人中心 － 订单详情'
     
     ];
 
@@ -172,7 +175,9 @@ class ProfilesController extends Controller {
 
       'carActive' => true,
 
-      'profile' => true
+      'profile' => true,
+
+      'wTitle' => '个人中心 － 车辆信息'
     
     ];
 
@@ -189,7 +194,9 @@ class ProfilesController extends Controller {
     
       'user' => $user,
 
-      'accountActive' => true
+      'accountActive' => true,
+
+      'wTitle' => '个人中心 - 账号设置'
     
     ];
 
@@ -333,7 +340,9 @@ class ProfilesController extends Controller {
 
       'districts' => $districts,
 
-      'receiverActive' => true
+      'receiverActive' => true,
+
+      'wTitle' => '个人中心 － 收货人信息'
     
     ];
 
@@ -399,7 +408,9 @@ class ProfilesController extends Controller {
 
       'type' => $selectedtab,
 
-      'bounsActive' => true
+      'bounsActive' => true,
+
+      'wTitle' => '个人信息 － 邀请码和优惠券'
     
     ];
   

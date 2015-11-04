@@ -44,7 +44,9 @@ class GoodsController extends Controller {
 
       'goodInfos' => $goodInfos,
 
-      'is_select' => true
+      'is_select' => true,
+
+      'wTitle' => '购买临牌'
     
     );
 

@@ -110,35 +110,35 @@ class TextInfoController extends Controller {
   public function getMetaguide (Request $request)
   {
   
-    return view('intro/guide');
+    return view('intro/guide', [ 'wTitle' => '办理材料指南' ]);
   
   }
 
   public function getProblems (Request $request)
   {
 
-    return view('intro/problems');
+    return view('intro/problems', [ 'wTitle' => '常见问题' ]);
   
   }
 
   public function getContact (Request $request)
   {
   
-    return view('intro/contact');
+    return view('intro/contact', [ 'wTitle' => '联系我们' ]);
   
   }
 
   public function getBouninfo (Request $request)
   {
 
-    return view('intro/boun_intro');
+    return view('intro/boun_intro', [ 'wTitle' => '邀请码和优惠券' ]);
 
   }
 
   public function getAgreement (Request $request)
   {
 
-    return view('intro/agreement');
+    return view('intro/agreement', [ 'wTitle' => '使用协议' ]);
 
   }
 

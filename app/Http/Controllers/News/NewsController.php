@@ -84,14 +84,14 @@ class NewsController extends Controller {
   public function getIndex () 
   {
 
-    return view('news/news_list');
+    return view('news/news_list', ['wTitle' => '新闻资讯']);
 
   }
 
   public function getDetail () 
   {
 
-    return view('news/news_detail');
+    return view('news/news_detail', ['wTitle' => '新闻资讯']);
 
   }
 

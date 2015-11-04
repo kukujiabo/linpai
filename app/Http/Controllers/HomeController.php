@@ -82,7 +82,9 @@ class HomeController extends Controller {
 
       'banners' => $banners,
 
-      'home' => 1
+      'home' => 1,
+
+      'wTitle' => '首页'
     
     ));
 

@@ -207,7 +207,9 @@ class OrdersController extends Controller {
 
       'defaultCar' => $defaultCar,
 
-      'defaultReceiver' => $defaultReceiver
+      'defaultReceiver' => $defaultReceiver,
+
+      'wTitle' => '订单'
 
     ];
 
@@ -447,7 +449,9 @@ class OrdersController extends Controller {
 
       'banks' => $banks,
 
-      'is_pay' => true
+      'is_pay' => true,
+
+      'wTitle' => '订单支付'
     
     ];
 
@@ -545,6 +549,8 @@ class OrdersController extends Controller {
       Session::forget('bank_omit');
 
     }
+
+    $data['wTitle'] = '订单支付';
     
     return view('orders/pay', $data);
   
@@ -1240,7 +1246,9 @@ class OrdersController extends Controller {
 
           'user' => $user,
 
-          'order' => $order
+          'order' => $order,
+
+          'wTitle' => '支付成功！'
 
         ];
 
