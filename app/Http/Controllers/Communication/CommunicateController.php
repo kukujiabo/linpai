@@ -87,7 +87,7 @@ class CommunicateController extends Controller {
    */
   public function getCooperation (Request $request)
   {
-    return view('coorperation/coope'); 
+    return view('coorperation/coope', ['wTitle' => '成为服务商']); 
   }
 
   public function postAddcooperator (Request $request) 
