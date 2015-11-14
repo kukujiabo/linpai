@@ -29,7 +29,9 @@ class Kernel extends HttpKernel {
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
     'upload' => 'App\Http\Middleware\UploadValidateMiddleware',
     'user' => 'App\Http\Middleware\UserValidateMiddleware',
-    'admin_auth' => 'App\Http\Middleware\AdministratorAuthMiddelware'
+    'admin_auth' => 'App\Http\Middleware\AdministratorAuthMiddelware',
+    'mobile_auth' => 'App\Http\Middleware\MobileAuthMiddleware',
+
 	];
 
 }

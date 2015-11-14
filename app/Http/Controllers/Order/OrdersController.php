@@ -624,6 +624,10 @@ class OrdersController extends Controller {
 
         return $this->creditpay($order, $good, $orderPrice, $bank);
 
+      case 'wechat':
+
+        return $this->wechatPay($order, $good, $orderPrice);
+
       default :
 
         break;
@@ -1555,5 +1559,61 @@ class OrdersController extends Controller {
     return $this->successResponse('html', $html);    
   
   }
+
+  public function getRebuy (Request $request)
+  {
+    $order_code = $request->input('order_code');
+
+    $order = OrderAllInfo::where('order_code', '=', $order_code)->get();
+    
+
+  }
+
+  public function postWxpay (Request $request)
+  {
+  
+    $order_code = $request->input('out_trade_no');
+
+    $order = Order::where('code', '=', $order_code)->first();
+
+    $order->status = 1;
+
+    $order->save();
+
+    echo 'success';
+  
+  }
+
+  private function wechatPay ($order, $good, $orderPrice)
+  {
+    //ini_set('date.timezone', 'Aisa/Shanghai');
+
+    require_once('lib/WxPay.Api.php');
+
+    require_once('WxPay.NativePay.php');
+
+    require_once('log.php');
+
+    $notify = new \NativePay();
+
+    $input = new \WxPayUnifiedOrder();
+    $input->SetBody($good->name);
+    $input->SetAttach("test");
+    $input->SetOut_trade_no($order->code);
+    $input->SetTotal_fee("1");
+    $input->SetTime_start(date("YmdHis"));
+    $input->SetTime_expire(date("YmdHis", time() + 600));
+    $input->SetGoods_tag($good->code);
+    $input->SetNotify_url("http://www.51linpai.com:8000/order/wxpay/");
+    $input->SetTrade_type("NATIVE");
+    $input->SetProduct_id($good->id . '_' . $good->code);
+    $result = $notify->GetPayUrl($input);
+    $url2 = $result["code_url"];
+
+    return $url2;
+  
+  }
+
+
 
 }

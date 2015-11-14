@@ -68,7 +68,11 @@ Route::controllers([
 
   'news' => 'News\NewsController',
 
-  'process' => 'Process\ProcessController'
+  'process' => 'Process\ProcessController',
+
+  'mobile' => 'MiniSite\MinisiteController',
+
+  'miniorder' => 'MiniSite\OrderController'
 
 ]);
 

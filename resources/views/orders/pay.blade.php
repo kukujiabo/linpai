@@ -119,7 +119,7 @@
       </div>
       <div class="radio padding-5">
         <label class="control-label" for="wechat">
-          <input type="radio" id="wechat" name="pay" value="wechat" disabled>
+          <input type="radio" id="wechat" name="pay" value="wechat">
           <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px"> （即将开通）
         </label>
       </div>
