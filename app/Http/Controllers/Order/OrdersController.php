@@ -1562,10 +1562,8 @@ class OrdersController extends Controller {
 
   public function getRebuy (Request $request)
   {
-    $order_code = $request->input('order_code');
-
-    $order = OrderAllInfo::where('order_code', '=', $order_code)->get();
-    
+     
+    return redirect('/goods?gid=18');
 
   }
 
@@ -1594,6 +1592,8 @@ class OrdersController extends Controller {
 
     require_once('log.php');
 
+    require_once('lib/phpqrcode.php');
+
     $notify = new \NativePay();
 
     $input = new \WxPayUnifiedOrder();
@@ -1610,8 +1610,28 @@ class OrdersController extends Controller {
     $result = $notify->GetPayUrl($input);
     $url2 = $result["code_url"];
 
-    return $url2;
-  
+    $path = storage_path() . '/app/pay_code/';
+
+    $file = $order->code . '.png';
+
+    if (!is_dir($path)) {
+    
+      mkdir($path, 0777, true);
+    
+    }
+
+    $png = \QRcode::png($url2, $path . $file);
+
+    $qrcode = '/imgs/wxpay_qrcode/' . $file;
+
+    return view('wxpay', [ 'qrcode' => $qrcode,
+     
+      'price' => $orderPrice->final_price,
+
+      'good' => $good
+     
+      ]);
+
   }
 
 

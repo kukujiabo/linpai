@@ -4,12 +4,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Order;
+use App\Models\Cooperators;
 use App\Models\OrderInfo;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Auth;
+use Illuminate\Http\Response;
 
 class AdminController extends Controller {
 
@@ -271,6 +273,27 @@ class AdminController extends Controller {
     
   
   
+  }
+
+  public function getPush(Request $request) 
+  {
+
+    $order = Order::count();
+
+    $coop = Cooperators::count();
+
+    $data = "data:{$order}-{$coop}" . "\r\n\r\n";
+
+    return response($data, 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+
+      ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    /*
+    header('Content-Type:text/event-stream;charset=utf-8');
+
+    header('Access-Control-Allow-Origin', 'http://localhost:8000');
+
+    echo 'data:' . date('H:i:s');
+     */
   }
 
 }

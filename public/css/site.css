@@ -1320,7 +1320,16 @@ div#youhui-alert {
 }
 
 .theme-orig {
- color: #FF8800;
+ color: #FF8800 !important;
+}
+
+.theme-back-orig {
+  background: #FF8800 !important;
+  color: white;
+}
+
+.theme-back-orig:hover {
+  color: white;
 }
 
 .theme-orig:hover {
