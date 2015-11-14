@@ -16,7 +16,17 @@
       <div class="nav navbar-nav navbar-right hidden-sm">
         <form class="form" method="post" action="/{{$route}}/logout" style="margin-top:20px;padding:0 30px;">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
-          <button class="btn btn-warning btn-sm" role="button" type="submit">退出</button>
+          <div class="btn-group">
+            <button type="button" id="message_btn" class="btn btn-info btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:50px;">
+              <span class="glyphicon glyphicon-envelope"></span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">合作商户&nbsp; <span id="unread_coop">0</span></a></li>
+              <li><a href="#">订单&nbsp<span id="unread_order">0</span></a></li>
+            </ul>
+          </div>
+          <button class="btn btn-warning btn-sm" style="width:50px;" role="button" type="submit">退出</button>
         </form>
       </div>
       <div style="clear:both;"></div>

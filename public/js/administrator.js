@@ -93,6 +93,61 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 })();
 
 /*
+ *
+ */
+(function () {
+
+  var source;
+
+  var pre_order = 0;
+
+  var pre_coop = 0;
+
+  source = new EventSource('http://localhost:8000/' + $linpai.route + '/push');
+
+  source.onopen = function () {
+  
+    console.log('connected.');
+
+  };
+
+  source.onmessage = function (evnet) {
+
+    var notice = evnet.data;
+
+    console.log(notice);
+
+    var arr = notice.split('-');
+
+    var order_num = arr[0];
+
+    var coop_num = arr[1];
+
+    if (coop_num > pre_coop || order_num > pre_order) {
+    
+      $('#message_btn').addClass('btn-danger').removeClass('btn-info');
+
+      pre_order = order_num;
+
+      pre_coop = coop_num;
+    
+    }
+
+    $('#unread_coop').html(coop_num);
+
+    $('#unread_order').html(order_num);
+  
+  };
+
+  source.onerror = function (evnet) {
+
+    console.log(1);
+  
+  };
+
+})();
+
+/*
  * 
  */
 (function () {
@@ -402,6 +457,22 @@ var addressBind;
 
     uploadBox.removeClass('hide');
 
+  });
+
+})();
+
+(function () {
+
+  var messageBtn = $('#message_btn');
+
+  messageBtn.click(function (e) {
+  
+    e.preventDefault();
+
+    messageBtn.removeClass('btn-danger').addClass('btn-info');
+    
+  
+  
   });
 
 })();
