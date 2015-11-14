@@ -7,9 +7,9 @@ use App\Events\TriggerSms;
 use Validator;
 use Session;
 use App\Models\ResetPassword;
+use Auth;
 
 class UserController extends Controller {
-
 
 	/**
 	 * Display a listing of the resource.
@@ -179,7 +179,6 @@ class UserController extends Controller {
 
     }
 
-
     $validate = Validator::make($request->input(), [
     
       'reset_code' => 'required',
@@ -218,6 +217,12 @@ class UserController extends Controller {
 
     }
 
+    $rp->active = 0;
+
+    $rp->status = 1;
+
+    $rp->save();
+
     $user->password = bcrypt($inputs['newpassword']);
   
     $res = $user->save();
@@ -232,6 +237,60 @@ class UserController extends Controller {
 
     }
   
+  }
+
+  public function postAjaxresetsms(Request $request)
+  {
+    $mobile = $request->input('mobile'); 
+
+    if (empty($mobile) || strlen($mobile) < 11) {
+    
+      return $this->failResponse('invalid_mobile');
+    
+    }
+
+    $res = event(new TriggerSms($mobile, 'reset_passwd'));
+  
+    return $this->successResponse('result', $res);
+  
+  }
+
+  public function postAjaxlogin (Request $request)
+  {
+    $mobile = $request->input('mobile');
+
+    $password = $request->input('password'); 
+
+    if (empty($mobile) || strlen($mobile) != 11) {
+    
+      return $this->failResponse('invalid_mobile');
+    
+    } 
+
+    if (empty($password) || strlen($password) == 0) {
+    
+      return $this->failResponse('invalid_password');
+    
+    }
+
+    $user = User::where('mobile', '=', $mobile)->first();
+
+    if (empty($user->id)) {
+    
+      return $this->failResponse('user_not_found');
+    
+    }
+
+    if (Auth::attempt(['mobile' => $mobile, 'password' => $password])) {
+
+      return $this->successResponse();
+
+    } else {
+
+      return $this->failResponse('attemp_fail');
+
+    }
+
   }
 
 }
