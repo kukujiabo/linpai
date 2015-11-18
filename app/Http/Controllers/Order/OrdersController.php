@@ -1560,16 +1560,9 @@ class OrdersController extends Controller {
   
   }
 
-  public function getRebuy (Request $request)
-  {
-     
-    return redirect('/goods?gid=18');
-
-  }
 
   public function postWxpay (Request $request)
   {
-  
     $order_code = $request->input('out_trade_no');
 
     $order = Order::where('code', '=', $order_code)->first();
@@ -1581,6 +1574,132 @@ class OrdersController extends Controller {
     echo 'success';
   
   }
+
+  public function getRebuy (Request $request) 
+  {
+
+    if (Session::get('rebuy_code') == $request->input('order_code')) {
+    
+      return redirect('/order/pay?order=' . Session::get('order_code'));
+    
+    } else {
+
+      Session::put('rebuy_code', $request->input('order_code'));
+    
+    }
+
+    $order_code = $request->input('order_code'); 
+
+    if (empty($order_code)) {
+    
+      //todo
+    
+    }
+
+    $user = Auth::user();
+
+    $orderInfo = OrderAllInfo::where('order_code', '=', $order_code)
+
+      ->where('uid', '=', $user->id)
+      
+      ->first();
+
+    if (empty($orderInfo->oid)) {
+    
+      //todo
+
+    }
+
+    $newOrder = [
+    
+      'code' => $this->generateOrderCode($user->id),
+
+      'uid' => $user->id,
+
+      'rid' => $orderInfo->rid,
+
+      'cid' => $orderInfo->cid,
+
+      'gid' => $orderInfo->gid,
+
+      'num' => $orderInfo->num,
+
+      'sum' => $orderInfo->orig_price,
+
+      'comment' => $orderInfo->comment,
+
+      'status' => 0,
+
+      'active' => 1
+    
+    ];
+
+    $order = Order::create($newOrder);
+
+    Session::put('order_code', $order->code);
+
+    $orderPrices = [
+    
+      'oid' => $order->id,
+
+      'orig_price' => $order->sum,
+
+      'cut_fee' => 0,
+
+      'extra_fee' => 0,
+
+      'final_price' => $orderInfo->orig_price,
+
+      'active' => 1
+    
+    ];
+
+    $op = OrderPrice::create($orderPrices);
+
+    $good = Good::where('id', '=', $order->gid)->first();
+
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)->first();
+
+    $pay_token = md5($order->id . time());
+
+    $banks = Bank::all();
+
+    $bouns = Boun::where('uid', '=', $user->id)
+      
+      ->where('active', '=', 1)
+
+      ->where('type', '=', 1)
+      
+      ->get();
+
+    $data = [
+
+      'rebuy' => true,
+
+      'bouns' => $bouns,
+    
+      'order' => $order,
+
+      'orderPrice' => $op,
+
+      'good' => $good,
+
+      'receiver' => $receiver,
+
+      'pay_token' => $pay_token,
+
+      'banks' => $banks,
+
+      'is_pay' => true,
+
+      'wTitle' => '订单支付'
+    
+    ];
+
+    return view('orders/pay', $data);
+  
+  }
+
 
   private function wechatPay ($order, $good, $orderPrice)
   {

@@ -1362,7 +1362,7 @@ var addressBind;
 
     }
 
-    $.post('bouns/check', {
+    $.post('/bouns/check', {
 
       _token: $('#_token').val(),
 
@@ -1431,6 +1431,12 @@ var addressBind;
           setDiscount(num, 'plus');
 
           that.data('denomination', num);
+
+          if (typeof(window.rebuyBoun) == 'function') {
+          
+            window.rebuyBoun();
+          
+          }
         
         }
       
