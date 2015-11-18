@@ -51,6 +51,7 @@
     </div>
   </div>
 </div>
+@if (!empty($rebuy))
 <div class="box" id="quan">
   <div class="sub-wrapper">
     <p>请输入 优惠码 / 邀请码</p>
@@ -105,8 +106,8 @@
         </ul>
       @endif
   </div>
-  
 </div>
+@endif
 <div id="deliver" class="box">
   @if (!empty($pay_omit))
 
