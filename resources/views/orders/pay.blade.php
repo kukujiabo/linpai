@@ -51,7 +51,61 @@
     </div>
   </div>
 </div>
-<div class="padding-5">
+<div class="box" id="quan">
+  <div class="sub-wrapper">
+    <p>请输入 优惠码 / 邀请码</p>
+    <form class="form-inline" id="selected-bouns">
+      <div class="form-group padding-5">
+        <label class="sr-only" for=""></label>
+        <input type="text" name="youhui_1" id="youhui_1" class="form-control" placeholder="优惠码或邀请码">
+      </div>
+      <div class="form-group padding-5">
+        <label class="sr-only" for=""></label>
+        <input type="text" name="youhui_2" id="youhui_2" class="form-control" placeholder="优惠码或邀请码">
+      </div>
+      <div class="form-group padding-5">
+        <label class="sr-only" for=""></label>
+        <input type="text" name="youhui_3" id="youhui_3" class="form-control" placeholder="优惠码或邀请码">
+      </div>
+      <div class="form-group padding-5">
+        <a class="btn btn-info theme-back-blue" id="quan-view"  role="button" data-status="show"><span class="glyphicon glyphicon-plus"></span>&nbsp;查看我的邀请／优惠码</a>
+      </div>
+      <div class="form-group padding-5">
+        <div class="alert alert-danger no-margin" id="youhui-alert"></div>
+      </div>
+      <div class="padding-5">
+        <a class="links theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">什么是优惠码和邀请码？</a>
+      </div>
+      <input type="hidden" id="_token" name="_token" value="{{csrf_token()}}">
+    </form>
+    <p>
+    </p>
+  </div>
+  <div class="edit-info gray-light" id="quan-box">    
+      @if (!count($bouns))
+        <div class="alert alert-warning text-center">
+          您的帐户中暂时还没有优惠券，<a class="theme-font-blue" href="/profile/mybouns?type=discount" target="_blank">点此查看</a>&nbsp;如何获取
+        </div>
+      @else 
+        <ul class="row quan-list">
+
+        @foreach ($bouns as $boun) 
+
+          <li class="col-md-3 bouns" >
+            <a class="bouns" href="#" data-code="{{$boun->code}}" id="b-{{$boun->code}}" data-value="{{$boun->note}}">
+              <img src="/imgs/quan-avai.png" style="width:100%;z-index:10001">
+              <div class="quan-itm">
+                <b class="q-price">{{$boun->note}}RMB</b>
+                <b>CODE：{{$boun->code}}</b>
+              </div>
+            </a>
+          </li>
+
+        @endforeach
+        </ul>
+      @endif
+  </div>
+  
 </div>
 <div id="deliver" class="box">
   @if (!empty($pay_omit))
@@ -120,7 +174,7 @@
       <div class="radio padding-5">
         <label class="control-label" for="wechat">
           <input type="radio" id="wechat" name="pay" value="wechat">
-          <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px"> （即将开通）
+          <img src="/imgs/wechat_pay.jpg" height="25px;" style="padding:3px">
         </label>
       </div>
       <!--
@@ -135,8 +189,6 @@
       </div>
     </form>
   </div>
-</div>
-<div class="padding-5">
 </div>
 <div class="box no-padding">
   <div class="block-head">
