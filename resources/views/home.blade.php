@@ -152,4 +152,5 @@
 
     </div>
   </div>
+  <img src="/imgs/png.png" style="position:fixed;left:3%;top:35%;">
 @endsection
