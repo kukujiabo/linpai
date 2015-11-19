@@ -36,7 +36,7 @@ class OrdersController extends Controller {
    */
   public function __construct ()
   {
-    $this->middleware('auth', [ 'except' => ['postPaynotify']]);
+    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay']]);
   }
 
   /*
@@ -1582,6 +1582,8 @@ class OrdersController extends Controller {
 
     $notify->Handle(true);
   
+    return 'success';
+
   }
 
   public function getRebuy (Request $request) 
