@@ -84,7 +84,7 @@ class HomeController extends Controller {
 
       'home' => 1,
 
-      'wTitle' => '首页'
+      'wTitle' => '51临牌网－您身边的车辆临时牌照专家'
     
     ));
 

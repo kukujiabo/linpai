@@ -55,23 +55,9 @@
         <div class="padding-5"></div>
         <h5>您的邀请码</h5>
         <div class="row">
-          <p class="alert alert-warning col-sm-3 text-center" style="font-size:20px;">
+          <p class="alert alert-warning col-md-3 padding-5 text-center">
             <b>{{$recomend->code}}</b>
           </p>
-          <div class="alert alert-warning col-sm-7" style="margin-left:5px;">
-            <div class="row">
-              <div class="bdsharebuttonbox" data-tag="share_1">
-                <a class="bds_more" data-cmd="more"></a>
-                <a class="bds_weixin" data-cmd="weixin"></a>
-                <a class="bds_qzone" data-cmd="qzone" href="#"></a>
-                <a class="bds_tsina" data-cmd="tsina"></a>
-                <a class="bds_baidu" data-cmd="baidu"></a>
-                <a class="bds_renren" data-cmd="renren"></a>
-                <a class="bds_tqq" data-cmd="tqq"></a>
-                <!--<a class="bds_count" data-cmd="count"></a> -->
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
