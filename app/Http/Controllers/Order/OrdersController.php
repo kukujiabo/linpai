@@ -27,6 +27,7 @@ use App\User;
 use App\Models\PayCheck;
 use App\Models\Bank;
 use \Config;
+use App\Models\Wxpay;
 
 class OrdersController extends Controller {
 
@@ -1563,15 +1564,23 @@ class OrdersController extends Controller {
 
   public function postWxpay (Request $request)
   {
-    $order_code = $request->input('out_trade_no');
+    require_once('lib/require_once');
 
-    $order = Order::where('code', '=', $order_code)->first();
+    $return_code = $request->input('return_code');
 
-    $order->status = 1;
+    $return_msg = $request->input('return_msg');
 
-    $order->save();
+    Wxpay::create([
+      
+        'return_code' => $return_code,
 
-    echo 'success';
+        'return_msg' => $return_msg
+      
+      ]);
+    
+    $notify = new NativeNotifyCallBack();
+
+    $notify->Handle(true);
   
   }
 
@@ -1752,7 +1761,5 @@ class OrdersController extends Controller {
       ]);
 
   }
-
-
 
 }
