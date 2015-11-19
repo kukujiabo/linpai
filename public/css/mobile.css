@@ -105,3 +105,18 @@ label.form-label {
   font-size: 14px;
   color:#bbb !important;
 }
+
+.orange_btn {
+  color: white !important;
+  background: #ff8800 !important;
+  font-weight: normal !important;
+  border: 0px !important;
+  font-size: 14px !important;
+}
+
+.blue_white_btn {
+  color: #138ed1 !important;
+  border: #138ed1 1px solid !important;
+  background: white !important;
+  font-size: 14px !important;
+}
