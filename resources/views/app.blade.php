@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="临牌、临时牌照、临时号牌、车辆临牌、车辆临时牌照、车辆临时号牌、上海临牌、外地临牌、临时行驶、车辆临时行驶号牌、车辆临时行驶牌照、临时行驶牌照、临时行驶号牌、上海临牌、上海车辆临时行驶号牌、上海临时车牌、上海临时行驶号牌、上海车辆临时行驶牌照">
+  <meta name="description" content="51临牌是基于互联网的车辆临时牌照服务平台，我们致力于给众多需要临时牌照的车主提供更专业，更超值，更便捷，更高效的服务。">
   @if (!empty($wTitle))
 
     <title>{{$wTitle}} － 51临牌</title> 
