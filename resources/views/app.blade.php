@@ -198,25 +198,24 @@
         <p>
           周一到周日 10:30 － 18:00
         </p>
-      </div>
-      <div class="col-sm-1 col-md-1">
-        <div style="position:absolute;bottom:-100px">
-        <img width=100% src="/imgs/weixin.png">
-        <br>
-        <div style="width:100%;text-align:center;color:#333;font-size:9px;font-weight:normal;padding:5px 0px">
-          <img class="contact-icon" src="/imgs/wechat.png">
-          公众号：LinPai51</div>
+        <div style="width:100%;text-align;center;color:#333;font-size:12px;font-weight:normal;padding:0px">
+            <img class="contact-icon" src="/imgs/weibo-icon.png">
+            <a class="black" href="http://www.weibo.com/51linpai" target="_blank">@51LinPai临牌</a>
         </div>
       </div>
-      <div class="col-sm-1 col-md-1">
-        <div style="position:absolute;bottom:-100px">
-        <img width=100% src="/imgs/weibo.png">
-        <div style="width:100%;text-align;center;color:#333;font-size:10px;font-weight:normal;padding:5px 0px">
-            <img class="contact-icon" src="/imgs/weibo-icon.png">
-            <a class="black" href="http://www.weibo.com/51linpai" target="_blank">@51LinPai临牌</a></div>
+      <div class="col-md-2" style="width:22%;">
+        <div style="position:absolute;bottom:-80px;background:#eee;width:100%;padding:10px;">
+          <img style="display:inline;float:left"  src="/imgs/weixin.png">
+          <div style="float:left;padding:0px 10px;font-size:12px;">
+            <p style="margin:0px 0px 4px 0px;">关注51临牌微信公众号</p>
+            <p style="margin:0px 0px 4px 0px;">手机直接购买临牌</p>
+            <p style="margin:0px 0px 4px 0px;">查询订单进度</p>
+            <p style="padding:5px;color:white;background:#ff8800">公众号：LinPai51</p>
+          </div>
         </div>
       </div>
     </div>
+    
     <!--
     <p>
         <i style="color: #FF8800;font-size: 24px;"><span class="glyphicon glyphicon-earphone"></span>4000602620</i>
@@ -247,8 +246,8 @@
     -->
   <hr>
   <div class="footer-bottom">
-    <div class="col-md-offset-3 col-md-6 text-center">
-    Copyright © 2015 51LinPai all rights reserved. 沪ICP备 15037577-1
+    <div class="col-md-offset-3 col-md-6 text-center" style="font-size:13px;">
+      Copyright © 2015 51LinPai all rights reserved. 沪ICP备 15037577-1
     </div>
   </div>
   <br>
