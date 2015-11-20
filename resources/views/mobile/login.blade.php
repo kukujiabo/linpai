@@ -36,7 +36,7 @@
           <div class="clear"></div>
           <div class="form-group" style="margin-top:70px">
             <div class="blue_full_btn ui-btn ui-input-btn" style="margin:0px;">
-              <a type="submit" id="login-submit" class="blue_full_btn" >登录</a>
+              <a href="#" type="submit" id="login-submit" class="blue_full_btn" >登录</a>
             </div>
           </div>
         </form>
@@ -49,73 +49,7 @@
   </div>
   -->
 </div>
-<script type="text/javascript">
 
-  $(document).on('pageinit', function (event) {
-
-    var loginBtn = $('#login-submit');
-
-    var loginForm = $('#login-form');
-
-            <div class="form-group" style="margin-top:70px">
-              <a class="blue_full_btn" type="submit" id="login-submit" >登录</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
-  </div>
-  -->
-</div>
-<script type="text/javascript">
-
-  $(document).on('pageinit', function (event) {
-
-    var loginBtn = $('#login-submit');
-
-    var loginForm = $('#login-form');
-
-    var errMsg = $('#err_msg');
-              <a class="blue_full_btn" type="submit" id="login-submit" >登录</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
-  </div>
-  -->
-</div>
-<script type="text/javascript">
-
-  $(document).on('pageinit', function (event) {
-
-    var loginBtn = $('#login-submit');
-
-    var loginForm = $('#login-form');
-
-    var errMsg = $('#err_msg');
-
-    var errPopup = $('#trigger_err');
-            <button class="blue_full_btn" type="submit" id="login-submit" >登录</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!--
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
-  </div>
-  -->
-</div>
 <script type="text/javascript">
 
   $(document).on('pageinit', function (event) {
