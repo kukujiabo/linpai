@@ -62,7 +62,7 @@
             <div class="row">
               <div class="bdsharebuttonbox" data-tag="share_1">
                 <a class="bds_more" data-cmd="more"></a>
-                <a class="bds_weixin" data-cmd="weixin"></a>
+                <a class="bds_weixin" id="wechat_share" data-cmd="weixin" data-url="/imgs/weixin.png"></a>
                 <a class="bds_tsina" data-cmd="tsina"></a>
                 <a class="bds_qzone" data-cmd="qzone" href="#"></a>
                 <a class="bds_douban" data-cmd="douban"></a>
@@ -92,10 +92,13 @@
              bdText : '使用我的邀请码 {{$recomend->code}} 在51临牌网（http://www.51linpai.com）下单购买车辆临时行驶牌照，你将获取高达 20rmb 的优惠减免。赶快行动吧！',  
            bdDesc : '使用我的邀请码 {{$recomend->code}} 在51临牌网（http://www.51linpai.com）下单购买车辆临时行驶牌照，你将获取高达 20rmb 的优惠减免。赶快行动吧！',  
            bdUrl : 'http://51linpai.com/home',  
-           bdPic : 'http://51linpai.com/imgs/wechat-code.jpg'
+           bdPic : 'http://51linpai.com/imgs/weixin.png',
+           bdSnsKey: { 'weixin' : 'wx876ec75dc270436b'}
            },
            share : [{
-             "bdSize" : 16
+             "bdSize" : 24
+           }, {
+           
            }],
            slide : [{     
            bdImg : 0,
@@ -241,6 +244,13 @@
     //document.getElementsByClassName('bdshare-slide-button')[0].style.display = 'none';
   
   };
+
+  $('a#wechat_share').click(function (e) {
+  
+    e.preventDefault();
+  
+  
+  });
 
 </script>
 @endsection
