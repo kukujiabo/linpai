@@ -1636,7 +1636,7 @@ class OrdersController extends Controller {
   {
     $order_code = Session::get('unpayed_order');
 
-    $order = Order::where('order_code', '=', $order_code)->first();
+    $order = Order::where('code', '=', $order_code)->first();
 
     if (empty($order->code) || $order->status == 0) {
     
