@@ -140,9 +140,6 @@
       </form>
     </div>
   </div>
-  <div data-role="footer" style="width:100%;position:fixed;bottom:0px;">
-    <h2>www.51linpai.com</h2>
-  </div>
   <div data-role="popup" data-theme="b" data-position-to="window" id="alert_pop" class="ui-content">
     <a href="#" data-rel="back" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
     <h4>提示</h4>
@@ -154,152 +151,152 @@
 
   $(document).on('pageinit', function (e) {
 
-  var btnSubmit = $('#commit');
+    var btnSubmit = $('#commit');
 
-  var bouns = [];
+    var bouns = [];
 
-  btnSubmit.on('tap', function (e) {
-  
-    e.preventDefault();
-
-    var car = $('input[name=car]').val();
-
-    if (car == undefined || car.length == 0) {
-
-      $('#trigger_pop').click();
-
-      $('#alert_content').html('请选择车辆!');
-
-      return;
+    btnSubmit.on('tap', function (e) {
     
-    } 
+      e.preventDefault();
 
-    var receiver = $('input[name=receiver]').val();
+      var car = $('input[name=car]').val();
 
-    if (receiver == undefined || receiver.length == 0) {
+      if (car == undefined || car.length == 0) {
+
+        $('#trigger_pop').click();
+
+        $('#alert_content').html('请选择车辆!');
+
+        return;
+      
+      } 
+
+      var receiver = $('input[name=receiver]').val();
+
+      if (receiver == undefined || receiver.length == 0) {
+      
+        $('#trigger_pop').click();
+
+        $('#alert_content').html('请选择收件人!');
+
+        return;
+      
+      }
+
+      $('input[name=comment]').val($('#user_comment').val());
+
+      $('#order_form')[0].submit();
     
-      $('#trigger_pop').click();
-
-      $('#alert_content').html('请选择收件人!');
-
-      return;
-    
-    }
-
-    $('input[name=comment]').val($('#user_comment').val());
-
-    $('#order_form')[0].submit();
-  
-  });
-
-  checkInfoComplete();
-
-  var infoItms = $('.info_itm');
-  
-  infoItms.on('tap', function (e) {
-  
-    var that = $(this);
-
-    var type = that.data('type');
-
-    var id = that.data('id');
-  
-    infoItms.removeClass('selected-itm').addClass('select-itm');
-
-    that.removeClass('select-itm').addClass('selected-itm');
-
-    $('input[name=' + type + ']').val(id);
+    });
 
     checkInfoComplete();
-  
-  });
 
-  var bounItms = $('.boun_btn');
-
-  bounItms.on('tap', function (e) {
-  
-    var that = $(this);
-
-    var youhui = $('input.youhui');
-
-    if (that.data('selected') == true) {
+    var infoItms = $('.info_itm');
     
-      that.data('selected', false); 
-
-      that.addClass('blue_white_btn').removeClass('red_white_btn');
+    infoItms.on('tap', function (e) {
     
-      for (var i = 0; i < youhui.length; i++) {
+      var that = $(this);
+
+      var type = that.data('type');
+
+      var id = that.data('id');
+    
+      infoItms.removeClass('selected-itm').addClass('select-itm');
+
+      that.removeClass('select-itm').addClass('selected-itm');
+
+      $('input[name=' + type + ']').val(id);
+
+      checkInfoComplete();
+    
+    });
+
+    var bounItms = $('.boun_btn');
+
+    bounItms.on('tap', function (e) {
+    
+      var that = $(this);
+
+      var youhui = $('input.youhui');
+
+      if (that.data('selected') == true) {
       
-        var y = youhui[i];
+        that.data('selected', false); 
 
-        if (y.value == that.data('id')) {
+        that.addClass('blue_white_btn').removeClass('red_white_btn');
+      
+        for (var i = 0; i < youhui.length; i++) {
+        
+          var y = youhui[i];
 
-          y.value = "";
+          if (y.value == that.data('id')) {
 
-          break;
+            y.value = "";
+
+            break;
+          
+          }
         
         }
+
+      } else {
+
+        for (var i = 0; i < youhui.length; i++) {
+        
+          var y = youhui[i];
+
+          console.log(y.value);
+
+          if (y.value == undefined || y.value == '') {
+
+            y.value = that.data('id');
+
+            break;
+          
+          }
+
+          if (i == 2) {
+
+            $('#alert_content').html('最多使用3张优惠券！');
+
+            $('#trigger_pop').click();
+
+            return;
+          
+          }
+        
+        }
+
+        bouns.push(that.data('id'));
+
+        that.data('selected', true);
+
+        that.addClass('red_white_btn').removeClass('blue_white_btn');
       
       }
+    
+    });
 
-    } else {
+    function checkInfoComplete () {
+    
+      var sCar = $('input[name=car]').val();
 
-      for (var i = 0; i < youhui.length; i++) {
+      var sReceiver = $('input[name=receiver]').val();
+
+      if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
       
-        var y = youhui[i];
+        btnSubmit.addClass('red_white_btn').removeClass('gray_white_btn');
 
-        console.log(y.value);
-
-        if (y.value == undefined || y.value == '') {
-
-          y.value = that.data('id');
-
-          break;
-        
-        }
-
-        if (i == 2) {
-
-          $('#alert_content').html('最多使用3张优惠券！');
-
-          $('#trigger_pop').click();
-
-          return;
-        
-        }
+        btnSubmit.html('提交');
+       
+      } else {
       
+        btnSubmit.addClass('gray_white_btn').removeClass('red_white_btn');
+      
+        btnSubmit.html('资料未完成');
       }
-
-      bouns.push(that.data('id'));
-
-      that.data('selected', true);
-
-      that.addClass('red_white_btn').removeClass('blue_white_btn');
     
     }
-  
-  });
-
-  function checkInfoComplete () {
-  
-    var sCar = $('input[name=car]').val();
-
-    var sReceiver = $('input[name=receiver]').val();
-
-    if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
-    
-      btnSubmit.addClass('red_white_btn').removeClass('gray_white_btn');
-
-      btnSubmit.html('提交');
-     
-    } else {
-    
-      btnSubmit.addClass('gray_white_btn').removeClass('red_white_btn');
-    
-      btnSubmit.html('资料未完成');
-    }
-  
-  }
 
   });
 
