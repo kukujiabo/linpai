@@ -1638,17 +1638,17 @@ class OrdersController extends Controller {
 
     $order = Order::where('code', '=', $order_code)->first();
 
-    if (empty($order->code) || $order->status == 0) {
+    if ($order->status == 1) {
     
-      return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+      Session::forget('unpayed_order');
+
+      return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
       ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
     
     } else {
 
-      Session::forget('unpayed_order');
-
-      return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+      return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
       ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
 
