@@ -111,7 +111,6 @@
   <!-- modal -->
 
   @yield('modal-box')
-
   
 <script type="text/javascript">
   window.onload = function () {$('body').css({background: "#eee"});};
