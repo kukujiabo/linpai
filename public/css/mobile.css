@@ -166,3 +166,9 @@ label.form-label {
 .top-50 {
   margin-top: 50px;
 }
+
+.add_itm {
+  background: #fff !important;
+  color: #139ed1 !important;
+  font-weight: normal !important;
+}

@@ -6,34 +6,30 @@
 <div data-role="page">
   <div data-role="header">
     <h1>车辆信息－51临牌</h1>
+    <a href="#" class="ui-btn">返回</a>
   </div>
   <div data-role="content">
     <ul data-role="listview">
-      <li> 
-        <h2>所有人</h2>
-        <p>
-  
-        </p>
+      <li data-icon="edit" data-iconpos="right"> 
+        <a href="#">
+          <h2>所有人</h2>
+          <span>meroc</span>
+        </a>
       </li>
-      <li> 
-        <h2>厂牌型号</h2>
-        <p>
-  
-        </p>
-
+      <li data-icon="edit" data-iconpos="right"> 
+        <a href="#">
+          <h2>厂牌型号</h2>
+        </a>
       </li>
-      <li> 
-        <h2>车辆品牌</h2>
-        <p>
-  
-        </p>
-
+      <li data-icon="edit" data-iconpos="right"> 
+        <a href="#">
+          <h2>车辆品牌</h2>
+        </a>
       </li>
-      <li> 
-        <h2>识别代码</h2>
-        <p>
-  
-        </p>
+      <li data-icon="edit" data-iconpos="right">  
+        <a href="#">
+          <h2>识别代码</h2>
+        </a>
       </li>
       <li data-icon="camera" data-iconpos="right">
         <a href="#">
@@ -66,6 +62,11 @@
     </ul>
   </div>
   
+  <div class="ui-content">
+    <div class="ui-btn red_white_btn">
+      <a href="#" style="color:#d9534f" >保存</a>
+    </div>
+  </div>
 </div>
 
 @endsection

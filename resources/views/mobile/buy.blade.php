@@ -12,7 +12,7 @@
     <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:0px;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;vertical-align:middle;line-height:20px;">1</div>
     <div style="width:22px;height:22px;background:#00bbff;position:relative;top:13px;left:27%;border-radius:12px;float:left;text-align:center;color:white;font-size:12px;line-height:22px;">2</div>
     <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:54%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">3</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:82%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">4</div>
+    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:80%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">4</div>
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <div class="ui-content">
@@ -56,8 +56,8 @@
                 </li>
             @endforeach
           
-              <li data-icon="carat-r">
-                <a href="#" id="add_car">添加车辆信息</a>
+              <li data-icon="carat-r" class="add_itm">
+                <a href="/mobile/addcar" id="add_car" class="add_itm">添加车辆信息</a>
               </li>
 
           </ul>
@@ -86,7 +86,9 @@
                 </li>
             @endforeach
 
-            <li  data-icon="carat-r"><a id="add_receiver" href="#">添加新的收件人</a></li>
+            <li  data-icon="carat-r" class="add_itm">
+              <a id="add_receiver" class="add_itm" href="#">添加新的收件人</a>
+            </li>
           </ul>
         </p> 
       </div>
