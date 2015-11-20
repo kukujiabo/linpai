@@ -17,7 +17,7 @@ class VerifyCsrfToken extends BaseVerifier {
 	{
     //edit by meroc chen 2015-10-14
     //
-    if ($request->is('order/paynotify') || $request->is('order/wxpay')) {
+    if ($request->is('/order/paynotify') || $request->is('/order/wxpay')) {
 
       return $next($request);
 
