@@ -151,4 +151,11 @@ class MinisiteController extends Controller {
 
   }
 
+  public function getAddcar (Request $request) 
+  {
+  
+    return view('/mobile/add_car');
+  
+  }
+
 }

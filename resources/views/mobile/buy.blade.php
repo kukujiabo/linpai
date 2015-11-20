@@ -55,6 +55,10 @@
                   {{$car->owner}}&nbsp;&nbsp;{{$car->brand}}&nbsp;&nbsp;{{$car->reco_code}}
                 </li>
             @endforeach
+          
+              <li data-icon="carat-r">
+                <a href="#" id="add_car">添加车辆信息</a>
+              </li>
 
           </ul>
         </p>
@@ -82,7 +86,7 @@
                 </li>
             @endforeach
 
-            <li  data-icon="plus"><a href="#">添加新的收件人</a></li>
+            <li  data-icon="carat-r"><a id="add_receiver" href="#">添加新的收件人</a></li>
           </ul>
         </p> 
       </div>
