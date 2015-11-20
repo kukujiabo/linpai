@@ -220,21 +220,31 @@ class OrdersController extends Controller {
 
   public function postPay(Request $request) 
   {
+
     /*
      * 防止表单重复提交
      * 
      * Session 存入表单令牌
      */
     if (Session::get('order_submit') == $request->input('form_code')) {
+
+      $mb = $request->input('mb');
+
+      if (empty($mb) || $mb = 'false') {
     
-      return redirect('/order/pay?order=' . Session::get('order_code'));
+        return redirect('/order/pay?order=' . Session::get('order_code'));
+
+      } else {
+      
+      
+      }
     
     } else {
 
       Session::put('order_submit', $request->input('form_code'));
     
     }
-    
+
     $user = Auth::user();
 
     $carHand = $request->input('car_hand');
@@ -1464,10 +1474,14 @@ class OrdersController extends Controller {
           }
 
         } else {
-        
-          $note['reduction'] += $boun->note;
 
-          array_push($note['availableBouns'], $code);
+          if ($boun->uid != $user->id) {
+        
+            $note['reduction'] += $boun->note;
+
+            array_push($note['availableBouns'], $code);
+
+          }
         
         }
       

@@ -18,22 +18,26 @@
           <input type="text" name="mobile" placeholder="请输入手机号">
         </div>
         <div class="form-group">
-          <div class="ui-input-text ui-body-inherit no-margin ui-corner-all ui-shadow-inset" data-inline="true" style="width:60%;float:left">
+          <div class="ui-input-text ui-body-inherit no-margin ui-corner-all ui-shadow-inset ui-btn-b" data-inline="true" style="width:71%;float:left">
             <input data-role="none"  type="text" name="reset_code" placeholder="请输入验证码"> 
           </div>
-          <div class="ui-btn ui-input-btn ui-corner-all ui-shadow no-margin ui-btn-inline ui-mini" style="margin-left:1px;float:left;">
+          <div class="ui-btn ui-corner-all no-margin ui-btn-inline ui-mini" style="margin-left:1px;float:right;" data-inline="true">
             <a href="#" id="reset_sms" style="margin-top:3px;" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
         <div class="form-group">
-          <input type="password" name="newpassword" placeholder="请输入新密码">
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input data-role="none" type="password" name="newpassword" placeholder="请输入新密码">
+          </div>
         </div>
         <div class="form-group">
-          <input type="password" name="confirmpassword" placeholder="确认新密码">
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input data-role="none" type="password" name="confirmpassword" placeholder="确认新密码">
+          </div>
         </div>
         <div class="form-group margin-top-50">
-          <button type="submit" id="submit_form">修改密码</button>
+          <a type="submit" id="submit_form" class="blue_full_btn no_text_shadow" >修改密码</a>
         </div>
       </form>
     </div>

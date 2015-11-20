@@ -10,6 +10,7 @@ use App\Models\OrderAllInfo;
 use App\Models\ReceiverInfo as Receiver;
 use App\Models\Boun;
 use App\Models\Car;
+use App\Models\GoodAttribsInfo;
 use Auth;
 
 class OrderController extends Controller {
@@ -144,6 +145,8 @@ class OrderController extends Controller {
 
         ->get();
 
+    $goodInfo = GoodAttribsInfo::where('gid', '=', $good->id)->where('acode', '=', 'price')->first();
+
     $data = [
       
       'good' => $good,
@@ -156,7 +159,13 @@ class OrderController extends Controller {
 
       'defaultCar' => $defaultCar,
 
-      'bouns' => $bouns
+      'bouns' => $bouns,
+
+      'goodInfo' => $goodInfo,
+
+      'formCode' => md5(time()),
+
+      'car_hand' => $carhand
       
     ];
 

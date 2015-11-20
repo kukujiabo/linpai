@@ -27,8 +27,8 @@ img.logo {
 }
 
 .form-block {
-  padding: 0px 10%;
-  margin: 40px 0px;
+  padding: 0px 5%;
+  margin: 10px 0px;
 }
 
 .float-right {
@@ -119,4 +119,46 @@ label.form-label {
   border: #138ed1 1px solid !important;
   background: white !important;
   font-size: 14px !important;
+}
+
+.blue_full_btn {
+  color: white !important;
+  background: #138ed1 !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+}
+
+.red_white_btn {
+  color: #d9534f !important;
+  border: 1px #d9534f solid !important;
+  background: white !important;
+  font-size: 14px !important;
+}
+
+.gray_white_btn {
+  color: white !important;
+  background: #aaa !important;
+  font-size: 14px !important;
+}
+
+.itm-title {
+  font-weight: normal !important;
+
+}
+
+.no-radius {
+  border-radius: 0px !important;
+}
+
+.blue_white {
+  background:  #138ed1 !important;
+  color: white !important;
+  text-shadow: none;
+  border: 0px;
+  font-size: 14px;
+}
+
+.no_text_shadow {
+  text-shadow: 0 !important;
 }
