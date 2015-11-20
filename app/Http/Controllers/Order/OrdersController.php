@@ -1634,32 +1634,24 @@ class OrdersController extends Controller {
 
   public function getWxorder (Request $request) 
   {
-    $order_code = $request->input('order_code');
-  
-    if (empty($order_code)) {
+    $order_code = Session::get('unpayed_order');
+
+    $order = Order::where('order_code', '=', $order_code)->first();
+
+    if (empty($order->code) || $order->status == 0) {
     
       return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-      ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
+      ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
     
     } else {
 
-      $order = Order::where('order_code', '=', $order_code)->first();
-    
-      if (empty($order->id) || $order->status == 0) {
-      
-        return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+      Session::forget('unpayed_order');
 
-        ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
-      
-      } else if ($order->status == 1) {
+      return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-        return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+      ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
 
-        ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
-
-      }
-    
     }
 
   }
@@ -1829,6 +1821,8 @@ class OrdersController extends Controller {
     $png = \QRcode::png($url2, $path . $file);
 
     $qrcode = '/imgs/wxpay_qrcode/' . $file;
+
+    Session::put('unpayed_order', $order->code);
 
     return view('wxpay', [ 'qrcode' => $qrcode,
      
