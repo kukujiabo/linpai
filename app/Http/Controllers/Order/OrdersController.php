@@ -1578,17 +1578,14 @@ class OrdersController extends Controller {
 
   public function postWxpay (Request $request)
   {
-    require_once('lib/require_once');
-
-    $return_code = $request->input('return_code');
-
-    $return_msg = $request->input('return_msg');
+    require_once 'lib/WxPay.Api.php';
+    require_once 'lib/WxPay.Notify.php';
 
     Wxpay::create([
       
-        'return_code' => $return_code,
+        'return_code' => 1,
 
-        'return_msg' => $return_msg
+        'return_msg' => 1
       
       ]);
     
