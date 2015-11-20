@@ -15,14 +15,16 @@
       <form action="{{asset('/user/passwdreset')}}" data-ajax="false" method="post" id="reset_pass_form">
         <input type="hidden" value="{{csrf_token()}}" name="_token">
         <div class="form-group">
-          <input type="text" name="mobile" placeholder="请输入手机号">
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input data-role="none" type="text" name="mobile" placeholder="请输入手机号">
+          </div>
         </div>
         <div class="form-group">
-          <div class="ui-input-text ui-body-inherit no-margin ui-corner-all ui-shadow-inset ui-btn-b" data-inline="true" style="width:71%;float:left">
+          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:72%;float:left">
             <input data-role="none"  type="text" name="reset_code" placeholder="请输入验证码"> 
           </div>
-          <div class="ui-btn ui-corner-all no-margin ui-btn-inline ui-mini" style="margin-left:1px;float:right;" data-inline="true">
-            <a href="#" id="reset_sms" style="margin-top:3px;" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
+          <div class="ui-btn  no-margin ui-mini blue_white" style="margin-left:1px;float:left;" data-inline="true">
+            <a href="#" id="reset_sms" class="blue_white" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
@@ -37,7 +39,9 @@
           </div>
         </div>
         <div class="form-group margin-top-50">
-          <a type="submit" id="submit_form" class="blue_full_btn no_text_shadow" >修改密码</a>
+          <div class="ui-btn blue_white" >
+            <a type="submit" id="submit_form" class="blue_white" style="font-size:16px;" >确认</a>
+          </div>
         </div>
       </form>
     </div>
