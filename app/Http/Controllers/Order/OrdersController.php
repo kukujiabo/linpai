@@ -1638,23 +1638,25 @@ class OrdersController extends Controller {
   
     if (empty($order_code)) {
     
-      return 'data:no' . "\r\n\r\n";
+      return response('no', 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+
+      ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
     
     } else {
 
       $order = Order::where('order_code', '=', $order_code)->first();
     
-      if (empty($order->id)) {
+      if (empty($order->id) || $order->status == 0) {
       
-        return 'data:no' . "\r\n\r\n";
+        return response('no', 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+
+        ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
       
       } else if ($order->status == 1) {
 
-        return 'data:yes' . "\r\n\r\n";
+        return response('yes', 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-      } else {
-
-        return 'data:no' . "\r\n\r\n";
+        ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
 
       }
     
