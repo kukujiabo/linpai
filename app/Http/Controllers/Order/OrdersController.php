@@ -1303,7 +1303,7 @@ class OrdersController extends Controller {
 
     $order_code = $request->input('order_code');
 
-    $order = Order::where('order_code', '=', $order_code)->first();
+    $order = Order::where('code', '=', $order_code)->first();
 
     if ($order->status == 1) {
 
