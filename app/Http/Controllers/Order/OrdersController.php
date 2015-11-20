@@ -1832,7 +1832,9 @@ class OrdersController extends Controller {
      
       'price' => $orderPrice->final_price,
 
-      'good' => $good
+      'good' => $good,
+
+      'order_code' => $order->code
      
       ]);
 
