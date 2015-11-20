@@ -152,6 +152,7 @@
 </div>
 <script type="text/javascript">
 
+  $(document).on('pageinit', function (e) {
 
   var btnSubmit = $('#commit');
 
@@ -299,6 +300,8 @@
     }
   
   }
+
+  });
 
 
 </script>

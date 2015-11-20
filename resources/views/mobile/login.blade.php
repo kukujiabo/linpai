@@ -12,11 +12,11 @@
     </div>
     <a href="#err_popup" data-rel="popup" id="trigger_err"></a>
     <div class="text-center" id="login-board">
-      <img src="{{asset('/imgs/logo-linpai-mobile.png')}}" class="logo" />
+      <img style="margin-top:50px" src="{{asset('/imgs/logo-linpai-mobile.png')}}" class="logo" />
       <div class="form-block">
         <div class="" id="err-list">
         </div>
-        <form class="form" id="login-form" data-ajax="false" action="{{asset('/user/ajaxlogin')}}" method="post">
+        <form class="form" style="margin-top:80px;" id="login-form" data-ajax="false" action="{{asset('/user/ajaxlogin')}}" method="post">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="form-group"> 
             <div class="ui-input-text ui-body-inherit " data-inline="true">
@@ -34,7 +34,7 @@
             <span style="float:right">没有51临牌账号？</span>
           </div>
           <div class="clear"></div>
-          <div class="form-group" style="margin-top:70px">
+          <div class="form-group" style="margin-top:90px">
             <div class="blue_full_btn ui-btn ui-input-btn" style="margin:0px;">
               <a href="#" type="submit" id="login-submit" class="blue_full_btn" >登录</a>
             </div>

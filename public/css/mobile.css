@@ -162,3 +162,7 @@ label.form-label {
 .no_text_shadow {
   text-shadow: 0 !important;
 }
+
+.top-50 {
+  margin-top: 50px;
+}
