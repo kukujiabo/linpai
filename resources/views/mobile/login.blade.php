@@ -19,27 +19,102 @@
         <form class="form" id="login-form" data-ajax="false" action="{{asset('/user/ajaxlogin')}}" method="post">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="form-group"> 
-            <input type="text" name="mobile" placeholder="请输入手机号">
+            <div class="ui-input-text ui-body-inherit " data-inline="true">
+              <input data-role="none" type="text" name="mobile" placeholder="请输入手机号">
+            </div>
           </div>
           <div class="form-group">
-            <input type="password" name="password" placeholder="请输入密码">
+            <div class="ui-input-text ui-body-inherit " data-inline="true">
+              <input type="password" data-role="none" name="password" placeholder="请输入密码">
+            </div>
           </div>
           <div class="options-inline">
-            <a href="{{asset('/mobile/password')}}" style="float:left">忘记密码</a>    
+            <a href="{{asset('/mobile/password')}}" style="float:left;color: #d9534f">忘记密码</a>    
             <a href="{{asset('/mobile/register')}}" style="float:right">点击注册</a>  
             <span style="float:right">没有51临牌账号？</span>
           </div>
           <div class="clear"></div>
           <div class="form-group" style="margin-top:70px">
-            <button type="submit" id="login-submit" >登录</button>
+            <div class="blue_full_btn ui-btn ui-input-btn" style="margin:0px;">
+              <a type="submit" id="login-submit" class="blue_full_btn" >登录</a>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+  <!--
   <div data-role="footer">
     <h2>www.51linpai.com</h2>
   </div>
+  -->
+</div>
+<script type="text/javascript">
+
+  $(document).on('pageinit', function (event) {
+
+    var loginBtn = $('#login-submit');
+
+    var loginForm = $('#login-form');
+
+            <div class="form-group" style="margin-top:70px">
+              <a class="blue_full_btn" type="submit" id="login-submit" >登录</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div data-role="footer">
+    <h2>www.51linpai.com</h2>
+  </div>
+  -->
+</div>
+<script type="text/javascript">
+
+  $(document).on('pageinit', function (event) {
+
+    var loginBtn = $('#login-submit');
+
+    var loginForm = $('#login-form');
+
+    var errMsg = $('#err_msg');
+              <a class="blue_full_btn" type="submit" id="login-submit" >登录</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div data-role="footer">
+    <h2>www.51linpai.com</h2>
+  </div>
+  -->
+</div>
+<script type="text/javascript">
+
+  $(document).on('pageinit', function (event) {
+
+    var loginBtn = $('#login-submit');
+
+    var loginForm = $('#login-form');
+
+    var errMsg = $('#err_msg');
+
+    var errPopup = $('#trigger_err');
+            <button class="blue_full_btn" type="submit" id="login-submit" >登录</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div data-role="footer">
+    <h2>www.51linpai.com</h2>
+  </div>
+  -->
 </div>
 <script type="text/javascript">
 

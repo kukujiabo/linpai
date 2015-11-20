@@ -16,45 +16,54 @@
       <form class="form" data-ajax="false" action="{{asset('auth/register')}}" method="post" id="register_form">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="form-group">
-          <input type="text" name="mobile" placeholder="请输入手机号"> 
-          <div class="clear"></div>
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input type="text" data-role="none" name="mobile" placeholder="请输入手机号"> 
+            <div class="clear"></div>
+          </div>
         </div>
         <div class="form-group">
-          <div class="ui-input-text ui-body-inherit no-margin ui-corner-all ui-shadow-inset" data-inline="true" style="width:60%;float:left">
+          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:71%;float:left">
             <input data-role="none"  type="text" name="verify_code" placeholder="请输入验证码"> 
+            <div class="clear"></div>
           </div>
-          <div class="ui-btn ui-input-btn ui-corner-all ui-shadow no-margin ui-btn-inline ui-mini" style="margin-left:1px;float:left;">
-            <a href="{{asset('/verify/regsms')}}" id="send_code" style="margin-top:3px;">发送验证码</a>
+          <div class="ui-btn ui-mini blue_white" style="margin:0px;float:left;">
+            <a href="{{asset('/verify/regsms')}}" class="blue_white" id="send_code" style="margin-top:0px;">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
         <div class="form-group">
-          <input type="text" name="name" placeholder="请输入用户名">
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+          <input data-role="none" type="text" name="name" placeholder="请输入用户名">
           <div class="clear"></div>
+          </div>
         </div>
         <div class="form-group">
-          <input type="email" name="email" placeholder="请输入邮箱">
-          <div class="clear"></div>
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input data-role="none" type="email" name="email" placeholder="请输入邮箱">
+            <div class="clear"></div>
+          </div>
         </div>
         <div class="form-group">
-          <input type="password" name="password" placeholder="请输入密码">
-          <div class="clear"></div>
+          <div class="ui-input-text ui-body-inherit " data-inline="true">
+            <input data-role="none" type="password" name="password" placeholder="请输入密码">
+            <div class="clear"></div>
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label" for="readed">
-            <input type="checkbox" id="readed" name="readed_license" checked>
-            <span>我已阅读且同意</span>
-            <a href="#">《51临牌使用协议》</a>
+              <input data-role="none" type="checkbox" id="readed" name="readed_license" checked>
+              <span>我已阅读且同意</span>
+              <a href="#">《51临牌使用协议》</a>
           </label> 
         </div>
         <div class="form-group" style="margin: 20px 0px;">
-          <button role="button" id="reg_submit">提交</button>
+          <div class="ui-btn ui-input-btn blue_full_btn" style="margin:0px;">
+            <a role="button" type="submit" class="blue_full_btn" id="reg_submit">提交</a>
+          </div>
         </div>
       </form>
     </div>
   </div>
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
   </div>
 </div>
 <script type="text/javascript">
