@@ -708,7 +708,7 @@ class OrdersController extends Controller {
 
     $alipaySubmit = new \AlipaySubmit($alipay_config);
 
-    $parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
+    //$parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
 
     $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "正在跳转到支付宝...");
 
@@ -1285,6 +1285,12 @@ class OrdersController extends Controller {
   
   }
 
+  private function paySuccess($order)
+  {
+  
+  
+  }
+
   /*
    *
    */
@@ -1588,13 +1594,16 @@ class OrdersController extends Controller {
         'return_msg' => 1
       
       ]);
-    
-    $notify = new \NativeNotifyCallBack();
-
-    $notify->Handle(true);
   
     return 'success';
 
+  }
+
+  public function getWxorder (Request $request) 
+  {
+  
+  
+  
   }
 
   public function getRebuy (Request $request) 
