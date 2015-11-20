@@ -1034,15 +1034,17 @@ class OrdersController extends Controller {
   {
     require_once('lib/alipay_notify.class.php');
 
+    /*
     $alipayNotify = new \AlipayNotify($this->payConfig());
 
     $verifyResult = $alipayNotify->verifyReturn();
+     */
 
     $order = null;
 
     $user = null;
 
-    if ($verifyResult) {
+    //if ($verifyResult) {
 
       $orderCode = $_GET['out_trade_no'];
 
@@ -1094,211 +1096,224 @@ class OrdersController extends Controller {
 
        }
 
+       return $this->paySuccess($order);
 
-        /*
-         * 获取下单用户
-         */
-        $user = User::find($order->uid);
+     } else {
 
-        if (Auth::user() == null) {
+       return "fail";
 
-          Auth::loginUsingId($user->id); 
+     }
 
-          Session::regenerate();
-
-        }
-
-        /*
-         * 订单优惠券
-         */
-        $orderBouns = OrderBoun::where('oid', '=', $order->id) 
-
-          ->where('uid', '=', $user->id)
-
-          ->where('success', 'is', 'null')
-
-          ->get();
-        
-        /*
-         * 订单价钱
-         */
-        $orderPrice = OrderPrice::where('oid', '=', $order->id)
-
-          ->where('active', '=', 1)
-
-          ->first();
-
-        /*
-         * 收货人信息
-         */
-        $receiver = ReceiverInfo::where('id', '=', $order->rid)
-
-          ->where('active', '=', 1)
-
-          ->first();
-
-        /*
-         * todo pay.
-         */
-        
-        /*
-         * 发送订单确认短信
-         * 1.查询用户是否有推荐码，如果没有，则生成
-         * 2.发送短信 订单号，推荐码，抵扣费用
-         */
-        $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
-
-        $sms = event(new TriggerSms($user->mobile, 'payed', [
-          
-          'order_code' => $order->code, 
-          
-          'boun' => $boun->code, 
-          
-          'fee' => $boun->note
-        
-        ]));
-
-        $mail = event(new TriggerEmail($user->email, 'payed', [ 
-          
-          'order_code' => $order->code, 
-          
-          'recommend' => $boun->code,
-
-          'order_date' => $order->created_at
-        
-        ]));
-
-        /*
-         * pay success.
-         *
-         * 1.将订单状态置为已付款
-         * 2.判断是否使用推荐码
-         *
-         */ 
-        foreach ($orderBouns as $orderBoun) {
-
-          $orderBoun->success = 1;
-
-          $orderBoun->save();
-        
-          if ($orderBoun->btype == 0) {
-          
-            /*
-             * 如果是推荐码.
-             */
-            $friend = User::find($orderBoun->owner_id);
-
-            if (!empty($friend->id)) {
-              /*
-               * 触发短信
-               */
-              event(new TriggerSms($friend->mobile, 'friend_use'));
-
-              /*
-               * 触发邮件
-               */
-              event(new TriggerEmail($friend->email, 'friend_use', [ 'friend' => $user->name ]));
-
-            }
-
-            $bCount = OrderBoun::where('bcode', '=', $orderBoun->bcode)
-
-              ->where('rewarded', '=', 0)
-
-              ->where('success', '=', 1)
-
-              ->count();
-
-            if ($bCount >= 1) {
-
-              /*
-               * 成功使用次数达到10张，赠送一张优惠券
-               */
-              Boun::create([
-              
-                'note' => 30,
-
-                'type' => 1,
-
-                'uid' => $orderBoun->owner_id,
-                
-                'code' => Boun::generateOrderCode(),
-
-                'active' => 1
-              
-              ]);
-            
-              OrderBoun::where('bcode', '=', $orderBoun->bcode)
-
-                ->where('rewarded', '=', 0)
-
-                ->update(['rewarded' => 1]);
-            
-            }
-          
-          
-          } else {
-            
-            /*
-             * 如果是优惠码.
-             */
-            Boun::where('code', '=', $orderBoun) 
-
-              ->where('uid', '=', $user->id)
-
-              ->update(['active' => 0]);
-          
-          }
-        
-        }
-
-        $data = [
-        
-          'is_deliver' => true,
-
-          'receiverInfos' => $receiver,
-
-          'orderPrice' => $orderPrice,
-
-          'user' => $user,
-
-          'order' => $order,
-
-          'wTitle' => '支付成功！'
-
-        ];
-
-        //var_dump($request->cookie('51_linpai'));
-
-        return view('orders/pay_success', $data); 
-
-      } else {
-
-        return "fail";
-
-      }
-
+      /*
     } else {
 
       return redirect('/home');
 
     }
-  
+       */
   }
 
   private function paySuccess($order)
   {
-  
-  
+
+    /*
+     * 获取下单用户
+     */
+    $user = User::find($order->uid);
+
+    if (Auth::user() == null) {
+
+      Auth::loginUsingId($user->id); 
+
+      Session::regenerate();
+
+    }
+
+    /*
+     * 订单优惠券
+     */
+    $orderBouns = OrderBoun::where('oid', '=', $order->id) 
+
+      ->where('uid', '=', $user->id)
+
+      ->where('success', 'is', 'null')
+
+      ->get();
+    
+    /*
+     * 订单价钱
+     */
+    $orderPrice = OrderPrice::where('oid', '=', $order->id)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    /*
+     * 收货人信息
+     */
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)
+
+      ->where('active', '=', 1)
+
+      ->first();
+
+    /*
+     * todo pay.
+     */
+    
+    /*
+     * 发送订单确认短信
+     * 1.查询用户是否有推荐码，如果没有，则生成
+     * 2.发送短信 订单号，推荐码，抵扣费用
+     */
+    $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+
+    $sms = event(new TriggerSms($user->mobile, 'payed', [
+      
+      'order_code' => $order->code, 
+      
+      'boun' => $boun->code, 
+      
+      'fee' => $boun->note
+    
+    ]));
+
+    $mail = event(new TriggerEmail($user->email, 'payed', [ 
+      
+      'order_code' => $order->code, 
+      
+      'recommend' => $boun->code,
+
+      'order_date' => $order->created_at
+    
+    ]));
+
+    /*
+     * pay success.
+     *
+     * 1.将订单状态置为已付款
+     * 2.判断是否使用推荐码
+     *
+     */ 
+    foreach ($orderBouns as $orderBoun) {
+
+      $orderBoun->success = 1;
+
+      $orderBoun->save();
+    
+      if ($orderBoun->btype == 0) {
+      
+        /*
+         * 如果是推荐码.
+         */
+        $friend = User::find($orderBoun->owner_id);
+
+        if (!empty($friend->id)) {
+          /*
+           * 触发短信
+           */
+          event(new TriggerSms($friend->mobile, 'friend_use'));
+
+          /*
+           * 触发邮件
+           */
+          event(new TriggerEmail($friend->email, 'friend_use', [ 'friend' => $user->name ]));
+
+        }
+
+        $bCount = OrderBoun::where('bcode', '=', $orderBoun->bcode)
+
+          ->where('rewarded', '=', 0)
+
+          ->where('success', '=', 1)
+
+          ->count();
+
+        if ($bCount >= 1) {
+
+          /*
+           * 成功使用次数达到10张，赠送一张优惠券
+           */
+          Boun::create([
+          
+            'note' => 30,
+
+            'type' => 1,
+
+            'uid' => $orderBoun->owner_id,
+            
+            'code' => Boun::generateOrderCode(),
+
+            'active' => 1
+          
+          ]);
+        
+          OrderBoun::where('bcode', '=', $orderBoun->bcode)
+
+            ->where('rewarded', '=', 0)
+
+            ->update(['rewarded' => 1]);
+        
+        }
+      
+      
+      } else {
+        
+        /*
+         * 如果是优惠码.
+         */
+        Boun::where('code', '=', $orderBoun) 
+
+          ->where('uid', '=', $user->id)
+
+          ->update(['active' => 0]);
+      
+      }
+    
+    }
+
+    $data = [
+    
+      'is_deliver' => true,
+
+      'receiverInfos' => $receiver,
+
+      'orderPrice' => $orderPrice,
+
+      'user' => $user,
+
+      'order' => $order,
+
+      'wTitle' => '支付成功！'
+
+    ];
+
+    //var_dump($request->cookie('51_linpai'));
+
+    return view('orders/pay_success', $data); 
+
   }
 
   /*
    *
    */
-  public function getPaysuccess()
+  public function getPaysuccess(Request $request)
   {
-  
-    return view('orders/pay_success');
+
+    $order_code = $request->input('order_code');
+
+    $order = Order::where('order_code', '=', $order_code)->first();
+
+    if ($order->status == 1) {
+
+      return $this->paySuccess($order);
+
+    } else {
+
+      return 'failed';
+
+    }
   
   }
 
@@ -1588,20 +1603,63 @@ class OrdersController extends Controller {
     require_once 'lib/WxPay.Api.php';
     require_once 'lib/WxPay.Notify.php';
 
-
     $postdata = file_get_contents("php://input");
 
     WxRaw::create(['raw_data' => $postdata]);
+
+    $doc = new DOMDocument();
+
+    $doc->loadXML($postdata . '');
+    
+    $out_trade_no = $doc->getElementsByTagName("out_trade_no");
+
+    $order_code = $out_trade_no->item(0)->nodeValue;
+
+    $order = Order::where('code', '=', $order_code)->first();
+
+    if (empty($order->id)) {
+    
+      return 'fail';
+    
+    }
+
+    $order->status = 1;
   
+    $order->save();
+
     return 'success';
 
   }
+  
 
   public function getWxorder (Request $request) 
   {
+    $order_code = $request->input('order_code');
   
-  
-  
+    if (empty($order_code)) {
+    
+      return 'data:no' . "\r\n\r\n";
+    
+    } else {
+
+      $order = Order::where('order_code', '=', $order_code)->first();
+    
+      if (empty($order->id)) {
+      
+        return 'data:no' . "\r\n\r\n";
+      
+      } else if ($order->status == 1) {
+
+        return 'data:yes' . "\r\n\r\n";
+
+      } else {
+
+        return 'data:no' . "\r\n\r\n";
+
+      }
+    
+    }
+
   }
 
   public function getRebuy (Request $request) 
