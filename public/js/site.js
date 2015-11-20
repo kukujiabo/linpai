@@ -723,6 +723,7 @@ window.linpai = $linpai;
 
             var modal = $('#linpai-modal');
 
+            /*j
             modal.on('show.bs.modal', function () {
 
               modal.find('.modal-title').html('提交成功!');
@@ -731,8 +732,12 @@ window.linpai = $linpai;
               modal.find('#modal-confirm').hide();
               
             });
+            */
+            var content = "<p style=\'font-size:14px;color:white;margin-left:90px;\'>提交成功！</p><p style=\'font-size:14px;color:white;margin-left:90px;\'>我们将尽快与您联系</p>";
 
-            modal.modal('show');
+            $linpai.toast(content, '', 2000, "\'/imgs/contact_success.jpg\'");
+
+            //modal.modal('show');
 
             cooperForm.find('p.p-5').addClass('hide');
 
@@ -2424,21 +2429,6 @@ var addressBind;
         var sent = data.result.sent;
 
         var s= '<p>发送成功！</p>';
-        /*
-        
-
-        for (var ky in sent) {
-
-          s += '<p>' + sent[ky] + ' 已发送!' + '</p>';
-
-        }
-
-        for (var ky in illegal) {
-
-          s += '<p>' + illegal[ky] + ': 不是有效的手机号或邮箱' + '</p>';
-
-        }
-        */
 
         $('.toast-notice').html(s);
 
@@ -2944,11 +2934,17 @@ function isMobile(mobile) {
 
 }
 
-$linpai.toast = function (shortStr, scripts, timeout) {
+$linpai.toast = function (shortStr, scripts, timeout, background) {
 
   $('body').append("<div class=\"over-all\"></div>");
 
   $('body').append("<div class=\"theme-font-blue login-notice animated infinite bounce toast-notice\">" + shortStr + "</div>");
+  
+  if (background != undefined) {
+  
+    $('.toast-notice').css('background', 'url(' + background + ') no-repeat');
+  
+  }
 
   window.setTimeout(scripts, timeout);
 

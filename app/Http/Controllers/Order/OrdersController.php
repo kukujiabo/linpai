@@ -1607,7 +1607,7 @@ class OrdersController extends Controller {
 
     WxRaw::create(['raw_data' => $postdata]);
 
-    $doc = new DOMDocument();
+    $doc = new \DOMDocument();
 
     $doc->loadXML($postdata . '');
     
