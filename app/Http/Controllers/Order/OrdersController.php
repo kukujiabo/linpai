@@ -1589,7 +1589,7 @@ class OrdersController extends Controller {
       
       ]);
     
-    $notify = new NativeNotifyCallBack();
+    $notify = new \NativeNotifyCallBack();
 
     $notify->Handle(true);
   
