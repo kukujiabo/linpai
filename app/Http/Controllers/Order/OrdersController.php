@@ -28,6 +28,7 @@ use App\Models\PayCheck;
 use App\Models\Bank;
 use \Config;
 use App\Models\Wxpay;
+use App\Models\Wxpay_raw_data as WxRaw;
 
 class OrdersController extends Controller {
 
@@ -1587,13 +1588,10 @@ class OrdersController extends Controller {
     require_once 'lib/WxPay.Api.php';
     require_once 'lib/WxPay.Notify.php';
 
-    Wxpay::create([
-      
-        'return_code' => 1,
 
-        'return_msg' => 1
-      
-      ]);
+    $postdata = file_get_contents("php://input");
+
+    WxRaw::create(['raw_data' => $postdata]);
   
     return 'success';
 
