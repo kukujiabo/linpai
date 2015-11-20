@@ -30,9 +30,9 @@
 <script src="{{ asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript">
   
-  var source = new EventSource('http://localhost:8000/order/wxorder');
+  var source = new EventSource('http://www.51linpai.com:8000/order/wxorder');
 
-  var jumpUrl = "http://localhost:8000/order/paysuccess?order_code={{$order_code}}";
+  var jumpUrl = "http://www.51linpai.com:8000/order/paysuccess?order_code={{$order_code}}";
 
   source.onopen = function () {
   
