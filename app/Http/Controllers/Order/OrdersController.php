@@ -1638,7 +1638,7 @@ class OrdersController extends Controller {
   
     if (empty($order_code)) {
     
-      return response('no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+      return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
       ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
     
@@ -1648,13 +1648,13 @@ class OrdersController extends Controller {
     
       if (empty($order->id) || $order->status == 0) {
       
-        return response('no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+        return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
         ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
       
       } else if ($order->status == 1) {
 
-        return response('yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
+        return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
         ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
 
