@@ -1728,8 +1728,6 @@ class OrdersController extends Controller {
 
   private function wechatPay ($order, $good, $orderPrice)
   {
-    //ini_set('date.timezone', 'Aisa/Shanghai');
-
     require_once('lib/WxPay.Api.php');
 
     require_once('WxPay.NativePay.php');
