@@ -13,7 +13,6 @@
       <li data-icon="edit" data-iconpos="right"> 
         <a href="#">
           <h2>所有人</h2>
-          <span>meroc</span>
         </a>
       </li>
       <li data-icon="edit" data-iconpos="right"> 
@@ -32,11 +31,9 @@
         </a>
       </li>
       <li data-icon="camera" data-iconpos="right">
-        <a href="#">
+        <a href="#" class="file_upload" data-target="identity_face">
           <h2>身份证正面的扫描</h2>
-          <label>
-            
-          </label>
+          <input type="file" data-role="none" id="identity_face" name="identity_face" accept="image/*" style="display:none">
         </a>
       </li>
       <li data-icon="camera" data-iconpos="right"> 
@@ -69,4 +66,27 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  
+  $(document).on('pageinit', function ()  {
+
+    var uploadBtn = $('a.file_upload');
+     
+    uploadBtn.on('tap', function (e) {
+
+      var that = $(this);
+
+      var target = that.data('target');
+
+      var uploadInput = $('#' + target);
+
+      console.log(uploadInput);
+
+      uploadInput.click();
+    
+    });
+
+  });
+
+</script>
 @endsection
