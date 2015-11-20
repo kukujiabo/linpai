@@ -1515,7 +1515,7 @@ class OrdersController extends Controller {
 
     $alipay_config['cacert'] = getcwd() . '\\cacert.pem';
 
-    $alipay_config['transport'] = 'http';
+    $alipay_config['transport'] = 'https';
   
     return $alipay_config; 
   
