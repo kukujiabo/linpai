@@ -231,7 +231,7 @@ class OrdersController extends Controller {
 
       $mb = $request->input('mb');
 
-      if (empty($mb) || $mb = 'false') {
+      if (empty($mb) || $mb == 'false') {
     
         return redirect('/order/pay?order=' . Session::get('order_code'));
 
