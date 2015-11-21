@@ -158,4 +158,11 @@ class MinisiteController extends Controller {
   
   }
 
+  public function getProvider (Request $request)
+  {
+  
+  
+    return view('/mobile/cooper'); 
+  }
+
 }

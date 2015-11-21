@@ -151,6 +151,10 @@ label.form-label {
   border-radius: 0px !important;
 }
 
+.blue_back {
+  background:  #138ed1 !important;
+}
+
 .blue_white {
   background:  #138ed1 !important;
   color: white !important;
@@ -171,4 +175,46 @@ label.form-label {
   background: #fff !important;
   color: #139ed1 !important;
   font-weight: normal !important;
+}
+
+.province-item {
+  width: 100%;
+  padding:10px 5px;
+  color: #999 !important;
+  font-weight: normal !important;
+}
+
+.city-item {
+  width: 100%;
+  padding:10px 5px;
+  color: #999 !important;
+  font-weight: normal !important;
+}
+
+#province-menu li {
+  text-align:center;
+  float:left; 
+  margin: 3px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  min-width: 31%;
+}
+
+#city-menu li {
+  text-align:center;
+  float:left; 
+  margin: 3px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  min-width: 28%;
+}
+
+#district-menu li {
+  text-align:center;
+  float:left; 
+  margin: 3px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  min-width: 28%;
+
 }
