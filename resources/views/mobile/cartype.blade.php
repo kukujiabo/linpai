@@ -1,18 +1,14 @@
 @extends('mobile/mobile')
 
+@include('mobile/step')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
     <h1>购买临牌 - 51临牌</h1>
   </div>
-  <div style="height:50px;background:#eee;padding:0px 10%;">
-    <div style="height:2px;background:#00bbff;position:relative;top:25px;width:100%"></div>
-    <div style="width:24px;height:24px;background:#00bbff;position:relative;top:13px;left:0px;border-radius:12px;float:left;text-align:center;color:white;font-size:12px;vertical-align:middle;line-height:22px;">1</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:27%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">2</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:54%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">3</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:80%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">4</div>
-  </div>
+  @yield('step')
   <div data-role="content">
     <h3>请选择车辆类型：</h3>
     <div style="margin-top:10%;">
