@@ -8,7 +8,6 @@
     <h1>用户条款 － 51临牌</h1>
   </div>
   <div data-role="content">
-    <div class="ui-content">
     <h3 class="blue-theme">51临牌网站使用协议</h3>
     <h4 style="margin:18px 0px;">一、服务条款的确认</h4>
       <ol>
@@ -157,7 +156,6 @@
       </div>
     
       </div>
-  </div>
 </div>
 
 @endsection
