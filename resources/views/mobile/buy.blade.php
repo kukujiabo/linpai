@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="ui-content" style="margin-top:30px;">
-      <form data-role="none" id="order_form" action="{{asset('order/pay')}}" method="post">
+      <form data-role="none" id="order_form" action="/order/pay" method="post">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         @if (!empty($defaultCar)) 
           <input type="hidden" name="car" value="{{$defaultCar->id}}">
@@ -134,7 +134,7 @@
         <input type="hidden" name="good" value="1">
         <input type="hidden" name="car_hand" value="{{$car_hand}}">
         <input type="hidden" name="good_code" value="{{$good->code}}">
-        <input type="hidden" name="form_cod" value="{{$formCode}}">
+        <input type="hidden" name="form_code" value="{{$formCode}}">
         <input type="hidden" name="comment">
         <input type="hidden" class="youhui" name="youhui_1">
         <input type="hidden" class="youhui" name="youhui_2">
