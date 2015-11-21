@@ -1812,7 +1812,7 @@ class OrdersController extends Controller {
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
-    $input->SetAttach("test");
+    $input->SetAttach($good->code);
     $input->SetOut_trade_no($order->code);
     $input->SetTotal_fee("1");
     $input->SetTime_start(date("YmdHis"));
@@ -1850,6 +1850,86 @@ class OrdersController extends Controller {
      
       ]);
 
+  }
+
+  public function postMobilepay(Request $request)
+  {
+  
+    $type = $request->input('pay');
+
+    switch ($type) {
+    
+      case 'zhifubao':
+
+
+        break;
+
+      case 'wechat':
+
+        return $this->wxJsPay($request);
+      
+        break; 
+    
+    }
+  
+  
+  }
+
+  private function wxJsPay($request)
+  {
+    $order_code = $request->input('order_code');
+
+    $order = Order::where('code', '=', $order_code)->first();
+
+    if (empty($order->id)) {
+    
+      //todo
+    
+    } else if ($order->status > 0) {
+    
+      //todo
+    
+    }
+
+    $good = Good::where('id', '=', $order->gid)->first();
+
+    $orderPrice = OrderPrice::where('oid', '=', $order->id)->first();
+
+    require_once "lib/WxPay.Api.php";  
+
+    require_once "lib/WxPay.JsApiPay.php";
+
+    $tools = new \JsApiPay();
+  
+    $openId = $tools->GetOpenid();
+
+    $input = new \WxPayUnifiedOrder();
+    $input->SetBody($good->name);
+    $input->SetAttach($good->code);
+    $input->SetOut_trade_no($order->code);
+    $input->SetTotal_fee("1");
+    $input->SetTime_start(date("YmdHis"));
+    $input->SetTime_expire(date("YmdHis", time() + 600));
+    $input->SetGoods_tag($good->code);
+    $input->SetNotify_url("http://www.51linpai.com:8000/order/wxpay/");
+    $input->SetTrade_type("JSAPI");
+    $input->SetOpenid($openId);
+    $jsWxOrder = WxPayApi::unifiedOrder($input);
+    $jsApiParameters = $tools->GetJsApiParameters($jsWxOrder);
+
+    //获取共享收货地址js函数参数
+    $editAddress = $tools->GetEditAddressParameters();
+
+    $data = [
+
+        'editAddress' => $editAddress,
+
+        'jsApiParameters' => $jsApiParameters
+      
+      ];
+    
+    return view('mobile/wechat_js_pay', $data);
+  
   }
 
 }

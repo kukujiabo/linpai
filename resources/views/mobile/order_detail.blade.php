@@ -18,7 +18,7 @@
           <img src="{{asset($order->good_tiny_pic)}}" class="float-left" style="width:80px" >
           <h3 class="float-left" style="margin-left:5px;">{{$order->good_name}}</h3>
           <div class="float-right">
-            <h3 class="no-margin">{{$order->orig_price}}</h3>
+            <h3 class="no-margin"> ¥ {{$order->orig_price}}</h3>
             <h3 class="no-margin">x {{$order->num}}</h3>
           </div>
         </div>
@@ -33,13 +33,10 @@
         车辆信息：{{$order->car_type}} {{$order->car_brand}} {{$order->car_owner}}
       </li>
       <li style="margin:5px 0px;border:0px">
-        实付：{{$order->final_price}} | 已优惠：{{$order->cut_fee}}
+        实付：¥ {{$order->final_price}} | 已优惠：{{$order->cut_fee}}
       </li>
 
     </ul>
-  </div>
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
   </div>
 </div>
 
