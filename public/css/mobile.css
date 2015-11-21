@@ -191,13 +191,22 @@ label.form-label {
   font-weight: normal !important;
 }
 
+.district-item {
+  width: 100%;
+  padding:10px 5px;
+  color: #999 !important;
+  font-weight: normal !important;
+}
+
 #province-menu li {
   text-align:center;
   float:left; 
   margin: 3px;
   border: 1px solid #bbb;
   border-radius: 2px;
-  min-width: 31%;
+  width: 45%;
+  padding: 3px;
+  font-size: 16px;
 }
 
 #city-menu li {
@@ -206,7 +215,9 @@ label.form-label {
   margin: 3px;
   border: 1px solid #bbb;
   border-radius: 2px;
-  min-width: 28%;
+  width: 43%;
+  padding: 3px;
+  font-size: 16px;
 }
 
 #district-menu li {
@@ -215,6 +226,8 @@ label.form-label {
   margin: 3px;
   border: 1px solid #bbb;
   border-radius: 2px;
-  min-width: 28%;
+  width: 43%;
+  padding: 3px;
+  font-size: 16px;
 
 }
