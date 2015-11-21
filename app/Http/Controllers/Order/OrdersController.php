@@ -475,6 +475,8 @@ class OrdersController extends Controller {
 
       $data['car'] = $car;
 
+      $data['step'] = 3;
+
       return view('mobile/pay', $data);
     
     } else {
