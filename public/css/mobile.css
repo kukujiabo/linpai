@@ -246,10 +246,6 @@ ul {
 }
 
 #share_code {
-  position: fixed;
-  left: 42%;
-  top: 35%;
-  min-width: 16%;
   border: 1px solid #138ed1;
   background: #fff;
   font-size:20px;

@@ -6,7 +6,7 @@
   <div data-role="header">
     <h1>{{$name}}邀请您加入51临牌</h1>
   </div>
-  <div data-role="content">
+  <div data-role="content" class="text-center">
     @if (empty($code)) 
 
 
