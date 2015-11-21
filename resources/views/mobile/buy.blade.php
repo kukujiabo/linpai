@@ -176,6 +176,8 @@
   
   }
 
+  checkInfoComplete();
+
   $(document).on('pageinit', function (e) {
 
     var btnSubmit = $('#commit');
@@ -301,8 +303,6 @@
       }
     
     });
-
-    checkInfoComplete();
 
   });
 
