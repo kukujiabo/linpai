@@ -10,15 +10,15 @@
 @endif
 
 @if (!empty($step) && $step == 2)
-  <div style="width:24px;height:24px;background:#00bbff;position:relative;top:12px;left:26%;border-radius:12px;float:left;text-align:center;color:white;font-size:15px;line-height:20px;">2</div>
+  <div style="width:24px;height:24px;background:#00bbff;position:relative;top:12px;left:24%;border-radius:12px;float:left;text-align:center;color:white;font-size:15px;line-height:20px;">2</div>
 @else
-  <div style="width:20px;height:20px;background:#00bbff;position:relative;top:14px;left:27%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:22px;">2</div>
+  <div style="width:20px;height:20px;background:#00bbff;position:relative;top:14px;left:25%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:22px;">2</div>
 @endif
 
 @if (!empty($step) && $step == 3)
-  <div style="width:24px;height:24px;background:#00bbff;position:relative;top:12px;left:53%;border-radius:12px;float:left;text-align:center;color:white;font-size:15px;line-height:20px;">3</div>
+  <div style="width:24px;height:24px;background:#00bbff;position:relative;top:12px;left:50%;border-radius:12px;float:left;text-align:center;color:white;font-size:15px;line-height:20px;">3</div>
 @else
-  <div style="width:20px;height:20px;background:#00bbff;position:relative;top:14px;border-radius:10px;float:left;left:54%;text-align:center;color:white;font-size:12px;line-height:22px;">3</div>
+  <div style="width:20px;height:20px;background:#00bbff;position:relative;top:14px;border-radius:10px;float:left;left:51%;text-align:center;color:white;font-size:12px;line-height:22px;">3</div>
 @endif
 
 
