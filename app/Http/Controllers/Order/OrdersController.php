@@ -1861,7 +1861,6 @@ class OrdersController extends Controller {
     
       case 'zhifubao':
 
-
         break;
 
       case 'wechat':
@@ -1900,6 +1899,8 @@ class OrdersController extends Controller {
     require_once "lib/WxPay.JsApiPay.php";
 
     $tools = new \JsApiPay();
+
+    $authUrl = "http://www.51linpai.com:8000/order/mobilepay/";
   
     $openId = $tools->GetOpenid();
 
