@@ -140,7 +140,14 @@
         <input type="hidden" class="youhui" name="youhui_2">
         <input type="hidden" class="youhui" name="youhui_3">
         <input type="hidden" name="mb" value="true">
+
+        @if (empty($defaultCar) || empty($defaultReceiver)
+
         <button type="submit"  class="ui-btn grap_white_btn" id="commit">资料未完成</button>
+        @else 
+        <button type="submit"  class="ui-btn red_white_btn" id="commit">资料未完成</button>
+
+        @endif
       </form>
     </div>
   </div>
