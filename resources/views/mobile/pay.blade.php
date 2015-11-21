@@ -1,11 +1,14 @@
 @extends('mobile/mobile')
 
+@include('mobile/step')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
     <h1>订单支付 － 51临牌</h1>
   </div>
+  @yield('step') 
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <!-- 商品信息 -->
     <div style="background:#fff;">
