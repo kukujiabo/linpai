@@ -12,7 +12,7 @@
       <div style="float:left;padding:15px 5px;width:15%;">
         <img src="/imgs/logo-linpai.png" style="width:60px;">
       </div>
-      <p style="float:left;margin:0px;padding:10px;font-size:13px;width:68%;text-shadow:none;color:white">我们欢迎全国各地的临时牌照服务商（全国车管所均可）加入我们的平台，享受［51临牌］带来的服务和佣金以及完善的保障</p>
+      <p style="float:left;margin:0px;padding:10px;font-size:12px;width:72%;text-shadow:none;color:white">我们欢迎全国各地的临时牌照服务商（全国车管所均可）加入我们的平台，享受［51临牌］带来的服务和佣金以及完善的保障</p>
       <div class="clear"></div>
     </div>
   <div data-role="content">
