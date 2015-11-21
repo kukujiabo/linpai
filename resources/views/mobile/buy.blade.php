@@ -89,7 +89,7 @@
       </div>
       <div data-iconpos="right" data-inset="true" data-role="collapsible" class="no-margin" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
         <h1 class="itm-title"><img src="/imgs/mini_youhuiquan.png" height="18px">
-          &nbsp;&nbsp;优惠减免
+          &nbsp;优惠减免
           <span id="selected_boun"></span>
         </h1>
         <p style="">
@@ -140,7 +140,7 @@
         <input type="hidden" class="youhui" name="youhui_2">
         <input type="hidden" class="youhui" name="youhui_3">
         <input type="hidden" name="mb" value="true">
-        <button type="submit"  class="ui-btn blue_white_btn" id="commit">资料未完成</button>
+        <button type="submit"  class="ui-btn grap_white_btn" id="commit">资料未完成</button>
       </form>
     </div>
   </div>
@@ -152,6 +152,29 @@
   <a href="#alert_pop" data-rel="popup" id="trigger_pop"></a>
 </div>
 <script type="text/javascript">
+
+  function checkInfoComplete () {
+  
+    var btnSubmit = $('#commit');
+
+    var sCar = $('input[name=car]').val();
+
+    var sReceiver = $('input[name=receiver]').val();
+
+    if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
+    
+      btnSubmit.addClass('red_white_btn').removeClass('gray_white_btn');
+
+      btnSubmit.html('提交');
+     
+    } else {
+    
+      btnSubmit.addClass('gray_white_btn').removeClass('red_white_btn');
+    
+      btnSubmit.html('资料未完成');
+    }
+  
+  }
 
   $(document).on('pageinit', function (e) {
 
@@ -192,8 +215,6 @@
       $('#order_form')[0].submit();
     
     });
-
-    checkInfoComplete();
 
     var infoItms = $('.info_itm');
     
@@ -280,27 +301,6 @@
       }
     
     });
-
-    function checkInfoComplete () {
-    
-      var sCar = $('input[name=car]').val();
-
-      var sReceiver = $('input[name=receiver]').val();
-
-      if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
-      
-        btnSubmit.addClass('red_white_btn').removeClass('gray_white_btn');
-
-        btnSubmit.html('提交');
-       
-      } else {
-      
-        btnSubmit.addClass('gray_white_btn').removeClass('red_white_btn');
-      
-        btnSubmit.html('资料未完成');
-      }
-    
-    }
 
     checkInfoComplete();
 
