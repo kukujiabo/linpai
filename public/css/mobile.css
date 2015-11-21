@@ -254,3 +254,16 @@ ul {
   color: #138ed1;
   font-weight:bold;
 }
+
+.no_weight {
+  font-weight: normal !important; 
+}
+
+.end_ellipse {
+  display: block;
+  width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

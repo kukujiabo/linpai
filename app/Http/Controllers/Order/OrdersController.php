@@ -221,7 +221,6 @@ class OrdersController extends Controller {
 
   public function postPay(Request $request) 
   {
-
     /*
      * 防止表单重复提交
      * 
@@ -468,7 +467,21 @@ class OrdersController extends Controller {
     
     ];
 
-    return view('orders/pay', $data);
+    $mb = $request->input('mb');
+
+    if ($mb === 'true') {
+
+      $car = Car::where('id', '=', $order->cid)->first();
+
+      $data['car'] = $car;
+
+      return view('mobile/pay', $data);
+    
+    } else {
+
+      return view('orders/pay', $data);
+
+    }
   
   }
 
