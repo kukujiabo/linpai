@@ -244,3 +244,17 @@ ul li {
 ul {
   padding-left:0px;
 }
+
+#share_code {
+  position: fixed;
+  left: 42%;
+  top: 35%;
+  min-width: 16%;
+  border: 1px solid #138ed1;
+  background: #fff;
+  font-size:20px;
+  text-align: center;
+  padding: 15px;
+  color: #138ed1;
+  font-weight:bold;
+}

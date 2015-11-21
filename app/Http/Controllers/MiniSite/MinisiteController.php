@@ -3,12 +3,15 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\OrderAllInfo;
+use App\User;
 use Validator;
+use App\Models\Boun;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
+use Crypt;
 
 class MinisiteController extends Controller {
 
@@ -166,7 +169,84 @@ class MinisiteController extends Controller {
 
   public function getShare (Request $request) 
   {
+
+    $mobileEncrypt = $request->input('user');
+
+    if (empty($mobileEncrypt)) {
+    
+      return view('/mobile/about');
+    
+    }
+
+    $mobile = Crypt::decrypt($mobileEncrypt);
+
+    $user = User::where('mobile', '=', $mobile)->first();
+
+    /*
+     * 查找不到对应用户返回about
+     */
+    if (empty($user->id)) {
+    
+      return view('mobile/about');
+    
+    }
+
+    $boun = Boun::where('uid', '=', $user->id)
+
+      ->where('type', '=', 0)
+
+      ->first();
+
+    /*
+     * 查找不到邀请码返回about
+     */
+    if (empty($boun->id)) {
+    
+      return view('mobile/about');
+    
+    }
+
+    $data = [
+      
+        'name' => $user->name,
+
+        'code' => $boun->code
+      
+      ];
   
+    return view('mobile/share_code', $data);
+  
+  }
+
+  public function getMyshare (Request $request)
+  {
+  
+    $user = Auth::user();
+
+    if (empty($user->id)) {
+    
+      return redirect('/mobile/login');
+    
+    }
+
+    $username = Crypt::encrypt($user->mobile);
+
+    $boun = Boun::where('uid', '=', $user->id)
+
+      ->where('type', '=', 0)
+
+      ->first();
+
+    if (empty($boun->id)) {
+    
+    
+    } else {
+
+      $url = "/mobile/share?user={$username}";
+    
+      return redirect($url);
+    
+    }
   
   }
 
