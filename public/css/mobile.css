@@ -235,3 +235,8 @@ label.form-label {
 .blue-theme {
   color: #138ed1 !important;
 }
+
+ol li {
+  line-height: 1.4em;
+  margin: 5px; 0px;
+}
