@@ -159,6 +159,7 @@ var addressBind;
 
   addressBind.provinceBind();
 
+  /*
   $linpai.areaReset = function () {
   
     $('.selected-province').html('选择省份');
@@ -169,4 +170,5 @@ var addressBind;
   
   };
 
+  */
 })();

@@ -53,7 +53,7 @@
           <label class="form-label" for="readed">
               <input data-role="none" type="checkbox" id="readed" name="readed_license" checked>
               <span>我已阅读且同意</span>
-              <a href="#">《51临牌使用协议》</a>
+              <a href="/mobile/items">《51临牌使用协议》</a>
           </label> 
         </div>
         <div class="form-group" style="margin: 20px 0px;">
