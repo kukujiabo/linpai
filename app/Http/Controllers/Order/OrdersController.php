@@ -1902,7 +1902,7 @@ class OrdersController extends Controller {
 
     $authUrl = "http://www.51linpai.com:8000/order/mobilepay/";
   
-    $openId = $tools->GetOpenid();
+    $openId = $tools->GetOpenid($authUrl);
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
