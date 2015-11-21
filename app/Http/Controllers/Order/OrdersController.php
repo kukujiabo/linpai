@@ -246,6 +246,7 @@ class OrdersController extends Controller {
     
     }
 
+
     $user = Auth::user();
 
     $carHand = $request->input('car_hand');

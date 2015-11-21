@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="ui-content" style="margin-top:30px;">
-      <form data-role="none" id="order_form" action="/order/pay" method="post">
+      <form id="order_form" action="/order/pay" method="post">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         @if (!empty($defaultCar)) 
           <input type="hidden" name="car" value="{{$defaultCar->id}}">
@@ -131,7 +131,6 @@
           <input type="hidden" name="receiver" value="">
         @endif
         <input type="hidden" name="good" value="{{$good->id}}">
-        <input type="hidden" name="good" value="1">
         <input type="hidden" name="car_hand" value="{{$car_hand}}">
         <input type="hidden" name="good_code" value="{{$good->code}}">
         <input type="hidden" name="form_code" value="{{$formCode}}">
@@ -139,13 +138,14 @@
         <input type="hidden" class="youhui" name="youhui_1">
         <input type="hidden" class="youhui" name="youhui_2">
         <input type="hidden" class="youhui" name="youhui_3">
+        <input type="hidden" name="num" value="1">
         <input type="hidden" name="mb" value="true">
 
         @if (empty($defaultCar) || empty($defaultReceiver))
 
         <button type="submit"  class="ui-btn grap_white_btn" id="commit">资料未完成</button>
         @else 
-        <button type="submit"  class="ui-btn red_white_btn" id="commit">资料未完成</button>
+        <button type="submit"  class="ui-btn red_white_btn" id="commit">提交</button>
 
         @endif
       </form>
