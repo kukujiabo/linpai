@@ -98,8 +98,10 @@ class OrderController extends Controller {
 
   public function getCartype()
   {
+
+    $data = [ 'step' => 1 ];
   
-    return view('mobile/cartype');
+    return view('mobile/cartype', $data);
   
   }
 
@@ -165,7 +167,9 @@ class OrderController extends Controller {
 
       'formCode' => md5(time()),
 
-      'car_hand' => $carhand
+      'car_hand' => $carhand,
+
+      'step' => 2
       
     ];
 

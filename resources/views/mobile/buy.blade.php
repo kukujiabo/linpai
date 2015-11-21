@@ -1,5 +1,6 @@
 @extends('mobile/mobile')
 
+@include('mobile/step')
 
 @section('content')
 
@@ -7,13 +8,7 @@
   <div data-role="header">
     <h1>填写资料 - 51临牌</h1>
   </div>
-  <div style="height:50px;background:#eee;padding:0px 10%;">
-    <div style="height:2px;background:#00bbff;position:relative;top:25px;width:100%"></div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:0px;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;vertical-align:middle;line-height:20px;">1</div>
-    <div style="width:22px;height:22px;background:#00bbff;position:relative;top:13px;left:27%;border-radius:12px;float:left;text-align:center;color:white;font-size:12px;line-height:22px;">2</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:54%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">3</div>
-    <div style="width:20px;height:20px;background:#00bbff;position:relative;top:15px;left:80%;border-radius:10px;float:left;text-align:center;color:white;font-size:12px;line-height:20px;">4</div>
-  </div>
+    @yield('step')
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <div class="ui-content">
         <div style="float:left;padding:5px;"> 
@@ -93,7 +88,10 @@
         </p> 
       </div>
       <div data-iconpos="right" data-inset="true" data-role="collapsible" class="no-margin" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-        <h1 class="itm-title">优惠减免<span id="selected_boun"></span></h1>
+        <h1 class="itm-title"><img src="/imgs/mini_youhuiquan.png" height="18px">
+          &nbsp;&nbsp;优惠减免
+          <span id="selected_boun"></span>
+        </h1>
         <p style="">
           @if (!count($bouns))
             <div style="color:#">
