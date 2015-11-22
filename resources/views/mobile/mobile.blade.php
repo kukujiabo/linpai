@@ -18,6 +18,7 @@
   <script src="{{asset('js/jquery.mobile-1.4.5.min.js')}}"></script>
   <script src="{{asset('js/jquery.form.js')}}"></script>
   <script src="{{asset('js/minisite.js')}}"></script>
+  <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
 </head>
 <body>
 

@@ -6,7 +6,7 @@
 
 <div data-role="page">
   <div data-role="header">
-    <h1>订单支付 － 51临牌</h1>
+    <h1>确认订单 － 51临牌</h1>
   </div>
   @yield('step') 
   <div data-role="content" style="padding-left:0px;padding-right:0px;padding-bottom:0px;">
@@ -31,69 +31,58 @@
     
     <!-- 车辆信息 -->
     
-    @if (!empty($defaultCar))
     <div style="background:#fff;margin-top:10px;">
       <div class="inner_white no-radius" data-role="collapsibleset">
        <div data-iconpos="right"  data-role="collapsible" class="no-radius" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
          <h1 class="itm-title">车辆信息
-           <!--
-           <span id="selected_car">
-             @if (!empty($defaultCar))
-               {{$defaultCar->owner}}&nbsp;&nbsp;{{$defaultCar->brand}}&nbsp;&nbsp;{{$defaultCar->reco_code}}
-             @endif
-           </span>
-           -->
          </h1>
          <p style="no-margin">
            <ul data-role="listview">
 
              @foreach($cars as $car)
                @if ($car->last_used == 1)
-                 <li class="selected-itm info_itm" data-target="" data-type="car" data-id="{{$car->id}}">
+                 <li class="selected-itm info_itm" data-target="" data-type="car" data-id="{{$car->id}}" data-owner="{{$car->owner}}" data-factory_code="{{$car->factory_code}}" data-reco_code="{{$car->reco_code}}">
                @else
-                 <li class="select-itm info_itm" data-target="" data-type="car" data-id="{{$car->id}}">
+                 <li class="select-itm info_itm" data-target="" data-type="car" data-id="{{$car->id}}" data-owner="{{$car->owner}}" data-factory_code="{{$car->factory_code}}" data-reco_code="{{$car->reco_code}}">
                @endif
                    {{$car->owner}}&nbsp;&nbsp;{{$car->brand}}&nbsp;&nbsp;{{$car->reco_code}}
                  </li>
              @endforeach
            
                <li data-icon="carat-r" class="add_itm">
-                 <a href="/mobile/addcar" id="add_car" class="add_itm">添加车辆信息</a>
+                 <a href="/mobile/addcar?car_hand={{$car_hand}}&good_code={{$good->code}}" id="add_car" class="add_itm">添加车辆信息</a>
                </li>
 
            </ul>
          </p>
        </div>
-      <div style="padding:15px">
-        <p>所有人：{{$defaultCar->owner}}</p>
-        <p>厂牌型号：{{$defaultCar->factory_code}}</p>
-        <p>识别代码：{{$defaultCar->reco_code}}</p>
-      </div>
+       <div style="padding:12px">
+        @if (!empty($defaultCar))
+            <p id="default_owner">所有人：{{$defaultCar->owner}}</p>
+            <p id="default_factory_code">厂牌型号：{{$defaultCar->factory_code}}</p>
+            <p id="default_reco_code">识别代码：{{$defaultCar->reco_code}}</p>
+        @else
+            <p id="default_owner"></p>
+            <p id="default_factory_code"></p>
+            <p id="default_reco_code"></p>
+        @endif
+       </div>
     </div>
   </div>
-    @endif
     <!-- 收件人信息 -->
 
     @if (!empty($defaultReceiver))
     <div style="background:#fff;margin-top:5px;">
       <div class="no-radius inner_white" data-iconpos="right"  data-role="collapsible"  data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-        <h1 class="itm-title">收件地址
-            <!--
-            <span id="selected_receiver">
-              @if (!empty($defaultReceiver))
-                {{$defaultReceiver->receiver}}&nbsp;&nbsp;{{$defaultReceiver->mobile}}&nbsp;&nbsp;{{$defaultReceiver->address}}
-              @endif
-            </span>
-            -->
-        </h1>
+        <h1 class="itm-title">收件地址 </h1>
         <p class="no-margin">
           <ul data-role="listview">
           
             @foreach($receivers as $receiver)
               @if ($receiver->last_used == 1)
-                <li class="selected-itm info_itm" data-target="" data-type="receiver" data-id="{{$receiver->id}}">
+                <li class="selected-itm info_itm" data-target="" data-type="receiver" data-id="{{$receiver->id}}" data-receiver_txt="{{$receiver->receiver}}" data-receiver_address="{{$receiver->province}}{{$receiver->city}}{{$receiver->district}}" data-receiver_mobile="{{$receiver->mobile}}" data-receiver_mail="{{$receiver->email}}">
               @else
-                <li class="select-itm info_itm" data-target="" data-type="receiver" data-id="{{$receiver->id}}">
+                <li class="select-itm info_itm" data-target="" data-type="receiver" data-id="{{$receiver->id}}" data-receiver_txt="{{$receiver->receiver}}" data-receiver_address="{{$receiver->province}}{{$receiver->city}}{{$receiver->district}}" data-receiver_mobile="{{$receiver->mobile}}" data-receiver_mail="{{$receiver->email}}">
               @endif
                 {{$receiver->receiver}}&nbsp;&nbsp;{{$receiver->mobile}}&nbsp;&nbsp;{{$receiver->province}}&nbsp;{{$receiver->city}}&nbsp;{{$receiver->address}}
                 </li>
@@ -106,10 +95,17 @@
         </p> 
       </div>
       <div style="padding:15px">
-        <p>收货人：{{$defaultReceiver->receiver}}</p>
-        <p>收货地址：{{$defaultReceiver->province}}{{$defaultReceiver->city}}{{$defaultReceiver->district}}</p>
-        <p>联系号码：{{$defaultReceiver->mobile}}</p>
-        <p>邮箱地址：{{$defaultReceiver->email}}</p>
+        @if (!empty($defaultReceiver))
+          <p id="receiver_txt">收货人：{{$defaultReceiver->receiver}}</p>
+          <p id="receiver_address">收货地址：{{$defaultReceiver->province}}{{$defaultReceiver->city}}{{$defaultReceiver->district}}</p>
+          <p id="receiver_mobile">联系号码：{{$defaultReceiver->mobile}}</p>
+          <p id="receiver_email">邮箱地址：{{$defaultReceiver->email}}</p>
+        @else
+          <p id="receiver_txt"></p>
+          <p id="receiver_address"></p>
+          <p id="receiver_mobile"></p>
+          <p id="receiver_email"></p>
+        @endif
       </div>
     </div>
     @endif
@@ -147,13 +143,38 @@
     </div>
 
     <div style="margin:10px 0px 0px 0px;padding:0px;width:100%;height:50px;">
-      <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
-        实付：¥ {{$goodInfo->value}}
-      </div>
-      <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
-       <input type="submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white" value="立即支付">
-      </div>
-      <div class="clear"></div>
+      <form data-role="none" action="#" method="post">
+        <fieldset>
+          <input type="hidden" name="_token" value="{{csrf_token()}}">
+          @if (!empty($defaultCar)) 
+            <input type="hidden" name="car" value="{{$defaultCar->id}}">
+          @else 
+            <input type="hidden" name="car" value="">
+          @endif
+          @if (!empty($defaultReceiver))
+            <input type="hidden" name="receiver" value="{{$defaultReceiver->id}}">
+          @else
+            <input type="hidden" name="receiver" value="">
+          @endif
+          <input type="hidden" name="good" value="{{$good->id}}">
+          <input type="hidden" name="car_hand" value="{{$car_hand}}">
+          <input type="hidden" name="good_code" value="{{$good->code}}">
+          <input type="hidden" name="form_code" value="{{$formCode}}">
+          <input type="hidden" name="comment">
+          <input type="hidden" class="youhui" name="youhui_1">
+          <input type="hidden" class="youhui" name="youhui_2">
+          <input type="hidden" class="youhui" name="youhui_3">
+          <input type="hidden" name="num" value="1">
+          <input type="hidden" name="mb" value="true">
+        </fieldset>
+        <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
+          实付：¥ {{$goodInfo->value}}
+        </div>
+        <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
+         <input type="submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white" value="立即支付">
+        </div>
+        <div class="clear"></div>
+      </form>
     </div>
   </div>
 </div>
@@ -239,6 +260,21 @@
       that.removeClass('select-itm').addClass('selected-itm');
 
       $('input[name=' + type + ']').val(id);
+
+      if (type == 'car') {
+      
+        $('#default_owner').html('所有者：' + that.data('owner'));
+        $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
+        $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
+      
+      } else if (type == 'receiver') {
+
+        $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
+        $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
+        $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
+        $('#receiver_email').html('邮箱地址：' + that.data('receiver_email') == undefined ? '' : that.data('receiver_email'));
+      
+      }
 
       checkInfoComplete();
     
