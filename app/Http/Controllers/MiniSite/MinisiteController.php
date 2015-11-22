@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
+use Session;
 use Crypt;
 
 class MinisiteController extends Controller {
@@ -92,7 +93,19 @@ class MinisiteController extends Controller {
   public function getLogin(Request $request) 
   {
 
-    return view('mobile/login');
+    $preUrl = Session::get('pre_url');
+
+    $data = [];
+
+    if ($preUrl != null) {
+
+      $data['pre_url'] = $preUrl;
+
+      Session::forget('pre_url');
+    
+    }
+
+    return view('mobile/login', $data);
 
   }
 
@@ -169,7 +182,6 @@ class MinisiteController extends Controller {
 
   public function getShare (Request $request) 
   {
-
     $mobileEncrypt = $request->input('user');
 
     if (empty($mobileEncrypt)) {
@@ -213,8 +225,16 @@ class MinisiteController extends Controller {
         'code' => $boun->code
       
       ];
+
+    if (Auth::user() == null || $user->id != Auth::user()->id) {
+    
+      return view('mobile/share_code', $data);
+    
+    } else {
   
-    return view('mobile/share_code', $data);
+      return view('mobile/mycode', $data);
+
+    }
   
   }
 

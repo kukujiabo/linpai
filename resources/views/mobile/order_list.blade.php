@@ -45,7 +45,10 @@
           @elseif ($order->status == 2)
             <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">查看物流</a>
           @endif
+          
+          @if ($order->status > 0) 
             <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini orange_btn"  role="button" >再次购买</a> 
+          @endif 
         </div>
       </li>
 

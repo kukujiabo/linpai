@@ -32,12 +32,16 @@ use App\Models\Wxpay_raw_data as WxRaw;
 
 class OrdersController extends Controller {
 
+  protected $debug = false;
   /*
    *
    */
   public function __construct ()
   {
     $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay']]);
+
+    $this->debug = \Config::get('app.debug');
+
   }
 
   /*
@@ -666,8 +670,6 @@ class OrdersController extends Controller {
 
   private function alipay ($order, $good, $orderPrice)
   {
-    $debug = \Config::get('app.debug');
-
     $alipay_config = $this->payConfig();
   
     //支付类型
@@ -678,7 +680,7 @@ class OrdersController extends Controller {
     //页面跳转同步通知页面路径
     $return_url = "";
 
-    if ($debug) {
+    if ($this->debug) {
 
       $return_url = "http://www.51linpai.com:8000/order/payed";
 
@@ -735,8 +737,6 @@ class OrdersController extends Controller {
 
   private function creditpay ($order, $good, $orderPrice, $bank) 
   {
-    $debug = \Config::get('app.debug');
-
     $alipay_config = $this->payConfig();
   
     $payment_type = 1;
@@ -746,7 +746,7 @@ class OrdersController extends Controller {
     //页面跳转同步通知页面路径
     $return_url = "";
 
-    if ($debug) {
+    if ($this->debug) {
 
       $return_url = "http://www.51linpai.com:8000/order/payed";
 
@@ -1654,19 +1654,22 @@ class OrdersController extends Controller {
 
     $order = Order::where('code', '=', $order_code)->first();
 
+    $domain = $this->debug ? "http://www.51linpai.com:8000" : "http://www.51linpai.com";
+
     if ($order->status == 1) {
     
       Session::forget('unpayed_order');
 
+
       return response('data:yes' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-      ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
+      ->header('Access-Control-Allow-Origin', $domain);
     
     } else {
 
       return response('data:no' . "\r\n\r\n", 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-      ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com:8000');
+      ->header('Access-Control-Allow-Origin', $domain);
 
     }
 
@@ -1810,6 +1813,8 @@ class OrdersController extends Controller {
 
     $notify = new \NativePay();
 
+    $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay";
+
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
     $input->SetAttach($good->code);
@@ -1818,7 +1823,7 @@ class OrdersController extends Controller {
     $input->SetTime_start(date("YmdHis"));
     $input->SetTime_expire(date("YmdHis", time() + 600));
     $input->SetGoods_tag($good->code);
-    $input->SetNotify_url("http://www.51linpai.com:8000/order/wxpay/");
+    $input->SetNotify_url($notify_url);
     $input->SetTrade_type("NATIVE");
     $input->SetProduct_id($good->id . '_' . $good->code);
     $result = $notify->GetPayUrl($input);
@@ -1861,6 +1866,8 @@ class OrdersController extends Controller {
     
       case 'zhifubao':
 
+        return $this->aliMobilePay($request);
+
         break;
 
       case 'wechat':
@@ -1900,9 +1907,11 @@ class OrdersController extends Controller {
 
     $tools = new \JsApiPay();
 
-    $authUrl = "http://www.51linpai.com:8000/order/mobilepay/";
+    $authUrl = "http://www.51linpai.com/order/mobilepay/";
   
     $openId = $tools->GetOpenid($authUrl);
+
+    $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay/";
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
@@ -1912,7 +1921,7 @@ class OrdersController extends Controller {
     $input->SetTime_start(date("YmdHis"));
     $input->SetTime_expire(date("YmdHis", time() + 600));
     $input->SetGoods_tag($good->code);
-    $input->SetNotify_url("http://www.51linpai.com:8000/order/wxpay/");
+    $input->SetNotify_url($notify_url);
     $input->SetTrade_type("JSAPI");
     $input->SetOpenid($openId);
     $jsWxOrder = WxPayApi::unifiedOrder($input);
@@ -1931,6 +1940,62 @@ class OrdersController extends Controller {
     
     return view('mobile/wechat_js_pay', $data);
   
+  }
+
+  private function aliMobilePay ($request)
+  {
+  
+    require_once "alipay_config.php";
+
+    require_once "lib/alipay_submit.class.php";
+
+    $payment_type = "1"; 
+
+    $notify_url = "";
+
+    $out_trade_no = $request->input('order_code');
+  
+    //订单名称
+    $subject = "";
+
+    //订单金额
+    $total_fee = "";
+
+    //商品展示地址
+    $show_url = "";
+
+    //订单描述
+    $body = "";
+
+    //超时时间
+    $it_b_pay = "";
+
+    //钱包token
+    $extern_token = "";
+
+    $parameter = array(
+      "service" => "alipay.wap.create.direct.pay.by.user",
+      "partner" => trim($alipay_config['partner']),
+      "seller_id" => trim($alipay_config['partner']),
+      "payment_type"  => $payment_type,
+      "notify_url"  => $notify_url,
+      "out_trade_no"  => $out_trade_no,
+      "subject" => $subject,
+      "total_fee" => $total_fee,
+      "show_url"  => $show_url,
+      "body"  => $body,
+      "it_b_pay"  => $it_b_pay,
+      "extern_token"  => $extern_token,
+      "_input_charset"  => trim(strtolower($alipay_config['input_charset']))
+    );
+
+    $alipaySubmit = new \AlipaySubmit($alipay_config);
+    $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
+
+    $data = [ 'html' => $html_text ];
+
+    return view('mobile/alipay_jump', $data);
+
   }
 
 }
