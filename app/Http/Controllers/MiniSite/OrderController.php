@@ -173,7 +173,7 @@ class OrderController extends Controller {
       
     ];
 
-    return view('mobile/buy', $data);
+    return view('mobile/pay', $data);
   
   }
 

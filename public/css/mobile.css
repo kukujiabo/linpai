@@ -267,3 +267,6 @@ ul {
   text-overflow: ellipsis;
 }
 
+.inner_white a {
+  background: white !important;
+}
