@@ -56,8 +56,7 @@
                       <div class="clear"></div>
                     </label>
                     <div style="display:none">
-                      <!-- <input class="info-img"  type="file" style="display:none" name="identity_face" id="identity_face"> -->
-                      <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
+                      <input type="file" data-role="none" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
                     </div>
                   </div>
                 </li>
@@ -109,7 +108,7 @@
 <div data-role="popup" data-position-to="window" id="progress_pop" data-dismissible="false" style="padding:30px;"  data-overlay-theme="a">
   <p>
     上传中：<span id="progress">0</span>%
-  <a href="#" data-rel="back" id="progress_end" class="hide ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+  <a href="#" data-rel="back" id="progress_end" style="display:none" class="hide ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
   </p>
 </div>
 <a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn" data-transition="slide"></a>
