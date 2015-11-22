@@ -219,7 +219,7 @@ class CarsController extends Controller {
   {
     $fields = array();
     
-    $fields["owner"] = "车辆所有人 必须填写！";
+    $fields["owner"] = "车辆所有人至少输入2个字符！";
 
     //$fields["brand"] = "车辆品牌 必须填写！";
 
@@ -313,15 +313,20 @@ class CarsController extends Controller {
 
   private function carInfoValidate($values)
   {
+
     $required = [
     
       'owner' => 'required|min:2',
 
-      //'brand' => 'required',
+      'car_type' => 'required',
 
       'factory_code' => 'required',
 
       'reco_code' =>'required',
+
+      'good_code' => 'required',
+
+      'car_hand' => 'required'
 
     ];
 
