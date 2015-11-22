@@ -29,13 +29,13 @@
       </div>
       <div class="clear"></div>
     </div>
-    <form data-role="none" action="/order/mobilepay" method="post" style="margin-top:20px;">
+    <form data-role="none" action="/order/mobilepay" method="get" style="margin-top:20px;">
         <label class="no-radius" style="background:white" for="wechat">
           <img src="/imgs/weixinpay_tiny.png" style="float:left;width:40px;font-size:18px;">
           <div style="float:left;padding:2px;">微信支付</div>
           <div class="clear"></div>
         </label>
-        <input type="radio" name="pay" id="wechat" value="wechat" style="display:none"> 
+        <input type="radio" name="pay" id="wechat" value="wechat" style="display:none" checked> 
         <fieldset>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <input type="hidden" name="order_code" value="{{$order->code}}">

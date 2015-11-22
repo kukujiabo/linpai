@@ -33,12 +33,14 @@ use App\Models\Wxpay_raw_data as WxRaw;
 class OrdersController extends Controller {
 
   protected $debug = false;
+
+  protected $openId = '';
   /*
    *
    */
   public function __construct ()
   {
-    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay']]);
+    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay', 'getMobilepay']]);
 
     $this->debug = \Config::get('app.debug');
 
@@ -1857,7 +1859,7 @@ class OrdersController extends Controller {
 
   }
 
-  public function postMobilepay(Request $request)
+  public function getMobilepay(Request $request)
   {
   
     $type = $request->input('pay');
@@ -1877,7 +1879,6 @@ class OrdersController extends Controller {
         break; 
     
     }
-  
   
   }
 
