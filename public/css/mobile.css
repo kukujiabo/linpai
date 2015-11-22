@@ -270,3 +270,7 @@ ul {
 .inner_white a {
   background: white !important;
 }
+
+.hide {
+  display: none;
+}

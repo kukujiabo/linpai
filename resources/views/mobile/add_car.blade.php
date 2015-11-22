@@ -7,7 +7,8 @@
     <h1>车辆信息－51临牌</h1>
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
-    <div data-role="popup" id="info_popup" data-theme="b">
+    
+    <div data-role="popup" data-position-to="window" id="info_popup" data-theme="b">
       <p id="popup_info" style="padding:10px;"></p>
     </div>
     <a href="#info_popup" id="trigger_popup" data-rel="popup"></a>
@@ -105,7 +106,13 @@
       </div>
   </form>
 </div>
-
+<div data-role="popup" data-position-to="window" id="progress_pop" data-dismissible="false" style="padding:30px;"  data-overlay-theme="a">
+  <p>
+    上传中：<span id="progress">0</span>%
+  <a href="#" data-rel="back" id="progress_end" class="hide ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">关闭</a>
+  </p>
+</div>
+<a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn" data-transition="slide"></a>
 <script type="text/javascript">
   
   function uploadFileBind () {
@@ -138,15 +145,27 @@
 
         add: function (e, data) {
 
+          $('#trigger_progress').click();
+
+          $('#progress').html('0');
+
           data.submit();
         
         }
       
+      
+      }).bind('fileuploadprogress', function (e, data) {
+
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+
+        $('#progress').html(progress);
+      
       }).bind('fileuploaddone', function (e, data) {
 
-        if (data.result.code) {
+        $('#progress_end').click();
 
-          console.log(data);
+
+        if (data.result.code) {
 
           var res = data.result.res;
 
@@ -162,7 +181,7 @@
 
           } else if (data.result.msg == 'empty_file') {
 
-            alert('上传图片无效，请重新上传');
+            alert('上传图片大小不能超过3M！请重新上传');
 
           }
 
