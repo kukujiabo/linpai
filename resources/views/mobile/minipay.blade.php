@@ -35,7 +35,7 @@
           <div style="float:left;padding:2px;">微信支付</div>
           <div class="clear"></div>
         </label>
-        <input type="radio" name="pay" id="wechat" value="wechat" style="display:none"> 
+        <input type="radio" name="pay" id="wechat" value="wechat" style="display:none" checked> 
         <fieldset>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <input type="hidden" name="order_code" value="{{$order->code}}">
