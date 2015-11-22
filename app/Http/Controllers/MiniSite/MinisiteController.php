@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\OrderAllInfo;
+use App\Models\Attribute;
 use App\User;
 use Validator;
 use App\Models\Boun;
@@ -169,8 +170,24 @@ class MinisiteController extends Controller {
 
   public function getAddcar (Request $request) 
   {
+     
+    $attribs = Attribute::all();
+
+    $carHand = $request->input('car_hand') == null ? 'one' : $request->input('car_hand');
+
+    $goodCode = $request->input('good_code') == null ? 'below-three' : $request->input('good_code');
+
+    $data = [
+
+      'good_code' => $goodCode,
+      
+      'attribs' => $attribs,
+
+      'car_hand' => $carHand,
+      
+    ];
   
-    return view('/mobile/add_car');
+    return view('/mobile/add_car', $data);
   
   }
 
@@ -276,5 +293,6 @@ class MinisiteController extends Controller {
     return view('mobile/policy');
   
   }
+  
 
 }
