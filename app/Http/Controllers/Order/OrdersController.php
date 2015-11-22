@@ -481,7 +481,7 @@ class OrdersController extends Controller {
 
       $data['step'] = 3;
 
-      return view('mobile/pay', $data);
+      return view('mobile/minipay', $data);
     
     } else {
 

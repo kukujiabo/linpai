@@ -7,7 +7,6 @@
     <h1>车辆信息－51临牌</h1>
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
-    
     <div data-role="popup" data-position-to="window" id="info_popup" data-theme="b">
       <p id="popup_info" style="padding:10px;"></p>
     </div>

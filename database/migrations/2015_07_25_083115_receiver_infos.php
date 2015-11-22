@@ -19,7 +19,7 @@ class ReceiverInfos extends Migration {
       $table->integer('uid');
       $table->string('receiver', 100);
       $table->string('mobile', 100);
-      $table->string('phone', 100);
+      $table->string('phone', 100)->nullable();
       $table->string('country')->nullable();
       $table->string('province')->nullable();
       $table->string('city')->nullable();

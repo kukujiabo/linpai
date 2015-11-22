@@ -89,7 +89,7 @@
             @endforeach
 
             <li  data-icon="carat-r" class="add_itm">
-              <a id="add_receiver" class="add_itm" href="#">添加新的收件人</a>
+              <a id="add_receiver" class="add_itm" href="/mobile/addreceiver?car_hand={{$car_hand}}">添加新的收件人</a>
             </li>
           </ul>
         </p> 
@@ -117,15 +117,18 @@
         <span id="selected_boun"></span>
       </h1>
       <p style="">
+        <input type="text" name="youhui" placeholder="输入邀请码" id="invite_boun">
+        <hr>
         @if (!count($bouns))
           <div style="color:#">
             您当前还没有优惠券！
           </div>
         @else
+          <h4>可用优惠券：</h4>
           <div class="ui-grid-c">
             @foreach($bouns as $boun)
               <div class="ui-block-b">
-                <a class="blue_white_btn margin-1 ui-btn ui-mini boun_btn" href="#" id="boun_{{$boun->id}}" data-id="{{$boun->id}}">{{$boun->code}}</a>
+                <a class="blue_white_btn margin-1 ui-btn ui-mini boun_btn" href="#" id="boun_{{$boun->id}}" data-id="{{$boun->code}}">{{$boun->code}}</a>
               </div>
             @endforeach
           </div>
@@ -143,7 +146,7 @@
     </div>
 
     <div style="margin:10px 0px 0px 0px;padding:0px;width:100%;height:50px;">
-      <form data-role="none" action="#" method="post">
+      <form data-role="none" action="/order/pay" method="post">
         <fieldset>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           @if (!empty($defaultCar)) 
@@ -280,6 +283,62 @@
     
     });
 
+    var inviteItm = $('#invite_boun');
+
+    inviteItm.change(function (e) {
+
+      var that = $(this);
+
+      var value = that.val();
+
+      var youhui = $('input.youhui');
+
+      if (value == undefined || value == '') {
+       
+        youhui.each(function(i, t) {
+        
+          $(t).val('');
+        
+        });
+        
+        return;
+
+      }
+
+      if (value.length != 5) {
+      
+        alert('邀请码是5位字母＋数字，请正确输入');
+
+        return;
+      
+      }
+
+      for (var i = 0; i < youhui.length; i++) {
+      
+        var y = youhui[i];
+
+        if (y.value == undefined || y.value == '') {
+
+          y.value = that.val();
+
+          break;
+        
+        }
+
+        if (i == 2) {
+
+          $('#alert_content').html('最多使用3张优惠券/邀请码！');
+
+          $('#trigger_pop').click();
+
+          return;
+        
+        }
+      
+      }
+      
+    });
+
     var bounItms = $('.boun_btn');
 
     bounItms.on('tap', function (e) {
@@ -314,8 +373,6 @@
         
           var y = youhui[i];
 
-          console.log(y.value);
-
           if (y.value == undefined || y.value == '') {
 
             y.value = that.data('id');
@@ -326,7 +383,7 @@
 
           if (i == 2) {
 
-            $('#alert_content').html('最多使用3张优惠券！');
+            $('#alert_content').html('最多使用3张优惠券/邀请码！');
 
             $('#trigger_pop').click();
 
