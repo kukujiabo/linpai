@@ -52,6 +52,9 @@
 
 <script type="text/javascript">
 
+console.log(document.referrer);
+
+
   $(document).on('pageinit', function (event) {
 
     var loginBtn = $('#login-submit');
@@ -72,7 +75,15 @@
       
         if (data.code == 1) {
 
-          $.mobile.changePage('/mobile/myorder');
+          @if (empty($pre_url))
+
+           $.mobile.changePage('/mobile/myorder');
+
+          @else
+
+            $.mobile.changePage('{{$pre_url}}');
+
+          @endif
         
         } else {
         

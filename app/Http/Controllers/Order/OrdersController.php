@@ -1866,6 +1866,8 @@ class OrdersController extends Controller {
     
       case 'zhifubao':
 
+        return $this->aliMobilePay($request);
+
         break;
 
       case 'wechat':
@@ -1938,6 +1940,62 @@ class OrdersController extends Controller {
     
     return view('mobile/wechat_js_pay', $data);
   
+  }
+
+  private function aliMobilePay ($request)
+  {
+  
+    require_once "alipay_config.php";
+
+    require_once "lib/alipay_submit.class.php";
+
+    $payment_type = "1"; 
+
+    $notify_url = "";
+
+    $out_trade_no = $request->input('order_code');
+  
+    //订单名称
+    $subject = "";
+
+    //订单金额
+    $total_fee = "";
+
+    //商品展示地址
+    $show_url = "";
+
+    //订单描述
+    $body = "";
+
+    //超时时间
+    $it_b_pay = "";
+
+    //钱包token
+    $extern_token = "";
+
+    $parameter = array(
+      "service" => "alipay.wap.create.direct.pay.by.user",
+      "partner" => trim($alipay_config['partner']),
+      "seller_id" => trim($alipay_config['partner']),
+      "payment_type"  => $payment_type,
+      "notify_url"  => $notify_url,
+      "out_trade_no"  => $out_trade_no,
+      "subject" => $subject,
+      "total_fee" => $total_fee,
+      "show_url"  => $show_url,
+      "body"  => $body,
+      "it_b_pay"  => $it_b_pay,
+      "extern_token"  => $extern_token,
+      "_input_charset"  => trim(strtolower($alipay_config['input_charset']))
+    );
+
+    $alipaySubmit = new \AlipaySubmit($alipay_config);
+    $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
+
+    $data = [ 'html' => $html_text ];
+
+    return view('mobile/alipay_jump', $data);
+
   }
 
 }

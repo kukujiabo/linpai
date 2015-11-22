@@ -26,6 +26,8 @@ class MobileAuthMiddleware {
 	public function handle($request, Closure $next)
 	{
     if ($this->auth->guest()) {
+
+      Session::put('pre_url', '/' . $request->path());
     
       return redirect()->guest('mobile/login');
     

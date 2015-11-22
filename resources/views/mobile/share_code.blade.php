@@ -3,19 +3,18 @@
 @section('content')
 
 <div data-role="page">
-  <div data-role="header">
-    <h1>{{$name}}邀请您加入51临牌</h1>
-  </div>
-  <div data-role="content" class="text-center">
-    @if (empty($code)) 
 
+@if (!empty($code))
 
-    @else
-      <div id="share_code">
-        {{$code}}
-      </div> 
-    @endif
-  </div>
+  <img src="/imgs/share_others.png" style="width:100%;height:100%;position:fixed;top:0;left:0">
+
+  <div style="font-size:30px;text-align:center;width:100%;position:fixed;top:70%;z-index:100;color:#d9534f;font-weight:bold">{{$code}}</div>
+
+  <div style="font-size:16px;text-align:center;width:100%;position:fixed;top:80%;z-index:100;color:#d9534f;font-weight:bold">请登录 www.51linpai.com 进行购买</div>
+@else
+
+@endif
+  
 
 </div>
 
