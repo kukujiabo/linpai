@@ -1,4 +1,4 @@
-@extends('mobile/mobile');
+@extends('mobile/mobile')
 
 @section('content')
 
