@@ -227,23 +227,23 @@ class CarsController extends Controller {
 
     $fields["reco_code"] = "识别号码（车架号）必须填写！";
 
-    $fields["dir_identity_face"] = "身份证正面上传失败，请重新上传，图片大小不能大于3M ！";
+    $fields["dir_identity_face"] = "身份证正面上传失败，请重新上传，图片大小不能大于5M ！";
 
-    $fields["dir_identity_back"] = "身份证背面上传失败，请重新上传，图片大小不能大于3M ！";
+    $fields["dir_identity_back"] = "身份证背面上传失败，请重新上传，图片大小不能大于5M ！";
 
-    $fields["dir_trans_ensurance"] = "交强险副本扫描件上传失败，请重新上传，图片大小不能大于3M ！";
+    $fields["dir_trans_ensurance"] = "交强险副本扫描件上传失败，请重新上传，图片大小不能大于5M ！";
 
-    $fields["dir_car_check"] = "车辆购买发票上传失败，请重新上传，图片大小不能大于3M ！";
+    $fields["dir_car_check"] = "车辆购买发票上传失败，请重新上传，图片大小不能大于5M ！";
 
-    $fields["dir_driving_license"] = "车辆行驶证上传失败，请重新上传，图片大小不能大于3M！";
+    $fields["dir_driving_license"] = "车辆行驶证上传失败，请重新上传，图片大小不能大于5M！";
 
     if ($car_type == 'domestic') {
 
-      $fields["dir_validate_paper"] = "合格证件上传失败，请重新上传，图片大小不能大于3M ！";
+      $fields["dir_validate_paper"] = "合格证件上传失败，请重新上传，图片大小不能大于5M ！";
 
     } else {
 
-      $fields["dir_validate_paper"] = "报关单件上传失败，请重新上传，图片大小不能大于3M ！";
+      $fields["dir_validate_paper"] = "报关单件上传失败，请重新上传，图片大小不能大于5M ！";
 
     }
   

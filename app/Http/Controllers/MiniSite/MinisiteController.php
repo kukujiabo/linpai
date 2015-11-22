@@ -293,6 +293,20 @@ class MinisiteController extends Controller {
     return view('mobile/policy');
   
   }
+
+  public function getAddreceiver(Request $request)
+  {
+    $car_hand = $request->input('car_hand'); 
+
+    $data = [
+      
+       'car_hand' => $car_hand
+      
+      ];
+    
+    return view('mobile/add_receiver', $data);
+  
+  }
   
 
 }

@@ -7,7 +7,6 @@
     <h1>车辆信息－51临牌</h1>
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
-    
     <div data-role="popup" data-position-to="window" id="info_popup" data-theme="b">
       <p id="popup_info" style="padding:10px;"></p>
     </div>
@@ -111,7 +110,7 @@
   <a href="#" data-rel="back" id="progress_end" style="display:none" class="hide ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
   </p>
 </div>
-<a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn" data-transition="slide"></a>
+  <a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn hide" data-transition="slide"></a>
 <script type="text/javascript">
   
   function uploadFileBind () {
@@ -210,7 +209,7 @@
         
           alert('保存成功！');
 
-          history.back();
+          window.location.href="/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
         
         } else {
         
