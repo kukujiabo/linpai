@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\OrderBoun;
 use App\Models\OrderPrice;
+use App\Models\WxpayOrderCode;
 use App\Models\City;
 use App\Models\Car;
 use App\Models\Boun;
@@ -1861,7 +1862,7 @@ class OrdersController extends Controller {
 
   public function getMobilepay(Request $request)
   {
-  
+
     $type = $request->input('pay');
 
     switch ($type) {
@@ -1882,6 +1883,34 @@ class OrdersController extends Controller {
   
   }
 
+
+  public function getWxcode($request)
+  {
+
+    $tools = new \JsApiPay();
+
+    $authUrl = "http://www.51linpai.com/order/wxcode/";
+  
+    $openId = $tools->GetOpenid($authUrl);
+
+    $code = $request->input('code');
+
+    if (empty($code)) {
+    
+      $tools = new \JsApiPay();
+
+      $authUrl = "http://www.51linpai.com/order/wxcode/";
+  
+      $openId = $tools->GetOpenid($authUrl);
+    
+    } else {
+    
+      echo $openId . '---' . $code; 
+    
+    }
+
+  }
+
   private function wxJsPay($request)
   {
     $order_code = $request->input('order_code');
@@ -1894,7 +1923,7 @@ class OrdersController extends Controller {
     
     } else if ($order->status > 0) {
     
-      //todo
+      return view('mobile/payed');
     
     }
 
@@ -1945,7 +1974,6 @@ class OrdersController extends Controller {
 
   private function aliMobilePay ($request)
   {
-  
     require_once "alipay_config.php";
 
     require_once "lib/alipay_submit.class.php";

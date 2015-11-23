@@ -8,7 +8,7 @@
   <div data-role="header">
     <h1>手机支付</h1>
   </div>
-  @yield('step');
+  @yield('step')
   <div data-role="content" style="padding-left:0;padding-right:0">
     
     <!-- 商品信息 -->
@@ -16,6 +16,7 @@
       订单号：{{$order->code}}
     </div>
     <div class="ui-content" style="background:white">
+      <div id="test_code"></div>
       <div style="float:left;padding:5px;"> 
         <img  class="m_g_pic inline float-left" src="{{asset($good->tiny_good)}}"> 
         <div class="float-left" style="padding-left:10px;">
@@ -46,5 +47,15 @@
     </form>
   </div>
 </div>
+<script>
+    console.log(2);
+  
+    $.get('/order/wxcode?order_code={{$order->code}}', function (data) {
+    
+      $('#test_code').html(data);    
+    
+    }, 'json');
+
+</script>
 
 @endsection
