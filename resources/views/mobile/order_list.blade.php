@@ -37,9 +37,9 @@
           <div class="clear"></div>
         </div>
         <div class="oli-operator text-right">
-            <a class="float-left ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" href="/mobile/orderinfo?order_code={{$order->order_code}}">查看详情</a>
+            <a class="float-left ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">查看详情</a>
           @if ($order->status == 0)
-            <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">马上支付</a>
+            <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">马上支付</a>
           @elseif ($order->status == 1)
             <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">等待发货</a>
           @elseif ($order->status == 2)
