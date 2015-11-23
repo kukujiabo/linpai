@@ -206,12 +206,12 @@
       </div>
       <div class="col-md-2" style="width:22%;">
         <div style="position:absolute;bottom:-80px;background:#eee;width:100%;padding:10px;">
-          <img style="display:inline;float:left"  src="/imgs/weixin.png">
+          <img style="display:inline;float:left"  src="/imgs/qrcode.png">
           <div style="float:left;padding:0px 10px;font-size:12px;">
             <p style="margin:0px 0px 4px 0px;">关注51临牌微信公众号</p>
             <p style="margin:0px 0px 4px 0px;">手机直接购买临牌</p>
             <p style="margin:0px 0px 4px 0px;">查询订单进度</p>
-            <p style="padding:5px;color:white;background:#ff8800">公众号：LinPai51</p>
+            <p style="padding:5px;color:white;background:#ff8800">公众号：LinPai51X</p>
           </div>
         </div>
       </div>

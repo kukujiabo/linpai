@@ -586,8 +586,18 @@ class OrdersController extends Controller {
     }
 
     $data['wTitle'] = '订单支付';
+
+    $mb = $request->input('mb');
+
+    if ($mb == 'true') {
     
-    return view('orders/pay', $data);
+      return view('mobile/minipay', $data);
+    
+    } else {
+    
+      return view('orders/pay', $data);
+
+    }
   
   }
 
