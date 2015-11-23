@@ -32,7 +32,7 @@
         <div class="oli-footer">
           <div class="inline float-right" style="padding-right:10px">
             <span class="margin-5 inline float-right" style="font-size:12px;">实付：<strong style="font-size:16px;">¥ {{$order->final_price}}</strong></span>
-            <span class="margin-5 inline float-right" style="font-size:12px;">减免：<strong style="font-size:16px;">¥ {{$order->cut_fee}} </strong> | </span> 
+            <span class="margin-5 inline float-right" style="font-size:12px;">减免：<span style="font-size:16px;font-weight:normal">¥ {{$order->cut_fee}} </span> | </span> 
           </div>
           <div class="clear"></div>
         </div>
@@ -47,7 +47,7 @@
           @endif
           
           @if ($order->status > 0) 
-            <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini orange_btn"  role="button" >再次购买</a> 
+            <a class="orange_btn ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini orange_btn"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
