@@ -1,7 +1,7 @@
 var xmlHttpRequest;
  
 $(function(){
-   
+  
   if(window.XMLHttpRequest){
      
     xmlHttpRequest=new XMLHttpRequest();
@@ -13,5 +13,6 @@ $(function(){
   }
    
   xmlHttpRequest.open("GET","AjaxServlet",true);
+  xmlHttpRequest.open("POST","AjaxServlet",true);
    
 });
