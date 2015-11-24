@@ -219,8 +219,13 @@
             var res = data.res[0].status;
 
             if (res == 'success') {
+
+              var countTime = 30;
             
               errcontent.html('验证短信已发送！');
+
+              setInterval("setTime(sendVerify, countTime)", 1000);
+
             
             } else {
 
@@ -245,6 +250,26 @@
     });
   
   });
+
+  function setTime(ckBtn, countTime) {
+  
+    if (!countTime) {
+    
+      window.clearInterval(timer);
+
+      ckBtn.enable(true);
+
+      ckBtn.html('发送验证码');
+    
+    } else {
+    
+      countTime--;
+    
+      ckBtn.html('重新获取(' + countTime + ')');
+    
+    }
+  
+  }
 
 </script>
 
