@@ -214,7 +214,7 @@
   
   }
 
-  checkInfoComplete();
+  window.onload = checkInfoComplete();
 
   $(document).on('pageinit', function (event) {
 
