@@ -22,11 +22,11 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:72%;float:left">
+          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:57%;float:left">
             <input data-role="none"  type="text" name="reset_code" placeholder="请输入验证码"> 
           </div>
-          <div class="ui-btn  no-margin ui-mini blue_white" style="margin-left:1px;float:left;" data-inline="true">
-            <a href="#" id="reset_sms" class="blue_white" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
+          <div class="ui-btn  no-margin ui-mini blue_white" style="margin-left:1px;float:left;width:31%" data-inline="true">
+            <a href="#" id="reset_sms" class="blue_white_btn" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
