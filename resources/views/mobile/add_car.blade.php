@@ -24,15 +24,15 @@
             </p>
           </div>
           <div data-role="collapsible" class="inner_white" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
-            <h1 style="font-weight:normal">产牌型号</h1> 
+            <h1 style="font-weight:normal">厂牌型号</h1> 
             <p>
-              <input type="text" name="factory_code" placeholder="请输入车辆厂牌型号">
+              <input type="text" name="factory_code" placeholder="请输入车辆厂牌型号（例：宝马320i）">
             </p>
           </div>
           <div data-role="collapsible" class="inner_white" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
             <h1 style="font-weight:normal">识别代码</h1> 
             <p>
-              <input type="text" name="reco_code" placeholder="请输入车辆识别代码">
+              <input type="text" name="reco_code" placeholder="请输入车架号（例：WDDEJ6GB3EM099882）">
             </p>
           </div>
         </div>

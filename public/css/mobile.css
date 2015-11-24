@@ -3,6 +3,10 @@ a {
 }
 
 a:hover {
+  text-shadow:none !important;
+}
+
+a:hover {
   text-decoration: none;
 }
 
@@ -274,3 +278,4 @@ ul {
 .hide {
   display: none;
 }
+
