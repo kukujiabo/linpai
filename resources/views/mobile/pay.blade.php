@@ -199,189 +199,136 @@
 </div>
 <script type="text/javascript">
 
-  function checkInfoComplete () {
 
-    var btnSubmit = $('#pay_submit');
+  window.onload = function () {
 
-    var sCar = $('input[name=car]').val();
+    function checkInfoComplete () {
 
-    var sReceiver = $('input[name=receiver]').val();
+      var btnSubmit = $('#pay_submit');
 
-    if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
+      var sCar = $('input[name=car]').val();
 
-      btnSubmit.val('立即支付');
-     
-    } else {
+      var sReceiver = $('input[name=receiver]').val();
+
+      if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
+
+        btnSubmit.val('立即支付');
+       
+      } else {
+      
+        btnSubmit.val('资料未完成');
+      }
     
-      btnSubmit.val('资料未完成');
     }
-  
-  }
 
-  window.onload = checkInfoComplete();
-
-  $(document).on('pageinit', function (event) {
-
-    var btnSubmit = $('#pay_submit');
-
-    var bouns = [];
-
-    btnSubmit.on('tap', function (e) {
-    
-      e.preventDefault();
-
-      console.log(1);
-
-      var car = $('input[name=car]').val();
-
-      if (car == undefined || car == '') {
-
-        $('#trigger_pop').click();
-
-        $('#alert_content').html('请选择车辆!');
-
-        return;
-      
-      } 
-
-      var receiver = $('input[name=receiver]').val();
-
-      if (receiver == undefined || receiver.length == 0) {
-      
-        $('#trigger_pop').click();
-
-        $('#alert_content').html('请选择收件人!');
-
-        return;
-      
-      }
-
-      $('input[name=comment]').val($('#user_comment').val());
-
-      $('#order_form')[0].submit();
-    
-    });
-
-    var infoItms = $('.info_itm');
-    
-    infoItms.on('tap', function (e) {
-    
-      var that = $(this);
-
-      var type = that.data('type');
-
-      var id = that.data('id');
-    
-      infoItms.removeClass('selected-itm').addClass('select-itm');
-
-      that.removeClass('select-itm').addClass('selected-itm');
-
-      $('input[name=' + type + ']').val(id);
-
-      if (type == 'car') {
-      
-        $('#default_owner').html('所有者：' + that.data('owner'));
-        $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
-        $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
-      
-      } else if (type == 'receiver') {
-
-        $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
-        $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
-        $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
-        $('#receiver_email').html('邮箱地址：' + that.data('receiver_email') == undefined ? '' : that.data('receiver_email'));
-      
-      }
+    (function () {
 
       checkInfoComplete();
-    
-    });
 
-    var inviteItm = $('#invite_boun');
+      var btnSubmit = $('#pay_submit');
 
-    inviteItm.change(function (e) {
+      var bouns = [];
 
-      var that = $(this);
-
-      var value = that.val();
-
-      var youhui = $('input.youhui');
-
-      if (value == undefined || value == '') {
-       
-        youhui.each(function(i, t) {
-        
-          $(t).val('');
-        
-        });
-        
-        return;
-
-      }
-
-      if (value.length != 5) {
+      btnSubmit.on('tap', function (e) {
       
-        alert('邀请码是5位字母＋数字，请正确输入');
+        e.preventDefault();
 
-        return;
-      
-      }
+        console.log(1);
 
-      for (var i = 0; i < youhui.length; i++) {
-      
-        var y = youhui[i];
+        var car = $('input[name=car]').val();
 
-        if (y.value == undefined || y.value == '') {
-
-          y.value = that.val();
-
-          break;
-        
-        }
-
-        if (i == 2) {
-
-          $('#alert_content').html('最多使用3张优惠券/邀请码！');
+        if (car == undefined || car == '') {
 
           $('#trigger_pop').click();
+
+          $('#alert_content').html('请选择车辆!');
+
+          return;
+        
+        } 
+
+        var receiver = $('input[name=receiver]').val();
+
+        if (receiver == undefined || receiver.length == 0) {
+        
+          $('#trigger_pop').click();
+
+          $('#alert_content').html('请选择收件人!');
 
           return;
         
         }
+
+        $('input[name=comment]').val($('#user_comment').val());
+
+        $('#order_form')[0].submit();
       
-      }
+      });
+
+      var infoItms = $('.info_itm');
       
-    });
-
-    var bounItms = $('.boun_btn');
-
-    bounItms.on('tap', function (e) {
-    
-      var that = $(this);
-
-      var youhui = $('input.youhui');
-
-      if (that.data('selected') == true) {
+      infoItms.on('tap', function (e) {
       
-        that.data('selected', false); 
+        var that = $(this);
 
-        that.addClass('blue_white_btn').removeClass('red_white_btn');
+        var type = that.data('type');
+
+        var id = that.data('id');
       
-        for (var i = 0; i < youhui.length; i++) {
+        infoItms.removeClass('selected-itm').addClass('select-itm');
+
+        that.removeClass('select-itm').addClass('selected-itm');
+
+        $('input[name=' + type + ']').val(id);
+
+        if (type == 'car') {
         
-          var y = youhui[i];
+          $('#default_owner').html('所有者：' + that.data('owner'));
+          $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
+          $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
+        
+        } else if (type == 'receiver') {
 
-          if (y.value == that.data('id')) {
-
-            y.value = "";
-
-            break;
-          
-          }
+          $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
+          $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
+          $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
+          $('#receiver_email').html('邮箱地址：' + that.data('receiver_email') == undefined ? '' : that.data('receiver_email'));
         
         }
 
-      } else {
+        checkInfoComplete();
+      
+      });
+
+      var inviteItm = $('#invite_boun');
+
+      inviteItm.change(function (e) {
+
+        var that = $(this);
+
+        var value = that.val();
+
+        var youhui = $('input.youhui');
+
+        if (value == undefined || value == '') {
+         
+          youhui.each(function(i, t) {
+          
+            $(t).val('');
+          
+          });
+          
+          return;
+
+        }
+
+        if (value.length != 5) {
+        
+          alert('邀请码是5位字母＋数字，请正确输入');
+
+          return;
+        
+        }
 
         for (var i = 0; i < youhui.length; i++) {
         
@@ -389,7 +336,7 @@
 
           if (y.value == undefined || y.value == '') {
 
-            y.value = that.data('id');
+            y.value = that.val();
 
             break;
           
@@ -406,18 +353,76 @@
           }
         
         }
+        
+      });
 
-        bouns.push(that.data('id'));
+      var bounItms = $('.boun_btn');
 
-        that.data('selected', true);
-
-        that.addClass('red_white_btn').removeClass('blue_white_btn');
+      bounItms.on('tap', function (e) {
       
-      }
-    
-    });
+        var that = $(this);
 
-  });
+        var youhui = $('input.youhui');
+
+        if (that.data('selected') == true) {
+        
+          that.data('selected', false); 
+
+          that.addClass('blue_white_btn').removeClass('red_white_btn');
+        
+          for (var i = 0; i < youhui.length; i++) {
+          
+            var y = youhui[i];
+
+            if (y.value == that.data('id')) {
+
+              y.value = "";
+
+              break;
+            
+            }
+          
+          }
+
+        } else {
+
+          for (var i = 0; i < youhui.length; i++) {
+          
+            var y = youhui[i];
+
+            if (y.value == undefined || y.value == '') {
+
+              y.value = that.data('id');
+
+              break;
+            
+            }
+
+            if (i == 2) {
+
+              $('#alert_content').html('最多使用3张优惠券/邀请码！');
+
+              $('#trigger_pop').click();
+
+              return;
+            
+            }
+          
+          }
+
+          bouns.push(that.data('id'));
+
+          that.data('selected', true);
+
+          that.addClass('red_white_btn').removeClass('blue_white_btn');
+        
+        }
+      
+      });
+
+    })();
+
+  }
 
 </script>
 
