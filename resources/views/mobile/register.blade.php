@@ -210,7 +210,7 @@
 
         },
 
-        dataType: 'json'
+        dataType: 'json',
 
         success: function (data) {
       
