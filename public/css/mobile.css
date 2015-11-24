@@ -11,6 +11,18 @@ a:hover {
   text-decoration: none;
 }
 
+.no-shadow {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  color: #333 !important;
+}
+
+.no-shadow:active {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  color: #333 !important;
+}
+
 .text-center {
   text-align: center;
 }
