@@ -1,10 +1,11 @@
 @extends('mobile/mobile')
 
+@include('mobile/head')
 
 @section('content')
 <div data-role="page">
   <div data-role="header">
-    <h1>车辆信息－51临牌</h1>
+    @yield('header')
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <div data-role="popup" data-position-to="window" id="info_popup" data-theme="b">

@@ -2,11 +2,13 @@
 
 @include('mobile/step')
 
+@include('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>购买临牌 - 51临牌</h1>
+   @yield('header') 
   </div>
   @yield('step')
   <div data-role="content">

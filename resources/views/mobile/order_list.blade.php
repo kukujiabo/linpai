@@ -1,10 +1,12 @@
 @extends('mobile/mobile')
 
+@include('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>我的订单 - 51临牌</h1>  
+    @yield('header')
   </div>
   <div data-role="content">
   
