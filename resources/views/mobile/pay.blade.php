@@ -201,8 +201,6 @@
 
   function checkInfoComplete () {
 
-    alert(1);
-  
     var btnSubmit = $('#pay_submit');
 
     var sCar = $('input[name=car]').val();
