@@ -236,7 +236,7 @@
               
               });
 
-              //timer = setInterval(setTime, 1000);
+              timer = setInterval(setTime, 1000);
 
             } else {
 
