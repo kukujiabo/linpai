@@ -62,7 +62,7 @@
     <div style="padding:0px 15%;margin-top:50px;">
       @if ($order->status > 0)
 
-        <a class="ui-btn orange_btn">再次购买</a>
+        <a class="ui-btn orange_btn" href="/order/rebuy?order_code={{$order->order_code}}&mb=true">再次购买</a>
 
       @else 
       
