@@ -1065,17 +1065,15 @@ class OrdersController extends Controller {
   {
     require_once('lib/alipay_notify.class.php');
 
-    /*
     $alipayNotify = new \AlipayNotify($this->payConfig());
 
     $verifyResult = $alipayNotify->verifyReturn();
-     */
 
     $order = null;
 
     $user = null;
 
-    //if ($verifyResult) {
+    if ($verifyResult) {
 
       $orderCode = $_GET['out_trade_no'];
 
@@ -1135,13 +1133,12 @@ class OrdersController extends Controller {
 
      }
 
-      /*
     } else {
 
       return redirect('/home');
 
     }
-       */
+
   }
 
   private function paySuccess($order)
