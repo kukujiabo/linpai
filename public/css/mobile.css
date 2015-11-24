@@ -116,7 +116,8 @@ label.form-label {
   background: #ff8800 !important;
   font-weight: normal !important;
   border: 0px !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
+  text-shadow: none !important;
 }
 
 .blue_white_btn {
@@ -178,6 +179,11 @@ a.blue_white_btn:active {
   text-shadow: none;
   border: 0px;
   font-size: 14px;
+}
+
+.blue_white:active {
+  color: #138ed1 !important;
+  text-shadow: none !important;
 }
 
 .no_text_shadow {
@@ -290,5 +296,9 @@ ul {
 
 .hide {
   display: none;
+}
+
+.normal-weight {
+  font-weight: normal !important;
 }
 

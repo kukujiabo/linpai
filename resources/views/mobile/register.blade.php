@@ -79,7 +79,13 @@
     var errcontent = $('#err_msg');
 
     var _token = $('input[name=_token]').val();
-  
+
+    var sendVerify = $('#send_code');
+
+    var countTime;
+
+    var timer;
+
     regForm.ajaxForm();
   
     var registerOptions = {
@@ -173,13 +179,9 @@
       regForm.ajaxSubmit(registerOptions);
     
     });
+
+    var tapVerify =  function (event) {
   
-    var sendVerify = $('#send_code');
-
-    var countTime;
-
-    sendVerify.on('tap', function (event) {
-    
       event.preventDefault();
 
       var that = $(this);
@@ -226,7 +228,15 @@
             
               errcontent.html('验证短信已发送！');
 
-              setInterval("setTime(sendVerify, countTime)", 1000);
+              sendVerify.unbind('tap');
+
+              sendVerify.on('tap', function (e) {
+
+                e.preventDefault();
+              
+              });
+
+              timer = setInterval(setTime, 1000);
 
             } else {
 
@@ -247,30 +257,33 @@
         }
       
       });
-    
-    });
 
-    function setTime(ckBtn, countTime) {
+    };
+
+    var setTime = function() {
     
       if (!countTime) {
       
         window.clearInterval(timer);
 
-        ckBtn.enable(true);
+        sendVerify.on('tap', tapVerify);
 
-        ckBtn.html('发送验证码');
+        sendVerify.html('发送验证码');
       
       } else {
       
         countTime--;
       
-        ckBtn.html('重新获取(' + countTime + ')');
+        sendVerify.html('重新获取(' + countTime + ')');
       
       }
     
-    }
+    };
+  
+    sendVerify.on('tap', tapVerify);
+
     
-    });
+  });
 
 
 </script>

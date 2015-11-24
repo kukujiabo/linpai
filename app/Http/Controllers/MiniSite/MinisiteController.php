@@ -148,7 +148,7 @@ class MinisiteController extends Controller {
 
   public function getOrderinfo (Request $request) 
   {
-     $order_code = $request->input('order_code');  
+     $order_code = $request->input('order');  
 
      if (empty($order_code) || strlen($order_code) == 0) {
      
