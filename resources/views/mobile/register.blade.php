@@ -65,7 +65,6 @@
     </div>
   </div>
   </div>
-</div>
 <script type="text/javascript">
 
   $(document).on('pageinit', function (event) {
@@ -292,5 +291,5 @@
 
 
 </script>
-
+</div>
 @endsection

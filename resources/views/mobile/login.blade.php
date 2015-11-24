@@ -48,7 +48,6 @@
     <h2>www.51linpai.com</h2>
   </div>
   -->
-</div>
 
 <script type="text/javascript">
 
@@ -168,5 +167,6 @@ console.log(document.referrer);
 
   });
 </script>
+</div>
 @endsection
 
