@@ -35,7 +35,7 @@
         <thead>
           <tr>
             <th>联系人</th>
-            <th>公司</th>
+            <th>提交时间</th>
             <th>手机号码</th>
             <th>固定电话</th>
             <th>所属区域</th>
@@ -48,7 +48,7 @@
 
             <tr>
               <td>{{$cooper->contact}}</td>
-              <td>{{$cooper->company}}</td>
+              <td>{{$cooper->created_at}}</td>
               <td>{{$cooper->mobile}}</td>
               <td>{{$cooper->telephone}}</td>
               <td>{{$cooper->province}}&nbsp;{{$cooper->city}}&nbsp;{{$cooper->district}}</td>
