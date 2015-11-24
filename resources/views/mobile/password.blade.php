@@ -41,9 +41,7 @@
           </div>
         </div>
         <div class="form-group margin-top-50">
-          <div class="ui-btn blue_white" >
-            <a type="submit" id="submit_form" class="blue_white" style="font-size:16px;" >确认</a>
-          </div>
+          <button type="submit" id="submit_form" class="blue_white_btn no-radius" style="font-size:16px;" >确认</button>
         </div>
       </form>
     </div>

@@ -59,9 +59,7 @@
           </label> 
         </div>
         <div class="form-group" style="margin: 20px 0px;">
-          <div class="ui-btn ui-input-btn blue_full_btn" style="margin:0px;">
-            <a role="button" type="submit" class="blue_full_btn" id="reg_submit">提交</a>
-          </div>
+          <button role="button" type="submit" class="blue_full_btn no-radius" id="reg_submit">提交</button>
         </div>
       </form>
     </div>
