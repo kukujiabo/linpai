@@ -37,9 +37,7 @@
           </div>
           <div class="clear"></div>
           <div class="form-group" style="margin-top:90px">
-            <div class="blue_full_btn ui-btn ui-input-btn" style="margin:0px;">
-              <a href="#" type="submit" id="login-submit" class="blue_full_btn" >登录</a>
-            </div>
+            <button type="submit" id="login-submit" class="blue_full_btn no-radius no-shadow" >登录</button>
           </div>
         </form>
       </div>
@@ -150,11 +148,15 @@ console.log(document.referrer);
         
           errMsg.html('请输入11位有效手机号！');
 
+          return;
+
         }
 
         if (password == undefined || password == '' || (password.length < 6 || password.length > 18)) {
         
           errMsg.html('请输入6-18位密码！');
+
+          return;
 
         }
 
