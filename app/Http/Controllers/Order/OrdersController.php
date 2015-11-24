@@ -1890,6 +1890,10 @@ class OrdersController extends Controller {
         break; 
     
     }
+
+    $code = $this->input('code');
+
+    echo $code;
   
   }
 
