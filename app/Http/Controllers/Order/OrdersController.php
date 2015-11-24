@@ -484,6 +484,8 @@ class OrdersController extends Controller {
 
       $data['step'] = 3;
 
+      $data['header'] = '订单支付';
+
       return view('mobile/minipay', $data);
     
     } else {
@@ -1692,8 +1694,18 @@ class OrdersController extends Controller {
   {
 
     if (Session::get('rebuy_code') == $request->input('order_code')) {
+
+      $mb = $request->input('mb');
+
+      if (empty($mb)) {
     
-      return redirect('/order/pay?order=' . Session::get('order_code'));
+        return redirect('/order/pay?order=' . Session::get('order_code'));
+
+      } else {
+      
+        return redirect('/order/pay?order=' . Session::get('order_code') . '&mb=true');
+      
+      }
     
     } else {
 
@@ -1809,7 +1821,17 @@ class OrdersController extends Controller {
     
     ];
 
-    return view('orders/pay', $data);
+    $mb = $request->input('mb');
+
+    if (!empty($mb)) {
+    
+      return view('mobile/minipay', $data);
+
+    } else {
+    
+      return view('orders/pay', $data);
+    
+    }
   
   }
 
