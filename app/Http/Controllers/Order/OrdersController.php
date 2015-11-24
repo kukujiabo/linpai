@@ -1898,7 +1898,7 @@ class OrdersController extends Controller {
   }
 
 
-  public function getWxcode($request)
+  public function getWxcode(Request $request)
   {
 
     $tools = new \JsApiPay();
