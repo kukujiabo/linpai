@@ -97,7 +97,11 @@ class MinisiteController extends Controller {
 
     $preUrl = Session::get('pre_url');
 
-    $data = [];
+    $data = [
+      
+      'header' => '登录'
+      
+      ];
 
     if ($preUrl != null) {
 
@@ -114,14 +118,22 @@ class MinisiteController extends Controller {
   public function getRegister(Request $request) 
   {
 
-    return view('mobile/register');
+    $data = [
+      
+        'header' => '用户注册'
+       
+      ];
+
+    return view('mobile/register', $data);
 
   }
 
   public function getPassword (Request $request)
   {
+
+    $data = [ 'header' => '重置密码' ];
   
-    return view('mobile/password'); 
+    return view('mobile/password', $data); 
   
   }
 
@@ -145,6 +157,8 @@ class MinisiteController extends Controller {
      
       'orders' => $orders,
 
+      'header' => '我的订单'
+
      ];
 
     return view('mobile/order_list', $data);
@@ -167,7 +181,7 @@ class MinisiteController extends Controller {
      
      }
 
-     $data = [ 'order' => $order ];
+     $data = [ 'order' => $order, 'header' => '订单详情' ];
   
      return view('/mobile/order_detail', $data); 
 
@@ -189,6 +203,8 @@ class MinisiteController extends Controller {
       'attribs' => $attribs,
 
       'car_hand' => $carHand,
+
+      'header' => '新增车辆'
       
     ];
   
@@ -294,8 +310,14 @@ class MinisiteController extends Controller {
 
   public function getItems (Request $request)
   {
+
+    $data = [
+      
+        'header' => '服务条款'
+      
+      ];
   
-    return view('mobile/policy');
+    return view('mobile/policy', $data);
   
   }
 
@@ -305,11 +327,51 @@ class MinisiteController extends Controller {
 
     $data = [
       
-       'car_hand' => $car_hand
+      'car_hand' => $car_hand,
+
+      'header' => '添加联系人'
       
       ];
     
     return view('mobile/add_receiver', $data);
+  
+  }
+
+  public function getProfile (Request $request)
+  {
+    $user = Auth::user();
+
+    if (empty($user)) {
+    
+      return redirect('/moible/login');
+    
+    }
+
+    $data = [
+      
+        'user' => $user,
+
+        'header' => '个人中心'
+      
+      ];
+
+  
+    return view('mobile/profile', $data);
+  
+  }
+
+  public function postLogout (Request $request)
+  {
+  
+    $user = Auth::user();
+
+    if (!empty($user)) {
+    
+      Auth::logout(); 
+    
+    }
+
+    return redirect('/mobile/login');
   
   }
   

@@ -99,7 +99,13 @@ class OrderController extends Controller {
   public function getCartype()
   {
 
-    $data = [ 'step' => 1 ];
+    $data = [
+
+      'step' => 1,
+     
+      'header' => '车辆类型'
+     
+     ];
   
     return view('mobile/cartype', $data);
   
@@ -169,7 +175,9 @@ class OrderController extends Controller {
 
       'car_hand' => $carhand,
 
-      'step' => 2
+      'step' => 2,
+
+      'header' => '确认订单'
       
     ];
 

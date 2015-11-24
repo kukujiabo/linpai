@@ -1,11 +1,12 @@
 @extends('mobile/mobile');
 
+@include('mobile/head')
 
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>用户条款 － 51临牌</h1>
+    @yield('header')
   </div>
   <div data-role="content">
     <h3 class="blue-theme">51临牌网站使用协议</h3>

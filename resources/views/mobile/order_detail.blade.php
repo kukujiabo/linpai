@@ -1,10 +1,12 @@
 @extends('mobile/mobile')
 
+@yield('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>订单详情 - 51临牌</h1>
+    @yield('header')
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <div style="padding:5px 10px;margin:5px 0px;border:0px;background:#fff">

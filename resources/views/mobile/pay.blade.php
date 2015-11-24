@@ -2,11 +2,13 @@
 
 @include('mobile/step')
 
+@include('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>确认订单 － 51临牌</h1>
+    @yield('header')
   </div>
   @yield('step') 
   <div data-role="content" style="padding-left:0px;padding-right:0px;padding-bottom:0px;">
@@ -49,7 +51,7 @@
                  </li>
              @endforeach
            
-               <li data-icon="carat-r" class="add_itm">
+               <li data-icon="carat-r" class="add_itm no-shadow">
                  <a href="/mobile/addcar?car_hand={{$car_hand}}&good_code={{$good->code}}" id="add_car" class="add_itm">添加车辆信息</a>
                </li>
 
@@ -88,7 +90,7 @@
                 </li>
             @endforeach
 
-            <li  data-icon="carat-r" class="add_itm">
+            <li  data-icon="carat-r" class="add_itm no-shadow">
               <a id="add_receiver" class="add_itm" href="/mobile/addreceiver?car_hand={{$car_hand}}">添加新的收件人</a>
             </li>
           </ul>

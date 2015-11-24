@@ -1,23 +1,12 @@
-<!Doctype html>
-<html>
-<head>
-  <title>支付订单－51临牌</title>
-  <meta name="keywords" content="临牌 车牌" />     
-  <meta name="description" content="首页描述" />     
-  <meta http-equiv="Content-Type" content="charset=utf-8" />     
-  <meta http-equiv="Cache-Control" content="no-cache" />     
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
-  <meta name="apple-mobile-web-app-capable" content="yes" />     
-  <link rel="stylesheet" href="{{asset('css/jquery.mobile-1.4.5.min.css')}}" >
-  <link rel="stylesheet" href="{{asset('css/mobile.css')}}">
-  <script src="{{asset('js/jquery.min.js')}}"></script>
-  <script src="{{asset('js/jquery.form.js')}}"></script>
-  <script src="{{asset('js/minisite.js')}}"></script>
-</head>
-<body>
+@extends('mobile/mobile')
+
+@include('mobile/head')
+
+@section('content')
+
 <div data-role="page">
   <div data-role="header">
-    <h1>手机支付</h1>
+    @yield('header')
   </div>
   @yield('step')
   <div data-role="content" style="padding-left:0;padding-right:0">
@@ -58,7 +47,7 @@
     </form>
   </div>
 </div>
-</body>
-</html>
+
+@endsection
 
 

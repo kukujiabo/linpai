@@ -1,10 +1,11 @@
 @extends('mobile/mobile')
 
+@include('mobile/head')
 
 @section('content')
 <div data-role="page">
   <div data-role="header">
-    <h1>车辆信息－51临牌</h1>
+    @yield('header')
   </div>
   <div data-role="content" style="padding-left:0px;padding-right:0px;">
     <div data-role="popup" data-position-to="window" id="info_popup" data-theme="b">
@@ -18,25 +19,31 @@
       <fieldset>
         <div data-role="collapsible-set">
           <div data-role="collapsible" class="inner_white no-radius" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
-            <h1 style="font-weight:normal">所有人</h1>
+            <h1 style="font-weight:normal" class="no-shadow">所&nbsp;&nbsp;有&nbsp;&nbsp;人&nbsp;&nbsp;&nbsp;&nbsp;<span id="txt_owner"></span></h1>
             <p>
               <input type="text" name="owner" placeholder="请输入车主姓名">
             </p>
           </div>
           <div data-role="collapsible" class="inner_white" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
-            <h1 style="font-weight:normal">厂牌型号</h1> 
+            <h1 style="font-weight:normal" class="no-shadow">厂牌型号&nbsp;&nbsp;&nbsp;&nbsp;<span id="txt_factory_code"></span></h1> 
             <p>
               <input type="text" name="factory_code" placeholder="请输入车辆厂牌型号（例：宝马320i）">
             </p>
           </div>
           <div data-role="collapsible" class="inner_white" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
-            <h1 style="font-weight:normal">识别代码</h1> 
+            <h1 style="font-weight:normal" class="no-shadow">识别代码&nbsp;&nbsp;&nbsp;&nbsp;<span id="txt_reco_code"></span></h1> 
             <p>
               <input type="text" name="reco_code" placeholder="请输入车架号（例：WDDEJ6GB3EM099882）">
             </p>
           </div>
         </div>
       </fieldset>
+      <fieldset style="margin-top:30px;" data-role="controlgroup">
+        <label for="domestic" class="inner_white original no-radius" data-id="orig_dom">国产</label>
+        <input type="radio" name="car_type" id="domestic" data-id="domestic" value="domestic" checked>
+        <label for="imported" class="inner_white original no-radius" data-id="orig_imp">进口</label>
+        <input type="radio" name="car_type" id="imported" data-id="imported" value="imported"> 
+      </fieldset> 
       <fieldset style="margin-top:20px;">
         <ul data-role="listview">
         @foreach($attribs as $good_attrib)
@@ -50,7 +57,11 @@
                   <div style="padding: 0px 15px;">
                     <input type="hidden" name="dir_{{$good_attrib['code']}}" value="" id="hint-{{$good_attrib['code']}}">
                     <label style="margin:0px;"  for="{{$good_attrib['code']}}">
-                      <div style="float:left;padding-top:5px;">{{$good_attrib['name']}}</div>
+                      @if ($good_attrib['code'] == 'validate_paper')
+                        <div style="float:left;padding-top:5px;" id="name_validate_paper">{{$good_attrib['name']}}</div>
+                      @else
+                        <div style="float:left;padding-top:5px;">{{$good_attrib['name']}}</div>
+                      @endif
                       <img src="/imgs/camera.png" id="upload-img-{{$good_attrib['code']}}" style="float:right;position:relative;height:30px;">
                       <div class="clear"></div>
                     </label>
@@ -73,7 +84,7 @@
                   <div style="padding: 0px 15px;">
                     <input type="hidden" name="dir_{{$good_attrib['code']}}" value="" id="hint-{{$good_attrib['code']}}">
                     <label style="margin:0px;"  for="{{$good_attrib['code']}}">
-                      <div style="float:left;padding-top:5px;">{{$good_attrib['name']}}</div>
+                      <div style="float:left;padding-top:5px;" id="name_{{$good_attrib['code']}}">{{$good_attrib['name']}}</div>
                       <img id="upload-img-{{$good_attrib['code']}}" src="/imgs/camera.png" style="float:right;position:relative;width:30px;">
                       <div class="clear"></div>
                     </label>
@@ -93,12 +104,6 @@
         @endforeach
         </ul>
       </fieldset>
-      <fieldset style="margin-top:30px;" data-role="controlgroup">
-        <label for="domestic" class="inner_white">国产</label>
-        <input type="radio" name="car_type" id="domestic" value="domestic" checked>
-        <label for="imported" class="inner_white">进口</label>
-        <input type="radio" name="car_type" id="imported" value="imported"> 
-      </fieldset> 
       <div class="ui-content" style="margin-top:30px;">
           <button class="blue_full_btn no-radius" type="submit" id="save_car" style="color:#d9534f" >保存</button>
       </div>
@@ -264,6 +269,36 @@
       console.log(uploadInput);
 
       uploadInput.click();
+    
+    });
+
+    $('input[type=radio]').click(function (e) {
+
+      var name = $('#name_validate_paper');
+
+      var that = $(this);
+
+      var id = that.data('id');
+
+      if (that.data('id') == 'imported') {
+      
+        name.html('报关单扫描件');
+      
+      } else if(that.data('id') == 'domestic') {
+      
+        name.html('合格证扫描件');
+      
+      }
+    
+    });
+
+    $('input[type=text]').change(function (e) {
+
+      var value = $(this).val();
+
+      var id = $(this).attr('name');
+    
+      $('#txt_' + id).html(value);
     
     });
 

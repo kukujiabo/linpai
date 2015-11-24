@@ -1,10 +1,12 @@
 @extends('mobile/mobile')
 
+@include('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header" data-position="fixed">
-    <h1>登录 - 51临牌</h1>
+    @yield('header')
   </div>
   <div role="main">
     <div data-role="popup" id="err_popup" data-position-to="window" class="ui-content">

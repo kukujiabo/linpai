@@ -1,10 +1,12 @@
 @extends('mobile/mobile')
 
+@include('mobile/head')
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>我的订单 - 51临牌</h1>  
+    @yield('header')
   </div>
   <div data-role="content">
   
@@ -51,7 +53,7 @@
           @endif
           
           @if ($order->status > 0) 
-            <a href="" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
+            <a href="/order/rebuy?order_code={{$order->order_code}}&mb=true" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
