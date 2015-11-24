@@ -22,10 +22,10 @@
           <img  class="m_g_pic inline float-left" src="{{asset($order->good_tiny_pic)}}"> 
           <div class="inline float-left" style="padding-left:10px">
             <h2 class="margin-5">{{$order->good_name}}</h2>
+            <h5 class="margin-5">x {{$order->num}}</h5>
           </div>
           <div class="inline float-right text-right" style="padding-right:10px;">
             <h3 class="margin-5"> ¥ {{$order->orig_price}}</h3>
-            <h5 class="margin-5">x {{$order->num}}</h5>
           </div>
           <div class="clear"></div>
         </div>
@@ -43,11 +43,15 @@
           @elseif ($order->status == 1)
             <a class="ui-btn ui-btn-inline ui-shadow ui-mini gray_white_btn" role="button">等待发货</a>
           @elseif ($order->status == 2)
-            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">查看物流</a>
+            @if (!empty($deliver_info))
+
+              <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn logistic_info" role="button" data-company="{{$order->order_deliver_company}}" data-deliver_code={{$order->deliver_code}}>查看物流</a>
+
+            @endif
           @endif
           
           @if ($order->status > 0) 
-            <a class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
+            <a href="" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
@@ -57,9 +61,38 @@
     </ul>
       
   </div>
+  <div data-role="popup" data-position-to="window" id="order_info_popup">
+    <p id="popup_content"></p>
+  </div>
+  <a href="#order_info_popup" data-rel="popup"></a>
   <div data-role="footer">
     <h2>www.51linpai.com</h2>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).on('pageinit', function (e) {
+  
+    $('.logistic_info').on('tap', function (e) {
+
+      var that = $(this);
+
+      var company = that.data('company');
+
+      var code = that.data('code');
+
+      var str = '<p>快递公司：' + company + '</p>';
+
+      str += '<p>快递单号：' + code + '</p>';
+
+      str += '<p>查询网站：' + "<a href=\"http://www.sf-express.com\" class=\"ui-btn blue_full_btn\">顺丰速递</a> " + '</p>';
+      $('#popup_content').html(str);
+
+      $('#ordeer_info_popup').click();
+
+    }); 
+
+  });
+  
+</script>
 
 @endsection

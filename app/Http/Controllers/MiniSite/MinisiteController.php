@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\OrderAllInfo;
 use App\Models\Attribute;
+use App\Models\DeliverInfo;
 use App\User;
 use Validator;
 use App\Models\Boun;
@@ -140,7 +141,11 @@ class MinisiteController extends Controller {
       
       ->get();
 
-    $data = [ 'orders' => $orders ];
+    $data = [
+     
+      'orders' => $orders,
+
+     ];
 
     return view('mobile/order_list', $data);
   
