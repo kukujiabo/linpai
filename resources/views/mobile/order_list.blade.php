@@ -61,10 +61,10 @@
     </ul>
       
   </div>
-  <div data-role="popup" data-position-to="window" id="order_info_popup">
+  <div data-role="popup" data-position-to="window" class="ui-content" id="order_info_popup" style="border:1px #ff8800 solid;padding:30px 50px;text-shadow:none;box-shadow:none" data-overlay-theme="a">
     <p id="popup_content"></p>
   </div>
-  <a href="#order_info_popup" data-rel="popup"></a>
+  <a href="#order_info_popup" id="trigger_order" data-rel="popup"  data-transition="slide"></a>
   <div data-role="footer">
     <h2>www.51linpai.com</h2>
   </div>
@@ -80,16 +80,16 @@
 
       var company = that.data('company');
 
-      var code = that.data('code');
+      var code = that.data('deliver_code');
 
       var str = '<p>快递公司：' + company + '</p>';
 
       str += '<p>快递单号：' + code + '</p>';
 
-      str += '<p>查询网站：' + "<a href=\"http://www.sf-express.com\" class=\"ui-btn blue_full_btn\">顺丰速递</a> " + '</p>';
+      str += '<p>查询网站：' + "<a href=\"http://www.sf-express.com\" style=\"color:#d9534f\">顺丰速递</a> " + '</p>';
       $('#popup_content').html(str);
 
-      $('#ordeer_info_popup').click();
+      $('#trigger_order').click();
 
     }); 
 
