@@ -43,7 +43,7 @@
           @elseif ($order->status == 1)
             <a class="ui-btn ui-btn-inline ui-shadow ui-mini gray_white_btn" role="button">等待发货</a>
           @elseif ($order->status == 2)
-            @if (!empty($deliver_info))
+            @if (!empty($order->order_deliver_company))
 
               <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn logistic_info" role="button" data-company="{{$order->order_deliver_company}}" data-deliver_code={{$order->deliver_code}}>查看物流</a>
 
