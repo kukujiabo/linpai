@@ -53,7 +53,7 @@
           @endif
           
           @if ($order->status > 0) 
-            <a href="" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
+            <a href="/order/rebuy?order_code={{$order->order_code}}&mb=true" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
