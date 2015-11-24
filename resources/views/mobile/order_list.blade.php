@@ -32,7 +32,7 @@
         <div class="oli-footer">
           <div class="inline float-right" style="padding-right:10px">
             <span class="margin-5 inline float-right" style="font-size:12px;">实付：<strong style="font-size:16px;">¥ {{$order->final_price}}</strong></span>
-            <span class="margin-5 inline float-right" style="font-size:12px;">减免：<span style="color:#d9534f;font-size:16px;font-weight:normal">¥ {{$order->cut_fee}} </span> | </span> 
+            <span class="margin-5 inline float-right" style="font-size:12px;">优惠券：<span style="color:#d9534f;font-size:16px;font-weight:normal">减免 ¥ {{$order->cut_fee}} </span> | </span> 
           </div>
           <div class="clear"></div>
         </div>
