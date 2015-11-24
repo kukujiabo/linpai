@@ -29,7 +29,7 @@
             <div class="clear"></div>
           </div>
           <div class="ui-btn ui-mini blue_white" style="margin:0px;float:right;width:31%;">
-            <a href="{{asset('/verify/regsms')}}" class="blue_white" id="send_code" style="margin-top:0px;">发送验证码</a>
+            <a href="{{asset('/verify/regsms')}}" class="blue_white_button no-shadow" id="send_code" style="margin-top:0px;">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
@@ -220,8 +220,6 @@
 
         success: function (data) {
 
-          console.log(data);
-      
           if (data.code == 1) {
           
             var res = data.res[0].status;
@@ -240,7 +238,7 @@
               
               });
 
-              timer = setInterval(setTime, 1000);
+              //timer = setInterval(setTime, 1000);
 
             } else {
 
