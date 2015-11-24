@@ -155,7 +155,8 @@ a.blue_white_btn:active {
 }
  
 .blue_full_btn:hover {
-  color: #138ed1 !important;
+  color: #fff !important;
+  text-shadow: none;
 }
 
 .red_white_btn {
