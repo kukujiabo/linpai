@@ -58,22 +58,23 @@
            </ul>
          </p>
        </div>
-       <div style="padding:12px">
         @if (!empty($defaultCar))
+       <div style="padding:12px" id="car_info">
             <p id="default_owner">所有人：{{$defaultCar->owner}}</p>
             <p id="default_factory_code">厂牌型号：{{$defaultCar->factory_code}}</p>
             <p id="default_reco_code">识别代码：{{$defaultCar->reco_code}}</p>
+        </div>
         @else
+       <div style="paddding:12px;" class="hide" id="car_info">
             <p id="default_owner"></p>
             <p id="default_factory_code"></p>
             <p id="default_reco_code"></p>
-        @endif
        </div>
+        @endif
     </div>
   </div>
     <!-- 收件人信息 -->
 
-    @if (!empty($defaultReceiver))
     <div style="background:#fff;margin-top:5px;">
       <div class="no-radius inner_white" data-iconpos="right"  data-role="collapsible"  data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
         <h1 class="itm-title no-shadow">收件地址 </h1>
@@ -96,21 +97,22 @@
           </ul>
         </p> 
       </div>
-      <div style="padding:15px">
         @if (!empty($defaultReceiver))
+      <div style="padding:12px" id="receiver_info">
           <p id="receiver_txt">收货人：{{$defaultReceiver->receiver}}</p>
           <p id="receiver_address">收货地址：{{$defaultReceiver->province}}{{$defaultReceiver->city}}{{$defaultReceiver->district}}</p>
           <p id="receiver_mobile">联系号码：{{$defaultReceiver->mobile}}</p>
           <p id="receiver_email">邮箱地址：{{$defaultReceiver->email}}</p>
+      </div>
         @else
+      <div style="padding:12px" id="receiver_info" class="hide">
           <p id="receiver_txt"></p>
           <p id="receiver_address"></p>
           <p id="receiver_mobile"></p>
           <p id="receiver_email"></p>
-        @endif
       </div>
+        @endif
     </div>
-    @endif
 
     <!-- 优惠券 -->
     <div data-iconpos="right" class="no-radius inner_white" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
@@ -172,47 +174,51 @@
           <input type="hidden" name="num" value="1">
           <input type="hidden" name="mb" value="true">
         </fieldset>
-        <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
-          实付：¥ {{$goodInfo->value}}
-        </div>
-        <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
-         <input type="submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white" value="立即支付">
-        </div>
-        <div class="clear"></div>
+        <fieldset>
+          <div style="position:fixed;bottom:0px;width:100%">
+            <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
+              实付：¥ <span id="price">{{$goodInfo->value}}</span>
+            </div>
+            <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
+             <input type="submit" id="pay_submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white;width:100%" value="立即支付">
+            </div>
+            <div class="clear"></div>
+          </div>
+        </fieldset>
       </form>
     </div>
   </div>
+  <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
+    <p id="alert_content"></p>
+  </div>
+  <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
 </div>
 <script type="text/javascript">
 
   function checkInfoComplete () {
   
-    var btnSubmit = $('#commit');
+    var btnSubmit = $('#pay_submit');
 
     var sCar = $('input[name=car]').val();
 
     var sReceiver = $('input[name=receiver]').val();
 
     if (sCar != undefined && sCar.length > 0 && sReceiver != undefined && sReceiver.length >0) {
-    
-      btnSubmit.addClass('red_white_btn').removeClass('gray_white_btn');
 
-      btnSubmit.html('提交');
+      btnSubmit.val('立即支付');
      
     } else {
     
-      btnSubmit.addClass('gray_white_btn').removeClass('red_white_btn');
-    
-      btnSubmit.html('资料未完成');
+      btnSubmit.val('资料未完成');
     }
   
   }
 
   checkInfoComplete();
 
-  $(document).on('pageinit', function (e) {
+  $(document).on('pageinit', function (event) {
 
-    var btnSubmit = $('#commit');
+    var btnSubmit = $('#pay_submit');
 
     var bouns = [];
 
@@ -222,7 +228,7 @@
 
       var car = $('input[name=car]').val();
 
-      if (car == undefined || car.length == 0) {
+      if (car == undefined || car == '') {
 
         $('#trigger_pop').click();
 
