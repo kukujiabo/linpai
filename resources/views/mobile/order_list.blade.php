@@ -41,13 +41,13 @@
           @if ($order->status == 0)
             <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">马上支付</a>
           @elseif ($order->status == 1)
-            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">等待发货</a>
+            <a class="ui-btn ui-btn-inline ui-shadow ui-mini gray_white_btn" role="button">等待发货</a>
           @elseif ($order->status == 2)
             <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">查看物流</a>
           @endif
           
           @if ($order->status > 0) 
-            <a class="orange_btn ui-btn ui-btn-inline ui-shadow ui-mini orange_btn"  role="button" >再次购买</a> 
+            <a class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
