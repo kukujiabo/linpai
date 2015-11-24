@@ -29,7 +29,7 @@
             <div class="clear"></div>
           </div>
           <div class="ui-btn ui-mini blue_white" style="margin:0px;float:right;width:31%;">
-            <a href="{{asset('/verify/regsms')}}" class="blue_white_button" id="send_code" style="margin-top:0px;">发送验证码</a>
+            <a href="{{asset('/verify/regsms')}}" class="blue_full_btn" id="send_code" style="margin-top:0px;">发送验证码</a>
           </div>
           <div class="clear"></div>
         </div>
