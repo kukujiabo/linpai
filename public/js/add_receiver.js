@@ -55,10 +55,6 @@
   
   $(document).on('pagecontainerload', function () {
 
-    alert(1);
-
-    submitajax();
-
     $('input[type=text]').change(function(e) {
 
       var that = $(this);

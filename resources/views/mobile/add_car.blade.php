@@ -108,14 +108,13 @@
           <button class="blue_full_btn no-radius" type="submit" id="save_car" style="color:#d9534f" >保存</button>
       </div>
   </form>
-</div>
 <div data-role="popup" data-position-to="window" id="progress_pop" data-dismissible="false" style="padding:30px;"  data-overlay-theme="a">
   <p>
     上传中：<span id="progress">0</span>%
   <a href="#" data-rel="back" id="progress_end" style="display:none" class="hide ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right"></a>
   </p>
 </div>
-  <a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn hide" data-transition="slide"></a>
+<a id="trigger_progress" data-rel="popup" href="#progress_pop" class="ui-btn hide" data-transition="slide"></a>
 <script type="text/javascript">
   
   function uploadFileBind () {
@@ -254,7 +253,7 @@
 
   }
 
-  $(document).on('pageinit', function ()  {
+  $(document).on('pagecreate', function ()  {
 
     var uploadBtn = $('a.file_upload');
      
@@ -309,4 +308,5 @@
   });
 
 </script>
+</div>
 @endsection

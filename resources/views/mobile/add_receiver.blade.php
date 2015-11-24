@@ -57,7 +57,7 @@
   <div data-role="popup" data-position-to="window" data-theme="b" id="info_pop" class="ui-content">
     <p id="info_content"></p>
   </div>
-</div>
 <script type="text/javascript" src="/js/add_receiver.js"></script>
+</div>
 
 @endsection
