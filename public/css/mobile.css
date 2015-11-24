@@ -11,13 +11,13 @@ a:hover {
   text-decoration: none;
 }
 
-.no-shadow {
+.no-shadow, .no-shadow a {
   text-shadow: none !important;
   box-shadow: none !important;
   color: #333 !important;
 }
 
-.no-shadow:active {
+.no-shadow:active, .no-shadow a:active {
   text-shadow: none !important;
   box-shadow: none !important;
   color: #333 !important;
