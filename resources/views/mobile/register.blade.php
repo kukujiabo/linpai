@@ -204,6 +204,8 @@
       
       }, function (data) {
       
+        alert(data);
+
         if (data.code = 1) {
         
           var res = data.res[0].status;
