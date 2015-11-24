@@ -77,7 +77,7 @@ console.log(document.referrer);
 
           @if (empty($pre_url))
 
-           $.mobile.changePage('/mobile/myorder');
+           $.mobile.changePage('/mobile/profile');
 
           @else
 
@@ -169,3 +169,4 @@ console.log(document.referrer);
   });
 </script>
 @endsection
+

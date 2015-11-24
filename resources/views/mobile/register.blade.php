@@ -103,12 +103,14 @@
           errcontent.html('注册成功！');
   
           popupBtn.click();
+
+          window.location.href = "/mobile/profile";
         
         } else {
         
           var msg = data.msg;
 
-          console.log(msg);
+          alert(msg);
         
         }
   
