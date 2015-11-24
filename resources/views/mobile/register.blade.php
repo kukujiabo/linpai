@@ -196,35 +196,51 @@
       
       }
 
-      $.post(dataUrl, {
+      $.ajax({
+
+        url: dataUrl,
+
+        type: 'post',
+
+        data: {
       
-        mobile: mobile,
+          mobile: mobile,
 
-        _token: _token
+          _token: _token
+
+        },
+
+        dataType: 'json'
+
+        success: function (data) {
       
-      }, function (data) {
-      
-        alert(data);
-
-        if (data.code = 1) {
-        
-          var res = data.res[0].status;
-
-          if (res == 'success') {
+          if (data.code = 1) {
           
-            errcontent.html('验证短信已发送！');
-          
-          } else {
+            var res = data.res[0].status;
 
-            errcontent.html('短信发送失败，请联系管理员！');
+            if (res == 'success') {
+            
+              errcontent.html('验证短信已发送！');
+            
+            } else {
+
+              errcontent.html('短信发送失败，请联系管理员！');
+            
+            }
           
+            popupBtn.click();
+
           }
-        
-          popupBtn.click();
+      
+        },
 
+        error: function (err) {
+        
+          alert(err);
+        
         }
       
-      }, 'json');
+      });
     
     });
   
