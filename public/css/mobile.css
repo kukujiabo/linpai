@@ -15,12 +15,14 @@ a:hover {
   text-shadow: none !important;
   box-shadow: none !important;
   color: #333 !important;
+  border-color: #333;
 }
 
 .no-shadow:active, .no-shadow a:active {
   text-shadow: none !important;
   box-shadow: none !important;
   color: #333 !important;
+  border-color: #333;
 }
 
 .text-center {
