@@ -176,6 +176,8 @@
   
     var sendVerify = $('#send_code');
 
+    var countTime;
+
     sendVerify.on('tap', function (event) {
     
       event.preventDefault();
@@ -220,13 +222,12 @@
 
             if (res == 'success') {
 
-              var countTime = 30;
+              countTime = 30;
             
               errcontent.html('验证短信已发送！');
 
               setInterval("setTime(sendVerify, countTime)", 1000);
 
-            
             } else {
 
               errcontent.html('短信发送失败，请联系管理员！');
@@ -248,28 +249,29 @@
       });
     
     });
-  
-  });
 
-  function setTime(ckBtn, countTime) {
-  
-    if (!countTime) {
+    function setTime(ckBtn, countTime) {
     
-      window.clearInterval(timer);
+      if (!countTime) {
+      
+        window.clearInterval(timer);
 
-      ckBtn.enable(true);
+        ckBtn.enable(true);
 
-      ckBtn.html('发送验证码');
-    
-    } else {
-    
-      countTime--;
-    
-      ckBtn.html('重新获取(' + countTime + ')');
+        ckBtn.html('发送验证码');
+      
+      } else {
+      
+        countTime--;
+      
+        ckBtn.html('重新获取(' + countTime + ')');
+      
+      }
     
     }
-  
-  }
+    
+    });
+
 
 </script>
 
