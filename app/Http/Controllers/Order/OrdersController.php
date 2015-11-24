@@ -1900,6 +1900,9 @@ class OrdersController extends Controller {
 
   public function getWxcode(Request $request)
   {
+    require_once "lib/WxPay.Api.php";  
+
+    require_once "lib/WxPay.JsApiPay.php";
 
     $tools = new \JsApiPay();
 
