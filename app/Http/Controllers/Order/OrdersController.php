@@ -1891,7 +1891,7 @@ class OrdersController extends Controller {
     
     }
 
-    $code = $this->input('code');
+    $code = $request->input('code');
 
     echo $code;
   
