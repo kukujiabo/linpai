@@ -9,7 +9,7 @@
     @yield('header') 
   </div>
   <div data-role="content" style="padding-left:0;padding-right:0">
-    <form action="/receiver/add" method="post" id="receiver_form">
+    <form data-role="none" action="/receiver/add" method="post" id="receiver_form">
       <input type="hidden" name="_token" value="{{csrf_token()}}">
       <fieldset>
         <div data-role="collapsible-set">
@@ -58,91 +58,6 @@
     <p id="info_content"></p>
   </div>
 </div>
-<script type="text/javascript">
-
-  function submitajax () {
-
-    var form = $('#receiver_form');
-
-    var submit = $('#submit_btn');
-  
-    var options = {
-    
-      dataType : 'json',
-
-      success: function (data) {
-      
-        if (data.code == 1) {
-        
-          alert('保存成功！');
-
-          window.location.href = "/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
-        
-        } else {
-        
-          var msg = data.msg;
-
-          var html = '';
-
-          for (var k in msg) {
-          
-            html += '<p>' +  msg[k] + '</p>';   
-             
-          }
-
-          $('#info_content').html(html);
-
-          $('#trigger_pop').click();
-        
-        }
-      
-      },
-
-      error: function (err) {
-      
-        console.log(err);
-      
-      }
-    
-    };
-
-    submit.on('tap', function (e) {
-    
-      e.preventDefault(); 
-
-      var mobile = $('input[name=mobile]').val();
-
-      if (mobile.length != 11) {
-      
-        alert('请输入11位有效手机号！');
-
-        return;
-      
-      }
-
-      form.ajaxSubmit(options);    
-    
-    });
-  
-  }
-  
-  $(document).on('pageinit', function () {
-  
-    submitajax();
-
-    $('input[type=text]').change(function(e) {
-
-      var that = $(this);
-    
-      var name = that.attr('name');
-
-      $('#' + name + '_txt').html(that.val());
-    
-    });
-  
-  });
-
-
-</script>
+<script type="text/javascript" src="/js/add_receiver.js"></script>
 
 @endsection
