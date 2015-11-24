@@ -43,18 +43,9 @@
       </div>
     </div>
   </div>
-  <!--
-  <div data-role="footer">
-    <h2>www.51linpai.com</h2>
-  </div>
-  -->
-
 <script type="text/javascript">
 
-console.log(document.referrer);
-
-
-  $(document).on('pageinit', function (event) {
+  $(document).on('pagecreate', function (event) {
 
     var loginBtn = $('#login-submit');
 
@@ -147,15 +138,11 @@ console.log(document.referrer);
         
           errMsg.html('请输入11位有效手机号！');
 
-          return;
-
         }
 
         if (password == undefined || password == '' || (password.length < 6 || password.length > 18)) {
         
           errMsg.html('请输入6-18位密码！');
-
-          return;
 
         }
 
