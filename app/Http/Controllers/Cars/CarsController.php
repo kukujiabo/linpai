@@ -246,7 +246,7 @@ class CarsController extends Controller {
       $fields["dir_validate_paper"] = "报关单件上传失败，请重新上传，图片大小不能大于5M ！";
 
     }
-  
+
     return $fields[$key];
   
   }
@@ -324,11 +324,11 @@ class CarsController extends Controller {
 
       'reco_code' =>'required',
 
-      'good_code' => 'required',
-
       'car_hand' => 'required'
 
     ];
+
+    $values['good_code'] == null ? 'beyond-three' : $value['good_code'];
 
     if ($values['good_code'] == 'beyond-three') {
 
