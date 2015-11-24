@@ -32,22 +32,22 @@
         <div class="oli-footer">
           <div class="inline float-right" style="padding-right:10px">
             <span class="margin-5 inline float-right" style="font-size:12px;">实付：<strong style="font-size:16px;">¥ {{$order->final_price}}</strong></span>
-            <span class="margin-5 inline float-right" style="font-size:12px;">减免：<span style="font-size:16px;font-weight:normal">¥ {{$order->cut_fee}} </span> | </span> 
+            <span class="margin-5 inline float-right" style="font-size:12px;">减免：<span style="color:#d9534f;font-size:16px;font-weight:normal">¥ {{$order->cut_fee}} </span> | </span> 
           </div>
           <div class="clear"></div>
         </div>
         <div class="oli-operator text-right">
-            <a class="float-left ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">查看详情</a>
+            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">查看详情</a>
           @if ($order->status == 0)
-            <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">马上支付</a>
+            <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">马上支付</a>
           @elseif ($order->status == 1)
-            <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">等待发货</a>
+            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">等待发货</a>
           @elseif ($order->status == 2)
-            <a class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini blue_white_btn" role="button">查看物流</a>
+            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">查看物流</a>
           @endif
           
           @if ($order->status > 0) 
-            <a class="orange_btn ui-btn ui-btn-inline ui-shadow ui-corner-all ui-mini orange_btn"  role="button" >再次购买</a> 
+            <a class="orange_btn ui-btn ui-btn-inline ui-shadow ui-mini orange_btn"  role="button" >再次购买</a> 
           @endif 
         </div>
       </li>
