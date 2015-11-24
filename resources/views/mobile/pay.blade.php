@@ -33,8 +33,8 @@
     
     <div style="background:#fff;margin-top:10px;">
       <div class="inner_white no-radius" data-role="collapsibleset">
-       <div data-iconpos="right"  data-role="collapsible" class="no-radius" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-         <h1 class="itm-title">车辆信息
+       <div data-iconpos="right"  data-role="collapsible" class="no-radius no-shadow" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+         <h1 class="itm-title no-shadow">车辆信息
          </h1>
          <p style="no-margin">
            <ul data-role="listview">
@@ -74,7 +74,7 @@
     @if (!empty($defaultReceiver))
     <div style="background:#fff;margin-top:5px;">
       <div class="no-radius inner_white" data-iconpos="right"  data-role="collapsible"  data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-        <h1 class="itm-title">收件地址 </h1>
+        <h1 class="itm-title no-shadow">收件地址 </h1>
         <p class="no-margin">
           <ul data-role="listview">
           
@@ -112,7 +112,7 @@
 
     <!-- 优惠券 -->
     <div data-iconpos="right" class="no-radius inner_white" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-      <h1 class="itm-title"><img src="/imgs/mini_youhuiquan.png" height="18px">
+      <h1 class="itm-title no-shadow"><img src="/imgs/mini_youhuiquan.png" height="18px">
         &nbsp;优惠减免
         <span id="selected_boun"></span>
       </h1>
@@ -139,7 +139,7 @@
 
     <!-- 备注 -->
     <div class="no-radius inner_white"  data-iconpos="right" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-      <h1 class="itm-title">添加备注<span id="selected_boun"></span></h1>
+      <h1 class="itm-title no-shadow">添加备注<span id="selected_boun"></span></h1>
       <p style="">
         <textarea class="no-margin" name="addinfo" id="user_comment"></textarea>
       </p>
