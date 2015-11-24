@@ -42,10 +42,10 @@
         收货地址：{{$order->province}}  {{$order->city}} {{$order->district}} {{$order->address}}
       </p>
       <p style="margin:5px 0px;border:0px;padding:5px;">
-        物流信息：@if(empty($deliver_info)) 暂无物流信息 @else {{$deliver_info->company}} @endif
+        物流信息：@if(empty($order->order_deliver_company)) 暂无物流信息 @else {{$order->order_deliver_company}} @endif
       </p>
       <p style="margin:5px 0px;border:0px;padding:5px;">
-        运单号：@if(empty($deliver_info)) 暂无运单号 @else {{$deliver_info->code}} @endif
+        运单号：@if(empty($order->deliver_code)) 暂无运单号 @else {{$order->deliver_code}} @endif
       </p>
       <p style="margin:5px 0px;border:0px;padding:5px;">
         物流查询网站： <a href="http://www.sf-express.com" class="normal-weight" style="background:#138ed1;color:#fff;padding:3px;border-radius:1px;text-shadow:none">顺丰速递</a>
@@ -60,12 +60,11 @@
     <div style="padding:0px 15%;margin-top:50px;">
       @if ($order->status > 0)
 
-        <a class="ui-btn blue_full_btn">立即支付</a>
+        <a class="ui-btn orange_btn">再次购买</a>
 
       @else 
       
-        <a  class="ui-btn orange_btn">再次购买</a>
-
+        <a class="ui-btn blue_full_btn">立即支付</a>
 
       @endif
     </div>
