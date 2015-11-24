@@ -150,7 +150,7 @@
     </div>
 
     <div style="margin:10px 0px 0px 0px;padding:0px;width:100%;height:50px;">
-      <form data-role="none" action="/order/pay" method="post">
+      <form id="order_form" data-role="none" action="/order/pay" method="post">
         <fieldset>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           @if (!empty($defaultCar)) 
@@ -196,11 +196,10 @@
     <p id="alert_content"></p>
   </div>
   <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
-</div>
 <script type="text/javascript">
 
 
-  window.onload = function () {
+  $(document).on('pagecreate', function () {
 
     function checkInfoComplete () {
 
@@ -221,114 +220,168 @@
     
     }
 
-    (function () {
+    checkInfoComplete();
+
+    var btnSubmit = $('#pay_submit');
+
+    var bouns = [];
+
+    btnSubmit.on('tap', function (e) {
+      
+      e.preventDefault();
+
+      console.log(1);
+
+      var car = $('input[name=car]').val();
+
+      if (car == undefined || car == '') {
+
+        $('#trigger_pop').click();
+
+        $('#alert_content').html('请选择车辆!');
+
+        return;
+      
+      } 
+
+      var receiver = $('input[name=receiver]').val();
+
+      if (receiver == undefined || receiver.length == 0) {
+      
+        $('#trigger_pop').click();
+
+        $('#alert_content').html('请选择收件人!');
+
+        return;
+      
+      }
+
+      $('input[name=comment]').val($('#user_comment').val());
+
+      $('#order_form')[0].submit();
+      
+    });
+
+    var infoItms = $('.info_itm');
+    
+    infoItms.on('tap', function (e) {
+    
+      var that = $(this);
+
+      var type = that.data('type');
+
+      var id = that.data('id');
+    
+      infoItms.removeClass('selected-itm').addClass('select-itm');
+
+      that.removeClass('select-itm').addClass('selected-itm');
+
+      $('input[name=' + type + ']').val(id);
+
+      if (type == 'car') {
+      
+        $('#default_owner').html('所有者：' + that.data('owner'));
+        $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
+        $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
+      
+      } else if (type == 'receiver') {
+
+        $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
+        $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
+        $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
+        $('#receiver_email').html('邮箱地址：' + that.data('receiver_email') == undefined ? '' : that.data('receiver_email'));
+      
+      }
 
       checkInfoComplete();
+    
+    });
 
-      var btnSubmit = $('#pay_submit');
+    var inviteItm = $('#invite_boun');
 
-      var bouns = [];
+    inviteItm.change(function (e) {
 
-      btnSubmit.on('tap', function (e) {
+      var that = $(this);
+
+      var value = that.val();
+
+      var youhui = $('input.youhui');
+
+      if (value == undefined || value == '') {
+       
+        youhui.each(function(i, t) {
+        
+          $(t).val('');
+        
+        });
+        
+        return;
+
+      }
+
+      if (value.length != 5) {
       
-        e.preventDefault();
+        alert('邀请码是5位字母＋数字，请正确输入');
 
-        console.log(1);
+        return;
+      
+      }
 
-        var car = $('input[name=car]').val();
+      for (var i = 0; i < youhui.length; i++) {
+      
+        var y = youhui[i];
 
-        if (car == undefined || car == '') {
+        if (y.value == undefined || y.value == '') {
+
+          y.value = that.val();
+
+          break;
+        
+        }
+
+        if (i == 2) {
+
+          $('#alert_content').html('最多使用3张优惠券/邀请码！');
 
           $('#trigger_pop').click();
 
-          $('#alert_content').html('请选择车辆!');
-
-          return;
-        
-        } 
-
-        var receiver = $('input[name=receiver]').val();
-
-        if (receiver == undefined || receiver.length == 0) {
-        
-          $('#trigger_pop').click();
-
-          $('#alert_content').html('请选择收件人!');
-
           return;
         
         }
-
-        $('input[name=comment]').val($('#user_comment').val());
-
-        $('#order_form')[0].submit();
       
-      });
-
-      var infoItms = $('.info_itm');
+      }
       
-      infoItms.on('tap', function (e) {
+    });
+
+    var bounItms = $('.boun_btn');
+
+    bounItms.on('tap', function (e) {
+    
+      var that = $(this);
+
+      var youhui = $('input.youhui');
+
+      if (that.data('selected') == true) {
       
-        var that = $(this);
+        that.data('selected', false); 
 
-        var type = that.data('type');
-
-        var id = that.data('id');
+        that.addClass('blue_white_btn').removeClass('red_white_btn');
       
-        infoItms.removeClass('selected-itm').addClass('select-itm');
-
-        that.removeClass('select-itm').addClass('selected-itm');
-
-        $('input[name=' + type + ']').val(id);
-
-        if (type == 'car') {
+        for (var i = 0; i < youhui.length; i++) {
         
-          $('#default_owner').html('所有者：' + that.data('owner'));
-          $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
-          $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
-        
-        } else if (type == 'receiver') {
+          var y = youhui[i];
 
-          $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
-          $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
-          $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
-          $('#receiver_email').html('邮箱地址：' + that.data('receiver_email') == undefined ? '' : that.data('receiver_email'));
-        
-        }
+          if (y.value == that.data('id')) {
 
-        checkInfoComplete();
-      
-      });
+            y.value = "";
 
-      var inviteItm = $('#invite_boun');
-
-      inviteItm.change(function (e) {
-
-        var that = $(this);
-
-        var value = that.val();
-
-        var youhui = $('input.youhui');
-
-        if (value == undefined || value == '') {
-         
-          youhui.each(function(i, t) {
+            break;
           
-            $(t).val('');
-          
-          });
-          
-          return;
-
-        }
-
-        if (value.length != 5) {
-        
-          alert('邀请码是5位字母＋数字，请正确输入');
-
-          return;
+          }
         
         }
+
+      } else {
 
         for (var i = 0; i < youhui.length; i++) {
         
@@ -336,7 +389,7 @@
 
           if (y.value == undefined || y.value == '') {
 
-            y.value = that.val();
+            y.value = that.data('id');
 
             break;
           
@@ -353,76 +406,19 @@
           }
         
         }
-        
-      });
 
-      var bounItms = $('.boun_btn');
+        bouns.push(that.data('id'));
 
-      bounItms.on('tap', function (e) {
+        that.data('selected', true);
+
+        that.addClass('red_white_btn').removeClass('blue_white_btn');
       
-        var that = $(this);
+      }
+    
+    });
 
-        var youhui = $('input.youhui');
-
-        if (that.data('selected') == true) {
-        
-          that.data('selected', false); 
-
-          that.addClass('blue_white_btn').removeClass('red_white_btn');
-        
-          for (var i = 0; i < youhui.length; i++) {
-          
-            var y = youhui[i];
-
-            if (y.value == that.data('id')) {
-
-              y.value = "";
-
-              break;
-            
-            }
-          
-          }
-
-        } else {
-
-          for (var i = 0; i < youhui.length; i++) {
-          
-            var y = youhui[i];
-
-            if (y.value == undefined || y.value == '') {
-
-              y.value = that.data('id');
-
-              break;
-            
-            }
-
-            if (i == 2) {
-
-              $('#alert_content').html('最多使用3张优惠券/邀请码！');
-
-              $('#trigger_pop').click();
-
-              return;
-            
-            }
-          
-          }
-
-          bouns.push(that.data('id'));
-
-          that.data('selected', true);
-
-          that.addClass('red_white_btn').removeClass('blue_white_btn');
-        
-        }
-      
-      });
-
-    })();
-
-  }
+  });
 
 </script>
+</div>
 

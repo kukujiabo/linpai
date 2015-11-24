@@ -328,7 +328,7 @@ class CarsController extends Controller {
 
     ];
 
-    $values['good_code'] == null ? 'beyond-three' : $value['good_code'];
+    $values['good_code'] == null ? 'beyond-three' : $values['good_code'];
 
     if ($values['good_code'] == 'beyond-three') {
 
