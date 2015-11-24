@@ -138,15 +138,20 @@
         
           errMsg.html('请输入11位有效手机号！');
 
+          errPopup.click();
+
+          return;
         }
 
         if (password == undefined || password == '' || (password.length < 6 || password.length > 18)) {
         
           errMsg.html('请输入6-18位密码！');
 
+          errPopup.click();
+
+          return;
         }
 
-        errPopup.click();
       
       }
     
