@@ -219,8 +219,10 @@
         dataType: 'json',
 
         success: function (data) {
+
+          console.log(data);
       
-          if (data.code = 1) {
+          if (data.code == 1) {
           
             var res = data.res[0].status;
 
@@ -248,6 +250,10 @@
           
             popupBtn.click();
 
+          } else {
+          
+            alert(data.msg);
+          
           }
       
         },
@@ -283,7 +289,6 @@
     };
   
     sendVerify.on('tap', tapVerify);
-
     
   });
 
