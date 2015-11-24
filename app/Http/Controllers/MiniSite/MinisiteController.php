@@ -95,6 +95,14 @@ class MinisiteController extends Controller {
   public function getLogin(Request $request) 
   {
 
+    $user = Auth::user();
+
+    if ($user) {
+    
+      return redirect('/mobile/profile');
+
+    }
+
     $preUrl = Session::get('pre_url');
 
     $data = [
@@ -118,9 +126,19 @@ class MinisiteController extends Controller {
   public function getRegister(Request $request) 
   {
 
+    $user = Auth::user();
+
+    if ($user) {
+    
+      return redirect('/mobile/profile');
+    
+    }
+
     $data = [
       
-        'header' => '用户注册'
+      'header' => '用户注册',
+
+      'user' => $user
        
       ];
 
@@ -222,6 +240,9 @@ class MinisiteController extends Controller {
   {
     $mobileEncrypt = $request->input('user');
 
+    /*
+     * 没有手机号
+     */
     if (empty($mobileEncrypt)) {
     
       return view('/mobile/about');
@@ -252,7 +273,7 @@ class MinisiteController extends Controller {
      */
     if (empty($boun->id)) {
     
-      return view('mobile/about');
+      return view('mobile/share_code');
     
     }
 
@@ -278,7 +299,6 @@ class MinisiteController extends Controller {
 
   public function getMyshare (Request $request)
   {
-  
     $user = Auth::user();
 
     if (empty($user->id)) {
@@ -296,7 +316,9 @@ class MinisiteController extends Controller {
       ->first();
 
     if (empty($boun->id)) {
-    
+
+
+      return view('/mobile/share_code');
     
     } else {
 
