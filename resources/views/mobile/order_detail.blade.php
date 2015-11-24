@@ -66,7 +66,7 @@
 
       @else 
       
-        <a class="ui-btn blue_full_btn">立即支付</a>
+        <a class="ui-btn blue_full_btn"  href="/order/pay?mb=true&order={{$order->order_code}}">立即支付</a>
 
       @endif
     </div>
