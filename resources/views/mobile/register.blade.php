@@ -220,8 +220,6 @@
 
         success: function (data) {
 
-          console.log(data);
-      
           if (data.code == 1) {
           
             var res = data.res[0].status;
@@ -240,7 +238,7 @@
               
               });
 
-              timer = setInterval(setTime, 1000);
+              //timer = setInterval(setTime, 1000);
 
             } else {
 
