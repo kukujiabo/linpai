@@ -6,37 +6,69 @@
   <div data-role="header">
     <h1>订单详情 - 51临牌</h1>
   </div>
-  <div data-role="content">
-    <ul data-role="listview">
-      <li style="padding:5px 10px;margin:5px 0px;border:0px">
-        <div class="old-header">
-          <span class="float-left" style="margin-top:5px;font-size:12px">订单号：{{$order->order_code}}</span>
-          <span class="float-right" style="margin-top:5px;font-size:12px">{{$order->created_at}}</span>
-          <div class="clear"></div>
+  <div data-role="content" style="padding-left:0px;padding-right:0px;">
+    <div style="padding:5px 10px;margin:5px 0px;border:0px;background:#fff">
+      <div class="old-header">
+        <span class="float-left" style="margin-top:5px;font-size:14px">订单号：{{$order->order_code}}</span>
+        <span class="float-right" style="margin-top:5px;font-size:14px">{{$order->created_at}}</span>
+        <div class="clear"></div>
+      </div>
+      <div style="padding:15px 8px;">
+        <img src="{{asset($order->good_tiny_pic)}}" class="float-left" style="width:90px" >
+        <div class="float-left" style="margin-left:10px;">
+          <h3 class="float-left normal-weight" style="margin:5px 0px;">{{$order->good_name}}</h3>
+          <h3 class="normal-weight" style="margin:5px 0px;">x {{$order->num}}</h3>
         </div>
-        <div style="padding:8px;">
-          <img src="{{asset($order->good_tiny_pic)}}" class="float-left" style="width:80px" >
-          <h3 class="float-left" style="margin-left:5px;">{{$order->good_name}}</h3>
-          <div class="float-right">
-            <h3 class="no-margin"> ¥ {{$order->orig_price}}</h3>
-            <h3 class="no-margin">x {{$order->num}}</h3>
-          </div>
+        <div class="float-right">
+          <h3 class="normal-weight" style="margin:5px 0px;"> ¥ {{$order->orig_price}}</h3>
         </div>
-      </li>
-      <li style="margin:5px 0px;border:0px">
-        收件人：{{$order->receiver}} {{$order->phone}}
-      </li>
-      <li style="margin:5px 0px;border:0px">
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div style="background:#fff;padding:10px;margin-top:10px;font-size:16px;">
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        订单号：{{$order->order_code}}
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        下单时间：{{$order->created_at}}
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        收件人：{{$order->receiver}}
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        手机号码：{{$order->mobile}}
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
         收货地址：{{$order->province}}  {{$order->city}} {{$order->district}} {{$order->address}}
-      </li>
-      <li style="margin:5px 0px;border:0px">
-        车辆信息：{{$order->car_type}} {{$order->car_brand}} {{$order->car_owner}}
-      </li>
-      <li style="margin:5px 0px;border:0px">
-        实付：¥ {{$order->final_price}} | 已优惠：{{$order->cut_fee}}
-      </li>
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        物流信息：@if(empty($deliver_info)) 暂无物流信息 @else {{$deliver_info->company}} @endif
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        运单号：@if(empty($deliver_info)) 暂无运单号 @else {{$deliver_info->code}} @endif
+      </p>
+      <p style="margin:5px 0px;border:0px;padding:5px;">
+        物流查询网站： <a href="http://www.sf-express.com" class="normal-weight" style="background:#138ed1;color:#fff;padding:3px;border-radius:1px;text-shadow:none">顺丰速递</a>
+      </p>
+    </div>
+    <div style="padding:10px;background:#fff;margin-top:10px;">
+      <p style="margin:5px 0px;border:0px;padding:5px;font-size:18px;">
+        实付：<span style="color:#ff8800" >¥ {{$order->final_price}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;已优惠：{{$order->cut_fee}}
+      </p>
+    </div>
+    
+    <div style="padding:0px 15%;margin-top:50px;">
+      @if ($order->status > 0)
 
-    </ul>
+        <a class="ui-btn blue_full_btn">立即支付</a>
+
+      @else 
+      
+        <a  class="ui-btn orange_btn">再次购买</a>
+
+
+      @endif
+    </div>
   </div>
 </div>
 
