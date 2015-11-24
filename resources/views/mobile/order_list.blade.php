@@ -37,7 +37,7 @@
           <div class="clear"></div>
         </div>
         <div class="oli-operator text-right">
-            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">查看详情</a>
+            <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">订单详情</a>
           @if ($order->status == 0)
             <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">马上支付</a>
           @elseif ($order->status == 1)
@@ -45,7 +45,7 @@
           @elseif ($order->status == 2)
             @if (!empty($order->order_deliver_company))
 
-              <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn logistic_info" role="button" data-company="{{$order->order_deliver_company}}" data-deliver_code={{$order->deliver_code}}>查看物流</a>
+              <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn logistic_info" href="#" role="button" data-company="{{$order->order_deliver_company}}" data-deliver_code={{$order->deliver_code}}>查看物流</a>
 
             @endif
           @endif
@@ -70,9 +70,11 @@
   </div>
 </div>
 <script type="text/javascript">
-  $(document).on('pageinit', function (e) {
+  $(document).on('pageinit', function () {
   
-    $('.logistic_info').on('tap', function (e) {
+    $('a.logistic_info').on('tap', function (e) {
+
+      e.preventDefault();
 
       var that = $(this);
 
