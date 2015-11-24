@@ -8,7 +8,6 @@ a.cid as cid,
 a.gid as gid,
 a.rid as rid,
 a.num as num,
-a.sum as sum,
 a.plate_number as plate_number,
 a.created_at as created_at,
 a.comment as 'comment',
@@ -42,20 +41,36 @@ e.code as good_code,
 f.value as g_single_price,
 g.name as order_owner,
 g.mobile as order_owner_mobile,
-g.email as order_owner_email
+g.email as order_owner_email,
+h.company as order_deliver_company,
+h.code as deliver_code
 from 
-orders a, 
-receiver_infos b, 
-cars c,
-order_prices d,
-goods e,
-v_goods_attributes f,
+orders a
+inner join 
+receiver_infos b
+on
+a.rid = b.id
+inner join
+cars c
+on
+a.cid = c.id
+inner join
+order_prices d
+on a.id = d.oid
+inner join
+goods e
+on
+a.gid = e.id
+inner join
+v_goods_attributes f
+on f.gid = a.gid
+inner join
 users g
+on 
+a.uid = g.id
+left join
+deliver_infos h
+on
+h.order_code = a.code
 where 
-a.rid = b.id and 
-a.cid = c.id and 
-a.id = d.oid and 
-a.gid = e.id and 
-f.gid = a.gid and 
-f.acode = 'price' and 
-a.uid = g.id;
+f.acode = 'price';
