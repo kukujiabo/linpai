@@ -9,6 +9,14 @@
     @yield('header') 
   </div>
   <div data-role="content" style="padding-left:0;padding-right:0">
+    <div>
+      <a href="#info_pop" data-rel="popup" id="trigger_pop"></a>
+      <div data-role="popup" data-position-to="window" data-theme="b" id="info_pop" class="ui-content">
+        <p id="info_content"></p>
+      </div>
+      <a href="#waiting_pop" data-rel="popup" id="trigger_waiting"></a>
+      
+    </div>
     <form data-role="none" action="/receiver/add" method="post" id="receiver_form">
       <input type="hidden" name="_token" value="{{csrf_token()}}">
       <fieldset>
@@ -53,83 +61,77 @@
       </div>
     </form>
   </div>
-  <a href="#info_pop" data-rel="popup" id="trigger_pop"></a>
-  <div data-role="popup" data-position-to="window" data-theme="b" id="info_pop" class="ui-content">
-    <p id="info_content"></p>
-  </div>
-<script type="text/javascript">
-
-  $(document).on('pagecreate', function () {
-
-    var form = $('#receiver_form');
-
-    var submit = $('#submit_btn');
-    
-    var options = {
-    
-      dataType : 'json',
-
-      success: function (data) {
+  <script type="text/javascript">
+  
+    $(document).on('pagecreate', function () {
+  
+      var form = $('#receiver_form');
+  
+      var submit = $('#submit_btn');
       
-        if (data.code == 1) {
+      var options = {
+      
+        dataType : 'json',
+  
+        success: function (data) {
         
-          alert('保存成功！');
-
-          window.location.href = "/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
-        
-        } else {
-        
-          var msg = data.msg;
-
-          var html = '';
-
-          for (var k in msg) {
+          if (data.code == 1) {
           
-            html += '<p>' +  msg[k] + '</p>';   
-             
+            alert('保存成功！');
+  
+            window.location.href = "/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
+          
+          } else {
+          
+            var msg = data.msg;
+  
+            var html = '';
+  
+            for (var k in msg) {
+            
+              html += '<p>' +  msg[k] + '</p>';   
+               
+            }
+  
+            $('#info_content').html(html);
+  
+            $('#trigger_pop').click();
+          
           }
-
-          $('#info_content').html(html);
-
-          $('#trigger_pop').click();
+        
+        },
+  
+        error: function (err) {
+        
+          console.log(err);
         
         }
       
-      },
-
-      error: function (err) {
+      };
+  
+      submit.on('tap', function (e) {
       
-        console.log(err);
+        e.preventDefault(); 
+
+
+  
+        form.ajaxSubmit(options);    
       
-      }
-    
-    };
-
-    submit.on('tap', function (e) {
-    
-      e.preventDefault(); 
-
-      form.ajaxSubmit(options);    
-    
-    });
-    
-    $(document).on('pagecontainerload', function () {
-
+      });
+      
       $('input[type=text]').change(function(e) {
-
+  
         var that = $(this);
       
         var name = that.attr('name');
-
+  
         $('#' + name + '_txt').html(that.val());
       
       });
-    
+
     });
-
-  });
-
-</script>
+  
+  </script>
 </div>
 
 @endsection

@@ -15,6 +15,9 @@
 
 <div data-role="header">
   <h1>我的邀请码－51临牌</h1>
+  <a href="/mobile/profile" style="display:block;padding:1px;" data-role="none" class="ui-btn-right">
+    <img src="/imgs/35.png">
+  </a>
 </div>
 <div data-role="content">
   <div style="padding:30px;font-size:20px;border-radius:5px;background:#fff;text-shadow:none;font-weight:none;">
