@@ -71,8 +71,8 @@
             <p id="default_reco_code"></p>
        </div>
         @endif
+      </div>
     </div>
-  </div>
     <!-- 收件人信息 -->
 
     <div style="background:#fff;margin-top:5px;">
@@ -191,11 +191,10 @@
         </div>
       </form>
     </div>
-  </div>
-  <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
-    <p id="alert_content"></p>
-  </div>
-  <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
+    <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
+      <p id="alert_content"></p>
+    </div>
+    <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
 <script type="text/javascript">
 
 
@@ -416,5 +415,6 @@
   });
 
 </script>
+</div>
 </div>
 
