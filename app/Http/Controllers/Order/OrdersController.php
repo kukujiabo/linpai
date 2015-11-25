@@ -690,11 +690,9 @@ class OrdersController extends Controller {
     //支付类型
     $payment_type = "1";
 
-    //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
+    //$notify_url = "http://www.51linpai.com/order/paynotify";
     
     //页面跳转同步通知页面路径
-    $return_url = "";
-
     $return_url = "http://www.51linpai.com/order/payed";
 
     //商户网站订单系统中唯一订单号

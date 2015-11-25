@@ -167,7 +167,6 @@
 
         $('#progress_end').click();
 
-
         if (data.result.code) {
 
           var res = data.result.res;
@@ -214,7 +213,7 @@
         
           alert('保存成功！');
 
-          window.location.href="/miniorder/buy?car_hand=";
+          window.location.href="/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
         
         } else {
         
