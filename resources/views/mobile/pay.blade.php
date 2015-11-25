@@ -236,9 +236,7 @@
 
       if (car == undefined || car == '') {
 
-        $('#trigger_pop').click();
-
-        $('#alert_content').html('请选择车辆!');
+        alert('请选择车辆!');
 
         return;
       
@@ -248,9 +246,7 @@
 
       if (receiver == undefined || receiver.length == 0) {
       
-        $('#trigger_pop').click();
-
-        $('#alert_content').html('请选择收件人!');
+        alert('请选择收件人!');
 
         return;
       
