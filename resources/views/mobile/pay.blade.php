@@ -274,12 +274,14 @@
 
       if (type == 'car') {
       
+        $('#car_info').removeClass('hide')
         $('#default_owner').html('所有者：' + that.data('owner'));
         $('#default_factory_code').html('厂牌型号：' + that.data('factory_code'));
         $('#default_reco_code').html('识别代码：' + that.data('reco_code'));
       
       } else if (type == 'receiver') {
 
+        $('#receiver_info').removeClass('hide');
         $('#receiver_txt').html('收货人：' + that.data('receiver_txt'));
         $('#receiver_address').html('收货地址：' + that.data('receiver_address'));
         $('#receiver_mobile').html('联系号码：' + that.data('receiver_mobile'));
