@@ -1555,9 +1555,9 @@ class OrdersController extends Controller {
 
     $alipay_config['input_charset'] = 'utf-8';
 
-    $alipay_config['cacert'] = getcwd() . '\\cacert.pem';
+    $alipay_config['cacert'] = getcwd() . '/cacert.pem';
 
-    $alipay_config['transport'] = 'https';
+    $alipay_config['transport'] = 'http';
   
     return $alipay_config; 
   
