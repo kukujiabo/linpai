@@ -174,22 +174,22 @@
           <input type="hidden" name="num" value="1">
           <input type="hidden" name="mb" value="true">
         </fieldset>
+        <div style="position:fixed;bottom:0px;width:100%">
+          <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
+            实付：¥ <span id="price">{{$goodInfo->value}}</span>
+          </div>
+          <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
+            <button type="submit" id="pay_submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white;width:100%">
+            @if (empty($defaultCar) || empty($defaultReceiver))
+              资料未完成
+            @else
+              立即支付
+            @endif
+            </button>
+          </div>
+          <div class="clear"></div>
+        </div>
       </form>
-      <div style="position:fixed;bottom:0px;width:100%">
-        <div style="float:left;margin:0px;padding:17px 0px;background:#666;color:#fff;text-align:center;width:50%;font-size:15px;font-weight:normal;text-shadow:none">
-          实付：¥ <span id="price">{{$goodInfo->value}}</span>
-        </div>
-        <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
-          <button type="submit" id="pay_submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white;width:100%">
-          @if (empty($defaultCar) || empty($defaultReceiver))
-            资料未完成
-          @else
-            立即支付
-          @endif
-          </button>
-        </div>
-        <div class="clear"></div>
-      </div>
     </div>
   </div>
   <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
