@@ -64,7 +64,6 @@
       </form>
     </div>
   </div>
-  </div>
 <script type="text/javascript">
 
   $(document).on('pagecreate', function (event) {
@@ -288,7 +287,6 @@
     sendVerify.on('tap', tapVerify);
     
   });
-
 
 </script>
 </div>
