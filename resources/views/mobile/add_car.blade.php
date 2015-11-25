@@ -86,7 +86,7 @@
                     <input type="hidden" name="dir_{{$good_attrib['code']}}" value="" id="hint-{{$good_attrib['code']}}">
                     <label style="margin:0px;"  for="{{$good_attrib['code']}}">
                       <div style="float:left;padding-top:5px;" id="name_{{$good_attrib['code']}}">{{$good_attrib['name']}}</div>
-                      <img id="upload-img-{{$good_attrib['code']}}" src="/imgs/camera.png" style="float:right;position:relative;width:30px;">
+                      <img id="upload-img-{{$good_attrib['code']}}" src="/imgs/camera.png" style="float:right;position:relative;height:30px;">
                       <div class="clear"></div>
                     </label>
                     <div style="display:none">
@@ -214,7 +214,7 @@
         
           alert('保存成功！');
 
-          window.location.href="/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
+          window.location.href="/miniorder/buy?car_hand=";
         
         } else {
         

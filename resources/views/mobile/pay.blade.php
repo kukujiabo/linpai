@@ -197,7 +197,6 @@
     <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
 <script type="text/javascript">
 
-
   $(document).on('pagecreate', function () {
 
     function checkInfoComplete () {
