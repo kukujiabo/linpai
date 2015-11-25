@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{asset('css/jquery.mobile-1.4.5.min.css')}}" >
   <link rel="stylesheet" href="{{asset('css/mobile.css')}}">
   <script src="{{asset('js/jquery.min.js')}}"></script>
+  <script src="{{asset('js/xmlObject.js')}}"></script>
   <script src="{{asset('js/jquery.mobile-1.4.5.min.js')}}"></script>
   <script src="{{asset('js/jquery.form.js')}}"></script>
   <script src="{{asset('js/minisite.js')}}"></script>
