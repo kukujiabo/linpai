@@ -32,7 +32,11 @@ class CarsController extends Controller {
 
     $user = Auth::user();
 
-    Car::where('uid', '=', $user->id) ->update([ 'last_used' => 0 ]);
+    Car::where('uid', '=', $user->id)
+      
+      ->where('car_hand', '=', $carHand)
+      
+      ->update([ 'last_used' => 0 ]);
 
     $input = $request->all();
 
