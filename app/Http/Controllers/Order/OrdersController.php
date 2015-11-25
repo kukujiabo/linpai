@@ -695,15 +695,7 @@ class OrdersController extends Controller {
     //页面跳转同步通知页面路径
     $return_url = "";
 
-    if ($this->debug) {
-
-      $return_url = "http://www.51linpai.com:8000/order/payed";
-
-    } else {
-
-      $return_url = "http://www.51linpai.com/order/payed";
-
-    }
+    $return_url = "http://www.51linpai.com/order/payed";
 
     //商户网站订单系统中唯一订单号
     $out_trade_no = $order->code;
