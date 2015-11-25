@@ -77,7 +77,8 @@
               @if (
                 $good_attrib['code'] == 'identity_face' || 
                 $good_attrib['code'] == 'identity_back' ||
-                $good_attrib['code'] == 'dirving_license'
+                $good_attrib['code'] == 'driving_license'
+ 
               )
 
                 <li>
