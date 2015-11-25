@@ -41,7 +41,7 @@ class OrdersController extends Controller {
    */
   public function __construct ()
   {
-    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay', 'getMobilepay', 'getWxcode']]);
+    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay', 'getMobilepay', 'getWxcode', 'getPayed']]);
 
     $this->debug = \Config::get('app.debug');
 
