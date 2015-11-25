@@ -175,7 +175,14 @@ class UserController extends Controller {
 
     if (empty($user->id)) {
 
-      return redirect('/user/password');
+      if (!empty($request->input('mb'))) {
+      
+      
+      } else {
+
+        return redirect('/user/password');
+
+      }
 
     }
 

@@ -49,7 +49,7 @@
 
 <script type="text/javascript">
 
-  $(document).on("pageinit", function (event) {
+  $(document).on("pagecreate", function (event) {
 
     var form = $('#reset_pass_form');
 
@@ -123,6 +123,10 @@
 
           setTimeout("$.mobile.changePage('/mobile/login')", 1500);
         
+        } else {
+
+          console.log(msg);
+        
         }
       
       },
@@ -139,7 +143,53 @@
  
       event.preventDefault();
 
-      console.log(1);
+      var mobile = $('input[name=mobile]').val();
+
+      if (mobile == undefined || mobile == '') {
+      
+        alert('请输入11位有效手机号!');
+
+        return;
+      
+      }
+
+      var verfiy = $('input[name=reset_code]').val();
+
+      if (verify == undefined || verify == '') {
+      
+        alert('请输入验证码！');
+
+        return;
+      
+      }
+
+      var newpassword = $('input[name=newpassword]').val();
+
+      var confirmpassword = $('input[name=confirmpassword]').val();
+
+      if (newpassword == undefined || newpassword == '') {
+      
+        alert('请输入新密码！');
+
+        return;
+      
+      }
+
+      if (confirmpassword == undefined || confirmpassword == '') {
+      
+        alert('请确认新密码！');
+
+        return;
+      
+      }
+
+      if (newpassword != confirmpassword) {
+      
+        alert('新密码和旧密码不一致，请重新出入！');
+
+        return;
+      
+      }
 
       form.ajaxSubmit(ajaxOptions);
     
