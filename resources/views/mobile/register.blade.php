@@ -67,7 +67,7 @@
   </div>
 <script type="text/javascript">
 
-  $(document).on('pageinit', function (event) {
+  $(document).on('pagecreate', function (event) {
   
     var regForm = $('#register_form');
   
