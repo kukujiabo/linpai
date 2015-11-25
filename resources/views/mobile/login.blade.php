@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="options-inline">
-            <a href="{{asset('/mobile/password')}}" style="float:left;color: #d9534f">忘记密码</a>    
+            <a href="{{asset('/mobile/password')}}"  data-ajax="false" style="float:left;color: #d9534f">忘记密码</a>    
             <a href="{{asset('/mobile/register')}}" data-ajax="false" style="float:right">点击注册</a>  
             <span style="float:right">没有51临牌账号？</span>
           </div>
