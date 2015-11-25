@@ -214,7 +214,7 @@
         
           alert('保存成功！');
 
-          window.location.href="/miniorder/buy?car_hand={{$car_hand == 'one' ? 1 : 2}}";
+          window.location.href="/miniorder/buy?car_hand=";
         
         } else {
         
