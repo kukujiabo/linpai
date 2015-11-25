@@ -192,9 +192,7 @@
 
       if (mobile == undefined || mobile.length != 11) {
 
-        errcontent.html('请输入11位有效手机号！');
-      
-        popupBtn.click();
+        alert('请输入11位有效手机号！');
 
         return;
       
@@ -226,7 +224,7 @@
 
               countTime = 30;
             
-              errcontent.html('验证短信已发送！');
+              alert('验证短信已发送！');
 
               sendVerify.unbind('tap');
 
@@ -240,12 +238,10 @@
 
             } else {
 
-              errcontent.html('短信发送失败，请联系管理员！');
+              alert('短信发送失败，请联系管理员！');
             
             }
           
-            popupBtn.click();
-
           } else {
           
             alert(data.msg);
