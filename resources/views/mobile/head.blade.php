@@ -11,7 +11,7 @@
   @endif
     @if (Auth::user())
 
-      <a href="/mobile/profile" style="display:block;padding:1px;" data-role="none" class="ui-btn-right">
+      <a data-ajax="false" href="/mobile/profile" style="display:block;padding:1px;" data-role="none" class="ui-btn-right">
         <img src="/imgs/35.png">
       </a>
 
