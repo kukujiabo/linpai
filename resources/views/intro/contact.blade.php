@@ -57,9 +57,6 @@
       > 邮箱：cooperation#51linpai.com （请将#换成@）
     </p>
     <br />
-    <p>
-      地址：上海市静安区延安西路433号金柏苑大厦2306室
-    </p>
   </div>
 </div>
 <script type="text/javascript">
