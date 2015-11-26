@@ -48,6 +48,8 @@
   </div>
   <script type="text/javascript">
     
+    alert(1);
+  
     $.get('http://www.51linpai.com/order/wxcode', function (data) {
     
       alert(data);
