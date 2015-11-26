@@ -149,11 +149,13 @@
 
         if (data.code == 1) {
 
-          alert('密码已修改，请重新登录！');
-
           form[0].reset();
 
-          setTimeout("$.mobile.changePage('/mobile/login')", 1500);
+          submit.enable(false);
+
+          alert('密码已修改，请重新登录！');
+
+          $.mobile.changePage('/mobile/login');
         
         } else {
 
@@ -199,7 +201,7 @@
 
       var confirmpassword = $('input[name=confirmpassword]').val();
 
-      if (newpassword == undefined || newpassword.lenght <6 || newpassword.length > 18) {
+      if (newpassword == undefined || newpassword.length < 6 || newpassword.length > 18) {
       
         alert('请输入6-18位新密码！');
 
