@@ -169,8 +169,8 @@
             <input type="hidden" name="car" value="{{$cars[0]->id}}">
           @else
             <input type="hidden" name="car" value="">
-          @else
           @endif
+
           @if (!empty($defaultReceiver))
             <input type="hidden" name="receiver" value="{{$defaultReceiver->id}}">
           @else
