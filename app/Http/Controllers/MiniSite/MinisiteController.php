@@ -387,6 +387,13 @@ class MinisiteController extends Controller {
     return redirect('/mobile/login');
   
   }
+
+  public function getLogout (Request $request)
+  {
+  
+    return redirect('/mobile/login');
+  
+  }
   
 
 }
