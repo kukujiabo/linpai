@@ -91,7 +91,7 @@
                     </label>
                     <div style="display:none">
                       <!-- <input class="info-img"  type="file" style="display:none" name="identity_face" id="identity_face"> -->
-                      <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
+                      <input type="file" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*">
                     </div>
                   </div>
                 </li>
