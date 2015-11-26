@@ -24,7 +24,7 @@
   <script type="text/javascript">
     wx.config({
       debug: false,
-      appId: '',
+      appId: 'wx893e94beb01b53fc',
       nonceStr: '',
       signature: '', 
       jsApiList: []

@@ -315,19 +315,10 @@ class MinisiteController extends Controller {
 
       ->first();
 
-    if (empty($boun->id)) {
-
-
-      return view('/mobile/share_code');
+    $url = "/mobile/share?user={$username}";
     
-    } else {
-
-      $url = "/mobile/share?user={$username}";
+    return redirect($url);
     
-      return redirect($url);
-    
-    }
-  
   }
 
   public function getItems (Request $request)
