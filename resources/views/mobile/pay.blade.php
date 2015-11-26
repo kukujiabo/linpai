@@ -69,7 +69,7 @@
               <p id="default_factory_code">厂牌型号：{{$defaultCar->factory_code}}</p>
               <p id="default_reco_code">识别代码：{{$defaultCar->reco_code}}</p>
           </div>
-        @else if (!empty($cars[0])
+        @elseif (!empty($cars[0]))
           <div style="padding:12px" id="car_info">
               <p id="default_owner">所有人：{{$cars[0]->owner}}</p>
               <p id="default_factory_code">厂牌型号：{{$cars[0]->factory_code}}</p>
@@ -165,7 +165,7 @@
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           @if (!empty($defaultCar)) 
             <input type="hidden" name="car" value="{{$defaultCar->id}}">
-          @else if (!empty($cars[0])
+          @elseif (!empty($cars[0]))
             <input type="hidden" name="car" value="{{$cars[0]->id}}">
           @else
             <input type="hidden" name="car" value="">
