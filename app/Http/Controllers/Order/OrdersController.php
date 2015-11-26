@@ -765,7 +765,7 @@ class OrdersController extends Controller {
       
         $order = Order::where('code', '=', $out_trade_no)->first();
 
-        if (!empty($order->id)) {
+        if (!empty($order->id) && $order->status < 1) {
         
           $order->status = 1;
 
@@ -773,7 +773,7 @@ class OrdersController extends Controller {
 
           PayCheck::create([
           
-            'out_trade_no' => $orderCode,
+            'out_trade_no' => $order->code,
 
             'trade_no' => $trade_no,
           
