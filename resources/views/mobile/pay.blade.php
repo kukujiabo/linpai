@@ -197,7 +197,7 @@
   </div>
 <script type="text/javascript">
 
-  $(document).on('pageinit', function () {
+  window.onload = function () {
 
     function checkInfoComplete () {
 
@@ -413,7 +413,7 @@
     
     });
 
-  });
+  };
 
 </script>
 </div>
