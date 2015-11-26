@@ -153,7 +153,7 @@
       
       }
 
-      var verfiy = $('input[name=reset_code]').val();
+      var verify = $('input[name=reset_code]').val();
 
       if (verify == undefined || verify == '') {
       
@@ -185,7 +185,7 @@
 
       if (newpassword != confirmpassword) {
       
-        alert('新密码和旧密码不一致，请重新出入！');
+        alert('新密码和旧密码不一致，请重新输入！');
 
         return;
       
