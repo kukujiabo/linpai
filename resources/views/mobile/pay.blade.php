@@ -10,15 +10,21 @@
   <div data-role="header">
     @yield('header')
   </div>
-  @yield('step') 
+    @yield('step') 
   <div data-role="content" style="padding-left:0px;padding-right:0px;padding-bottom:0px;">
+    <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
+      <p id="alert_content"></p>
+    </div>
+    <a data-ajax="false" href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
     <!-- 商品信息 -->
     <div class="ui-content" style="background:white">
         <div style="float:left;padding:5px;"> 
           <img  class="m_g_pic inline float-left" src="{{asset($good->tiny_good)}}"> 
           <div class="float-left" style="padding-left:10px;">
             <h4 style="font-weight:normal;margin:5px">{{$good->name}}</h4>
-            <h4 style="font-weight:normal;color:#ff8800;margin:5px;">¥ {{$goodInfo->value}}</h4>
+            <h4 style="font-weight:normal;color:#ff8800;margin:5px;">
+              ¥ {{$goodInfo->value}}
+            </h4>
           </div>
         </div>
         <div style="float:right;padding:5px">
@@ -36,8 +42,7 @@
     <div style="background:#fff;margin-top:10px;">
       <div class="inner_white no-radius" data-role="collapsibleset">
        <div data-iconpos="right"  data-role="collapsible" class="no-radius no-shadow" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-         <h1 class="itm-title no-shadow">车辆信息
-         </h1>
+         <h1 class="itm-title no-shadow">车辆信息</h1>
          <p style="no-margin">
            <ul data-role="listview">
 
@@ -189,13 +194,10 @@
         </div>
       </form>
     </div>
-    <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
-      <p id="alert_content"></p>
-    </div>
-    <a data-ajax="false" href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
+  </div>
 <script type="text/javascript">
 
-  $(document).on('pagecreate', function () {
+  $(document).on('pageinit', function () {
 
     function checkInfoComplete () {
 
@@ -414,6 +416,5 @@
   });
 
 </script>
-</div>
 </div>
 
