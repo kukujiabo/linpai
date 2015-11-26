@@ -13,13 +13,13 @@
       <a  style="font-size:18px;color:#333;font-weight:normal">{{$user->mobile}}</a>
     </div> 
     <div class="white_full_btn" style="padding:20px;border-bottom:1px solid #eee">
-      <a href="/miniorder/cartype" style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">购买临牌</a>
+      <a href="/miniorder/cartype" data-ajax="false" style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">购买临牌</a>
     </div> 
     <div class="white_full_btn" style="padding:20px;border-bottom:1px solid #eee">
-      <a href="/mobile/myshare" style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">我的邀请码</a>
+      <a href="/mobile/myshare" data-ajax="false"  style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">我的邀请码</a>
     </div> 
     <div class="white_full_btn" style="padding:20px;">
-      <a href="/mobile/myorder" style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">我的订单</a>
+      <a href="/mobile/myorder" data-ajax="false"  style="font-size:18px;color:#333;font-weight:normal;display:block;width:100%">我的订单</a>
     </div> 
     <div style="margin-top:50px;">
       <form action="/mobile/logout" data-ajax="false" method="post" data-role="none">
