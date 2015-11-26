@@ -41,7 +41,7 @@ class OrdersController extends Controller {
    */
   public function __construct ()
   {
-    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay', 'getMobilepay', 'getWxcode', 'getPayed']]);
+    $this->middleware('auth', [ 'except' => ['postPaynotify', 'postWxpay', 'getMobilepay', 'getWxcode', 'getPayed', 'postPayed']]);
 
     $this->debug = \Config::get('app.debug');
 
@@ -690,7 +690,7 @@ class OrdersController extends Controller {
     //支付类型
     $payment_type = "1";
 
-    //$notify_url = "http://www.51linpai.com/order/paynotify";
+    $notify_url = "http://www.51linpai.com/order/payed";
     
     //页面跳转同步通知页面路径
     $return_url = "http://www.51linpai.com/order/payed";
@@ -718,7 +718,7 @@ class OrdersController extends Controller {
        "partner" => trim($alipay_config['partner']),
        "seller_email" => trim($alipay_config['seller_email']),
        "payment_type"  => $payment_type,
-       //"notify_url"  => $notify_url,
+       "notify_url"  => $notify_url,
        "return_url"  => $return_url,
        "out_trade_no"  => $out_trade_no,
        "subject" => $subject,
@@ -740,16 +740,72 @@ class OrdersController extends Controller {
   
   }
 
+  public function postPayed (Request $request)
+  {
+  
+    require_once "lib/alipay_notify.class.php";
+
+    $alipayNotify = new \AlipayNotify($this->payConfig());
+  
+    $verify_result = $alipayNotify->verifyNotify();
+
+    if ($verify_result) {
+    
+      $out_trade_no = $request->input('out_trade_no');
+
+      $trade_no = $request->input('trade_no');
+
+      $trade_status = $request->input('trade_status');
+
+      if ($trade_status == 'TRADE_FINISHED') {
+      
+
+      
+      } elseif ($trade_status == 'TRADE_SUCCESS') {
+      
+        $order = Order::where('code', '=', $out_trade_no)->first();
+
+        if (!empty($order->id)) {
+        
+          $order->status = 1;
+
+          $order->save();
+
+          PayCheck::create([
+          
+            'out_trade_no' => $orderCode,
+
+            'trade_no' => $trade_no,
+          
+            'trade_status' => $trade_status
+          
+          ]);
+        
+        }
+      
+      }
+
+      echo 'success';
+    
+    } else {
+    
+      echo 'fail';
+    
+    }
+  
+  
+  }
+
   private function creditpay ($order, $good, $orderPrice, $bank) 
   {
     $alipay_config = $this->payConfig();
   
     $payment_type = 1;
 
-    //$notify_url = "http://www.51linpai.com:8000/order/paynotify";
+    $notify_url = "http://www.51linpai.com/order/payed";
 
     //页面跳转同步通知页面路径
-    $return_url = "";
+    $return_url = "http://www.51linpai.com/order/payed";
 
     if ($this->debug) {
 
@@ -790,7 +846,7 @@ class OrdersController extends Controller {
        "partner" => trim($alipay_config['partner']),
        "seller_email" => trim($alipay_config['seller_email']),
        "payment_type"  => $payment_type,
-       //"notify_url"  => $notify_url,
+       "notify_url"  => $notify_url,
        "return_url"  => $return_url,
        "out_trade_no"  => $out_trade_no,
        "subject" => $subject,
