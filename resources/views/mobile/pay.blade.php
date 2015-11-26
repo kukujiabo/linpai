@@ -18,23 +18,23 @@
     <a data-ajax="false" href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
     <!-- 商品信息 -->
     <div class="ui-content" style="background:white">
-        <div style="float:left;padding:5px;"> 
-          <img  class="m_g_pic inline float-left" src="{{asset($good->tiny_good)}}"> 
-          <div class="float-left" style="padding-left:10px;">
-            <h4 style="font-weight:normal;margin:5px">{{$good->name}}</h4>
-            <h4 style="font-weight:normal;color:#ff8800;margin:5px;">
-              ¥ {{$goodInfo->value}}
-            </h4>
-          </div>
+      <div style="float:left;padding:5px;"> 
+        <img  class="m_g_pic inline float-left" src="{{asset($good->tiny_good)}}"> 
+        <div class="float-left" style="padding-left:10px;">
+          <h4 style="font-weight:normal;margin:5px">{{$good->name}}</h4>
+          <h4 style="font-weight:normal;color:#ff8800;margin:5px;">
+            ¥ {{$goodInfo->value}}
+          </h4>
         </div>
-        <div style="float:right;padding:5px">
-          <div data-role="controlgroup" data-type="horizontal">
-            <a href="#" class="ui-btn ui-mini">-</a>
-            <a href="#" class="ui-btn ui-mini">1</a>
-            <a href="#" class="ui-btn ui-mini">+</a>
-          </div>
+      </div>
+      <div style="float:right;padding:5px">
+        <div data-role="controlgroup" data-type="horizontal">
+          <a href="#" class="ui-btn ui-mini">-</a>
+          <a href="#" class="ui-btn ui-mini">1</a>
+          <a href="#" class="ui-btn ui-mini">+</a>
         </div>
-        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
     </div>
     
     <!-- 车辆信息 -->
@@ -64,17 +64,24 @@
          </p>
        </div>
         @if (!empty($defaultCar))
-       <div style="padding:12px" id="car_info">
-            <p id="default_owner">所有人：{{$defaultCar->owner}}</p>
-            <p id="default_factory_code">厂牌型号：{{$defaultCar->factory_code}}</p>
-            <p id="default_reco_code">识别代码：{{$defaultCar->reco_code}}</p>
-        </div>
+          <div style="padding:12px" id="car_info">
+              <p id="default_owner">所有人：{{$defaultCar->owner}}</p>
+              <p id="default_factory_code">厂牌型号：{{$defaultCar->factory_code}}</p>
+              <p id="default_reco_code">识别代码：{{$defaultCar->reco_code}}</p>
+          </div>
+        @else if (!empty($cars[0])
+          <div style="padding:12px" id="car_info">
+              <p id="default_owner">所有人：{{$cars[0]->owner}}</p>
+              <p id="default_factory_code">厂牌型号：{{$cars[0]->factory_code}}</p>
+              <p id="default_reco_code">识别代码：{{$cars[0]->reco_code}}</p>
+          </div>
+          
         @else
-       <div style="paddding:12px;" class="hide" id="car_info">
-            <p id="default_owner"></p>
-            <p id="default_factory_code"></p>
-            <p id="default_reco_code"></p>
-       </div>
+          <div style="padding:12px;" class="hide" id="car_info">
+               <p id="default_owner"></p>
+               <p id="default_factory_code"></p>
+               <p id="default_reco_code"></p>
+          </div>
         @endif
       </div>
     </div>
@@ -158,8 +165,11 @@
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           @if (!empty($defaultCar)) 
             <input type="hidden" name="car" value="{{$defaultCar->id}}">
-          @else 
+          @else if (!empty($cars[0])
+            <input type="hidden" name="car" value="{{$cars[0]->id}}">
+          @else
             <input type="hidden" name="car" value="">
+          @else
           @endif
           @if (!empty($defaultReceiver))
             <input type="hidden" name="receiver" value="{{$defaultReceiver->id}}">
