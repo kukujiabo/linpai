@@ -18,7 +18,7 @@
       <div class="form-block">
         <div class="" id="err-list">
         </div>
-        <form class="form" style="margin-top:80px;" id="login-form" data-ajax="false" action="{{asset('/user/ajaxlogin')}}" method="post">
+        <form class="form" data-role="none"  style="margin-top:80px;" id="login-form" data-ajax="false" action="{{asset('/user/ajaxlogin')}}" method="post">
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="form-group"> 
             <div class="ui-input-text ui-body-inherit " data-inline="true">
@@ -37,7 +37,7 @@
           </div>
           <div class="clear"></div>
           <div class="form-group" style="margin-top:90px">
-            <button type="submit" id="login-submit" class="blue_full_btn no-radius no-shadow" >登录</button>
+            <button type="submit" data-ajax="false" id="login-submit" class="blue_full_btn no-radius no-shadow" >登录</button>
           </div>
         </form>
       </div>

@@ -22,10 +22,10 @@
       <a href="/mobile/myorder" style="font-size:20px;color:#333;font-weight:normal;display:block;width:100%">我的订单</a>
     </div> 
     <div style="margin-top:50px;">
-      <form action="/mobile/logout" method="post" data-role="none">
+      <form action="/mobile/logout" data-ajax="false" method="post" data-role="none">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div style="padding:0px 15%">
-          <button type="submit" style="color:#fff;background:#ff8800;font-size:24px;padding:10px" class="no-shadow-orange" data-inset="false">退出登录</button>
+          <button data-ajax="false" type="submit" style="color:#fff;background:#ff8800;font-size:24px;padding:10px" class="no-shadow-orange" data-inset="false">退出登录</button>
         </div>
       </form>
     </div>
