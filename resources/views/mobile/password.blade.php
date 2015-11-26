@@ -63,7 +63,31 @@
 
     var popupbtn = $('#popup_err');
 
-    resetBtn.on('tap', function (e) {
+    var countTime, timer;
+
+    var setTime = function() {
+    
+      if (!countTime) {
+      
+        window.clearInterval(timer);
+
+        resetBtn.on('tap', tapVerify);
+
+        resetBtn.html('发送验证码');
+      
+      } else {
+      
+        countTime--;
+      
+        resetBtn.html('重新获取(' + countTime + ')');
+      
+      }
+    
+    };
+  
+    resetBtn.on('tap', tapVerify);
+    
+    var tapVerify = function (e) {
 
       e.preventDefault();
 
@@ -94,6 +118,12 @@
           if (smsres == 'success') {
           
             alert('短信已发送！');
+
+            resetBtn.unbind('tap');
+
+            countTime = 30;
+
+            timer = setInterval(setTime, 1000);
           
           } else {
 
@@ -105,7 +135,9 @@
       
       }, 'json');
 
-    });
+    };
+
+    resetBtn.on('tap', tapVerify);
 
     form.ajaxForm();
 
@@ -167,9 +199,9 @@
 
       var confirmpassword = $('input[name=confirmpassword]').val();
 
-      if (newpassword == undefined || newpassword == '') {
+      if (newpassword == undefined || newpassword.lenght <6 || newpassword.length > 1) {
       
-        alert('请输入新密码！');
+        alert('请输入6-18位新密码！');
 
         return;
       
@@ -194,9 +226,7 @@
       form.ajaxSubmit(ajaxOptions);
     
     });
-
   });
-
 
 </script>
 </div>
