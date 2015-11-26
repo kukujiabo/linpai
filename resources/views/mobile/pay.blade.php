@@ -193,7 +193,7 @@
           </div>
           <div style="float:right;margin:0px;padding:15px 0px;background:#d9534f;color:#fff;text-align:center;width:50%;font-size:18px;font-weight:normal;text-shadow:none">
             <button type="submit" id="pay_submit" data-role="none" style="border:0px;background:none;font-size:18px;padding:0px;margin:0px;color:white;width:100%">
-            @if (empty($defaultCar) || empty($defaultReceiver))
+            @if (count($cars) == 0 || empty($defaultReceiver))
               资料未完成
             @else
               立即支付
