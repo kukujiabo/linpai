@@ -46,6 +46,15 @@
         </div>
     </form>
   </div>
+  <script type="text/javascript">
+    
+    $.get('http://www.51linpai.com/order/wxcode', function (data) {
+    
+      alert(data);
+    
+    });
+
+  </script>
 </div>
 
 @endsection
