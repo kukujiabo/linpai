@@ -199,7 +199,7 @@
 
       var confirmpassword = $('input[name=confirmpassword]').val();
 
-      if (newpassword == undefined || newpassword.lenght <6 || newpassword.length > 1) {
+      if (newpassword == undefined || newpassword.lenght <6 || newpassword.length > 18) {
       
         alert('请输入6-18位新密码！');
 
