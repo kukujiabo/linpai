@@ -52,7 +52,7 @@
              @endforeach
            
                <li data-icon="carat-r" class="add_itm no-shadow">
-                 <a href="/mobile/addcar?car_hand={{$car_hand}}&good_code={{$good->code}}" id="add_car" class="add_itm">添加车辆信息</a>
+                 <a data-ajax="false" href="/mobile/addcar?car_hand={{$car_hand}}&good_code={{$good->code}}" id="add_car" class="add_itm">添加车辆信息</a>
                </li>
 
            </ul>
@@ -92,7 +92,7 @@
             @endforeach
 
             <li  data-icon="carat-r" class="add_itm no-shadow">
-              <a id="add_receiver" class="add_itm" href="/mobile/addreceiver?car_hand={{$car_hand}}">添加新的收件人</a>
+              <a data-ajax="false" id="add_receiver" class="add_itm" href="/mobile/addreceiver?car_hand={{$car_hand}}">添加新的收件人</a>
             </li>
           </ul>
         </p> 
@@ -132,7 +132,7 @@
           <div class="ui-grid-c">
             @foreach($bouns as $boun)
               <div class="ui-block-b">
-                <a class="blue_white_btn margin-1 ui-btn ui-mini boun_btn" href="#" id="boun_{{$boun->id}}" data-id="{{$boun->code}}">{{$boun->code}}</a>
+                <a data-ajax="false" class="blue_white_btn margin-1 ui-btn ui-mini boun_btn" href="#" id="boun_{{$boun->id}}" data-id="{{$boun->code}}">{{$boun->code}}</a>
               </div>
             @endforeach
           </div>
@@ -194,7 +194,7 @@
     <div class="ui-content" data-role="popup" id="pay_popup" data-position-to="window">
       <p id="alert_content"></p>
     </div>
-    <a href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
+    <a data-ajax="false" href="#pay_popup" id="trigger_pop" data-rel="popup"></a>
 <script type="text/javascript">
 
   $(document).on('pagecreate', function () {
