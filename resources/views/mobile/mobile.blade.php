@@ -19,7 +19,17 @@
   <script src="{{asset('js/jquery.mobile-1.4.5.min.js')}}"></script>
   <script src="{{asset('js/jquery.form.js')}}"></script>
   <script src="{{asset('js/minisite.js')}}"></script>
-  <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
+  <script src="{{asset('js/jquery.fileupload.js')}}"></script>
+  <script src="{{asset('js/jweixin.js')}}"></script>
+  <script type="text/javascript">
+    wx.config({
+      debug: false,
+      appId: '',
+      nonceStr: '',
+      signature: '', 
+      jsApiList: []
+    });
+  </script>
 </head>
 <body>
 

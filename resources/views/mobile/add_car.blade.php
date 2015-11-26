@@ -66,7 +66,7 @@
                       <div class="clear"></div>
                     </label>
                     <div style="display:none">
-                      <input type="file" data-role="none" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" multiple >
+                      <input type="file" data-role="none" id="{{$good_attrib['code']}}" name="{{$good_attrib['code']}}" class="hide info-img" data-url="{{ asset('/uploads') }}" data-spec="{{$good_attrib['spec']}}" accept="image/*" >
                     </div>
                   </div>
                 </li>
@@ -151,6 +151,16 @@
           $('#trigger_progress').click();
 
           $('#progress').html('0');
+
+          var files = that.prop('files');
+
+          if (files.length > 1) {
+          
+            alert('只能选择一张图片上传，请重新选择！');
+
+            return;
+          
+          }
 
           data.submit();
         
