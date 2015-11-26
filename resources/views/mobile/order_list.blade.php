@@ -16,7 +16,7 @@
         <p>
           您还没有下过订单哦~
         <p>
-        <a href="/miniorder/cartype" class="orange_btn">立即购买临牌</a> 
+        <a href="/miniorder/cartype" class="orange_btn" data-ajax="false">立即购买临牌</a> 
       </div>
 
     @else
@@ -50,9 +50,9 @@
             <div class="clear"></div>
           </div>
           <div class="oli-operator text-right">
-              <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">订单详情</a>
+              <a data-ajax="false" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">订单详情</a>
             @if ($order->status == 0)
-              <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_full_btn" role="button">马上支付</a>
+              <a data-ajax="false" href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_full_btn" role="button">马上支付</a>
             @elseif ($order->status == 1)
               <a class="ui-btn ui-btn-inline ui-shadow ui-mini gray_white_btn" role="button">等待发货</a>
             @elseif ($order->status == 2)
@@ -64,7 +64,7 @@
             @endif
             
             @if ($order->status > 0) 
-              <a href="/order/rebuy?order_code={{$order->order_code}}&mb=true" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
+              <a data-ajax="false" href="/order/rebuy?order_code={{$order->order_code}}&mb=true" class="orange_btn ui-btn ui-btn-inline ui-mini"  role="button" >再次购买</a> 
             @endif 
           </div>
         </li>
