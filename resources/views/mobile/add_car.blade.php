@@ -19,9 +19,9 @@
       <fieldset>
         <div data-role="collapsible-set">
           <div data-role="collapsible" class="inner_white no-radius" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
-            <h1 style="font-weight:normal" class="no-shadow">所&nbsp;&nbsp;有&nbsp;&nbsp;人&nbsp;&nbsp;&nbsp;&nbsp;<span id="txt_owner"></span></h1>
+            <h1 style="font-weight:normal" class="no-shadow">车辆所有人<span id="txt_owner"></span></h1>
             <p>
-              <input type="text" name="owner" placeholder="请输入车主姓名">
+              <input type="text" name="owner" placeholder="请输入车辆所有人姓名">
             </p>
           </div>
           <div data-role="collapsible" class="inner_white" data-collapsed-icon="edit" data-expanded-icon="carat-u" data-iconpos="right">
