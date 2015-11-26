@@ -1754,3 +1754,15 @@ img.notice-sending {
   box-shadow: 0 6px 12px rgba(0,0,0,.175);
   z-index: 10000;
 }
+
+.coop_panel {
+  position:fixed;
+  top: 100px;
+  left: 15%;
+  width: 70%;
+  min-height: 360px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding:30px 50px;
+}
