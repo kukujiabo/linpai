@@ -102,14 +102,12 @@
           <p id="receiver_txt">收货人：{{$defaultReceiver->receiver}}</p>
           <p id="receiver_address">收货地址：{{$defaultReceiver->province}}{{$defaultReceiver->city}}{{$defaultReceiver->district}}</p>
           <p id="receiver_mobile">联系号码：{{$defaultReceiver->mobile}}</p>
-          <p id="receiver_email">邮箱地址：{{$defaultReceiver->email}}</p>
       </div>
         @else
       <div style="padding:12px" id="receiver_info" class="hide">
           <p id="receiver_txt"></p>
           <p id="receiver_address"></p>
           <p id="receiver_mobile"></p>
-          <p id="receiver_email"></p>
       </div>
         @endif
     </div>
