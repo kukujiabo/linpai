@@ -25,7 +25,7 @@
           <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:57%;float:left">
             <input data-role="none"  type="text" name="reset_code" placeholder="请输入验证码"> 
           </div>
-          <div class="ui-btn  no-margin ui-mini blue_full_btn" style="margin-left:1px;float:left;width:31%" data-inline="true">
+          <div style="padding:8px 5px;" class="ui-btn  no-margin ui-mini blue_full_btn" style="margin-left:1px;float:left;width:31%" data-inline="true">
             <a href="#" id="reset_sms" class="ui-mini blue_full_btn" data-url="{{asset('/user/ajaxresetsms')}}">发送验证码</a>
           </div>
           <div class="clear"></div>
