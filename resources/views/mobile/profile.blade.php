@@ -25,7 +25,7 @@
       <form action="/mobile/logout" data-ajax="false" method="post" data-role="none">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div style="padding:0px 15%">
-          <button data-ajax="false" type="submit" style="color:#fff;background:#ff8800;font-size:24px;padding:10px" class="no-shadow-orange" data-inset="false">退出登录</button>
+          <button data-ajax="false" type="submit" style="color:#fff;background:#ff8800;font-size:22px;padding:10px" class="no-shadow-orange no-radius" data-inset="false">退出登录</button>
         </div>
       </form>
     </div>
