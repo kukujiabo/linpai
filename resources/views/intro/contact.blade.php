@@ -34,15 +34,15 @@
           > 官方新浪微博：weibo.com/51linpai
           </p>
           <p style="padding: 5px 0px;">
-          > 微信公众号：LinPai51
+          > 微信公众号：LinPai51X
           </p>
           <p style="padding: 5px 0px;">
           > 电话：4000602620
           </p>
         </div>
         <div class="col-xs-5" style="background:#eee;padding: 3px;">
-          <img src="/imgs/wechat-code.jpg" width="150px">
-          &nbsp;&nbsp;&nbsp;&nbsp;微信公众号：<span class="theme-orig"><b>LinPai51</b></span>
+          <img src="/imgs/qrcode.png" width="150px">
+          &nbsp;&nbsp;&nbsp;&nbsp;微信公众号：<span class="theme-orig"><b>LinPai51X</b></span>
         </div>
       </div>
     </p>

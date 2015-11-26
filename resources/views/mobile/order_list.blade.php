@@ -52,7 +52,7 @@
           <div class="oli-operator text-right">
               <a class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" href="/mobile/orderinfo?order={{$order->order_code}}">订单详情</a>
             @if ($order->status == 0)
-              <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_white_btn" role="button">马上支付</a>
+              <a href="/order/pay?mb=true&order={{$order->order_code}}" class="ui-btn ui-btn-inline ui-shadow ui-mini blue_full_btn" role="button">马上支付</a>
             @elseif ($order->status == 1)
               <a class="ui-btn ui-btn-inline ui-shadow ui-mini gray_white_btn" role="button">等待发货</a>
             @elseif ($order->status == 2)
