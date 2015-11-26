@@ -151,6 +151,8 @@
 
           form[0].reset();
 
+          submit.enable(false);
+
           alert('密码已修改，请重新登录！');
 
           $.mobile.changePage('/mobile/login');
