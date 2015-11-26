@@ -476,3 +476,42 @@ var addressBind;
   });
 
 })();
+
+(function () {
+
+  $('.detail_tag').click(function (e) {
+  
+    e.preventDefault();
+
+    var that = $(this);
+
+    var target_data = that.data('target');
+
+    var itms = $('#' + target_data).find('td');
+
+    itms.each(function (i, t) {
+    
+      var targetId = $(t).data('target');
+
+      if (typeof targetId != 'undefined') {
+
+        $('#' + targetId).html($(t).html());
+
+      }
+    
+    });
+
+    $('.coop_panel').removeClass('hide');
+  
+  });
+
+  $('#op_remove').click(function (e) {
+
+    e.preventDefault();
+  
+    $('.coop_panel').addClass('hide');
+    
+  
+  });
+
+})();
