@@ -1496,6 +1496,8 @@ class OrdersController extends Controller {
     foreach ($discount as $code) {
     
       $boun = Boun::where('code', '=', $code)->first();
+
+      if (empty($boun->id)) continue;
     
       if ($boun->active) {
       
