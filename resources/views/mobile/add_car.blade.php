@@ -152,6 +152,16 @@
 
           $('#progress').html('0');
 
+          var files = that.prop('files');
+
+          if (files.length > 1) {
+          
+            alert('只能选择一张图片上传，请重新选择！');
+
+            return;
+          
+          }
+
           data.submit();
         
         }
