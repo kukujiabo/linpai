@@ -1989,7 +1989,7 @@ class OrdersController extends Controller {
     
     } else {
     
-      echo $openId . '---' . $code; 
+      echo $openId;
     
     }
 
@@ -2015,6 +2015,7 @@ class OrdersController extends Controller {
 
     $orderPrice = OrderPrice::where('oid', '=', $order->id)->first();
 
+    /*
     require_once "lib/WxPay.Api.php";  
 
     require_once "lib/WxPay.JsApiPay.php";
@@ -2024,8 +2025,10 @@ class OrdersController extends Controller {
     $authUrl = "http://www.51linpai.com/order/mobilepay/";
   
     $openId = $tools->GetOpenid($authUrl);
-
+     */
     $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay/";
+
+    $openId = $request->input('open_id');
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
