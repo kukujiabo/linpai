@@ -6,6 +6,7 @@
   @else
     <title>51临牌</title>
   @endif
+  <meta name="description" content="51临牌是基于互联网的车辆临时牌照服务平台，我们致力于给众多需要临时牌照的车主提供更专业，更超值，更便捷，更高效的服务。">
   <meta name="keywords" content="临牌 车牌" />     
   <meta name="description" content="首页描述" />     
   <meta http-equiv="Content-Type" content="charset=utf-8" />     
