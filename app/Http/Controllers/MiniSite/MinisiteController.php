@@ -97,7 +97,7 @@ class MinisiteController extends Controller {
 
     $user = Auth::user();
 
-    if ($user) {
+    if (!empty($user)) {
     
       return redirect('/mobile/profile');
 
@@ -356,7 +356,7 @@ class MinisiteController extends Controller {
 
     if (empty($user)) {
     
-      return redirect('/moible/login');
+      return redirect('/mobile/login');
     
     }
 
