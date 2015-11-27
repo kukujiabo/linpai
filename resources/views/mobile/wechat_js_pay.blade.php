@@ -7,15 +7,15 @@
     <h1>支付－51临牌</h1>
   </div>
   <div data-role="content">
-    <div style="background:#fff;width:100%;height:320px;text-align:center;padding:20px 10;border-radius:5px;">
-      <img src="/imgs/weixinpay.png" >
+    <div style="background:#fff;width:100%;height:320px;text-align:center;padding:20px 15px;border-radius:5px;">
+      <img src="/imgs/weixinpay.png" style="margin-top:20px;" >
       <div style="color:#138ed1;font-size:18px;font-weight:bold;margin-top:8px;" id="pay_title">
         跳转支付...
       </div>
       <div style="color:#ff8800;font-size:22px;padding:10px;font-weight:bold" id="pay_price">
         {{$price}} 元
       </div>
-      <hr>
+      <hr style="background:#ddd">
       <div style="width:100%;text-align:left;padding:10px">
         <p style="color:#ccc">订单号：<span style="color:#138ed1">{{$order_code}}</span></p>
         <p style="color:#ccc">收货地址：<span style="color:#333">{{$address}}</span></p>
@@ -38,6 +38,8 @@
       function(res){
 
         WeixinJSBridge.log(res.err_msg);
+
+        alert(res.err_msg);
 
         switch (res.err_msg) {
         
