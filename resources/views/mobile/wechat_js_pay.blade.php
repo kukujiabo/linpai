@@ -6,11 +6,13 @@
   <div data-role="header">
     <h1>支付－51临牌</h1>
   </div>
+  <!--
   <div data-role="content">
     <div class="ui-btn">
       <button onclick="callpay();">立即支付</button>
     </div>
   </div>
+  -->
 </div>
 <script type="text/javascript">
 
