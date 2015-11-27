@@ -20,7 +20,7 @@
 
       'getBrandWCPayRequest',
 
-      {{$jsApiParameters}},
+      {!!$jsApiParameters!!},
 
       function(res){
 

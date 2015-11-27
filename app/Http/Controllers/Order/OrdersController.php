@@ -2019,9 +2019,9 @@ class OrdersController extends Controller {
 
     require_once "lib/WxPay.JsApiPay.php";
 
-    /*
     $tools = new \JsApiPay();
 
+    /*
     $authUrl = "http://www.51linpai.com/order/mobilepay/";
   
     $openId = $tools->GetOpenid($authUrl);
@@ -2041,7 +2041,7 @@ class OrdersController extends Controller {
     $input->SetNotify_url($notify_url);
     $input->SetTrade_type("JSAPI");
     $input->SetOpenid($openId);
-    $jsWxOrder = WxPayApi::unifiedOrder($input);
+    $jsWxOrder = \WxPayApi::unifiedOrder($input);
     $jsApiParameters = $tools->GetJsApiParameters($jsWxOrder);
 
     //获取共享收货地址js函数参数
