@@ -46,6 +46,14 @@
         </div>
     </form>
   </div>
+  <script type="text/javascript">
+    $.get('/order/wxcode', function (data) {
+    
+      alert(data);
+    
+    
+    });
+  </script>
 </div>
 
 @endsection
