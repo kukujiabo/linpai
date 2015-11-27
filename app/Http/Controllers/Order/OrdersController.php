@@ -2011,6 +2011,8 @@ class OrdersController extends Controller {
 
     $orderPrice = OrderPrice::where('oid', '=', $order->id)->first();
 
+    $receiver = ReceiverInfo::find($order->rid);
+
     require_once "lib/WxPay.Api.php";  
 
     require_once "lib/WxPay.JsApiPay.php";
@@ -2047,7 +2049,13 @@ class OrdersController extends Controller {
 
         'editAddress' => $editAddress,
 
-        'jsApiParameters' => $jsApiParameters
+        'jsApiParameters' => $jsApiParameters,
+
+        'order_code' => $order->code,
+
+        'price' => $orderPrice->final_price,
+
+        'address' => $receiver->province . $receiver->city . $receiver->district . $receiver->address
       
       ];
     

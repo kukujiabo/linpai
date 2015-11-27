@@ -18,7 +18,7 @@
       <hr>
       <div style="width:100%;text-align:left">
         <p style="color:#ccc">订单号：<span style="color:#138ed1">{{$order_code}}</span></p>
-        <p style="color:#ccc">收货地址：<span style="color:#138ed1">{{$order_code}}</span></p>
+        <p style="color:#ccc">收货地址：<span style="color:#138ed1">{{$address}}</span></p>
       </div>
     </div>
   </div>
