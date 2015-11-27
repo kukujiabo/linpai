@@ -732,7 +732,7 @@ class OrdersController extends Controller {
 
     $alipaySubmit = new \AlipaySubmit($alipay_config);
 
-    $parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
+    //$parameter['anti_phishing_key'] = $alipaySubmit->query_timestamp();
 
     $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "正在跳转到支付宝...");
 
