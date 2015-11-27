@@ -56,10 +56,11 @@
     }
   }
 
-  var addressParameters = {!!$editAddress!!};
+  //var addressParameters = {!!$editAddress!!};
   /*
    * 获取共享地址
    */
+  /*
   function editAddress() {
 
     WeixinJSBridge.invoke(
@@ -75,9 +76,11 @@
       }
     );
   }
+  */
 
   window.onload = function() {
 
+    /*
     if (typeof WeixinJSBridge == "undefined"){
 
       if( document.addEventListener ){
@@ -97,6 +100,7 @@
       editAddress();
 
     }
+     */
 
     callpay();
 
