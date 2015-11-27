@@ -97,7 +97,7 @@ class WxPayApi
 		return $result;
 	}
 	
-I /**
+	/**
 	 * 
 	 * 关闭订单，WxPayCloseOrder中out_trade_no必填
 	 * appid、mchid、spbill_create_ip、nonce_str不需要填入
