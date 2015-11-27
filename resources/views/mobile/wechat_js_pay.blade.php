@@ -98,6 +98,8 @@
 
     }
 
+    callpay();
+
   };
 
 </script>
