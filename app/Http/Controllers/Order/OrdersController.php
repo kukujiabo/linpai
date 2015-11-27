@@ -2055,7 +2055,7 @@ class OrdersController extends Controller {
 
         'price' => $orderPrice->final_price,
 
-        'address' => $receiver->province . $receiver->city . $receiver->district . $receiver->address
+        'address' =>  $receiver->city . ' ' . $receiver->district . ' ' . $receiver->address
       
       ];
     
