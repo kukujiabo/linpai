@@ -2028,7 +2028,7 @@ class OrdersController extends Controller {
      */
     $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay/";
 
-    $openId = $request->input('open_id');
+    $openId = 'oiDLts988w7ClH1dTt6GeC-L7-DA';//$request->input('open_id');
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
