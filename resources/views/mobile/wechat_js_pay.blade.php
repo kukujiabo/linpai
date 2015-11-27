@@ -7,7 +7,7 @@
     <h1>支付－51临牌</h1>
   </div>
   <div data-role="content">
-    <div style="background:#fff;width:100%;height:320px;text-align:center;padding:20px 15px;border-radius:5px;">
+    <div style="background:#fff;width:100%;height:320px;text-align:center;padding:20px 0;border-radius:5px;">
       <img src="/imgs/weixinpay.png" style="margin-top:20px;" >
       <div style="color:#138ed1;font-size:18px;font-weight:bold;margin-top:8px;" id="pay_title">
         跳转支付...
