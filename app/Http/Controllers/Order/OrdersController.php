@@ -2015,11 +2015,11 @@ class OrdersController extends Controller {
 
     $orderPrice = OrderPrice::where('oid', '=', $order->id)->first();
 
-    /*
     require_once "lib/WxPay.Api.php";  
 
     require_once "lib/WxPay.JsApiPay.php";
 
+    /*
     $tools = new \JsApiPay();
 
     $authUrl = "http://www.51linpai.com/order/mobilepay/";
