@@ -91,8 +91,8 @@
            common : {
              bdText : '使用我的邀请码 {{$recomend->code}} 在51临牌网（http://www.51linpai.com）下单购买车辆临时行驶牌照，你将获取高达 20rmb 的优惠减免。赶快行动吧！',  
            bdDesc : '使用我的邀请码 {{$recomend->code}} 在51临牌网（http://www.51linpai.com）下单购买车辆临时行驶牌照，你将获取高达 20rmb 的优惠减免。赶快行动吧！',  
-           bdUrl : 'http://51linpai.com/home',  
-           bdPic : 'http://51linpai.com/imgs/weixin.png',
+           bdUrl : 'http://m.51linpai.com/mobile/myshare',  
+           bdPic : 'http://www.51linpai.com/imgs/qrcode.png',
            bdSnsKey: { 'weixin' : 'wx876ec75dc270436b'}
            },
            share : [{
