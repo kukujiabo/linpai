@@ -18,6 +18,7 @@
 
   var jsParameters = {!!$jsApiParameters!!};
 
+  /*
   function onBridgeReady(){
       
     WeixinJSBridge.invoke(
@@ -44,6 +45,7 @@
 
   }
 
+
   if (typeof WeixinJSBridge == "undefined"){
 
     if( document.addEventListener ){
@@ -63,9 +65,9 @@
     onBridgeReady();
 
   }
+  */
 
   //调用微信jsapi支付
-  /*
   function jsApiCall()
   {
     WeixinJSBridge.invoke(
@@ -91,7 +93,6 @@
     /*
      * 微信js桥
      */
-    /*
     if (typeof WeixinJSBridge == "undefined"){
         if( document.addEventListener ){
             document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
@@ -103,7 +104,6 @@
         jsApiCall();
     }
   }
-  */
 
   //var addressParameters = {!!$editAddress!!};
   /*
@@ -127,7 +127,7 @@
   }
   */
 
-  //window.onload = function() {
+  window.onload = function() {
 
     /*
     if (typeof WeixinJSBridge == "undefined"){
@@ -149,11 +149,11 @@
       editAddress();
 
     }
-     */
+    */
 
-   // callpay();
+    callpay();
 
-  //};
+  };
 
 </script>
 
