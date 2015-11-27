@@ -63,7 +63,7 @@
     WeixinJSBridge.invoke(
       'editAddress',
       addressParameters,
-      function(res){
+      function(res) {
         var value1 = res.proviceFirstStageName;
         var value2 = res.addressCitySecondStageName;
         var value3 = res.addressCountiesThirdStageName;
@@ -74,7 +74,7 @@
     );
   }
 
-  window.onload = function(){
+  window.onload = function() {
 
     if (typeof WeixinJSBridge == "undefined"){
 
@@ -89,15 +89,15 @@
         document.attachEvent('onWeixinJSBridgeReady', editAddress);
 
       }
+
     } else {
 
       editAddress();
 
     }
+
   };
 
 </script>
-
-
 
 @endsection

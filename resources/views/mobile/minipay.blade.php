@@ -30,7 +30,7 @@
       </div>
       <div class="clear"></div>
     </div>
-    <form data-ajax="false" data-role="none" action="/order/mobilepay" method="get" style="margin-top:20px;">
+    <form data-ajax="false" data-role="none" action="/order/mobilepay" method="post" style="margin-top:20px;">
         <label class="no-radius" style="background:white" for="wechat">
           <img src="/imgs/weixinpay_tiny.png" style="float:left;width:40px;font-size:18px;">
           <div style="float:left;padding:2px;">微信支付</div>

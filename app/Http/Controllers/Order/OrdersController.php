@@ -1937,7 +1937,7 @@ class OrdersController extends Controller {
 
   }
 
-  public function getMobilepay(Request $request)
+  public function postMobilepay(Request $request)
   {
 
     $type = $request->input('pay');
@@ -1957,10 +1957,6 @@ class OrdersController extends Controller {
         break; 
     
     }
-
-    $code = $request->input('code');
-
-    echo $code;
   
   }
 
