@@ -39,15 +39,17 @@
 
         WeixinJSBridge.log(res.err_msg);
 
-        alert(res.err_msg);
-
-        switch (res.err_msg) {
+        switch (res.err_msg.trim()) {
         
-          case 'fail':
+          case 'get_brand_wcpay_request:fail':
+
+            $('#pay_title').html('支付失败，请重新尝试或联系管理员.');
+
+            $('#pay_title').css({ color: '#d9534f'});
 
             break;
 
-          case 'ok':
+          case 'get_brand_wcpay_request:ok':
 
             $('#pay_title').html('支付成功！');
 
