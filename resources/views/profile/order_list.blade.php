@@ -7,7 +7,11 @@
     <b>{{$order->created_at}}</b>
   </div>
   <div class="col-xs-2 col-xs-offset-2">
+    @if ($order->status > 0)
     <a class="theme-back-orig" style="font-size:12px;padding:5px;" href="/order/rebuy?order_code={{$order->order_code}}">再次购买</a>
+    @endif
+
+    
   </div>
   <div style="clear:both"></div>
 </div>
