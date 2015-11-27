@@ -13,6 +13,9 @@
   </div>
 </div>
 <script type="text/javascript">
+
+  var jsParameters = {!!$jsApiParameters!!};
+
   //调用微信jsapi支付
   function jsApiCall()
   {
@@ -20,7 +23,7 @@
 
       'getBrandWCPayRequest',
 
-      {!!$jsApiParameters!!},
+      jsParameters,
 
       function(res){
 
@@ -51,6 +54,7 @@
     }
   }
 
+  var addressParameters = {!!$editAddress!!};
   /*
    * 获取共享地址
    */
@@ -58,7 +62,7 @@
 
     WeixinJSBridge.invoke(
       'editAddress',
-      {{$editAddress}},
+      addressParameters,
       function(res){
         var value1 = res.proviceFirstStageName;
         var value2 = res.addressCitySecondStageName;
