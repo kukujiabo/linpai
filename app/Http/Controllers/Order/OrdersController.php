@@ -1937,30 +1937,6 @@ class OrdersController extends Controller {
 
   }
 
-  public function postMobilepay(Request $request)
-  {
-
-    $type = $request->input('pay');
-
-    switch ($type) {
-    
-      case 'zhifubao':
-
-        return $this->aliMobilePay($request);
-
-        break;
-
-      case 'wechat':
-
-        return $this->wxJsPay($request);
-      
-        break; 
-    
-    }
-  
-  }
-
-
   public function getWxcode(Request $request)
   {
     require_once "lib/WxPay.Api.php";  
@@ -1991,8 +1967,41 @@ class OrdersController extends Controller {
 
   }
 
+  public function getMobilepay(Request $request)
+  {
+
+    if ($request->input('code') != null) {
+
+        return $this->wxJsPay($request);
+
+    } else {
+    
+      require_once "lib/WxPay.Api.php";  
+
+      require_once "lib/WxPay.JsApiPay.php";
+
+      $tools = new \JsApiPay();
+
+      $authUrl = "http://www.51linpai.com/order/mobilepay";
+
+      $order_code = $request->input('order_code');
+
+      $tools->GetOpenid($authUrl, $order_code);
+
+    }
+  
+  }
+
   private function wxJsPay($request)
   {
+    $state = $request->input('state');
+
+    echo $state;
+
+    return;
+
+    $decodeObject = json_decode($state);
+
     $user = Auth::user();
 
     $order_code = $request->input('order_code');
@@ -2023,7 +2032,7 @@ class OrdersController extends Controller {
 
     $tools = new \JsApiPay();
 
-    $openId = $tools->GetOpenid();
+    $openId = $tools->GetOpenid($authUrl);
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
