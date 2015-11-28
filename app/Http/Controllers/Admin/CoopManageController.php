@@ -123,7 +123,7 @@ class CoopManageController extends Controller {
 
     if (empty($excel)) {
 
-      $coopers = $query->skip(($page - 1) * $offset)->take($offset)->get();
+      $coopers = $query->skip(($page - 1) * $offset)->take($offset)->orderBy('created_at', 'desc')->get();
 
       $data = [
 
