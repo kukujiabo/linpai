@@ -225,6 +225,13 @@ a.blue_white_btn:active {
   padding: .5em 0 !important;
 }
 
+.blue_full_btn:active {
+  color: #fff !important;
+  border: 1px solid #138ed1;
+  text-shadow: none;
+  padding: .5em 0 !important;
+}
+
 .red_white_btn {
   color: #d9534f !important;
   border: 1px #d9534f solid !important;

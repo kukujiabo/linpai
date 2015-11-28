@@ -24,11 +24,11 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:59%;float:left">
+          <div class="ui-input-text ui-body-inherit no-margin" data-inline="true" style="width:55%;float:left">
             <input data-role="none"  type="text" name="verify_code" placeholder="请输入验证码"> 
             <div class="clear"></div>
           </div>
-          <div class="ui-btn ui-mini blue_full_btn" style="margin:0px;float:right;width:35%;">
+          <div class="ui-btn ui-mini blue_full_btn" style="margin:0px;float:right;width:39%;">
             <a href="{{asset('/verify/regsms')}}" class="blue_full_btn" id="send_code" style="margin-top:0px;">发送验证码</a>
           </div>
           <div class="clear"></div>
