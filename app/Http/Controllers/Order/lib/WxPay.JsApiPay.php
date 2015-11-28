@@ -38,7 +38,7 @@ class JsApiPay
 	 * 
 	 * @return 用户的openid
 	 */
-	public function GetOpenid($authUrl)
+	public function GetOpenid($authUrl, $order_code)
 	{
 		//通过code获得openid
 		if (!isset($_GET['code'])){
@@ -46,6 +46,9 @@ class JsApiPay
       $baseUrl = urlencode($authUrl);
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
 			Header("Location: $url");
+      $state = json_encode(array(
+        "order_code" => $order_code
+      )); 
 			exit();
 		} else {
 			//获取code码，以获取openid
