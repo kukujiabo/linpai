@@ -1982,7 +1982,7 @@ class OrdersController extends Controller {
 
       $tools = new \JsApiPay();
 
-      $authUrl = "http://m.51linpai.com/order/mobilepay";
+      $authUrl = "http:/www.51linpai.com/order/mobilepay";
 
       $order_code = $request->input('order_code');
 
