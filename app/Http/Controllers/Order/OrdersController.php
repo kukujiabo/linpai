@@ -2019,11 +2019,11 @@ class OrdersController extends Controller {
 
     require_once "lib/WxPay.JsApiPay.php";
 
-    $tools = new \JsApiPay();
-
     $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay/";
 
-    $openId =  $user->open_id;//'oiDLts988w7ClH1dTt6GeC-L7-DA';//$request->input('open_id');
+    $tools = new \JsApiPay();
+
+    $openId = $tools->GetOpenid($authUrl);
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
