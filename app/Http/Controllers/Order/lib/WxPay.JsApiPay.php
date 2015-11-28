@@ -45,10 +45,11 @@ class JsApiPay
 			//触发微信返回code码
       $baseUrl = urlencode($authUrl);
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
-			Header("Location: $url");
       $state = json_encode(array(
         "order_code" => $order_code
       )); 
+      $url = str_replace("STATE", $state, $url);
+			Header("Location: $url");
 			exit();
 		} else {
 			//获取code码，以获取openid
