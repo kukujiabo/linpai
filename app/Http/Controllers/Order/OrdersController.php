@@ -1703,6 +1703,8 @@ class OrdersController extends Controller {
   
     $order->save();
 
+    $this->paySuccess($order);
+
     return 'success';
 
   }
