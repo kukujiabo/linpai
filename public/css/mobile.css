@@ -214,11 +214,13 @@ a.blue_white_btn:active {
   font-size: 16px !important;
   font-weight: normal !important;
   text-shadow: none !important;
+  padding: .5em .5em !important;
 }
  
 .blue_full_btn:hover {
   color: #fff !important;
   text-shadow: none;
+  padding: .5em .5em !important;
 }
 
 .red_white_btn {

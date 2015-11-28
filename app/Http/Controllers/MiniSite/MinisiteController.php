@@ -302,6 +302,8 @@ class MinisiteController extends Controller {
     $user = Auth::user();
 
     if (empty($user->id)) {
+
+      Session::put('pre_url', '/mobile/myshare');
     
       return redirect('/mobile/login');
     
