@@ -98,29 +98,7 @@ class OrderController extends Controller {
 
   public function getCartype(Request $request)
   {
-
-    $code = $request->input('code');
-
-    if (empty($code)) {
-
-      require_once "lib/WxPay.Api.php";  
-
-      require_once "lib/WxPay.JsApiPay.php";
     
-      $tools = new \JsApiPay();
-
-      $authUrl = "http://www.51linpai.com/miniorder/cartype/";
-  
-      $openId = $tools->GetOpenid($authUrl);
-    
-    } else {
-
-      $user = Auth::user();
-
-      $user->open_id = $openId;
-
-      $user->save();
-
       $data = [
 
         'step' => 1,
@@ -131,8 +109,6 @@ class OrderController extends Controller {
   
       return view('mobile/cartype', $data);
     
-    }
-
   
   }
 
