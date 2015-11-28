@@ -25,15 +25,22 @@ class MobileAuthMiddleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-    if ($this->auth->guest()) {
+    if ($request->path() == 'miniorder/cartype' && $request->input('code') != null) {
 
-      Session::put('pre_url', '/' . $request->path());
-    
-      return redirect()->guest('mobile/login');
+      return $next($request);
     
     }
 
+    if (Auth::user() == null) {
+
+      Session::put('pre_url', '/' . $request->path());
+      
+      return redirect()->guest('mobile/login');
+
+    }
+
 		return $next($request);
+
 	}
 
 }
