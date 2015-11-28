@@ -1,11 +1,16 @@
 @extends('mobile/mobile')
 
+@include('step')
+
+@include('mobile/head');
+
 @section('content')
 
 <div data-role="page">
   <div data-role="header">
-    <h1>支付－51临牌</h1>
+    @yield('header')
   </div>
+    @yield('step')
   <div data-role="content">
     <div style="background:#fff;width:100%;height:320px;text-align:center;padding:20px 0;border-radius:5px;">
       <img src="/imgs/weixinpay.png" style="margin-top:20px;" >
