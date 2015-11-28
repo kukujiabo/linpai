@@ -1,8 +1,8 @@
 @extends('mobile/mobile')
 
-@include('step')
+@include('mobile/step')
 
-@include('mobile/head');
+@include('mobile/head')
 
 @section('content')
 
