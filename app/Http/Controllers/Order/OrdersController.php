@@ -2028,7 +2028,7 @@ class OrdersController extends Controller {
 
     $tools = new \JsApiPay();
 
-    $openId = $tools->GetOpenid($authUrl);
+    $openId = $tools->GetOpenid("");
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
