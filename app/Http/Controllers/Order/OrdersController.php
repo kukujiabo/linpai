@@ -2057,7 +2057,11 @@ class OrdersController extends Controller {
 
         'price' => $orderPrice->final_price,
 
-        'address' =>  $receiver->city . ' ' . $receiver->district . ' ' . $receiver->address
+        'address' =>  $receiver->city . ' ' . $receiver->district . ' ' . $receiver->address,
+
+        'step' => 4,
+
+        'header' => '支付订单'
       
       ];
     
