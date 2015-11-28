@@ -96,18 +96,43 @@ class OrderController extends Controller {
 		//
 	}
 
-  public function getCartype()
+  public function getCartype(Request $request)
   {
 
-    $data = [
+    $code = $request->input('code');
 
-      'step' => 1,
-     
-      'header' => '车辆类型'
-     
-     ];
+    if (empty($code)) {
+
+      require_once "lib/WxPay.Api.php";  
+
+      require_once "lib/WxPay.JsApiPay.php";
+    
+      $tools = new \JsApiPay();
+
+      $authUrl = "http://www.51linpai.com/order/wxcode/";
   
-    return view('mobile/cartype', $data);
+      $openId = $tools->GetOpenid($authUrl);
+    
+    } else {
+
+      echo $openId;
+    
+      /*
+      $data = [
+
+        'step' => 1,
+       
+        'header' => '车辆类型',
+
+
+       
+       ];
+  
+      return view('mobile/cartype', $data);
+       */
+    
+    }
+
   
   }
 
