@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\User;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Good;
@@ -109,27 +109,27 @@ class OrderController extends Controller {
     
       $tools = new \JsApiPay();
 
-      $authUrl = "http://www.51linpai.com/order/wxcode/";
+      $authUrl = "http://www.51linpai.com/miniorder/cartype/";
   
       $openId = $tools->GetOpenid($authUrl);
     
     } else {
 
-      echo $openId;
-    
-      /*
+      $user = Auth::user();
+
+      $user->open_id = $openId;
+
+      $user->save();
+
       $data = [
 
         'step' => 1,
        
-        'header' => '车辆类型',
-
-
+        'header' => '车辆类型'
        
        ];
   
       return view('mobile/cartype', $data);
-       */
     
     }
 
