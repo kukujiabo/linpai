@@ -1993,6 +1993,8 @@ class OrdersController extends Controller {
 
   private function wxJsPay($request)
   {
+    $user = Auth::user();
+
     $order_code = $request->input('order_code');
 
     $order = Order::where('code', '=', $order_code)->first();
@@ -2019,14 +2021,9 @@ class OrdersController extends Controller {
 
     $tools = new \JsApiPay();
 
-    /*
-    $authUrl = "http://www.51linpai.com/order/mobilepay/";
-  
-    $openId = $tools->GetOpenid($authUrl);
-     */
     $notify_url = $this->debug ? "http://www.51linpai.com:8000/order/wxpay/" : "http://www.51linpai.com/order/wxpay/";
 
-    $openId = 'oiDLts988w7ClH1dTt6GeC-L7-DA';//$request->input('open_id');
+    $openId =  $user->open_id;//'oiDLts988w7ClH1dTt6GeC-L7-DA';//$request->input('open_id');
 
     $input = new \WxPayUnifiedOrder();
     $input->SetBody($good->name);
