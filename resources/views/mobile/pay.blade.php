@@ -213,19 +213,21 @@
 
       var priceTxt = $('#price');
 
-      var price = parsetInt(priceTxt.html());
+      var price = priceTxt.html();
+
+      console.log(price);
 
       switch (type) {
       
-        case: 'minus':
+        case 'minus':
 
-          priceTxt.html(price - 20);
+          priceTxt.html(parseInt(price) - 20);
 
           break;
         
-        case: 'plus':
+        case 'plus':
 
-          priceTxt.html(price + 20);
+          priceTxt.html(parseInt(price) + 20);
 
           break;
       
@@ -387,7 +389,7 @@
 
               y.value = that.val();
 
-              updatePrice('plus');
+              updatePrice('minus');
 
               break;
             
@@ -441,7 +443,7 @@
 
             y.value = "";
 
-            updatePrice('minus');
+            updatePrice('plus');
 
             break;
           
@@ -459,7 +461,7 @@
 
             y.value = that.data('id');
 
-            updatePrice('plus');
+            updatePrice('minus');
 
             break;
           
