@@ -31,7 +31,7 @@ class MobileAuthMiddleware {
     
     }
 
-    if (Auth::user() == null) {
+    if ($this->auth->guest()) {
 
       Session::put('pre_url', '/' . $request->path());
       
