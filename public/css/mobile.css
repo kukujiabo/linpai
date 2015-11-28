@@ -211,6 +211,7 @@ a.blue_white_btn:active {
 .blue_full_btn {
   color: white !important;
   background: #138ed1 !important;
+  border: 1px solid #138ed1;
   font-size: 16px !important;
   font-weight: normal !important;
   text-shadow: none !important;
@@ -219,6 +220,7 @@ a.blue_white_btn:active {
  
 .blue_full_btn:hover {
   color: #fff !important;
+  border: 1px solid #138ed1;
   text-shadow: none;
   padding: .5em .5em !important;
 }
