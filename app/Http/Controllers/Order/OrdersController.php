@@ -1996,15 +1996,11 @@ class OrdersController extends Controller {
   {
     $state = $request->input('state');
 
-    echo $state;
-
-    return;
-
     $decodeObject = json_decode($state);
 
     $user = Auth::user();
 
-    $order_code = $request->input('order_code');
+    $order_code = $decodeObject->order_code;
 
     $order = Order::where('code', '=', $order_code)->first();
 
