@@ -209,6 +209,30 @@
 
   window.onload = function () {
 
+    function updatePrice (type) {
+
+      var priceTxt = $('#price');
+
+      var price = parsetInt(priceTxt.html());
+
+      switch (type) {
+      
+        case: 'minus':
+
+          priceTxt.html(price - 20);
+
+          break;
+        
+        case: 'plus':
+
+          priceTxt.html(price + 20);
+
+          break;
+      
+      }
+    
+    }
+
     function checkInfoComplete () {
 
       var btnSubmit = $('#pay_submit');
@@ -333,29 +357,65 @@
       
       }
 
-      for (var i = 0; i < youhui.length; i++) {
+      $.post('/bouns/check', {
       
-        var y = youhui[i];
+        '_token': $('input[name=_token]').val(),
 
-        if (y.value == undefined || y.value == '') {
+        'boun_code': that.val()
+      
+      }, function (data) {
 
-          y.value = that.val();
+        var res = data.res;
 
-          break;
+        var boun = res.boun;
+
+        var uid = res.uid;
+
+        if (boun == null || boun == 'null' || boun == undefined) {
+        
+          alert('请输入有效邀请码！');
         
         }
 
-        if (i == 2) {
+        if (boun.type == 0 && boun.uid != uid) {
 
-          $('#alert_content').html('最多使用3张优惠券/邀请码！');
+          for (var i = 0; i < youhui.length; i++) {
 
-          $('#trigger_pop').click();
+            var y = youhui[i];
 
-          return;
+            if (y.value == undefined || y.value == '') {
+
+              y.value = that.val();
+
+              updatePrice('plus');
+
+              break;
+            
+            }
+
+            if (i == 2) {
+
+              $('#alert_content').html('最多使用3张优惠券/邀请码！');
+
+              $('#trigger_pop').click();
+
+              return;
+            
+            }
+          
+          }
+
+        } else if (boun.uid == uid) {
+        
+          alert('您不能使用自己的邀请码！');
+        
+        } else {
+        
+          alert('优惠券无效！');
         
         }
-      
-      }
+
+      }, 'json');
       
     });
 
@@ -381,6 +441,8 @@
 
             y.value = "";
 
+            updatePrice('minus');
+
             break;
           
           }
@@ -396,6 +458,8 @@
           if (y.value == undefined || y.value == '') {
 
             y.value = that.data('id');
+
+            updatePrice('plus');
 
             break;
           
@@ -422,6 +486,12 @@
       }
     
     });
+
+  };
+
+  window.onbeforeunload = function (event) {
+
+    return '离开页面将不会保存订单信息，确定要离开页面吗？';
 
   };
 
