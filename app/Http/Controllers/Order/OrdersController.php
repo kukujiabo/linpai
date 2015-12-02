@@ -1682,6 +1682,7 @@ class OrdersController extends Controller {
   public function postWxpay (Request $request)
   {
     require_once 'lib/WxPay.Api.php';
+
     require_once 'lib/WxPay.Notify.php';
 
     $postdata = file_get_contents("php://input");
@@ -1707,8 +1708,6 @@ class OrdersController extends Controller {
     $order->status = 1;
   
     $order->save();
-
-   // $this->paySuccess($order);
 
     return 'success';
 
