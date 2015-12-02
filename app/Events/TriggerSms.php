@@ -20,6 +20,8 @@ class TriggerSms extends Event {
 
   protected $pro_friend_use = "f4dI42";
 
+  protected $pro_share_code = "d5ajk3";
+
   protected $pro_payed = "bBX4r1";
 
   protected $pro_reset = "vcVfe4";
@@ -50,6 +52,26 @@ class TriggerSms extends Event {
     $this->info = $info;
 
 	}
+
+  private function goShare () 
+  {
+    $post_data = array(
+    
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_share_code,
+
+      'vars' => "{ \"code\": \"{$this->info['code']}\"}",
+
+      'to' => $this->mobile
+    
+    );
+
+    return $this->send('post', $this->mobile, $post_data);
+
+  }
 
   private function resetSms () 
   {
@@ -279,7 +301,13 @@ class TriggerSms extends Event {
   public function execSend() 
   {
     switch ($this->sms_type) {
+
+      case 'goshare':
+
+        return $this->goShare();
     
+        break;
+
       case 'register':
 
         return $this->registerSms($this->mobile);
