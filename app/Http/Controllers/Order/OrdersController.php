@@ -1243,6 +1243,16 @@ class OrdersController extends Controller {
      */
     $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
 
+    $mail = event(new TriggerEmail($user->email, 'payed', [ 
+      
+      'order_code' => $order->code, 
+      
+      'recommend' => $boun->code,
+
+      'order_date' => $order->created_at
+    
+    ]));
+
     $sms = event(new TriggerSms($user->mobile, 'payed', [
       
       'order_code' => $order->code, 
@@ -1258,17 +1268,6 @@ class OrdersController extends Controller {
       'code' => $boun->code
       
     ]));
-
-    $mail = event(new TriggerEmail($user->email, 'payed', [ 
-      
-      'order_code' => $order->code, 
-      
-      'recommend' => $boun->code,
-
-      'order_date' => $order->created_at
-    
-    ]));
-
     /*
      * pay success.
      *
