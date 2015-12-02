@@ -1253,6 +1253,12 @@ class OrdersController extends Controller {
     
     ]));
 
+    $shareSms = event(new TriggerSms($user->mobile, 'goshare', [
+      
+      'code' => $boun->code
+      
+    ]));
+
     $mail = event(new TriggerEmail($user->email, 'payed', [ 
       
       'order_code' => $order->code, 
@@ -1703,7 +1709,7 @@ class OrdersController extends Controller {
   
     $order->save();
 
-    $this->paySuccess($order);
+   // $this->paySuccess($order);
 
     return 'success';
 
