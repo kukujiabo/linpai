@@ -133,11 +133,9 @@ class TestController extends Controller {
 
   public function getInvitesms ()
   {
-    $sms = event(new TriggerSms('15201932985', 'invite', [
+    $sms = event(new TriggerSms('15201932985', 'go_share', [
     
-      'friend' => 'meroc',
-
-      'recommend' => 'dqwdq'
+      'code' => '123213'
     
     ])); 
 
