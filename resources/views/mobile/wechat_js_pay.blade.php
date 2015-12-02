@@ -64,6 +64,8 @@
             
             }, function (data) {
             
+              alert('sent');
+
             }, 'text');
 
             break; 
