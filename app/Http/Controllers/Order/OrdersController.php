@@ -1463,19 +1463,23 @@ class OrdersController extends Controller {
     
     }
 
-    $order->status = 1;
+    if ($order->status < 1 ) {
+      
+      $order->status = 1;
   
-    $order->save();
+      $order->save();
 
-    $user = User::find($order->uid);
+      $user = User::find($order->uid);
 
-    $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+      $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
 
-    $this->orderConfirmTriggerMail($order, $user, $boun);
+      $this->orderConfirmTriggerMail($order, $user, $boun);
 
-    $this->paySuccess($order);
+      $this->paySuccess($order);
 
-    $this->payedBounProcess($order);
+      $this->payedBounProcess($order);
+
+    }
 
     return 'success';
 
