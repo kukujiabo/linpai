@@ -792,6 +792,8 @@ class OrdersController extends Controller {
         $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
         
         $this->orderConfirmTriggerMail($order, $user, $boun);
+
+        $this->payedBounProcess($order);
       
       }
 
@@ -1230,25 +1232,8 @@ class OrdersController extends Controller {
   
   }
 
-  private function paySuccess($order)
-  {
+  private function payedBounProcess ($order) {
 
-    /*
-     * 获取下单用户
-     */
-    $user = User::find($order->uid);
-
-    if (Auth::user() == null) {
-
-      Auth::loginUsingId($user->id); 
-
-      Session::regenerate();
-
-    }
-
-    /*
-     * 订单优惠券
-     */
     $orderBouns = OrderBoun::where('oid', '=', $order->id) 
 
       ->where('uid', '=', $user->id)
@@ -1256,69 +1241,7 @@ class OrdersController extends Controller {
       ->where('success', 'is', 'null')
 
       ->get();
-    
-    /*
-     * 订单价钱
-     */
-    $orderPrice = OrderPrice::where('oid', '=', $order->id)
-
-      ->where('active', '=', 1)
-
-      ->first();
-
-    /*
-     * 收货人信息
-     */
-    $receiver = ReceiverInfo::where('id', '=', $order->rid)
-
-      ->where('active', '=', 1)
-
-      ->first();
-
-    /*
-     * todo pay.
-     */
-    
-    /*
-     * 发送订单确认短信
-     * 1.查询用户是否有推荐码，如果没有，则生成
-     * 2.发送短信 订单号，推荐码，抵扣费用
-     */
-    //$boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
-
-    /*
-    $mail = event(new TriggerEmail($user->email, 'payed', [ 
-      
-      'order_code' => $order->code, 
-      
-      'recommend' => $boun->code,
-
-      'order_date' => $order->created_at
-    
-    ]));
-
-    $sms = event(new TriggerSms($user->mobile, 'payed', [
-      
-      'order_code' => $order->code, 
-      
-      'boun' => $boun->code, 
-      
-      'fee' => $boun->note
-    
-    ]));
-
-    $shareSms = event(new TriggerSms($user->mobile, 'goshare', [
-      
-      'code' => $boun->code
-      
-    ]));
-    /*
-     * pay success.
-     *
-     * 1.将订单状态置为已付款
-     * 2.判断是否使用推荐码
-     *
-     */ 
+  
     foreach ($orderBouns as $orderBoun) {
 
       $orderBoun->success = 1;
@@ -1395,14 +1318,44 @@ class OrdersController extends Controller {
       }
     
     }
+  
+  }
+
+  private function paySuccess($order)
+  {
+
+    /*
+     * 获取下单用户
+     */
+    $user = User::find($order->uid);
+
+    if (Auth::user() == null) {
+
+      Auth::loginUsingId($user->id); 
+
+      Session::regenerate();
+
+    }
+
+    /*
+     * 订单优惠券
+     */
+    
+
+    /*
+     * 收货人信息
+     */
+    $receiver = ReceiverInfo::where('id', '=', $order->rid)
+
+      ->where('active', '=', 1)
+
+      ->first();
 
     $data = [
     
       'is_deliver' => true,
 
       'receiverInfos' => $receiver,
-
-      'orderPrice' => $orderPrice,
 
       'user' => $user,
 
@@ -1411,8 +1364,6 @@ class OrdersController extends Controller {
       'wTitle' => '支付成功！'
 
     ];
-
-    //var_dump($request->cookie('51_linpai'));
 
     return view('orders/pay_success', $data); 
 
@@ -1760,6 +1711,8 @@ class OrdersController extends Controller {
     $this->orderConfirmTriggerMail($order, $user, $boun);
 
     $this->paySuccess($order);
+
+    $this->payedBounProcess($order);
 
     return 'success';
 
