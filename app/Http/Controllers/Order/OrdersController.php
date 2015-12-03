@@ -1677,7 +1677,7 @@ class OrdersController extends Controller {
     $input->SetBody($good->name);
     $input->SetAttach($good->code);
     $input->SetOut_trade_no($order->code);
-    $input->SetTotal_fee("1");
+    $input->SetTotal_fee($orderPrice->final_price * 100);
     $input->SetTime_start(date("YmdHis"));
     $input->SetTime_expire(date("YmdHis", time() + 600));
     $input->SetGoods_tag($good->code);
@@ -1812,7 +1812,7 @@ class OrdersController extends Controller {
     $input->SetBody($good->name);
     $input->SetAttach($good->code);
     $input->SetOut_trade_no($order->code);
-    $input->SetTotal_fee($order->final_price * 100);
+    $input->SetTotal_fee($orderPrice->final_price * 100);
     $input->SetTime_start(date("YmdHis"));
     $input->SetTime_expire(date("YmdHis", time() + 600));
     $input->SetGoods_tag($good->code);
