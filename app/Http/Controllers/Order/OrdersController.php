@@ -1753,6 +1753,12 @@ class OrdersController extends Controller {
   
     $order->save();
 
+    $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+
+    $this->orderConfirmTriggerMail($order, $user, $boun);
+
+    $this->paySuccess($order);
+
     return 'success';
 
   }
