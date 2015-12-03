@@ -69,7 +69,9 @@ class TriggerSms extends Event {
     
     );
 
-    return $this->send('post', $this->mobile, $post_data);
+    $res =  $this->send('post', $this->mobile, $post_data);
+
+    return $res;
 
   }
 

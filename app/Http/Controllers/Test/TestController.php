@@ -133,7 +133,7 @@ class TestController extends Controller {
 
   public function getInvitesms ()
   {
-    $sms = event(new TriggerSms('15201932985', 'go_share', [
+    $sms = event(new TriggerSms('15201932985', 'goshare', [
     
       'code' => '123213'
     
