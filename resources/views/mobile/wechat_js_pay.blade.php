@@ -58,16 +58,6 @@
 
             $('#pay_title').html('支付成功！');
 
-            $.get('/order/paysuccess', {
-            
-              'order_code': '{{$order_code}}'
-            
-            }, function (data) {
-            
-              alert('sent');
-
-            }, 'text');
-
             break; 
         
         }
