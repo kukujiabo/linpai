@@ -1753,6 +1753,8 @@ class OrdersController extends Controller {
   
     $order->save();
 
+    $user = User::find($order->uid);
+
     $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
 
     $this->orderConfirmTriggerMail($order, $user, $boun);
