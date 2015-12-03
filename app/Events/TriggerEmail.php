@@ -95,7 +95,7 @@ class TriggerEmail extends Event {
 
   private function payedMail ()
   {
-    $user = Auth::user();
+    $user = $this->info['user'];
 
     $post_data = [
     
