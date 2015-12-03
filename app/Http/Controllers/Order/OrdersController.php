@@ -788,11 +788,11 @@ class OrdersController extends Controller {
          */
 
         //如果没有邀请码则生成邀请码
-        $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
-
         $user = Order::find($order->uid);
 
-        $boun = Boun::where('uid', '=', $user->id)
+        $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+
+        $generateBoun = Boun::where('uid', '=', $user->id)
 
                   ->where('type', '=', '0')
 
@@ -1213,7 +1213,9 @@ class OrdersController extends Controller {
       
       'recommend' => $boun->code,
 
-      'order_date' => $order->created_at
+      'order_date' => $order->created_at,
+
+      'user' => $user
     
     ]));
 
