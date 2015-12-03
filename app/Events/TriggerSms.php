@@ -71,8 +71,6 @@ class TriggerSms extends Event {
 
     $res =  $this->send('post', $this->mobile, $post_data);
 
-    var_dump($res);
-
     return $res;
 
   }
