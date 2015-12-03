@@ -782,6 +782,23 @@ class OrdersController extends Controller {
           ]);
         
         }
+
+        /*
+         *支付宝支付后触发邮件和短信
+         */
+
+        //如果没有邀请码则生成邀请码
+        $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+
+        $user = Order::find($order->uid);
+
+        $boun = Boun::where('uid', '=', $user->id)
+
+                  ->where('type', '=', '0')
+
+                  ->first();
+        
+        $this->orderConfirmTriggerMail($order, $user, $boun);
       
       }
 
@@ -1187,6 +1204,37 @@ class OrdersController extends Controller {
 
   }
 
+  private function orderConfirmTriggerMail ($order, $user, $boun) 
+  {
+  
+    $mail = event(new TriggerEmail($user->email, 'payed', [ 
+      
+      'order_code' => $order->code, 
+      
+      'recommend' => $boun->code,
+
+      'order_date' => $order->created_at
+    
+    ]));
+
+    $sms = event(new TriggerSms($user->mobile, 'payed', [
+      
+      'order_code' => $order->code, 
+      
+      'boun' => $boun->code, 
+      
+      'fee' => $boun->note
+    
+    ]));
+
+    $shareSms = event(new TriggerSms($user->mobile, 'goshare', [
+      
+      'code' => $boun->code
+      
+    ]));
+  
+  }
+
   private function paySuccess($order)
   {
 
@@ -1241,8 +1289,9 @@ class OrdersController extends Controller {
      * 1.查询用户是否有推荐码，如果没有，则生成
      * 2.发送短信 订单号，推荐码，抵扣费用
      */
-    $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+    //$boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
 
+    /*
     $mail = event(new TriggerEmail($user->email, 'payed', [ 
       
       'order_code' => $order->code, 
