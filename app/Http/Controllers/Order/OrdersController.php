@@ -759,7 +759,6 @@ class OrdersController extends Controller {
 
       if ($trade_status == 'TRADE_FINISHED') {
       
-
       
       } elseif ($trade_status == 'TRADE_SUCCESS') {
       
@@ -788,15 +787,9 @@ class OrdersController extends Controller {
          */
 
         //如果没有邀请码则生成邀请码
-        $user = Order::find($order->uid);
+        $user = User::find($order->uid);
 
         $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
-
-        $generateBoun = Boun::where('uid', '=', $user->id)
-
-                  ->where('type', '=', '0')
-
-                  ->first();
         
         $this->orderConfirmTriggerMail($order, $user, $boun);
       
