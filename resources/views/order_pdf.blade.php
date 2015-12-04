@@ -44,11 +44,11 @@
     <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
 
     <p style="margin-top:30px;">
-      现在就把您的邀请码 {{$boun_code}} 分享给朋友们,使用您的邀请码下单的每一位朋友都将获 得高达 20RMB 的优惠减免。
+      现在就把您的邀请码 {{$boun_code}} 分享给朋友们,使用您的邀请码下单的每一位朋友都将获得高达 20RMB 的优惠减免。
     </p>
 
     <p>
-      而作为奖励,每当有一位朋友获得优惠的同时,您同样也将获得一张20RMB 的优惠码以便在下次下单 时获得优惠减免,奖励不设上限。赶快行动吧!
+      而作为奖励,每当有一位朋友获得优惠的同时,您同样也将获得一张20RMB 的优惠码以便在下次下单时获得优惠减免,奖励不设上限。赶快行动吧!
     </p>
 
     <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
@@ -65,7 +65,7 @@
       <div style="position:relative;float:right;margin-top:20px;margin-right:80px;text-align:center;">
         <img src="/imgs/qrcode.png" style="width:100px;">
         <p style="font-size:10px;width:120px;line-height:1.2em;padding-top:12px;">
-          关注[51临牌]公众微信号 让我们与您随时保持联系
+          关注[51临牌]公众微信号让我们与您随时保持联系
         </p>
       </div>
       <div style="clear:both;"></div>
