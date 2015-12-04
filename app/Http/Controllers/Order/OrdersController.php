@@ -780,20 +780,21 @@ class OrdersController extends Controller {
           
           ]);
         
+
+          /*
+           *支付宝支付后触发邮件和短信
+           */
+
+          //如果没有邀请码则生成邀请码
+          $user = User::find($order->uid);
+
+          $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
+          
+          $this->orderConfirmTriggerMail($order, $user, $boun);
+
+          $this->payedBounProcess($order);
+
         }
-
-        /*
-         *支付宝支付后触发邮件和短信
-         */
-
-        //如果没有邀请码则生成邀请码
-        $user = User::find($order->uid);
-
-        $boun = event(new TriggerBounGenerator($user, 'recommend'))[0];
-        
-        $this->orderConfirmTriggerMail($order, $user, $boun);
-
-        $this->payedBounProcess($order);
       
       }
 
