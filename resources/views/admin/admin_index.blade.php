@@ -80,6 +80,7 @@
       </div>
     </div>
   </div>
+  <audio id="bb" src="6124.wav"></audio>
 <script src="{{ asset('js/jquery.min.js')}}"></script>
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/jquery.form.js')}}"></script>
