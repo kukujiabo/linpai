@@ -41,8 +41,8 @@
         </div>
         <div class="data-panel-body">
           <ul class="no-padding-left">
-            <li>订单总数：{{$orders}}</li>
-            <li>当日订单：{{$todayOrder}}</li>
+            <li>订单总数：<span id="order_num">{{$orders}}</span></li>
+            <li>当日订单：<span id="today_orders">{{$todayOrder}}</span></li>
           </ul>
         </div>
       </div>
