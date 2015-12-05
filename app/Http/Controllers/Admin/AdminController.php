@@ -286,7 +286,7 @@ class AdminController extends Controller {
 
     return response($data, 200)->header('Content-Type', 'text/event-stream;charset=utf-8')
 
-      ->header('Access-Control-Allow-Origin', 'http://localhost:8000');
+      ->header('Access-Control-Allow-Origin', 'http://www.51linpai.com');
     /*
     header('Content-Type:text/event-stream;charset=utf-8');
 
