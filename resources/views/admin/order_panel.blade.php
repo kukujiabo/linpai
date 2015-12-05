@@ -108,7 +108,7 @@
     @if (!empty($order->dir_driving_license))
       <div class="col-xs-2" id="dir_driving_license">
         <b class="theme-orig">行驶证附件</b>
-        <a class="btn btn-default btn-sm file-download" href="/download?file={{$order->driving_license}}">下载</a>
+        <a class="btn btn-default btn-sm file-download" href="/download?file={{$order->dir_driving_license}}">下载</a>
       </div>
     @endif
     </div>
