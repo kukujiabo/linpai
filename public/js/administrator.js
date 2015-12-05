@@ -123,37 +123,34 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var arr = notice.split('-');
 
-    var order_num = arr[0];
+    var order_num = parseInt(arr[0]);
 
-    var coop_num = arr[1];
+    var coop_num = parseInt(arr[1]);
 
     if (pre_order == 'null' || pre_coop == 'null') {
     
-      sdb.setItem('pre_order', order_num);
+      sdb.setItem('pre_order', pre_order);
 
-      sdb.setItem('pre_coop', coop_num);
-
-      sdb.setItem('ods', 0);
-
-      sdb.setItem('cds', 0);
+      sdb.setItem('pre_coop', pre_coop);
 
       return;
     
     }
 
-    if (coop_num > pre_coop || order_num > pre_order) {
+    pre_order = parseInt(pre_order);
+
+    pre_coop = parseInt(pre_coop);
+
+    if (order_num > pre_order || coop_num > pre_coop) {
     
       $('#message_btn').addClass('btn-danger').removeClass('btn-info');
 
-      $('#unread_coop').html(coop_num - pre_coop);
-
       $('#unread_order').html(order_num - pre_order);
 
-      sdb.setItem('ods', parseInt(order_num) - parseInt(pre_order));
-
-      sdb.setItem('cds', parseInt(coop_num) - parseInt(pre_coop));
-
+      $('#unread_coop').html(coop_num - pre_coop);
+    
     }
+    
   
   };
 
