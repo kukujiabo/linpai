@@ -152,7 +152,14 @@ class UploadsController extends Controller {
 
       $arr = explode('.', $origFileName);
 
-      $foot = $arr[0];
+      $foot = '';
+
+      if (count($arr > 1)) {
+      
+        $foot = $arr[1];
+      
+      }
+
 
       $filename = md5($file->getClientOriginalName() . time()) . '.' . $foot;
 
