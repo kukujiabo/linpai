@@ -488,9 +488,9 @@ var addressBind;
 
     messageBtn.removeClass('btn-danger').addClass('btn-info');
 
-    var orderNum = sessionStorage.get('order_num');
+    var orderNum = sessionStorage.getItem('order_num');
 
-    var coopNum = sessionStorage.get('coop_num');
+    var coopNum = sessionStorage.getItem('coop_num');
 
     sessionStorage.setItem('pre_order', orderNum);
 
