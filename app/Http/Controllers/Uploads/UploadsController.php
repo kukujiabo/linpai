@@ -148,7 +148,13 @@ class UploadsController extends Controller {
       
       } 
 
-      $filename = md5($file->getClientOriginalName() . time());
+      $origFileName = $file->getClientOriginalName();
+
+      $arr = explode('.', $origFileName);
+
+      $foot = $arr[0];
+
+      $filename = md5($file->getClientOriginalName() . time()) . '.' . $foot;
 
       $file->move($storage_path, $filename); 
 
