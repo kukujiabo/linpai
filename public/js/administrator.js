@@ -127,6 +127,10 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var coop_num = parseInt(arr[1]);
 
+    sdb.setItem('order_num', order_num);
+
+    sdb.setItem('coop_num', coop_num);
+
     if (pre_order == 'null' || pre_coop == 'null') {
     
       sdb.setItem('pre_order', order_num);
@@ -483,6 +487,14 @@ var addressBind;
     e.preventDefault();
 
     messageBtn.removeClass('btn-danger').addClass('btn-info');
+
+    var orderNum = sessionStorage.get('order_num');
+
+    var coopNum = sessionStorage.get('coop_num');
+
+    sessionStorage.setItem('pre_order', orderNum);
+
+    sessionStorage.setItem('pre_coop', coopNum);
   
   });
 
