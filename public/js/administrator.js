@@ -158,36 +158,6 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
   
   };
 
-  $('#unread_coop').parent().click(function (e) {
-
-    e.preventDefault();
-  
-    $('#unread_coop').html('0');
-
-    var cds = sdb.getItem('cds');
-
-    var pre_coop = sdb.getItem('pre_coop');
-
-    sdb.setItem('pre_coop', parseInt(parpre_coop) + parseInt(cds));
-
-    $('#unread_coop').html('0');
-
-  });
-
-  $('#unread_order').parent().click(function (e) {
-  
-    e.preventDefault();
-  
-    var ods = sdb.getItem('ods');
-
-    var pre_order = sdb.getItem('pre_order');
-
-    sdb.setItem('pre_order', parseInt(pre_order) + parseInt(ods));
-
-    $('#unread_order').html('0');
-
-  });
-
 })();
 
 /*
