@@ -129,9 +129,9 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     if (pre_order == 'null' || pre_coop == 'null') {
     
-      sdb.setItem('pre_order', pre_order);
+      sdb.setItem('pre_order', order_num);
 
-      sdb.setItem('pre_coop', pre_coop);
+      sdb.setItem('pre_coop', coop_num);
 
       return;
     
