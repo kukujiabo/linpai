@@ -103,6 +103,8 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
   var pre_coop = 0;
 
+  var sdb = sessionStorage;
+
   source = new EventSource('http://www.51linpai.com/' + $linpai.route + '/push');
 
   source.onopen = function () {
@@ -113,9 +115,11 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
   source.onmessage = function (evnet) {
 
-    var notice = evnet.data;
+    var pre_order = sdb.getItem('pre_order');
 
-    console.log(notice);
+    var pre_coop = sdb.getItem('pre_coop');
+
+    var notice = evnet.data;
 
     var arr = notice.split('-');
 
@@ -123,19 +127,30 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var coop_num = arr[1];
 
+    if (pre_order == null || pre_coop == null) {
+    
+      sdb.setItem('pre_order');
+
+      sdb.setItem('pre_coop');
+
+      return;
+    
+    }
+
     if (coop_num > pre_coop || order_num > pre_order) {
     
       $('#message_btn').addClass('btn-danger').removeClass('btn-info');
 
-      pre_order = order_num;
+      $('#unread_coop').html(coop_num - pre_coop);
 
-      pre_coop = coop_num;
+      $('#unread_order').html(order_num - pre_order);
+
+      sdb.setItem('pre_order');
+
+      sdb.setItem('pre_coop');
     
     }
 
-    $('#unread_coop').html(coop_num);
-
-    $('#unread_order').html(order_num);
   
   };
 
