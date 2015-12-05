@@ -99,9 +99,9 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
   var source;
 
-  var pre_order = 0;
+  var orderUnread = true;
 
-  var pre_coop = 0;
+  var coopUnread = true;
 
   var sdb = sessionStorage;
 
@@ -129,9 +129,13 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     if (pre_order == null || pre_coop == null) {
     
-      sdb.setItem('pre_order');
+      sdb.setItem('pre_order', pre_order);
 
-      sdb.setItem('pre_coop');
+      sdb.setItem('pre_coop', pre_order);
+
+      sdb.setItem('ods', 0);
+
+      sdb.setItem('cds', 0);
 
       return;
     
@@ -145,20 +149,47 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
       $('#unread_order').html(order_num - pre_order);
 
-      sdb.setItem('pre_order');
+      sdb.setItem('ods', order_num - pre_order);
 
-      sdb.setItem('pre_coop');
-    
+      sdb.setItem('cds', coop_num - pre_coop);
+
     }
-
   
   };
 
   source.onerror = function (evnet) {
-
-    console.log(1);
   
   };
+
+  $('#unread_coop').parent().click(function (e) {
+
+    e.preventDefault();
+  
+    $('#unread_coop').html('0');
+
+    var cds = sdb.getItem('cds');
+
+    var pre_coop = sdb.getItem('pre_coop');
+
+    sdb.setItem('pre_coop', pre_coop + cds);
+
+    $('#unread_coop').html('0');
+
+  });
+
+  $('#unread_order').parent().click(function (e) {
+  
+    e.preventDefault();
+  
+    var ods = sdb.getItem('ods');
+
+    var pre_order = sdb.getItem('pre_order');
+
+    sdb.setItem('pre_order', pre_order + ods);
+
+    $('#unread_order').html('0');
+
+  });
 
 })();
 
