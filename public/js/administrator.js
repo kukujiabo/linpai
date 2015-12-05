@@ -127,7 +127,7 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var coop_num = arr[1];
 
-    if (pre_order == null || pre_coop == null) {
+    if (pre_order == 'null' || pre_coop == 'null') {
     
       sdb.setItem('pre_order', order_num);
 
@@ -149,9 +149,9 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
       $('#unread_order').html(order_num - pre_order);
 
-      sdb.setItem('ods', order_num - pre_order);
+      sdb.setItem('ods', parseInt(order_num) - parseInt(pre_order));
 
-      sdb.setItem('cds', coop_num - pre_coop);
+      sdb.setItem('cds', parseInt(coop_num) - parseInt(pre_coop));
 
     }
   
@@ -171,7 +171,7 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var pre_coop = sdb.getItem('pre_coop');
 
-    sdb.setItem('pre_coop', pre_coop + cds);
+    sdb.setItem('pre_coop', parseInt(parpre_coop) + parseInt(cds));
 
     $('#unread_coop').html('0');
 
@@ -185,7 +185,7 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
     var pre_order = sdb.getItem('pre_order');
 
-    sdb.setItem('pre_order', pre_order + ods);
+    sdb.setItem('pre_order', parseInt(pre_order) + parseInt(ods));
 
     $('#unread_order').html('0');
 
