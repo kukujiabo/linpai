@@ -103,7 +103,7 @@ $linpai.route = 'administrator_$2y$10$m1lWH3HqB9oimrxrB3Ea7uu76y5xxUqsldjEpuiWu7
 
   var pre_coop = 0;
 
-  source = new EventSource('http://localhost:8000/' + $linpai.route + '/push');
+  source = new EventSource('http://www.51linpai.com/' + $linpai.route + '/push');
 
   source.onopen = function () {
   
@@ -470,8 +470,6 @@ var addressBind;
     e.preventDefault();
 
     messageBtn.removeClass('btn-danger').addClass('btn-info');
-    
-  
   
   });
 
