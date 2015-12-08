@@ -57,6 +57,11 @@
         地址：<span id="address">{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}</span> 
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-8">
+        备注：<span>{{$order->comment}}</span>
+      </div>
+    </div>
     <hr>
     <h4>车辆信息</h4>
     <hr>
