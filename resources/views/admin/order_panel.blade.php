@@ -43,8 +43,12 @@
         邮箱：<span id="email">{{$user->email}}</span> 
       </div>
     </div>
-    <div class="col-xs-6">
-      地址：<span id="address">{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}</span> 
+    <div class="row">
+      <div class="col-xs-8">
+        <p>
+          备注：{{$order->comment}}
+        </p>
+      </div>
     </div>
     <hr>
     <h4>收件人信息</h4>
@@ -56,10 +60,8 @@
       <div class="col-xs-3">
         手机号：<span id="mobile">{{$order->mobile}}</span> 
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-8">
-        备注：<span>{{$order->comment}}</span>
+      <div class="col-xs-6">
+        地址：<span id="address">{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}</span> 
       </div>
     </div>
     <hr>
