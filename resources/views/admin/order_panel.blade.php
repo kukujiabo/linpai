@@ -15,7 +15,7 @@
         数量：<span id="num">{{$order->num}}</span> 
       </div>
       <div class="col-xs-2">
-        价格：<span id="sum">{{$order->sum}}</span>
+        价格：<span id="sum">{{$order->final_price}}</span>
       </div>
       <div class="col-xs-2">
         <a href="#" id="view_boun" class="theme-font-blue" data-user="{{$order->uid}}" data-order="{{$order->order_code}}">查看优惠券</a>
@@ -43,6 +43,9 @@
         邮箱：<span id="email">{{$user->email}}</span> 
       </div>
     </div>
+    <div class="col-xs-6">
+      地址：<span id="address">{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}</span> 
+    </div>
     <hr>
     <h4>收件人信息</h4>
     <hr>
@@ -52,9 +55,6 @@
       </div>
       <div class="col-xs-3">
         手机号：<span id="mobile">{{$order->mobile}}</span> 
-      </div>
-      <div class="col-xs-6">
-        地址：<span id="address">{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}</span> 
       </div>
     </div>
     <div class="row">
