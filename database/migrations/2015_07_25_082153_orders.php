@@ -23,6 +23,8 @@ class Orders extends Migration {
       $table->integer('rid');
       $table->integer('sum');
       $table->integer('num');
+      $table->string('pay_type');
+      $table->string('order_type');
       $table->string('comment', 200)->nullable();
       $table->string('plate_number')->nullable();
       $table->integer('status');
