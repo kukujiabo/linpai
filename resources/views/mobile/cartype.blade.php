@@ -24,6 +24,10 @@
   </div>
   -->
 </div>
+<div style="position:fixed;width:100%;height:100%;background:#000;opacity:0.5;z-index:1000">
+</div>
+<div style="padding:20px;text-align:center;position:fixed;width:50%;left:22%;background:#d9534f;color:white;font-size:24px;z-index:1001"> 即将上线，敬请期待！ 
+</div>
 
 @endsection
 
