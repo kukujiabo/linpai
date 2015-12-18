@@ -26,7 +26,7 @@
         下单时间：<span id="order_time">{{$order->created_at}}</span>
       </div>
       <div class="col-xs-3">
-        支付方式：<span id="pay_typ"></span>
+        支付方式：<span id="pay_type"></span>
       </div>
     </div>
     <hr>
