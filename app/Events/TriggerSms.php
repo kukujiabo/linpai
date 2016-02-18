@@ -32,6 +32,8 @@ class TriggerSms extends Event {
 
   protected $pro_unpay = "oPXhK3";
 
+  protected $pro_ryan = "ybguq3";
+
   protected $info;
 
   protected $mobile = "";
@@ -196,6 +198,24 @@ class TriggerSms extends Event {
 
   }
 
+  private function ryanNotice()
+  {
+    $post_data = array(
+    
+      'appid' => $this->appid,
+
+      'signature' => $this->signature,
+
+      'project' => $this->pro_ryan,
+
+      'vars' => json_encode($this->info),
+
+      'to' => $this->mobile
+    );
+
+    return $this->send('post', $this->mobile, $post_data);
+  }
+
   private function inviteSms()
   {
     $post_data = array(
@@ -340,6 +360,10 @@ class TriggerSms extends Event {
 
         return $this->unpayNotify();
       
+      case 'ryan':
+
+        return $this->ryanNotice();
+
       default:
 
         break;

@@ -988,6 +988,11 @@ class OrdersController extends Controller {
     
     ]));
 
+    $notice = event(new TriggerSms('13918831773', 'ryan', [
+      'date' => date('yyyy-mm-dd H:i:s', time()),
+      'code' => $order->code
+    ]));
+
     $shareSms = event(new TriggerSms($user->mobile, 'goshare', [
       
       'code' => $boun->code

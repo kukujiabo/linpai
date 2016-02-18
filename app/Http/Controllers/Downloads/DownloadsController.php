@@ -86,15 +86,10 @@ class DownloadsController extends Controller {
   {
     $file = $request->input('file');
     $name = $request->input('name');
-
     $path = '';
-
     if (file_exists($path = storage_path() . '/app/uploads/tmps/' . $file)) {
-
-      return response()->download($path, $name, null);
-
+      return response()->download($path);
     }
-
   }
 
   public function getOrderpdf (Request $request) 
