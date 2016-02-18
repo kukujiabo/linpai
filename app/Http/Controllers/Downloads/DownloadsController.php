@@ -85,12 +85,13 @@ class DownloadsController extends Controller {
   public function getIndex (Request $request) 
   {
     $file = $request->input('file');
+    $name = $request->input('name');
 
     $path = '';
 
     if (file_exists($path = storage_path() . '/app/uploads/tmps/' . $file)) {
 
-      return response()->download($path);
+      return response()->download($path, $name, null);
 
     }
 
