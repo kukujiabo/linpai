@@ -47,7 +47,7 @@
   <nav class="navbar no-margin" style="background:#fff;">
     <div class="padding-5">
       <div style="color: #999;margin-left:70%">
-        周一至周日 10:30 － 18:00&nbsp; 
+        周一至周五 10:30 － 18:00&nbsp; 
         <b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b>
       </div> 
     </div>
@@ -206,7 +206,7 @@
           </b>
         </p>
         <p>
-          周一到周日 10:30 － 18:00
+          周一到周五 10:30 － 18:00
         </p>
         <div style="width:100%;text-align;center;color:#333;font-size:12px;font-weight:normal;padding:0px">
             <img class="contact-icon" src="/imgs/weibo-icon.png">

@@ -171,7 +171,7 @@
     <div class="row">
       <div class="col-md-7">
         <label class="sr-only">备注</label>
-        <textarea class="form-control" name="comment" id="comment" style="resize:none" value=""></textarea>
+        <textarea class="form-control" name="comment" id="comment" style="resize:none" placeholder="您可以在这里告知我们您希望您的临牌的起始开设日期，我们会尽量按照您的时间要求来为您办理临牌。" value=""></textarea>
       </div>
       <div class="col-md-5">
         如果您有任何特别要求，请在此告诉我们，我们将尽可能的协助您。

@@ -103,7 +103,6 @@ class TriggerBounGenerator extends Event {
     }
   
     return strtoupper($output);
-  
   }
 
   public function generate ()

@@ -54,7 +54,7 @@
     <div style="background:#000;height:1px;width:100%;margin-top:20px;" ></div>
 
     <p style="margin-top:20px;">
-      如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周日的 10:00-18:00 给我们来电 4000602620。
+      如您有任何其他问题,欢迎给我们发送邮件 service@51linpai.com 或于周一至周五的 10:30-18:00 给我们来电 4000602620。
     </p>
 
     <div style="margin-top:20px;width:100%">

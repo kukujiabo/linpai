@@ -113,7 +113,7 @@
       <div  class="no-radius"  data-iconpos="right" data-inset="true" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
         <h1 class="itm-title">添加备注<span id="selected_boun"></span></h1>
         <p style="">
-          <textarea class="no-margin" name="addinfo" id="user_comment"></textarea>
+          <textarea class="no-margin" name="comment" id="user_comment" placeholder="您可以在这里告知我们您希望您的临牌的起始开设日期，我们会尽量按照您的时间要求来为您办理临牌。"></textarea>
         </p>
       </div>
     </div>
