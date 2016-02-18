@@ -441,20 +441,6 @@ class OrderManageController extends Controller {
 
       shell_exec("export LANG=zh_CN.utf8 && export LANGUAGE=zh_CN:zh:en_US:en && export LC_ALL=zh_CN.utf8 && export LC_CTYPE=zh_CN.utf8 && locale && " . $command);
 
-      /*
-      LANG=zh_CN.utf8
-        LANGUAGE=zh_CN:zh:en_US:en
-        LC_ALL=zh_CN.utf8
-        LC_CTYPE=zh_CN.utf8
-      /*
-      $locale = "zh_CN.utf8";
-
-      setlocale(LC_ALL, $locale);
-
-      putenv('LC_ALL=' . $locale);
-
-      exec($command, $out, $status); 
-       */
 
       DownloadRecord::create([
 
