@@ -90,10 +90,13 @@
 
   @endif
       <fieldset>
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" style="color:#ff0000;">
           <p class="col-md-12" style="margin: 20px 0px;">
             扫描件大小不得大于 3M 且仅可上传 jpg、png、tif 格式
           </p>
+          <p>
+            根据最新规定，请务必上传相关证照电脑扫描件，手机或相机直接拍摄的证照照片将不被接纳！
+          <p>
         </div>
       </fieldset>
       <div class="sub-wrapper">
