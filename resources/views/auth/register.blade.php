@@ -26,7 +26,7 @@
       </div>
       <div class="padding-5"></div>
 			<form data-ajax="false" class="form-horizontal" role="form" id="reg-form" method="POST" action="{{ url('/auth/register') }}">
-        <input type="hidden" name="_rtype" value="web">
+        <input type="hidden" name="rtype" value="web">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label class="control-label sr-only">手机</label>
