@@ -44,8 +44,8 @@
         <label for="imported" class="inner_white original no-radius" data-id="orig_imp">进口</label>
         <input type="radio" name="car_type" id="imported" data-id="imported" value="imported"> 
       </fieldset> 
-      <div style="padding:5px 10px;font-size:12px;font-weight:200;color:#aaa">
-        根据最新规定，请务必上传相关证照电脑扫描件，手机或相机直接拍摄的证照照片将不被接纳！
+      <div style="padding:5px 10px;font-size:12px;font-weight:200;color:#ff0000;">
+        <strong >根据最新规定，请务必上传相关证照电脑扫描件，手机或相机直接拍摄的证照照片将不被接纳！</strong>
       </div>
       <fieldset style="margin-top:20px;">
         <ul data-role="listview">

@@ -73,6 +73,9 @@
   <p>
     收货地址：{{$order->province}}{{$order->city}}{{$order->district}}{{$order->address}}
   </p>
+  <p> 
+    备注：{{$order->comment}}
+  </p>
   <p>
     @if (!empty($deliver->id))
       物流信息：<img src="/imgs/shunfeng_icon.png" style="width:36px;height:36px;">&nbsp;顺丰速运
