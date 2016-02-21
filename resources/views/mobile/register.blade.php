@@ -16,7 +16,7 @@
     <img src="{{asset('/imgs/logo-linpai-mobile.png')}}" class="logo"> 
     <div class="form-block">
       <form class="form" data-ajax="false" action="{{asset('auth/register')}}" method="post" id="register_form">
-        <input type="hidden" name="_rtype" value="wechat">
+        <input type="hidden" name="rtype" value="wechat">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="form-group">
           <div class="ui-input-text ui-body-inherit " data-inline="true">
