@@ -48,7 +48,7 @@
     <div class="padding-5">
       <div style="color: #999;margin-left:70%">
         周一至周五 10:30 － 18:00&nbsp; 
-        <b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b>
+        <! --<b style="color: #FF8800"><i><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;4000602620</i></b> -->
       </div> 
     </div>
     <hr style="margin:0px;">
@@ -201,7 +201,7 @@
         <p>
           <b>
             <i style="color: #FF8800;font-size: 20px;">
-              <span class="glyphicon glyphicon-earphone"></span>&nbsp;4000602620
+              <!-- <span class="glyphicon glyphicon-earphone"></span>&nbsp;4000602620-->
               </i>
           </b>
         </p>
