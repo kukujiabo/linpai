@@ -204,7 +204,7 @@
         <div id="choose_car_hand">
           <div class="padding-20"></div>
           <div class="row text-center padding-5">
-            <div class="col-xs-6 padding-5">
+            <div class="col-xs-12 padding-5">
               <div class="ck_button ck_checked" data-value="one">新车</div>
             </div>
             <!--
