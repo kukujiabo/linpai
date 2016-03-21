@@ -5,7 +5,7 @@
 
     @if ($current_page > 1)
     <li>
-      <a href="#" id="" aria-label="Previous" id="o-pre-page" data-cpage="{{$current_page}}" data-token="{{csrf_token()}}">
+      <a href="page={{$i-1}}" id="" aria-label="Previous" id="o-pre-page" data-cpage="{{$current_page}}" data-token="{{csrf_token()}}">
         <span aria-hidden="true">&laquo;上一页</span>
       </a>
     </li>
@@ -19,13 +19,13 @@
 
     @for ($i = 1; $i <= $pages; $i++) 
 
-      <li><a href="#" class="o-page" data-page="{{$i}}" data-token={{csrf_token()}}>{{$i}}</a></li>
+      <li><a href="page={{$i}}" class="o-page" data-page="{{$i}}" data-token={{csrf_token()}}>{{$i}}</a></li>
 
     @endfor
 
     @if ($current_page < $pages)
     <li>
-      <a href="#" aria-label="Next" id="o-next-page" data-cpage="{{$current_page}}" data-token="{{csrf_token()}}">
+      <a href="page={{$i+1}}" aria-label="Next" id="o-next-page" data-cpage="{{$current_page}}" data-token="{{csrf_token()}}">
         <span aria-hidden="true">下一页&raquo;</span>
       </a>
     </li>
