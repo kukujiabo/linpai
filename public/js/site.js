@@ -2657,7 +2657,6 @@ var addressBind;
  * 选择新车/二手车
  */
 (function () {
-
   var submitbtn = $('.to_buy');
 
   if (submitbtn.size() == 0) return;

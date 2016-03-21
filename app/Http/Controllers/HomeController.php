@@ -76,13 +76,41 @@ class HomeController extends Controller {
 
     }
 
+    /////
+    $goods = Good::orderBy('id', 'desc')->get();
+
+    $gid = empty($request->input('gid')) ? $goods[0]->id : $request->input('gid');
+
+    $goodInfos = array();
+
+    foreach ($goods as $key => $good) {
+
+      $goodInfo = GoodAttribsInfo::where('gid', '=', $good->id)
+
+        ->where('acode', '=', 'price')
+      
+        ->first();
+
+      $goodInfos[$key] = $goodInfo;
+
+    }
+    /////
+
     return view('home', array(
     
-      'goods' => $homeGoodsDisplay,
+      'goods' => $goods,
 
       'banners' => $banners,
 
       'home' => 1,
+
+      'gid' => $gid,
+
+      'active' => 'active',
+
+      'goodInfos' => $goodInfos,
+
+      'is_select' => true,
 
       'wTitle' => '51临牌网－您身边的车辆临时牌照专家'
     

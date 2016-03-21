@@ -95,11 +95,62 @@
   
       <!-- 商品列表开始 -->
 
+      @foreach ($goods as $goodLine)
+      
+        <div class="col-md-2">
+        </div> 
+
+        @foreach ($goodLine as $key => $good)
+
+
+        <div class="col-xs-6 col-md-3" style="">
+          <div class="thumbnail no-radius" style="background:#eee;">
+            @if ($good->active)
+            <a href="{{ asset('goods?gid='. $good->id) }}" id="{{$good->code}}">
+  
+            @endif
+              <img class="good-img" src="{{ asset($good->pic) }}">
+              <div class="caption good-block text-left">
+                <h3>{{ $good->name }}</h3>
+                <p class="h-good-intro">
+                  {{ $good->intro }}
+                </p>
+                <div class="row">
+                  <div class="col-xs-3 no-padding-left">
+                  @if ($good->code == 'beyond-three')
+                    <h3 class="theme-orig no-margin padding-3">¥&nbsp;{{ $good->price }}</h3>
+                  @endif
+                  </div>
+                  <div class="col-xs-6 col-xs-offset-3 no-padding">
+                    @if (!$good->active)
+                    <button class="btn btn-danger no-radius btn-group-justified" disabled>立即购买</button>
+                    @else
+                    <button class="btn btn-danger no-radius btn-group-justified">立即购买</button>
+                    @endif
+                  </div>
+                </div>
+          @if (!$good->active)
+            <div class="transparent-50" style="position:absolute;top:0px;left:15px;width:91%;height:95%;z-index:999;background:#000">
+</div>
+              <div style="left:0px;background:#d9534f;position:absolute;font-size:20px;color:white;font-weight:bold;top:30%;width:91%;height:25%;left:15px;text-align:center;z-index:1000;padding-top:6%;">
+                <p>即将上线<p><p>COMING SOON</p>
+              </div>
+          @endif
+            </div>
+          @if ($good->active)
+          </a>
+          @endif
+          </div>
+        </div> 
+        <div class="col-md-2"></div>
+        @endforeach
+
+      @endforeach
 
       <!-- 商品列表结束 -->
 
       <!-- 123 -->
-      <div class="container content-body">
+
       <div class="box no-padding" id="good-info">
         <ul class="nav nav-tabs good-nav" role="tablist">
           
@@ -207,17 +258,14 @@
             <div class="col-xs-6 padding-5">
               <div class="ck_button ck_checked" data-value="one">新车</div>
             </div>
-            <!--
             <div class="col-xs-6 padding-5">
               <div class="ck_button ck_unchecked" data-value="second">二手车</div>
             </div>
-            -->
           </div>
           <div class="padding-5 col-xs-6 col-xs-offset-3">
             <button class="btn btn-primary theme-back-blue btn-group-justified" id="next_order">下一步</button>
           </div>
         </div>
-      </div>
       </div>
       <!-- 321 -->
 
